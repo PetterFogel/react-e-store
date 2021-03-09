@@ -1,17 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../style/Navbar.css'
 
 function Navbar() {
     return (
-        <header className="main-header">
-            <h2 className="header-title">ShoeWay</h2>
-            <nav>
-                <ul className="nav-links">
-                    <li>Products</li>
-                    <li>Cart</li>
-                </ul>
-            </nav>
-        </header>
+      <header className="main-header">
+        <Link style={{ textDecoration: "none" }} to="/">
+          <h2 className="header-title">ShoeWay</h2>
+        </Link>
+        <nav>
+          <ul className="nav-links">
+            <Link style={{textDecoration: 'none', color: '#000'}} to="/products">
+              <li>Products</li>
+            </Link>
+            <li>Cart</li>
+          </ul>
+        </nav>
+      </header>
     );
 }
 

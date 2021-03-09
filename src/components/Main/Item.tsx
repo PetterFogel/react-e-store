@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../../style/Products.css';
 
 interface Props{
@@ -13,12 +14,16 @@ const Item = (props: Props) => {
     }
 
     return (
-        <div className="product-container">
-            <h2 className="title">{props.title}</h2>
-            <h4 className="price">{props.price}</h4>
-            <button className="add-btn" onClick={addToCart}>Add</button>
-        </div>
-    )
+      <div className="product-container">
+        <h2 className="title">{props.title}</h2>
+        <h4 className="price">{props.price}</h4>
+        <Link to="/productItem">
+          <button className="add-btn" onClick={addToCart}>
+            Add
+          </button>
+        </Link>
+      </div>
+    );
 }
 
 export default Item
