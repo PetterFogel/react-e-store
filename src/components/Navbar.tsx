@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/Navbar.css'
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 function Navbar() {
     return (
@@ -13,7 +14,9 @@ function Navbar() {
             <Link style={{textDecoration: 'none', color: '#000'}} to="/products">
               <li>Products</li>
             </Link>
-            <li>Cart</li>
+            <li>
+              <ShoppingCartOutlinedIcon/>
+            </li>
           </ul>
         </nav>
       </header>
