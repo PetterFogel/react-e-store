@@ -5,7 +5,7 @@ import Startpage from './Startpage';
 function MainContent() {
     return (
         <main>
-            <Startpage />
+            <p>Main</p>
         </main>
     );
 }
