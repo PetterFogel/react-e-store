@@ -4,12 +4,16 @@ import MainContent from './Main/MainContent';
 import Navbar from './Navbar';
 import Background from '../assets/main-bg.jpg';
 
+
+
 function Layout() {
     return (
+      <>
+        <Navbar />
         <div style={rootStyle}>
-            <Navbar />
-            <MainContent/>
+          <MainContent/>
         </div>
+      </>
     );
 }
 
