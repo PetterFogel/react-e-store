@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../style/Products.css';
 
 interface Props{
 
@@ -7,16 +8,15 @@ interface Props{
 }
 const Item = (props: Props) => {
 
-
     const addToCart = () => {
         console.log('added')
     }
 
     return (
-        <div>
-            <h2>{props.title}</h2>
-            <h5>{props.price}</h5>
-            <button onClick={addToCart}>Add</button>
+        <div className="product-container">
+            <h2 className="title">{props.title}</h2>
+            <h4 className="price">{props.price}</h4>
+            <button className="add-btn" onClick={addToCart}>Add</button>
         </div>
     )
 }

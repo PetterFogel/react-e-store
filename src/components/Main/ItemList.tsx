@@ -1,13 +1,6 @@
 import React from 'react'
 import Item from './Item';
 
-interface Props {
- object: {
-  title: String;
-  price: Number;
-  id: Number;
- }
-}
 
 const ItemList = () => {
 
