@@ -1,5 +1,6 @@
 import React from 'react'
 import Item from './Item';
+import ProductItem from './ProductItem';
 
 
 const ItemList = () => {
@@ -22,6 +23,7 @@ const ItemList = () => {
                     <Item title={item.title} price={item.price} key={item.id} />
                 ))
             }
+            {/* <ProductItem /> */}
         </div>
     )
 }
