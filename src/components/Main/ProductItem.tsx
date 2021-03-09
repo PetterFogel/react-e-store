@@ -2,30 +2,37 @@ import React, { CSSProperties } from "react";
 import { Button } from '@material-ui/core'
 import { btnMedium } from '../../style/GeneralStyle'
 
+interface Props {
+  object: {
+    title: string, 
+    info: string, 
+    price: string, 
+    image: string
+  }
+}
 
-function ProductItem() {
+
+function ProductItem(props: Props) {
   return (
     <div style={rootStyle}>
       <div style={imageDiv}>
         <img
           style={imageStyle}
-          src="https://shelta.se/pub_images/original/EYT-OACB_1x.jpg?timestamp=1613295294"
+          src={props.object.image}
           alt=""
         />
       </div>
       <div style={productDiv}>
-        <h2>Eytys Odessa Canvas Black</h2>
+        <h2>{props.object.title}</h2>
         <div style={productInfo}>
           <div style={{ margin: "2rem 0" }}>
             <h4>Price</h4>
-            <p>1599 sek</p>
+            <p>{props.object.price}</p>
           </div>
           <div style={{ margin: "2rem 0" }}>
             <h4>Info</h4>
             <p>
-              The brand new Eytys Odessa silhouette is a brutalist
-              interpretation of 50´s athletic shoes. A vegan-friendly, easy
-              going lace-up style.
+              {props.object.info}
             </p>
           </div>
         </div>

@@ -1,12 +1,12 @@
 export const ProductData = [
     {
         title: 'Eytys Odessa Canvas Black', 
-        info: '', 
+        info: 'The brand new Eytys Odessa silhouette is a brutalist interpretation of 50´s athletic shoes. A vegan-friendly, easy going lace-up style.', 
         price: '1599 sek', 
         image: 'https://shelta.se/pub_images/original/EYT-OACB_1x.jpg?timestamp=1613295294'
     },
     {
-        title: 'The North Face EQBC', 
+        title: 'The North Face EQBC Slide Vintage', 
         info: 'Inspired by the tried-and-true materials that The North Face use in their equipment collection, the street-style EQBC Slide is ideal for everything from chilling out to exploring new environments.', 
         price: '599 sek', 
         image: 'https://shelta.se/pub_images/original/NF0A46B3L0E1_1.jpg?timestamp=1612434569'

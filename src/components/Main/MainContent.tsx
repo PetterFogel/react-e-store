@@ -4,6 +4,7 @@ import Startpage from './Startpage';
 import ProductPage from './ProductPage';
 import { Route, Switch } from 'react-router';
 import ProductItem from './ProductItem';
+import { ProductData } from '../../data/productData'
 
 function MainContent() {
     return (
@@ -15,9 +16,11 @@ function MainContent() {
           <Route path="/products">
             <ProductPage />
           </Route>
-          <Route path="/productItem">
-              <ProductItem/>
-          </Route>
+          {ProductData.map((product) => 
+            <Route path={"/" + product.title}>
+                <ProductItem object={product}/>
+            </Route>
+          )}
         </Switch>
       </main>
     );

@@ -32,7 +32,14 @@ const ItemList = () => {
           {productsTwo.map((item) => (
             <Item title={item.title} price={item.price} key={item.id} />
           ))} */}
-            {ProductData.map((product) => <Item title={product.title} price={product.price} key={product.title}/>)}
+            {ProductData.map((product) => 
+              <Item 
+                // title={product.title} 
+                // price={product.price} 
+                // image={product.image} 
+                key={product.title}
+                object={product}
+              />)}
         </div>
       </div>
     );
