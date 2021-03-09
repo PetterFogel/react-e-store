@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import '../../style/Products.css';
 
 interface Props{
-
     title: string,
-    price: number,
+    price: string,
 }
 const Item = (props: Props) => {
 
@@ -14,7 +13,7 @@ const Item = (props: Props) => {
     }
 
     return (
-      <div className="product-container">
+      <div className="product-item">
         <h2 className="title">{props.title}</h2>
         <h4 className="price">{props.price}</h4>
         <Link to="/productItem">

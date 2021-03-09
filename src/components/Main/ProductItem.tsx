@@ -37,6 +37,7 @@ function ProductItem() {
   );
 }
 
+
 const rootStyle: CSSProperties = {
   display: "flex",
   width: "100%",

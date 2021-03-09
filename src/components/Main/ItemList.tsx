@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './Item';
 import ProductItem from './ProductItem';
 import '../../style/Products.css';
-
+import { ProductData } from '../../data/productData'
 
 
 const ItemList = () => {
@@ -23,15 +23,16 @@ const ItemList = () => {
     return (
 
       <div className="product-list">
-        <div className="product">
-          {products.map((item) => (
+        <div className="product-container">
+          {/* {products.map((item) => (
             <Item title={item.title} price={item.price} key={item.id} />
           ))}
         </div>
         <div className="product">
           {productsTwo.map((item) => (
             <Item title={item.title} price={item.price} key={item.id} />
-          ))}
+          ))} */}
+            {ProductData.map((product) => <Item title={product.title} price={product.price} key={product.title}/>)}
         </div>
       </div>
     );
