@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import { Button } from '@material-ui/core'
-import '../../style/General.css'
+import { btnMedium } from '../../style/GeneralStyle'
 
 
 function ProductItem() {
@@ -29,7 +29,7 @@ function ProductItem() {
             </p>
           </div>
         </div>
-        <Button variant="contained" className="btnStyle">
+        <Button variant="contained" style={btnMedium}>
             Add to cart
         </Button>
       </div>
