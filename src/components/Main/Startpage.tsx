@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../style/Startpage.css'
+import '../../style/General.css'
 
 
 function Startpage() {
@@ -12,7 +13,7 @@ function Startpage() {
         </h1>
         <p className="sub-title">Quality shoes to match your style</p>
         <Link to="/products">
-          <button className="start-btn">Go Shopping</button>
+          <button className="btnLarge">Go Shopping</button>
         </Link>
       </div>
     );

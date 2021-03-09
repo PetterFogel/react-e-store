@@ -1,5 +1,7 @@
 import React, { CSSProperties } from "react";
 import { Button } from '@material-ui/core'
+import '../../style/General.css'
+
 
 function ProductItem() {
   return (
@@ -27,7 +29,7 @@ function ProductItem() {
             </p>
           </div>
         </div>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" className="btnStyle">
             Add to cart
         </Button>
       </div>

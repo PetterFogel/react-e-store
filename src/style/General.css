@@ -1,3 +1,37 @@
 :root {
     --green: #56EAC6;
 }
+
+.btnStyle {
+    background: var(--green);
+    color: white;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+.btnLarge {
+    padding: 1.5rem 2.5rem;
+    border-radius: 3rem;
+    outline: none;
+    font-size: 1.7rem;
+    background: var(--green);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btnMedium {
+    background: var(--green);
+    color: white;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+.btnSmall {
+    background: var(--green);
+    color: white;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
