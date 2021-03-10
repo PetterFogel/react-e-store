@@ -4,12 +4,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import '../../style/Checkout.css';
 import { Button } from '@material-ui/core';
 import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
-import Creditcard from './PaymentMethods/Creditcard';
+
 
 function Checkout() {
     return (
       <div className="checkout-container">
-        <Creditcard />
         <div className="details-container">
           <form action="/">
             <div className="detail-holder">
