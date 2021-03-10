@@ -1,0 +1,19 @@
+.modal-container{
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: .2rem;
+    padding: 2rem;
+    width: 50%;
+    border: .3rem solid #56EAC6;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
