@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 
 
 interface ContextProps {
-    cart: object[]
+    cart: any[]
     addToCart: (product: object) => void;
 }
 

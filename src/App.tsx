@@ -22,7 +22,6 @@ class App extends Component<{}, State> {
 
 
   render() {
-    console.log(this.state.cart)
     return (
       <CartContext.Provider value={{
         cart: this.state.cart, 

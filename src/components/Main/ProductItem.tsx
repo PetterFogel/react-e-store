@@ -52,6 +52,7 @@ class ProductItem extends Component<Props> {
       </div>
     );
 }
+
 }
 
 

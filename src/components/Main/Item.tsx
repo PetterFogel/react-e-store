@@ -12,7 +12,7 @@ interface Props{
 const Item = (props: Props) => {
 
     const addToCart = () => {
-        console.log('added')
+        // console.log('added')
     }
 
     return (
