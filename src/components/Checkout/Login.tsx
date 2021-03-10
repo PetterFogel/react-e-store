@@ -1,4 +1,9 @@
-import { Button, TextField } from "@material-ui/core";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+} from "@material-ui/core";
 import { CSSProperties } from "@material-ui/styles";
 import React from "react";
 import "../../style/Form.css";
@@ -26,6 +31,10 @@ const Login = () => {
           label="Password"
           type="password"
           autoComplete="email"
+        />
+        <FormControlLabel
+          control={<Checkbox value="remember" color="primary" />}
+          label="Remember me"
         />
         <Button type="submit" variant="contained" style={btn}>
           Sign in

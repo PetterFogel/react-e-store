@@ -1,62 +1,67 @@
-import { Button, TextField } from '@material-ui/core'
-import { CSSProperties } from '@material-ui/styles';
-import React from 'react'
-import '../../style/Form.css'
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+} from "@material-ui/core";
+import { CSSProperties } from "@material-ui/styles";
+import React from "react";
+import "../../style/Form.css";
 
-const Register = () => {
+const Delivery = () => {
     return (
       <div className="modal-container">
-        <h1>Sign up</h1>
+        <h1>Delivery Details</h1>
         <form className="form">
           <TextField
             variant="outlined"
             margin="normal"
             required
-            id="firstName"
-            label="Firstname"
-            name="firstName"
-            autoComplete="firstName"
+            id="adress"
+            label="Address"
+            name="Address"
+            autoComplete="address"
             autoFocus
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
-            id="lastName"
-            label="Lastname"
-            name="lastName"
-            autoComplete="lastName"
+            id="zipCode"
+            label="zipCode"
+            name="zipCode"
+            autoComplete="zipCode"
             autoFocus
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
-            id="email"
-            label="Email Adress"
-            name="email"
-            autoComplete="email"
+            id="region"
+            label="Region"
+            name="Region"
+            autoComplete="region"
             autoFocus
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
-            id="password"
-            label="Password"
-            type="password"
-            autoComplete="email"
+            id="country"
+            label="Country"
+            name="country"
+            autoComplete="country"
           />
 
           <Button type="submit" variant="contained" style={btn}>
-            Sign Up
+            Submit
           </Button>
         </form>
       </div>
     );
 }
 
-export default Register
+export default Delivery
 
 
 const btn: CSSProperties = {
