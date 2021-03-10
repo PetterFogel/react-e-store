@@ -18,9 +18,6 @@ function Navbar() {
               <li>Products</li>
             </Link>
             <li>
-              <Link to="/checkout">
-                <ShoppingCartOutlinedIcon />
-                </Link>
               <Link to="/checkout" style={{ color: "#333" }}>
                 <ShoppingCartOutlinedIcon/>
               </Link>
