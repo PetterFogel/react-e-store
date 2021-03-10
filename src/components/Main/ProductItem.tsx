@@ -1,6 +1,7 @@
-import React, { CSSProperties } from "react";
+import React, { Component, CSSProperties } from "react";
 import { Button } from '@material-ui/core'
 import { btnMedium } from '../../style/GeneralStyle'
+import { CartContext } from "../../contexts/CartContext";
 
 interface Props {
   object: {
@@ -8,40 +9,49 @@ interface Props {
     info: string, 
     price: string, 
     image: string
-  }
+  } 
 }
 
-
-function ProductItem(props: Props) {
-  return (
-    <div style={rootStyle}>
-      <div style={imageDiv}>
-        <img
-          style={imageStyle}
-          src={props.object.image}
-          alt=""
-        />
-      </div>
-      <div style={productDiv}>
-        <h2>{props.object.title}</h2>
-        <div style={productInfo}>
-          <div style={{ margin: "2rem 0" }}>
-            <h4>Price</h4>
-            <p>{props.object.price}</p>
-          </div>
-          <div style={{ margin: "2rem 0" }}>
-            <h4>Info</h4>
-            <p>
-              {props.object.info}
-            </p>
-          </div>
+class ProductItem extends Component<Props> {
+  
+  context!: React.ContextType<typeof CartContext>
+  static contextType = CartContext;
+  
+  render() {
+    return (
+      <div style={rootStyle}>
+        <div style={imageDiv}>
+          <img
+            style={imageStyle}
+            src={this.props.object.image}
+            alt=""
+          />
         </div>
-        <Button variant="contained" style={btnMedium}>
-            Add to cart
-        </Button>
+        <div style={productDiv}>
+          <h2>{this.props.object.title}</h2>
+          <div style={productInfo}>
+            <div style={{ margin: "2rem 0" }}>
+              <h4>Price</h4>
+              <p>{this.props.object.price}</p>
+            </div>
+            <div style={{ margin: "2rem 0" }}>
+              <h4>Info</h4>
+              <p>
+                {this.props.object.info}
+              </p>
+            </div>
+          </div>
+          <Button 
+            variant="contained" 
+            style={btnMedium}
+            onClick={() => this.context.addToCart(this.props.object)}
+            >
+              Add to cart
+          </Button>
+        </div>
       </div>
-    </div>
-  );
+    );
+}
 }
 
 
