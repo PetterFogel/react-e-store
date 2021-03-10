@@ -24,7 +24,6 @@ function MainContent() {
           )}
           <Route path="/checkout">
             <Checkout/>
-            <Checkout />
           </Route>
         </Switch>
       </main>
