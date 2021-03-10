@@ -6,7 +6,7 @@ import '../../style/Form.css'
 const Register = () => {
     return (
       <div className="modal-container">
-        <h1>Sign up</h1>
+        <h2>Sign up</h2>
         <form className="form">
           <TextField
             variant="outlined"

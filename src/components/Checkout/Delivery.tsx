@@ -9,7 +9,7 @@ import "../../style/Form.css";
 const Delivery = () => {
     return (
       <div className="modal-container">
-        <h1>Delivery Details</h1>
+        <h2>Delivery Details</h2>
         <form className="form">
           <TextField
             variant="outlined"
