@@ -1,8 +1,6 @@
 import {
   Button,
-  Checkbox,
-  FormControlLabel,
-  TextField,
+  TextField
 } from "@material-ui/core";
 import { CSSProperties } from "@material-ui/styles";
 import React from "react";
@@ -27,10 +25,10 @@ const Delivery = () => {
             variant="outlined"
             margin="normal"
             required
-            id="zipCode"
-            label="zipCode"
-            name="zipCode"
-            autoComplete="zipCode"
+            id="zip"
+            label="Zip"
+            name="zip"
+            autoComplete="zip"
             autoFocus
           />
           <TextField
@@ -39,7 +37,7 @@ const Delivery = () => {
             required
             id="region"
             label="Region"
-            name="Region"
+            name="region"
             autoComplete="region"
             autoFocus
           />

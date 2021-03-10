@@ -12,20 +12,21 @@ const Register = () => {
             variant="outlined"
             margin="normal"
             required
-            id="firstName"
-            label="Firstname"
-            name="firstName"
-            autoComplete="firstName"
+            id="name"
+            label="Name"
+            name="name"
+            autoComplete="name"
             autoFocus
           />
+
           <TextField
             variant="outlined"
             margin="normal"
             required
-            id="lastName"
-            label="Lastname"
-            name="lastName"
-            autoComplete="lastName"
+            id="phone"
+            label="Phone"
+            name="phone"
+            autoComplete="phone"
             autoFocus
           />
           <TextField
