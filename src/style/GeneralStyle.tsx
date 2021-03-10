@@ -37,7 +37,9 @@ export const btnSmall: CSSProperties = {
     cursor: 'pointer'
 }
 
-
+export const cursorPointer: CSSProperties = {
+    cursor: "pointer"
+}
 
 
 

@@ -4,6 +4,7 @@ import '../style/Navbar.css'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { CartContext } from '../contexts/CartContext'
 
+
 class Navbar extends Component {
     context!: React.ContextType<typeof CartContext>
     static contextType = CartContext;
@@ -20,7 +21,9 @@ class Navbar extends Component {
                 <li>Products</li>
               </Link>
               <li>
-                <ShoppingCartOutlinedIcon/>
+                <Link to="/checkout" style={{ color: "#333" }}>
+                  <ShoppingCartOutlinedIcon/>
+                 </Link>
               </li>
               <li>
                 {this.context.cart.length}
