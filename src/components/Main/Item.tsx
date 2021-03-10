@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import '../../style/Products.css';
 
 interface Props{
-
-    title: string,
-    price: number,
+  object: {
+    title: string, 
+    price: string, 
+    image: string
+    }
 }
 const Item = (props: Props) => {
 
@@ -14,12 +16,13 @@ const Item = (props: Props) => {
     }
 
     return (
-      <div className="product-container">
-        <h2 className="title">{props.title}</h2>
-        <h4 className="price">{props.price}</h4>
-        <Link to="/productItem">
+      <div className="product-item">
+        <h2 className="title">{props.object.title}</h2>
+        <img className="product-image" src={props.object.image} alt=""/>
+        <h4 className="price">{props.object.price}</h4>
+        <Link to={"/" + props.object.title}>
           <button className="add-btn" onClick={addToCart}>
-            Add
+            More info...
           </button>
         </Link>
       </div>
