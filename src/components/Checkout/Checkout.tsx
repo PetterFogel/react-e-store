@@ -42,6 +42,7 @@ function Checkout() {
                 </div>
             </div>
         </div>
+
     );
 }
 

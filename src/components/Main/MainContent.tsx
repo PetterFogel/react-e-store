@@ -23,6 +23,7 @@ function MainContent() {
             </Route>
           )}
           <Route path="/checkout">
+            <Checkout/>
             <Checkout />
           </Route>
         </Switch>

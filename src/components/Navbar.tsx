@@ -11,10 +11,15 @@ function Navbar() {
         </Link>
         <nav>
           <ul className="nav-links">
-            <Link style={{textDecoration: 'none', color: '#000'}} to="/products">
+            <Link
+              style={{ textDecoration: "none", color: "#000" }}
+              to="/products"
+            >
               <li>Products</li>
             </Link>
             <li>
+              <Link to="/checkout">
+                <ShoppingCartOutlinedIcon />
               <Link to="/checkout" style={{ color: "#333" }}>
                 <ShoppingCartOutlinedIcon/>
               </Link>
