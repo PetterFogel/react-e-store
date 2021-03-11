@@ -10,6 +10,10 @@
     padding: 2rem;
     width: 40rem;
     border: .3rem solid #56EAC6;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
 }
 
 .form {
