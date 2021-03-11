@@ -34,6 +34,7 @@ class Checkout extends Component<Props, State> {
             <div className="checkout-container">
                 <div className="details-container">
                     <form action="/">
+                      <h2 className="checkout-title">Checkout</h2>
                         <div className="detail-holder" onClick={this.openModal}>
                             <p>Personaldetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
@@ -68,7 +69,7 @@ class Checkout extends Component<Props, State> {
                         )}
                     </div>
                     <div className="total-amount-container">
-                        <p>Total Amount:</p>
+                        <strong className="total-amount">Total Amount:</strong>
                         <p>1399.99</p>
                     </div>
                 </div>

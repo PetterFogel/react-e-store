@@ -41,6 +41,3 @@ export const cursorPointer: CSSProperties = {
     cursor: "pointer"
 }
 
-
-
-
