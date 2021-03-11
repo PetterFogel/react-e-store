@@ -11,7 +11,7 @@ import "../../style/Form.css";
 const Login = () => {
   return (
     <div className="modal-container">
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form className="form">
         <TextField
           variant="outlined"

@@ -4,11 +4,30 @@ import CloseIcon from '@material-ui/icons/Close';
 import '../../style/Checkout.css';
 import { Button } from '@material-ui/core';
 import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
+
 import { CartContext } from '../../contexts/CartContext';
 
-class Checkout extends Component {
-    context!: React.ContextType<typeof CartContext>
-    static contextType = CartContext; 
+
+import Modal from './Modal';
+import { CSSProperties } from '@material-ui/styles';
+
+  
+interface Props {}
+interface State {
+    isModalOpen: boolean;
+}
+
+class Checkout extends Component<Props, State> { 
+  context!: React.ContextType<typeof CartContext>
+  static contextType = CartContext; 
+    
+  state: State = {
+        isModalOpen: false
+    }
+
+    openModal = () => this.setState({ isModalOpen: true });
+    
+    closeModal = () => this.setState({ isModalOpen: false });
 
     render() {
         return (
@@ -53,10 +72,29 @@ class Checkout extends Component {
                         <p>1399.99</p>
                     </div>
                 </div>
+                {this.state.isModalOpen && (
+                <div>
+                    <Button 
+                        variant="contained"
+                        style={{ ...btnMedium, ...BtnAbsolut }}
+                        onClick={this.closeModal}>
+                        Close
+                    </Button>
+                    <Modal shouldClose={this.closeModal}/>
+                </div>
+                )}
             </div>
-    
         );
     }
+}
+
+const BtnAbsolut: CSSProperties = {
+    zIndex: 200,
+    position: "absolute",
+    bottom: "5%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
+
 }
 
 export default Checkout
