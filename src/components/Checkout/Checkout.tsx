@@ -39,7 +39,11 @@ class Checkout extends Component {
                             <img className="imageStyle" src={productValue.image} alt=""/>
                             <div className="price-holder">
                                 <p className="order-price">{productValue.price}</p>
-                                <CloseIcon style={{ ...cursorPointer, fontSize: "2rem" }}/>
+                                <CloseIcon onClick={() => this.context.removeFromCart(productValue)}
+                                style={{ 
+                                    ...cursorPointer, 
+                                    fontSize: "2rem" 
+                                }}/>
                             </div>
                         </div>
                         )}

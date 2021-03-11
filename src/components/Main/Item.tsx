@@ -5,7 +5,7 @@ import '../../style/Products.css';
 interface Props{
   object: {
     title: string, 
-    price: string, 
+    price: number, 
     image: string
     }
 }
@@ -19,7 +19,7 @@ const Item = (props: Props) => {
       <div className="product-item">
         <h2 className="title">{props.object.title}</h2>
         <img className="product-image" src={props.object.image} alt=""/>
-        <h4 className="price">{props.object.price}</h4>
+        <h4 className="price">{props.object.price + " " + "sek"}</h4>
         <Link to={"/" + props.object.title}>
           <button className="add-btn" onClick={addToCart}>
             More info...

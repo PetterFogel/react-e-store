@@ -7,7 +7,7 @@ interface Props {
   object: {
     title: string, 
     info: string, 
-    price: string, 
+    price: number, 
     image: string
   } 
 }
@@ -32,7 +32,7 @@ class ProductItem extends Component<Props> {
           <div style={productInfo}>
             <div style={{ margin: "2rem 0" }}>
               <h4>Price</h4>
-              <p>{this.props.object.price}</p>
+              <p>{this.props.object.price + " " + "sek"}</p>
             </div>
             <div style={{ margin: "2rem 0" }}>
               <h4>Info</h4>
@@ -52,6 +52,7 @@ class ProductItem extends Component<Props> {
       </div>
     );
 }
+
 
 }
 
