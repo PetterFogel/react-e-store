@@ -1,4 +1,11 @@
-export const ProductData = [
+export interface Product {
+    title: string, 
+    info: string, 
+    price: number, 
+    image: string
+}
+
+export const ProductData: Product[] = [
     {
         title: 'Eytys Odessa Canvas Black', 
         info: 'The brand new Eytys Odessa silhouette is a brutalist interpretation of 50´s athletic shoes. A vegan-friendly, easy going lace-up style.', 

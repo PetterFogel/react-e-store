@@ -3,10 +3,21 @@ import Item from './Item';
 import ProductItem from './ProductItem';
 import '../../style/Products.css';
 import { ProductData } from '../../data/productData'
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1), 
+        color: theme.palette.grey[400]
+      },
+    },
+  }),
+);
 
 const ItemList = () => {
-
+  const classes = useStyles();
     const products = [
       { title: "Nike Air", price: 199.99, id: 1, },
       { title: "Converse", price: 29.99, id: 2 },
@@ -19,6 +30,7 @@ const ItemList = () => {
       { title: "Bluntstone", price: 99.99, id: 7 },
       { title: "Timberland", price: 59.99, id: 8 },
     ];
+    
 
     return (
 
@@ -38,7 +50,7 @@ const ItemList = () => {
                 // price={product.price} 
                 // image={product.image} 
                 key={product.title}
-                object={product}
+                product={product}
               />)}
         </div>
       </div>
