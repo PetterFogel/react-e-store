@@ -7,10 +7,6 @@ interface Props {
 
 class Modal extends Component<Props> {
 
-    constructor(props: Props) {
-        super(props);
-    }
-
     render() {
         return(
             <div style={modalStyle}>
