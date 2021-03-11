@@ -34,15 +34,15 @@ class Checkout extends Component<Props, State> {
             <div className="checkout-container">
                 <div className="details-container">
                     <form action="/">
-                        <div className="detail-holder">
+                        <div className="detail-holder" onClick={this.openModal}>
                             <p>Personaldetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
                         </div>
-                        <div className="detail-holder">
+                        <div className="detail-holder" onClick={this.openModal}>
                             <p>Deliverydetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
                         </div>
-                        <div className="detail-holder">
+                        <div className="detail-holder" onClick={this.openModal}>
                             <p>Paymentdetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
                         </div>
