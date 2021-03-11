@@ -5,6 +5,9 @@
     width: 100%;
     height: 95%;
 }
+.checkout-title{
+    text-align: center;
+}
 
 .details-container {
     background: #fff;
@@ -86,4 +89,24 @@
 
 .imageStyle {
     width: 10rem;
+}
+
+@media screen and (max-width: 1380px){
+
+    .checkout-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .details-container {
+    
+    width: 100%;
+    }
+    /* Order Summary Container */
+    .order-container {
+        width: 100%;    
+    }
+    .total-amount-container {
+    margin: 2rem 0rem;
+    }
+
 }
