@@ -26,10 +26,10 @@ export const btnMedium: CSSProperties = {
 }
 
 export const btnSmall: CSSProperties = {
-    padding: '1.5rem 2.5rem',
+    padding: '0.8rem 1.7rem',
     borderRadius: '3rem',
     outline: 'none',
-    fontSize: '1.7rem',
+    fontSize: '1rem',
     background: '#56EAC6',
     color: '#fff',
     fontWeight: 'bold',
