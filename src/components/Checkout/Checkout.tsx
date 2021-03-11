@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../style/Checkout.css';
-import { Accordion, AccordionDetails, AccordionSummary, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, Typography } from '@material-ui/core';
+import { Accordion, AccordionDetails, AccordionSummary, Button, FormControl, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@material-ui/core';
 import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CartContext } from '../../contexts/CartContext';
-
 import Modal from './Modal';
 import { CSSProperties } from '@material-ui/styles';
 import '../../style/Form.css';
-import Register from './Register';
-import Swish from './PaymentMethods/Swish';
   
 interface Props {}
 interface State {
@@ -59,6 +55,16 @@ class Checkout extends Component<Props, State> {
                       variant="outlined"
                       margin="normal"
                       required
+                      id="adress"
+                      label="Address"
+                      name="Address"
+                      autoComplete="address"
+                      autoFocus
+                    />
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
                       id="phone"
                       label="Phone"
                       name="phone"
@@ -75,17 +81,7 @@ class Checkout extends Component<Props, State> {
                       autoComplete="email"
                       autoFocus
                     />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="password"
-                      label="Password"
-                      type="password"
-                      autoComplete="email"
-                    />
-
-                    <Button type="submit" variant="contained">
+                    <Button style={btn} type="submit" variant="contained">
                       Sign Up
                     </Button>
                   </AccordionDetails>
@@ -140,8 +136,8 @@ class Checkout extends Component<Props, State> {
                       autoComplete="country"
                     />
 
-                    <Button type="submit" variant="contained">
-                      Sign Up
+                    <Button style={btn} type="submit" variant="contained">
+                      Add
                     </Button>
                   </AccordionDetails>
                 </Accordion>
@@ -156,7 +152,6 @@ class Checkout extends Component<Props, State> {
                   </AccordionSummary>
                   <AccordionDetails style={form}>
                     <FormControl component="fieldset">
-
                       <RadioGroup aria-label="payment">
                         <FormControlLabel
                           value="Credit Card"
@@ -175,12 +170,11 @@ class Checkout extends Component<Props, State> {
                         />
                       </RadioGroup>
                     </FormControl>
-                    <Button variant="contained" type="submit">
+                    <Button style={btn} variant="contained" type="submit">
                       Next
                     </Button>
                   </AccordionDetails>
                 </Accordion>
-                
               </form>
               <Button variant="contained" style={btnMedium}>
                 Confirm Order
@@ -255,4 +249,19 @@ const form: CSSProperties = {
     fontSize: '1.2rem'
 
 }
+
+const btn: CSSProperties = {
+  alignSelf: "center",
+  bordeeRadius: "3rem",
+  outline: "none",
+  fontSize: "1rem",
+  background: "#56EAC6",
+  color: "#fff",
+  fontWeight: "bold",
+  border: "none",
+  cursor: "pointer",
+  margin: "1rem",
+  padding: "1rem",
+};
+
 export default Checkout
