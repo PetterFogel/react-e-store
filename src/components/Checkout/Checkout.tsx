@@ -4,6 +4,10 @@ import CloseIcon from '@material-ui/icons/Close';
 import '../../style/Checkout.css';
 import { Button } from '@material-ui/core';
 import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
+
+import { CartContext } from '../../contexts/CartContext';
+
+
 import Modal from './Modal';
 import { CSSProperties } from '@material-ui/styles';
 
@@ -14,8 +18,10 @@ interface State {
 }
 
 class Checkout extends Component<Props, State> { 
+  context!: React.ContextType<typeof CartContext>
+  static contextType = CartContext; 
     
-    state: State = {
+  state: State = {
         isModalOpen: false
     }
 
@@ -28,15 +34,15 @@ class Checkout extends Component<Props, State> {
             <div className="checkout-container">
                 <div className="details-container">
                     <form action="/">
-                        <div className="detail-holder" onClick={this.openModal}>
+                        <div className="detail-holder">
                             <p>Personaldetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
                         </div>
-                        <div className="detail-holder" onClick={this.openModal}>
+                        <div className="detail-holder">
                             <p>Deliverydetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
                         </div>
-                        <div className="detail-holder" onClick={this.openModal}>
+                        <div className="detail-holder">
                             <p>Paymentdetails</p>
                             <CheckIcon style={{ fontSize: "2rem" }}/>
                         </div>
@@ -46,20 +52,26 @@ class Checkout extends Component<Props, State> {
                 <div className="order-container">
                     <div className="order-list">
                         <h2>Order Summary</h2>
+                        {this.context.cart.map((productValue) =>  
                         <div className="order-item">
-                            <p className="order-name">Dr Martens</p>
+                            <p className="order-name">{productValue.title}</p>
+                            <img className="imageStyle" src={productValue.image} alt=""/>
                             <div className="price-holder">
-                                <p className="order-price">1399.99</p>
-                                <CloseIcon style={{ ...cursorPointer, fontSize: "2rem" }}/>
+                                <p className="order-price">{productValue.price}</p>
+                                <CloseIcon onClick={() => this.context.removeFromCart(productValue)}
+                                style={{ 
+                                    ...cursorPointer, 
+                                    fontSize: "2rem" 
+                                }}/>
                             </div>
                         </div>
+                        )}
                     </div>
                     <div className="total-amount-container">
                         <p>Total Amount:</p>
                         <p>1399.99</p>
                     </div>
                 </div>
-
                 {this.state.isModalOpen && (
                 <div>
                     <Button 
@@ -82,6 +94,7 @@ const BtnAbsolut: CSSProperties = {
     bottom: "5%",
     left: "50%",
     transform: "translate(-50%, -50%)"
+
 }
 
 export default Checkout
