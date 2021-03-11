@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../style/Checkout.css';
-import { Accordion, AccordionDetails, AccordionSummary, Button, FormControl, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@material-ui/core';
 import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CartContext } from '../../contexts/CartContext';
 import Modal from './Modal';
 import { CSSProperties } from '@material-ui/styles';
 import '../../style/Form.css';
+import { Button } from '@material-ui/core';
+import Accordian from './Accordian';
   
 interface Props {}
 interface State {
@@ -29,157 +29,17 @@ class Checkout extends Component<Props, State> {
     render() {
         return (
           <div className="checkout-container">
+
             <div className="details-container">
               <form action="/">
                 <h2 className="checkout-title">Checkout</h2>
-                <Accordion style={form}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    Personal Details
-                  </AccordionSummary>
-                  <AccordionDetails style={form}>
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="name"
-                      label="Name"
-                      name="name"
-                      autoComplete="name"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="adress"
-                      label="Address"
-                      name="Address"
-                      autoComplete="address"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="phone"
-                      label="Phone"
-                      name="phone"
-                      autoComplete="phone"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="email"
-                      label="Email Adress"
-                      name="email"
-                      autoComplete="email"
-                      autoFocus
-                    />
-                    <Button style={btn} type="submit" variant="contained">
-                      Sign Up
-                    </Button>
-                  </AccordionDetails>
-                </Accordion>
-
-                <Accordion style={form}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    Delivery Details
-                  </AccordionSummary>
-                  <AccordionDetails style={form}>
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="adress"
-                      label="Address"
-                      name="Address"
-                      autoComplete="address"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="zip"
-                      label="Zip"
-                      name="zip"
-                      autoComplete="zip"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="region"
-                      label="Region"
-                      name="region"
-                      autoComplete="region"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      id="country"
-                      label="Country"
-                      name="country"
-                      autoComplete="country"
-                    />
-
-                    <Button style={btn} type="submit" variant="contained">
-                      Add
-                    </Button>
-                  </AccordionDetails>
-                </Accordion>
-
-                <Accordion style={form}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    Payment Details
-                  </AccordionSummary>
-                  <AccordionDetails style={form}>
-                    <FormControl component="fieldset">
-                      <RadioGroup aria-label="payment">
-                        <FormControlLabel
-                          value="Credit Card"
-                          control={<Radio />}
-                          label="Credit Card"
-                        />
-                        <FormControlLabel
-                          value="Swish"
-                          control={<Radio />}
-                          label="Swish"
-                        />
-                        <FormControlLabel
-                          value="Bank Transfer"
-                          control={<Radio />}
-                          label="Bank Transfer"
-                        />
-                      </RadioGroup>
-                    </FormControl>
-                    <Button style={btn} variant="contained" type="submit">
-                      Next
-                    </Button>
-                  </AccordionDetails>
-                </Accordion>
+                <Accordian/>
               </form>
               <Button variant="contained" style={btnMedium}>
                 Confirm Order
               </Button>
             </div>
+
             <div className="order-container">
               <div className="order-list">
                 <h2>Order Summary</h2>
@@ -219,9 +79,7 @@ class Checkout extends Component<Props, State> {
                   variant="contained"
                   style={{ ...btnMedium, ...BtnAbsolut }}
                   onClick={this.closeModal}
-                >
-                  Close
-                </Button>
+                >Close</Button>
                 <Modal shouldClose={this.closeModal} />
               </div>
             )}
@@ -249,19 +107,5 @@ const form: CSSProperties = {
     fontSize: '1.2rem'
 
 }
-
-const btn: CSSProperties = {
-  alignSelf: "center",
-  bordeeRadius: "3rem",
-  outline: "none",
-  fontSize: "1rem",
-  background: "#56EAC6",
-  color: "#fff",
-  fontWeight: "bold",
-  border: "none",
-  cursor: "pointer",
-  margin: "1rem",
-  padding: "1rem",
-};
 
 export default Checkout
