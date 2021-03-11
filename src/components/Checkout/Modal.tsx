@@ -1,5 +1,5 @@
 import React, { Component, CSSProperties } from 'react';
-import Login from './Login';
+import Register from './Register';
 
 interface Props {
     shouldClose: () => void;
@@ -9,7 +9,7 @@ class Modal extends Component<Props> {
     render() {
         return(
             <div style={modalStyle}>
-                <Login/>
+                <Register/>
             </div>
         );
     }
