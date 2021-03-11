@@ -1,6 +1,7 @@
 import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
 import React from 'react'
+import '../../../style/Form.css'
 
 const BankTransfer = () => {
     return (
@@ -17,8 +18,16 @@ const BankTransfer = () => {
           />
           <TextField
             margin="normal"
+            label="Clearing Number"
+            name="clearingnumber"
+            variant="outlined"
+            required
+            InputLabelProps={{ shrink: true }}
+          />
+          <TextField
+            margin="normal"
             label="Account Number"
-            name="accountNumber"
+            name="accountnumber"
             variant="outlined"
             required
             InputLabelProps={{ shrink: true }}
