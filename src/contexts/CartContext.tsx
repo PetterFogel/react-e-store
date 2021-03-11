@@ -1,12 +1,12 @@
 import React, { Component, createContext } from "react";
+import { Product } from "../data/productData";
 
 interface State {
-  cart: object[];
+  cart: Product[];
 }
-interface ContextProps {
-  cart: any[];
-  addToCart: (product: object) => void;
-  removeFromCart: (product: object) => void;
+interface ContextProps extends State {
+  addToCart: (product: Product) => void;
+  removeFromCart: (product: Product) => void;
 }
 
 export const CartContext = createContext<ContextProps>({
@@ -20,12 +20,12 @@ class CartProvider extends Component<{}, State> {
     cart: [],
   };
 
-  addProductToCart = (product: object) => {
+  addProductToCart = (product: Product) => {
     const updatedCart = [...this.state.cart, product];
     this.setState({ cart: updatedCart });
   };
 
-  removeProductFromCart = (product: object) => {
+  removeProductFromCart = (product: Product) => {
     console.log('Ta bort från varukorgen')
     console.log(product)
     const updatedCart = [...this.state.cart]

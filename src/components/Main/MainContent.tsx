@@ -19,7 +19,7 @@ function MainContent() {
           </Route>
           {ProductData.map((product) => 
             <Route path={"/" + product.title}>
-                <ProductItem object={product}/>
+                <ProductItem product={product}/>
             </Route>
           )}
           <Route path="/checkout">
