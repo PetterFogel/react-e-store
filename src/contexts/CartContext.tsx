@@ -27,6 +27,7 @@ class CartProvider extends Component<{}, State> {
 
   removeProductFromCart = (product: object) => {
     console.log('Ta bort från varukorgen')
+    console.log(product)
     const updatedCart = [...this.state.cart]
     const cartIndex = updatedCart.indexOf(product)
     updatedCart.splice(cartIndex, 1)

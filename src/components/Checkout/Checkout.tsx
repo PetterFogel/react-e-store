@@ -57,7 +57,7 @@ class Checkout extends Component<Props, State> {
                             <p className="order-name">{productValue.title}</p>
                             <img className="imageStyle" src={productValue.image} alt=""/>
                             <div className="price-holder">
-                                <p className="order-price">{productValue.price}</p>
+                                <p className="order-price">{productValue.price + " " + "sek"}</p>
                                 <CloseIcon onClick={() => this.context.removeFromCart(productValue)}
                                 style={{ 
                                     ...cursorPointer, 
