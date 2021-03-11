@@ -6,8 +6,9 @@
     align-items: center;
     background-color: white;
     border-radius: .2rem;
+    margin: auto;
     padding: 2rem;
-    width: 50%;
+    width: 40rem;
     border: .3rem solid #56EAC6;
     position: fixed;
     left: 50%;
@@ -20,4 +21,17 @@
     flex-direction: column;
     width: 80%;
     margin: auto;
+}
+
+.container{
+    cursor: pointer;
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+    background: #ddd;
+    width: 80%;
+    height: 3rem;
+    font-weight: 500;
 }

@@ -7,6 +7,7 @@ import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
 import Modal from './Modal';
 import { CSSProperties } from '@material-ui/styles';
 
+  
 interface Props {}
 interface State {
     isModalOpen: boolean;

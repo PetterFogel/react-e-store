@@ -1,4 +1,9 @@
-import { Button, TextField } from '@material-ui/core'
+import {
+  Button,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+} from "@material-ui/core";
 import { CSSProperties } from '@material-ui/styles';
 import React from 'react'
 import '../../style/Form.css'
@@ -6,7 +11,7 @@ import '../../style/Form.css'
 const Register = () => {
     return (
       <div className="modal-container">
-        <h1>Sign up</h1>
+        <h2>Sign up</h2>
         <form className="form">
           <TextField
             variant="outlined"
@@ -47,6 +52,10 @@ const Register = () => {
             label="Password"
             type="password"
             autoComplete="email"
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
           />
 
           <Button type="submit" variant="contained" style={btn}>
