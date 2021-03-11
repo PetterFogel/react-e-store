@@ -98,15 +98,43 @@
         flex-direction: column;
     }
     .details-container {
-    
-    width: 100%;
+        width: 100%;
     }
     /* Order Summary Container */
     .order-container {
-        width: 100%;    
+        width: 100%; 
     }
     .total-amount-container {
     margin: 2rem 0rem;
     }
+    .total-amount{
+        font-size: 1.6rem;
+    }
 
+}
+
+@media screen and (max-width: 630px){
+
+    main{
+        padding: 0rem .5rem;
+    }
+    
+    .checkout-container{
+        width: 100%;
+    }
+
+        .detail-holder {
+        margin: 1rem auto;
+        width: 90%;
+    }
+
+    .order-container {
+        text-align: center;
+    }
+
+    .total-amount-container{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
 }

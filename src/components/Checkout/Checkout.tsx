@@ -69,7 +69,7 @@ class Checkout extends Component<Props, State> {
                         )}
                     </div>
                     <div className="total-amount-container">
-                        <p>Total Amount:</p>
+                        <strong className="total-amount">Total Amount:</strong>
                         <p>1399.99</p>
                     </div>
                 </div>
