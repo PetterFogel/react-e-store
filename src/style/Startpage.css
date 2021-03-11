@@ -43,3 +43,35 @@ h1 span {
     border: none;
     cursor: pointer;
 }
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .start-container {
+        width: 90%
+    }
+    .start-title {
+        font-size: 4rem;
+    }
+    h1 span {
+        font-size: 5rem;
+    }
+    .sub-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .start-container {
+        align-items: center;
+    }
+    .start-title {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+    h1 span {
+        font-size: 3rem;
+    }
+    .sub-title {
+        display: none;
+    }
+}
