@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../style/Checkout.css';
-import { Accordion, AccordionDetails, AccordionSummary, Button, Checkbox, FormControlLabel, TextField, Typography } from '@material-ui/core';
+import { Accordion, AccordionDetails, AccordionSummary, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, Typography } from '@material-ui/core';
 import { btnMedium, cursorPointer } from '../../style/GeneralStyle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CartContext } from '../../contexts/CartContext';
@@ -11,6 +11,7 @@ import Modal from './Modal';
 import { CSSProperties } from '@material-ui/styles';
 import '../../style/Form.css';
 import Register from './Register';
+import Swish from './PaymentMethods/Swish';
   
 interface Props {}
 interface State {
@@ -145,18 +146,41 @@ class Checkout extends Component<Props, State> {
                   </AccordionDetails>
                 </Accordion>
 
-                <div className="detail-holder">
-                  <p>Personaldetails</p>
-                  <CheckIcon style={{ fontSize: "2rem" }} />
-                </div>
-                <div className="detail-holder" onClick={this.openModal}>
-                  <p>Deliverydetails</p>
-                  <CheckIcon style={{ fontSize: "2rem" }} />
-                </div>
-                <div className="detail-holder" onClick={this.openModal}>
-                  <p>Paymentdetails</p>
-                  <CheckIcon style={{ fontSize: "2rem" }} />
-                </div>
+                <Accordion style={form}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    Payment Details
+                  </AccordionSummary>
+                  <AccordionDetails style={form}>
+                    <FormControl component="fieldset">
+
+                      <RadioGroup aria-label="payment">
+                        <FormControlLabel
+                          value="Credit Card"
+                          control={<Radio />}
+                          label="Credit Card"
+                        />
+                        <FormControlLabel
+                          value="Swish"
+                          control={<Radio />}
+                          label="Swish"
+                        />
+                        <FormControlLabel
+                          value="Bank Transfer"
+                          control={<Radio />}
+                          label="Bank Transfer"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    <Button variant="contained" type="submit">
+                      Next
+                    </Button>
+                  </AccordionDetails>
+                </Accordion>
+                
               </form>
               <Button variant="contained" style={btnMedium}>
                 Confirm Order
