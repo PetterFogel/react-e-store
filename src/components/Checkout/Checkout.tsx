@@ -7,7 +7,7 @@ import Modal from './Modal';
 import { CSSProperties } from '@material-ui/styles';
 import '../../style/Form.css';
 import { Button } from '@material-ui/core';
-import Accordian from './Accordian';
+import Accordian from './Accordian/Accordian';
   
 interface Props {}
 interface State {
