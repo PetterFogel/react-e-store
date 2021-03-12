@@ -23,16 +23,15 @@ class CartProvider extends Component<{}, State> {
 
   addProductToCart = (product: Product) => {
     // let updatedCart: any = [];
-    // console.log(this.state.quantity * product.price)
     
     if(this.state.cart.includes(product)) {
-      quantity = quantity + 1
-      let updatedQ = [...this.state.cart, quantity];
+      product.quantity = product.quantity + 1
+
       this.setState({})
-      console.log(updatedQ)
-      
-    } else{
-      quantity = 1
+      console.log(product.quantity * product.price)
+
+
+    } else if (product.quantity === 1){
       let updatedCart = [...this.state.cart, product];
       this.setState({ cart: updatedCart });
       console.log(updatedCart)
