@@ -56,7 +56,6 @@ class Checkout extends Component<Props, State> {
                         {this.context.cart.map((productValue) =>  
                         <div className="order-item">
                             <p className="order-name">{productValue.title}</p>
-                            <p>{this.context.quantity}</p>
                             <img className="imageStyle" src={productValue.image} alt=""/>
                             <div className="price-holder">
                                 <p className="order-price">{productValue.price + " " + "sek"}</p>

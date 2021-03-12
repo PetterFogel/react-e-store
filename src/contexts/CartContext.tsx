@@ -3,7 +3,6 @@ import { Product } from "../data/productData";
 
 interface State {
   cart: Product[];
-  quantity: number
 }
 interface ContextProps extends State {
   addToCart: (product: Product) => void;
@@ -12,30 +11,31 @@ interface ContextProps extends State {
 
 export const CartContext = createContext<ContextProps>({
   cart: [],
-  quantity: 0,
   addToCart: () => {},
   removeFromCart: () => {},
 });
+
 let quantity: number = 0
 class CartProvider extends Component<{}, State> {
   state: State = {
     cart: [],
-    quantity: 1
   };
 
   addProductToCart = (product: Product) => {
-    let updatedCart: any = [];
-    console.log(this.state.quantity * product.price)
+    // let updatedCart: any = [];
+    // console.log(this.state.quantity * product.price)
     
     if(this.state.cart.includes(product)) {
-      this.state.quantity = this.state.quantity + 1
-      updatedCart = [...this.state.cart, this.state.quantity];
-      this.setState({quantity: this.state.quantity})
+      quantity = quantity + 1
+      let updatedQ = [...this.state.cart, quantity];
+      this.setState({})
+      console.log(updatedQ)
       
     } else{
-      this.state.quantity = 1
-      updatedCart = [...this.state.cart, product];
+      quantity = 1
+      let updatedCart = [...this.state.cart, product];
       this.setState({ cart: updatedCart });
+      console.log(updatedCart)
     }
   };
 
@@ -55,7 +55,6 @@ class CartProvider extends Component<{}, State> {
           cart: this.state.cart,
           addToCart: this.addProductToCart,
           removeFromCart: this.removeProductFromCart,
-          quantity: this.state.quantity
         }}
       >
         {this.props.children}
