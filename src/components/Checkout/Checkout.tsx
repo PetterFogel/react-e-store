@@ -45,16 +45,20 @@ class Checkout extends Component<Props, State> {
                 <h2>Order Summary</h2>
                 {this.context.cart.map((productValue) => (
                   <div className="order-item">
-                    <p className="order-name">{productValue.title}</p>
                     <img
                       className="imageStyle"
                       src={productValue.image}
                       alt=""
                     />
-                    <div className="price-holder">
-                      <p className="order-price">
-                        {productValue.price + " " + "sek"}
-                      </p>
+                    <div className="info-container">
+                      <p className="order-name">{productValue.title}</p>
+                      <div className="price-holder">
+                        <p className="order-qty">{`X ${productValue.quantity}`}</p>
+                        <p className="order-price">
+                          {`${productValue.quantity * productValue.price} SEK`}
+                        </p>
+                      </div>
+                    </div>
                       <CloseIcon
                         onClick={() =>
                           this.context.removeFromCart(productValue)
@@ -64,7 +68,6 @@ class Checkout extends Component<Props, State> {
                           fontSize: "2rem",
                         }}
                       />
-                    </div>
                   </div>
                 ))}
               </div>
