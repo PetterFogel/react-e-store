@@ -57,10 +57,12 @@ class Checkout extends Component<Props, State> {
                       <div className="price-holder">
                           <div>
                             <AddCircleIcon
+                            className="amount-icons"
                             onClick={
                                 () => this.context.addToCart(productValue)
                             }/>
                             <RemoveCircleIcon
+                            className="amount-icons"
                             onClick={
                                 () => this.context.deleteItemQty(productValue)
                             }
@@ -86,7 +88,7 @@ class Checkout extends Component<Props, State> {
               </div>
               <div className="total-amount-container">
                 <strong className="total-amount">Total Amount:</strong>
-                <p>1399.99</p>
+                <p>{this.context.totalAmount + " " + "SEK"}</p>
               </div>
             </div>
             {this.state.isModalOpen && (
