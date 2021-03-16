@@ -12,10 +12,12 @@ import { UserContext } from '../../../contexts/UserContext'
 
 class PersonalDetails extends Component {
 
+
    context!: React.ContextType<typeof UserContext>;
    static contextType = UserContext;
 
   render() {
+
     return (
       <div>
         <Accordion style={form}>
