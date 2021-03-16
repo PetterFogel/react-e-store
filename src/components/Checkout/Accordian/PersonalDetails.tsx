@@ -8,9 +8,14 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
-
+import { UserContext } from '../../../contexts/UserContext'
 
 class PersonalDetails extends Component {
+
+
+   context!: React.ContextType<typeof UserContext>;
+   static contextType = UserContext;
+
   render() {
 
     return (
@@ -31,6 +36,8 @@ class PersonalDetails extends Component {
               id="name"
               label="Name"
               name="name"
+              type="text"
+              onChange={this.context.addName}
               autoComplete="name"
               autoFocus
             />
@@ -40,7 +47,8 @@ class PersonalDetails extends Component {
               required
               id="adress"
               label="Address"
-              name="Address"
+              name="address"
+              type="text"
               autoComplete="address"
               autoFocus
             />
@@ -49,8 +57,10 @@ class PersonalDetails extends Component {
               margin="normal"
               required
               id="phone"
+              type="phone"
               label="Phone"
               name="phone"
+        
               autoComplete="phone"
               autoFocus
             />
@@ -62,10 +72,16 @@ class PersonalDetails extends Component {
               type="email"
               label="Email Adress"
               name="email"
+             
               autoComplete="email"
               autoFocus
             />
-            <Button style={btn} type="submit" variant="contained">
+            <Button
+             
+              style={btn}
+              type="submit"
+              variant="contained"
+            >
               Sign Up
             </Button>
           </AccordionDetails>
@@ -74,6 +90,7 @@ class PersonalDetails extends Component {
     );
   }
 }
+
 
 export default PersonalDetails
 

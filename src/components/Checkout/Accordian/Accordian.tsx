@@ -8,8 +8,8 @@ const Accordian = () => {
     return (
       <div>
         <PersonalDetails/>
-        <DelivaryDetails/>
-        <PaymentDetails/>
+        {/* <DelivaryDetails/>
+        <PaymentDetails/> */}
       </div>
     );
 }
