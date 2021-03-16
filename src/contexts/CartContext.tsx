@@ -1,6 +1,4 @@
-import { ContactSupportOutlined } from "@material-ui/icons";
-import React, { Component, createContext } from "react";
-import { isThisTypeNode } from "typescript";
+import { Component, createContext } from "react";
 import { Product } from "../data/productData";
 
 interface State {

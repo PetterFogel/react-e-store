@@ -1,11 +1,9 @@
-import React from 'react'
 import PersonalDetails from './PersonalDetails';
 import DelivaryDetails from './DelivaryDetails';
 import PaymentDetails from './PaymentDetails';
 import { Button, Step, StepLabel, Stepper } from '@material-ui/core';
 import { Label } from '@material-ui/icons';
 import { CSSProperties } from '@material-ui/styles';
-
 
 const Accordian = () => {
 

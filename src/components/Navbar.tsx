@@ -1,35 +1,55 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../style/Navbar.css'
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { CartContext } from '../contexts/CartContext'
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import BurgerMenu from './BurgerMenu';
 
+interface State {
+  isMenuOpen: boolean;
+}
 
-class Navbar extends Component {
+class Navbar extends Component<{}, State> {
     context!: React.ContextType<typeof CartContext>
     static contextType = CartContext;
+
+    state: State = {
+      isMenuOpen: false
+    }
     
-    render() {    
+    handleMenuClick = () => {
+      this.setState({
+        isMenuOpen: !this.state.isMenuOpen
+      })
+      console.log(this.state.isMenuOpen)
+    }
+
+    render() {
       return (
         <header className="main-header">
           <Link style={{ textDecoration: "none" }} to="/">
             <h2 className="header-title">ShoeWay</h2>
           </Link>
           <nav>
-            <ul className="nav-links">
-              <Link style={{textDecoration: 'none', color: '#000'}} to="/products">
+            <ul className="nav-links"
+              style={{
+                right: this.state.isMenuOpen ? "0%" : "-50%"
+              }}
+            >
+            <Link style={{textDecoration: 'none', color: '#000'}} to="/products">
                 <li>Products</li>
-              </Link>
+            </Link>
               <li>
-                <Link to="/checkout" style={{ color: "#333" }}>
-                  <ShoppingCartOutlinedIcon/>
-                 </Link>
+                  <Link to="/checkout" style={{ color: "#333" }}>
+                    <ShoppingCartOutlinedIcon/>
+                  </Link>
               </li>
               <li>
                 {this.context.cart.length}
               </li>
             </ul>
           </nav>
+            <BurgerMenu value={this.state.isMenuOpen} handleClick={this.handleMenuClick}/>
         </header>
       );
     }

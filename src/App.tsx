@@ -1,10 +1,10 @@
 
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Component } from 'react';
+
 import Layout from './components/Layout';
 import { BrowserRouter } from 'react-router-dom';
-import CartProvider, { CartContext } from './contexts/CartContext';
-import UserProvider, { UserContext } from './contexts/UserContext';
+import CartProvider from './contexts/CartContext';
+import UserProvider from './contexts/UserContext';
 
 class App extends Component {
 

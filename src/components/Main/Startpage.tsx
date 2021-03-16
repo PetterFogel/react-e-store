@@ -1,10 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../style/Startpage.css'
 
-import { btnLarge, btnMedium } from '../../style/GeneralStyle'
-import { Button, createStyles, makeStyles, TableHead, Theme } from '@material-ui/core';
-import { CSSProperties } from '@material-ui/styles';
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,13 +16,16 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 'bold',
       border: 'none',
       cursor: 'pointer',
+      zIndex: 2,
       [theme.breakpoints.down('md')]: {
         padding: "1.1rem 2rem",
         fontSize: '1.3rem',
+        zIndex: 2,
       },
       [theme.breakpoints.down('sm')]: {
         padding: "0.8rem 1.7rem",
         fontSize: '1rem',
+        zIndex: 2,
       },
     },
   }),
@@ -39,7 +40,7 @@ function Startpage() {
           <span>ShoeWay</span>
         </h1>
         <p className="sub-title">Quality shoes to match your style</p>
-        <Link to="/products" style={{textDecoration: 'none'}}>
+        <Link to="/products" style={{textDecoration: 'none', zIndex: 1}}>
           <Button variant="contained" className={classes.root}>Go Shopping</Button>
         </Link>
       </div>
