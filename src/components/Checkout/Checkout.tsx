@@ -8,6 +8,8 @@ import { CSSProperties } from '@material-ui/styles';
 import '../../style/Form.css';
 import { Button } from '@material-ui/core';
 import Accordian from './Accordian/Accordian';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
   
 interface Props {}
 interface State {
@@ -53,6 +55,17 @@ class Checkout extends Component<Props, State> {
                     <div className="info-container">
                       <p className="order-name">{productValue.title}</p>
                       <div className="price-holder">
+                          <div>
+                            <AddCircleIcon
+                            onClick={
+                                () => this.context.addToCart(productValue)
+                            }/>
+                            <RemoveCircleIcon
+                            onClick={
+                                () => this.context.deleteItemQty(productValue)
+                            }
+                            />
+                          </div>
                         <p className="order-qty">{`X ${productValue.quantity}`}</p>
                         <p className="order-price">
                           {`${productValue.quantity * productValue.price} SEK`}
