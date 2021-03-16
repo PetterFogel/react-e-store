@@ -1,10 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../style/Startpage.css'
 
-import { btnLarge, btnMedium } from '../../style/GeneralStyle'
-import { Button, createStyles, makeStyles, TableHead, Theme } from '@material-ui/core';
-import { CSSProperties } from '@material-ui/styles';
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
