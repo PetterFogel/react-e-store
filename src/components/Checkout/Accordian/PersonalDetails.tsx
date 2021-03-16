@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -10,7 +10,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 
 
-const PersonalDetails = () => {
+class PersonalDetails extends Component {
+  render() {
+
     return (
       <div>
         <Accordion style={form}>
@@ -70,6 +72,7 @@ const PersonalDetails = () => {
         </Accordion>
       </div>
     );
+  }
 }
 
 export default PersonalDetails
