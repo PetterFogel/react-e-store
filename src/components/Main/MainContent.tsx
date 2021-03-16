@@ -18,7 +18,7 @@ function MainContent() {
             <ProductPage />
           </Route>
           {ProductData.map((product) => 
-            <Route path={"/" + product.title}>
+            <Route path={"/" + product.title} key={product.title}>
                 <ProductItem product={product}/>
             </Route>
           )}

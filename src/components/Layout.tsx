@@ -1,5 +1,5 @@
-import { url } from 'node:inspector';
-import React, { CSSProperties } from 'react';
+
+import { CSSProperties } from 'react';
 import MainContent from './Main/MainContent';
 import Navbar from './Navbar';
 import Background from '../assets/main-bg.jpg';

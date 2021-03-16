@@ -11,13 +11,10 @@ import { CSSProperties } from "@material-ui/styles";
 import { UserContext } from '../../../contexts/UserContext'
 
 class PersonalDetails extends Component {
-
-
-   context!: React.ContextType<typeof UserContext>;
-   static contextType = UserContext;
+  context!: React.ContextType<typeof UserContext>;
+  static contextType = UserContext;
 
   render() {
-
     return (
       <div>
         <Accordion style={form}>
@@ -36,21 +33,24 @@ class PersonalDetails extends Component {
               id="name"
               label="Name"
               name="name"
+              key="name"
               type="text"
-              onChange={this.context.addName}
               autoComplete="name"
               autoFocus
+              onChange={this.context.addName}
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
               id="adress"
+              key="adress"
               label="Address"
               name="address"
               type="text"
               autoComplete="address"
               autoFocus
+              onChange={this.context.addAdress}
             />
             <TextField
               variant="outlined"
@@ -60,9 +60,10 @@ class PersonalDetails extends Component {
               type="phone"
               label="Phone"
               name="phone"
-        
+              key="phone"
               autoComplete="phone"
               autoFocus
+              onChange={this.context.addPhone}
             />
             <TextField
               variant="outlined"
@@ -72,14 +73,14 @@ class PersonalDetails extends Component {
               type="email"
               label="Email Adress"
               name="email"
-             
+              key="email"
               autoComplete="email"
               autoFocus
+              onChange={this.context.addEmail}
             />
             <Button
-             
+              onClick={this.context.addToObject}
               style={btn}
-              type="submit"
               variant="contained"
             >
               Sign Up
