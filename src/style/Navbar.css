@@ -34,4 +34,29 @@ nav {
     list-style: none;
     font-weight: 500;
     font-size: 1.2rem;
+
+}
+
+@media (max-width: 1200px) {
+    .main-header {
+        background: #fff;
+        box-shadow: 1px 1px 5px #ddd;
+    }
+
+    .nav-links {
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        z-index: 200;
+        width: 50%;
+        height: 100vh;
+        top: 10vh;
+        transition: right 500ms ease-in;
+    }
+    .nav-links li {
+        font-size: 1.5rem;
+        margin: 3rem
+    }
 }

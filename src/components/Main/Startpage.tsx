@@ -18,13 +18,16 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 'bold',
       border: 'none',
       cursor: 'pointer',
+      zIndex: 2,
       [theme.breakpoints.down('md')]: {
         padding: "1.1rem 2rem",
         fontSize: '1.3rem',
+        zIndex: 2,
       },
       [theme.breakpoints.down('sm')]: {
         padding: "0.8rem 1.7rem",
         fontSize: '1rem',
+        zIndex: 2,
       },
     },
   }),
@@ -39,7 +42,7 @@ function Startpage() {
           <span>ShoeWay</span>
         </h1>
         <p className="sub-title">Quality shoes to match your style</p>
-        <Link to="/products" style={{textDecoration: 'none'}}>
+        <Link to="/products" style={{textDecoration: 'none', zIndex: 1}}>
           <Button variant="contained" className={classes.root}>Go Shopping</Button>
         </Link>
       </div>
