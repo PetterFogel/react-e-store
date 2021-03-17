@@ -89,9 +89,9 @@ class Checkout extends Component<Props, State> {
                   <p>{this.context.totalAmount + " " + "SEK"}</p>
                 </div>
               </div>
-            <Button onClick={() => {alert('Thank you for your purchase')}} style={{ ...btnMedium, ...BtnAbsolut }}>
-              Confirm order
-            </Button>
+            <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1}}>
+            <Button variant="contained" style={{...btnMedium, ...BtnAbsolut}}> Confirm Order</Button>
+          </Link>
           </div>           
           );
      }
