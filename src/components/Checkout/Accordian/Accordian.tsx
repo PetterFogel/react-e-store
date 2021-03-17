@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import React from 'react';
 
-
 const muiTheme = createMuiTheme({
   overrides: {
     MuiStepIcon: {

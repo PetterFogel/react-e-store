@@ -7,7 +7,6 @@ interface Props {
 }
 
 function BurgerMenu(props: Props) {
-    console.log(props.value)
     return(
         <div className="burger-container" onClick={props.handleClick}>
             <div 
