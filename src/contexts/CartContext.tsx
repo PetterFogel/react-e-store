@@ -25,8 +25,8 @@ export const CartContext = createContext<ContextProps>({
 
 class CartProvider extends Component<{}, State> {
   state: State = {
-    cart: [],
-    totalAmount: 0,
+    cart: JSON.parse(localStorage.getItem("Products") || "[]"),
+    totalAmount: Number(JSON.parse(localStorage.getItem("TotalAmount") || "0")),
     tax: 0,
   };
 
@@ -36,6 +36,7 @@ class CartProvider extends Component<{}, State> {
       this.setState({})
       const updatedCart = [...this.state.cart]
       this.changeTotalAmount(updatedCart)
+
     } else if (product.quantity === 1){
       let updatedCart = [...this.state.cart, product];
       this.setState({ cart: updatedCart });
@@ -78,14 +79,21 @@ class CartProvider extends Component<{}, State> {
     }
   }
 
+
   emptyCartItems = () => {
     this.setState({cart: []})
+ }
+  componentDidUpdate() {
+    localStorage.setItem("Products", JSON.stringify(this.state.cart))
+    localStorage.setItem("TotalAmount", JSON.stringify(this.state.totalAmount))
+
   }
 
   render() {
     return (
       <CartContext.Provider
         value={{
+          ...this.state,
           cart: this.state.cart,
           totalAmount: this.state.totalAmount,
           tax: this.state.tax,

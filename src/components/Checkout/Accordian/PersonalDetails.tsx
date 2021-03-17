@@ -83,7 +83,7 @@ class PersonalDetails extends Component {
               style={btn}
               variant="contained"
             >
-              Sign Up
+              Add
             </Button>
           </AccordionDetails>
         </Accordion>
