@@ -10,6 +10,7 @@ interface ContextProps extends State {
   addToCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
   deleteItemQty: (product: Product) => void;
+  emptyCart: () => void; 
 }
 
 export const CartContext = createContext<ContextProps>({
@@ -19,6 +20,7 @@ export const CartContext = createContext<ContextProps>({
   addToCart: () => {},
   removeFromCart: () => {},
   deleteItemQty: () => {},
+  emptyCart: () => {}
 });
 
 class CartProvider extends Component<{}, State> {
@@ -77,9 +79,14 @@ class CartProvider extends Component<{}, State> {
     }
   }
 
+
+  emptyCartItems = () => {
+    this.setState({cart: []})
+ }
   componentDidUpdate() {
     localStorage.setItem("Products", JSON.stringify(this.state.cart))
     localStorage.setItem("TotalAmount", JSON.stringify(this.state.totalAmount))
+
   }
 
   render() {
@@ -93,6 +100,7 @@ class CartProvider extends Component<{}, State> {
           addToCart: this.addProductToCart,
           removeFromCart: this.removeProductFromCart,
           deleteItemQty: this.deleteItemFromQty,
+          emptyCart: this.emptyCartItems,
         }}
       >
         {this.props.children}

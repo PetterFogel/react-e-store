@@ -10,6 +10,7 @@ import { Button } from "@material-ui/core";
 import Accordian from "./Accordian/Accordian";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { Link } from "react-router-dom";
 
 interface Props {}
 interface State {
@@ -24,16 +25,20 @@ class Checkout extends Component<Props, State> {
     isModalOpen: false,
   };
 
-    render() {
-        return (
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            <div className="checkout-container">
-              <div className="details-container">
-                <form action="/">
-                  <h2 className="checkout-title">Checkout</h2>
-                  <Accordian />
-                </form>
-              </div>
+  render() {
+    return (
+      <div className="checkout-container">
+        <div className="details-container">
+          <form action="/">
+            <h2 className="checkout-title">Checkout</h2>
+            <Accordian />
+          </form>
+          <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1}}>
+            <Button variant="contained" style={btnMedium}> Confirm Order</Button>
+          </Link>
+      
+        </div>
+
 
               <div className="order-container">
                 <div className="order-list">
