@@ -24,9 +24,6 @@ class Checkout extends Component<Props, State> {
     isModalOpen: false,
   };
 
-  openModal = () => this.setState({ isModalOpen: true });
-
-
     render() {
         return (
           <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -90,19 +87,6 @@ class Checkout extends Component<Props, State> {
                   <p>{this.context.totalAmount + " " + "SEK"}</p>
                 </div>
               </div>
-
-              {this.state.isModalOpen && (
-                <div>
-                  <Button
-                    variant="contained"
-                    style={{ ...btnMedium, ...BtnAbsolut }}
-                    onClick={this.closeModal}
-                  >
-                    Close
-                  </Button>
-                  <Modal shouldClose={this.closeModal} />
-                </div>
-              )}
             </div>
             <Button onClick={() => {alert('Thank you for your purchase')}} style={{ ...btnMedium, ...BtnAbsolut }}>
               Confirm order
@@ -110,6 +94,7 @@ class Checkout extends Component<Props, State> {
             </div>           
           );
      }
+}
 
 const BtnAbsolut: CSSProperties = {
   zIndex: 200,
