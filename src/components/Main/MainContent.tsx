@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router';
 import ProductItem from './ProductItem';
 import { ProductData } from '../../data/productData'
 import Checkout from '../Checkout/Checkout';
+import OrderView from '../Orderview/OrderView';
 
 function MainContent() {
     return (
@@ -24,6 +25,9 @@ function MainContent() {
           )}
           <Route path="/checkout">
             <Checkout/>
+          </Route>
+          <Route path="/orderview">
+            <OrderView/>
           </Route>
         </Switch>
       </main>
