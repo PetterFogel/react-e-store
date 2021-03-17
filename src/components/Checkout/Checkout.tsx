@@ -36,10 +36,7 @@ class Checkout extends Component<Props, State> {
           <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1}}>
             <Button variant="contained" style={btnMedium}> Confirm Order</Button>
           </Link>
-      
-        </div>
-
-
+          </div>
               <div className="order-container">
                 <div className="order-list">
                   <h2>Order Summary</h2>
@@ -92,11 +89,10 @@ class Checkout extends Component<Props, State> {
                   <p>{this.context.totalAmount + " " + "SEK"}</p>
                 </div>
               </div>
-            </div>
             <Button onClick={() => {alert('Thank you for your purchase')}} style={{ ...btnMedium, ...BtnAbsolut }}>
               Confirm order
             </Button>
-            </div>           
+          </div>           
           );
      }
 }
