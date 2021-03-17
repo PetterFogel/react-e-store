@@ -26,83 +26,90 @@ class Checkout extends Component<Props, State> {
 
   openModal = () => this.setState({ isModalOpen: true });
 
-  closeModal = () => this.setState({ isModalOpen: false });
 
-  render() {
-    return (
-      <div className="checkout-container">
-        <div className="details-container">
-          <form action="/">
-            <h2 className="checkout-title">Checkout</h2>
-            <Accordian />
-          </form>
-          <Button variant="contained" style={btnMedium}>
-            Confirm Order
-          </Button>
-        </div>
+    render() {
+        return (
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div className="checkout-container">
+              <div className="details-container">
+                <form action="/">
+                  <h2 className="checkout-title">Checkout</h2>
+                  <Accordian />
+                </form>
+              </div>
 
-        <div className="order-container">
-          <div className="order-list">
-            <h2>Order Summary</h2>
-            {this.context.cart.map((productValue) => (
-              <div className="order-item">
-                <img className="imageStyle" src={productValue.image} alt="" />
-                <div className="info-container">
-                  <p className="order-name">{productValue.title}</p>
-                  <div className="price-holder">
-                    <div>
-                      <AddCircleIcon
-                        className="amount-icons"
-                        onClick={() => this.context.addToCart(productValue)}
+              <div className="order-container">
+                <div className="order-list">
+                  <h2>Order Summary</h2>
+                  {this.context.cart.map((productValue) => (
+                    <div className="order-item">
+                      <img
+                        className="imageStyle"
+                        src={productValue.image}
+                        alt=""
                       />
-                      <RemoveCircleIcon
-                        className="amount-icons"
-                        onClick={() => this.context.deleteItemQty(productValue)}
+                      <div className="info-container">
+                        <p className="order-name">{productValue.title}</p>
+                        <div className="price-holder">
+                          <div>
+                            <AddCircleIcon
+                              className="amount-icons"
+                              onClick={() =>
+                                this.context.addToCart(productValue)
+                              }
+                            />
+                            <RemoveCircleIcon
+                              className="amount-icons"
+                              onClick={() =>
+                                this.context.deleteItemQty(productValue)
+                              }
+                            />
+                          </div>
+                          <p className="order-qty">{`X ${productValue.quantity}`}</p>
+                          <p className="order-price">
+                            {`${
+                              productValue.quantity * productValue.price
+                            } SEK`}
+                          </p>
+                        </div>
+                      </div>
+                      <CloseIcon
+                        onClick={() =>
+                          this.context.removeFromCart(productValue)
+                        }
+                        style={{
+                          ...cursorPointer,
+                          fontSize: "2rem",
+                        }}
                       />
                     </div>
-                    <p className="order-qty">{`X ${productValue.quantity}`}</p>
-                    <p className="order-price">
-                      {`${productValue.quantity * productValue.price} SEK`}
-                    </p>
-                  </div>
+                  ))}
                 </div>
-                <CloseIcon
-                  onClick={() => this.context.removeFromCart(productValue)}
-                  style={{
-                    ...cursorPointer,
-                    fontSize: "2rem",
-                  }}
-                />
+                <div className="total-amount-container">
+                  <strong className="total-amount">Total Amount:</strong>
+                  <p>{this.context.totalAmount + " " + "SEK"}</p>
+                </div>
               </div>
-            ))}
-          </div>
-          <div>
-            <div className="total-amount-container">
-              <strong className="total-amount">Tax:</strong>
-              <p>{this.context.tax + " " + "SEK"}</p>
+
+              {this.state.isModalOpen && (
+                <div>
+                  <Button
+                    variant="contained"
+                    style={{ ...btnMedium, ...BtnAbsolut }}
+                    onClick={this.closeModal}
+                  >
+                    Close
+                  </Button>
+                  <Modal shouldClose={this.closeModal} />
+                </div>
+              )}
             </div>
-            <div className="total-amount-container">
-              <strong className="total-amount">Total Amount:</strong>
-              <p>{this.context.totalAmount + " " + "SEK"}</p>
-            </div>
-          </div>
-        </div>
-        {this.state.isModalOpen && (
-          <div>
-            <Button
-              variant="contained"
-              style={{ ...btnMedium, ...BtnAbsolut }}
-              onClick={this.closeModal}
-            >
-              Close
+            <Button onClick={() => {alert('Thank you for your purchase')}} style={{ ...btnMedium, ...BtnAbsolut }}>
+              Confirm order
             </Button>
-            <Modal shouldClose={this.closeModal} />
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+            </div>           
+          );
+     }
 
 const BtnAbsolut: CSSProperties = {
   zIndex: 200,
