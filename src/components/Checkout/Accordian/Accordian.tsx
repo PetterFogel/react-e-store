@@ -8,7 +8,6 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 
-
   function getSteps(){
     return [ <PersonalDetails/>, <DelivaryDetails/>, <PaymentDetails/>];
   }
@@ -41,36 +40,38 @@ const Accordian = () => {
   }
 
     return (
-      <div>
-        <Stepper activeStep={activeStep}>
-          {steps.map((label) => (
-            <Step>
-              <StepLabel />
-            </Step>
-          ))}
-        </Stepper>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Stepper activeStep={activeStep}>
+            {steps.map((label) => (
+              <Step>
+                <StepLabel />
+              </Step>
+            ))}
+          </Stepper>
 
-        <div>
-          {activeStep === steps.length ? (
-            <div>
-              <Typography>All Steps are completed</Typography>
-            </div>
-          ) : (
-            <div>
-              <Typography>{getStepContent(activeStep)}</Typography>
-            </div>
-          )}
-        </div>
+          <div>
+            {activeStep === steps.length ? (
+              <div>
+                <Typography>All Steps are completed</Typography>
+              </div>
+            ) : (
+              <div>
+                <Typography>{getStepContent(activeStep)}</Typography>
+              </div>
+            )}
+          </div>
 
-        <Button
-          disabled={activeStep === 0}
-          onClick={previousStep}
-        >
-          Back
-        </Button>
-        <Button variant="contained" color="primary" onClick={nextStep}>
-          {activeStep === steps.length - 1 ? "Finish" : "Next"}
-        </Button>
+          <Button disabled={activeStep === 0} onClick={previousStep}>
+            Back
+          </Button>
+          <Button
+            style={{ background: "#56EAC6", fontWeight: "bold", width: '10rem', height: '3rem'}}
+            variant="contained"
+            color="primary"
+            onClick={nextStep}
+          >
+            {activeStep === steps.length - 1 ? "Finish" : "Next"}
+          </Button>
       </div>
     );
 }
