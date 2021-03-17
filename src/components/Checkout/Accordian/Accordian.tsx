@@ -6,7 +6,23 @@ import { Label } from '@material-ui/icons';
 import { CSSProperties } from '@material-ui/styles';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
+const muiTheme = createMuiTheme({
+  overrides: {
+    MuiStepIcon: {
+      root: {
+        color: "grey",
+        "&$active": {
+          color: "#56EAC6",
+        },
+        "&$completed": {
+          color: "#56EAC6",
+        },
+      },
+    },
+  },
+});
 
   function getSteps(){
     return [ <PersonalDetails/>, <DelivaryDetails/>, <PaymentDetails/>];
@@ -32,6 +48,8 @@ const Accordian = () => {
   const nextStep = () => {
     if(activeStep < 2)
         setActiveStep((currentStep) => currentStep + 1)
+    else if(activeStep < 3)
+        alert('Thank you! Now you only have to confirm the order')
   }
 
   const previousStep = () => {
@@ -40,39 +58,44 @@ const Accordian = () => {
   }
 
     return (
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Stepper activeStep={activeStep}>
-            {steps.map((label) => (
-              <Step>
-                <StepLabel />
-              </Step>
-            ))}
-          </Stepper>
+      <MuiThemeProvider theme={muiTheme}>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label) => (
+            <Step>
+              <StepLabel />
+            </Step>
+          ))}
+        </Stepper>
 
-          <div>
-            {activeStep === steps.length ? (
-              <div>
-                <Typography>All Steps are completed</Typography>
-              </div>
-            ) : (
-              <div>
-                <Typography>{getStepContent(activeStep)}</Typography>
-              </div>
-            )}
-          </div>
+        <div>
+          {activeStep === steps.length ? (
+            <div>
+              <Typography>All Steps are completed</Typography>
+            </div>
+          ) : (
+            <div>
+              <Typography>{getStepContent(activeStep)}</Typography>
+            </div>
+          )}
+        </div>
 
           <Button disabled={activeStep === 0} onClick={previousStep}>
             Back
           </Button>
           <Button
-            style={{ background: "#56EAC6", fontWeight: "bold", width: '10rem', height: '3rem'}}
+            style={{
+              background: "#56EAC6",
+              fontWeight: "bold",
+              width: "10rem",
+              height: "3rem",
+            }}
             variant="contained"
             color="primary"
             onClick={nextStep}
           >
             {activeStep === steps.length - 1 ? "Finish" : "Next"}
           </Button>
-      </div>
+      </MuiThemeProvider>
     );
 }
 

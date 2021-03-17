@@ -30,47 +30,50 @@ class Checkout extends Component<Props, State> {
 
     render() {
         return (
-          <div className="checkout-container">
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div className="checkout-container">
+              <div className="details-container">
+                <form action="/">
+                  <h2 className="checkout-title">Checkout</h2>
+                  <Accordian />
+                </form>
+              </div>
 
-            <div className="details-container">
-              <form action="/">
-                <h2 className="checkout-title">Checkout</h2>
-                <Accordian/>
-              </form>
-            </div>
-
-            <div className="order-container">
-              <div className="order-list">
-                <h2>Order Summary</h2>
-                {this.context.cart.map((productValue) => (
-                  <div className="order-item">
-                    <img
-                      className="imageStyle"
-                      src={productValue.image}
-                      alt=""
-                    />
-                    <div className="info-container">
-                      <p className="order-name">{productValue.title}</p>
-                      <div className="price-holder">
+              <div className="order-container">
+                <div className="order-list">
+                  <h2>Order Summary</h2>
+                  {this.context.cart.map((productValue) => (
+                    <div className="order-item">
+                      <img
+                        className="imageStyle"
+                        src={productValue.image}
+                        alt=""
+                      />
+                      <div className="info-container">
+                        <p className="order-name">{productValue.title}</p>
+                        <div className="price-holder">
                           <div>
                             <AddCircleIcon
-                            className="amount-icons"
-                            onClick={
-                                () => this.context.addToCart(productValue)
-                            }/>
+                              className="amount-icons"
+                              onClick={() =>
+                                this.context.addToCart(productValue)
+                              }
+                            />
                             <RemoveCircleIcon
-                            className="amount-icons"
-                            onClick={
-                                () => this.context.deleteItemQty(productValue)
-                            }
+                              className="amount-icons"
+                              onClick={() =>
+                                this.context.deleteItemQty(productValue)
+                              }
                             />
                           </div>
-                        <p className="order-qty">{`X ${productValue.quantity}`}</p>
-                        <p className="order-price">
-                          {`${productValue.quantity * productValue.price} SEK`}
-                        </p>
+                          <p className="order-qty">{`X ${productValue.quantity}`}</p>
+                          <p className="order-price">
+                            {`${
+                              productValue.quantity * productValue.price
+                            } SEK`}
+                          </p>
+                        </div>
                       </div>
-                    </div>
                       <CloseIcon
                         onClick={() =>
                           this.context.removeFromCart(productValue)
@@ -80,24 +83,31 @@ class Checkout extends Component<Props, State> {
                           fontSize: "2rem",
                         }}
                       />
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="total-amount-container">
+                  <strong className="total-amount">Total Amount:</strong>
+                  <p>{this.context.totalAmount + " " + "SEK"}</p>
+                </div>
               </div>
-              <div className="total-amount-container">
-                <strong className="total-amount">Total Amount:</strong>
-                <p>{this.context.totalAmount + " " + "SEK"}</p>
-              </div>
+
+              {this.state.isModalOpen && (
+                <div>
+                  <Button
+                    variant="contained"
+                    style={{ ...btnMedium, ...BtnAbsolut }}
+                    onClick={this.closeModal}
+                  >
+                    Close
+                  </Button>
+                  <Modal shouldClose={this.closeModal} />
+                </div>
+              )}
             </div>
-            {this.state.isModalOpen && (
-              <div>
-                <Button
-                  variant="contained"
-                  style={{ ...btnMedium, ...BtnAbsolut }}
-                  onClick={this.closeModal}
-                >Close</Button>
-                <Modal shouldClose={this.closeModal} />
-              </div>
-            )}
+            <Button onClick={() => {alert('Thank you for your purchase')}} style={{ ...btnMedium, ...BtnAbsolut }}>
+              Confirm order
+            </Button>
           </div>
         );
     }
