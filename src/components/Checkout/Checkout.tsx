@@ -37,9 +37,6 @@ class Checkout extends Component<Props, State> {
                 <h2 className="checkout-title">Checkout</h2>
                 <Accordian/>
               </form>
-              <Button variant="contained" style={btnMedium}>
-                Confirm Order
-              </Button>
             </div>
 
             <div className="order-container">

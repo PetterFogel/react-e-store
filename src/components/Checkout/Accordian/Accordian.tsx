@@ -45,7 +45,7 @@ const Accordian = () => {
         <Stepper activeStep={activeStep}>
           {steps.map((label) => (
             <Step>
-              <StepLabel/>
+              <StepLabel />
             </Step>
           ))}
         </Stepper>
@@ -62,11 +62,14 @@ const Accordian = () => {
           )}
         </div>
 
-        <Button onClick={() => nextStep()} variant="outlined">
-          Next Step
+        <Button
+          disabled={activeStep === 0}
+          onClick={previousStep}
+        >
+          Back
         </Button>
-        <Button onClick={() => previousStep()} variant="outlined">
-          Previous Step
+        <Button variant="contained" color="primary" onClick={nextStep}>
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
         </Button>
       </div>
     );
