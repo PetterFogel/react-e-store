@@ -4,7 +4,8 @@ import { Product } from "../data/productData";
 interface State {
   cart: Product[];
   totalAmount: number
-  tax: number
+  tax: number, 
+  orderCart: Product[];
 }
 interface ContextProps extends State {
   addToCart: (product: Product) => void;
@@ -17,6 +18,7 @@ export const CartContext = createContext<ContextProps>({
   cart: [],
   totalAmount: 0,
   tax: 0,
+  orderCart: [],
   addToCart: () => {},
   removeFromCart: () => {},
   deleteItemQty: () => {},
@@ -28,6 +30,7 @@ class CartProvider extends Component<{}, State> {
     cart: JSON.parse(localStorage.getItem("Products") || "[]"),
     totalAmount: Number(JSON.parse(localStorage.getItem("TotalAmount") || "0")),
     tax: 0,
+    orderCart: []
   };
 
   addProductToCart = (product: Product) => {
@@ -80,8 +83,8 @@ class CartProvider extends Component<{}, State> {
   }
 
 
-  emptyCartItems = () => {
-    this.setState({cart: []})
+  emptyCartItems = () => { 
+    this.setState({orderCart: [...this.state.cart] ,cart: [], totalAmount: 0})
  }
   componentDidUpdate() {
     localStorage.setItem("Products", JSON.stringify(this.state.cart))
@@ -94,9 +97,6 @@ class CartProvider extends Component<{}, State> {
       <CartContext.Provider
         value={{
           ...this.state,
-          cart: this.state.cart,
-          totalAmount: this.state.totalAmount,
-          tax: this.state.tax,
           addToCart: this.addProductToCart,
           removeFromCart: this.removeProductFromCart,
           deleteItemQty: this.deleteItemFromQty,
