@@ -78,7 +78,7 @@ const Accordian = () => {
             </div>
           )}
         </div>
-
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
           <Button disabled={activeStep === 0} onClick={previousStep}>
             Back
           </Button>
@@ -95,6 +95,7 @@ const Accordian = () => {
           >
             {activeStep === steps.length - 1 ? "Finish" : "Next"}
           </Button>
+        </div>
       </MuiThemeProvider>
     );
 }

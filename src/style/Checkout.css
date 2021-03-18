@@ -44,6 +44,11 @@
     width: 50%;
 }
 
+.test {
+    height: 50vh;
+    overflow-y: scroll;
+}
+
 .order-list h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -121,6 +126,10 @@
     }
     .total-amount{
         font-size: 1.6rem;
+    }
+    .test {
+        overflow-y: unset;
+        height: 100%;
     }
 
 }
