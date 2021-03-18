@@ -26,70 +26,76 @@ class PersonalDetails extends Component {
             Personal Details
           </AccordionSummary>
           <AccordionDetails style={form}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="name"
-              label="Name"
-              name="name"
-              key="name"
-              type="text"
-              autoComplete="name"
-              autoFocus
-              onChange={this.context.addName}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="adress"
-              key="adress"
-              label="Address"
-              name="address"
-              type="text"
-              autoComplete="address"
-              autoFocus
-              onChange={this.context.addAdress}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="phone"
-              type="phone"
-              label="Phone"
-              name="phone"
-              key="phone"
-              autoComplete="phone"
-              autoFocus
-              onChange={this.context.addPhone}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="email"
-              type="email"
-              label="Email Adress"
-              name="email"
-              key="email"
-              autoComplete="email"
-              autoFocus
-              onChange={this.context.addEmail}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="zip"
-              label="zip"
-              name="zip"
-              type="zip"
-              autoComplete="zip"
-              autoFocus
-              onChange={this.context.addZip}
-            />
+            <div style={{ display: "flex" }}>
+              <div style={textfieldsDiv}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="name"
+                label="Name"
+                name="name"
+                key="name"
+                type="text"
+                autoComplete="name"
+                autoFocus
+                onChange={this.context.addName}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="adress"
+                key="adress"
+                label="Address"
+                name="address"
+                type="text"
+                autoComplete="address"
+                autoFocus
+                onChange={this.context.addAdress}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="phone"
+                type="phone"
+                label="Phone"
+                name="phone"
+                key="phone"
+                autoComplete="phone"
+                autoFocus
+                onChange={this.context.addPhone}
+              />
+              </div>
+              <div style={textfieldsDiv}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="email"
+                type="email"
+                label="Email Adress"
+                name="email"
+                key="email"
+                autoComplete="email"
+                autoFocus
+                onChange={this.context.addEmail}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="zip"
+                label="zip"
+                name="zip"
+                type="zip"
+                autoComplete="zip"
+                autoFocus
+                onChange={this.context.addZip}
+              />
+              </div>
+            </div>
             <Button
               onClick={this.context.addToObject}
               style={btn}
@@ -104,16 +110,19 @@ class PersonalDetails extends Component {
   }
 }
 
+const textfieldsDiv: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  margin: "0.5rem"
 
-export default PersonalDetails
-
+}
 
 const form: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  margin: "1rem 2rem",
+  marginBottom: "1rem",
   background: "lightgrey",
   fontSize: "1.2rem",
 };
@@ -128,6 +137,7 @@ const btn: CSSProperties = {
   fontWeight: "bold",
   border: "none",
   cursor: "pointer",
-  margin: "1rem",
   padding: "1rem",
 };
+
+export default PersonalDetails
