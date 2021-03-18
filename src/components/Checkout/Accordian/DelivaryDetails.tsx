@@ -3,11 +3,13 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   Button,
   TextField,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
+import PostNord from "./DeliveryDetails/PostNord";
 
 
 const DelivaryDetails = () => {
@@ -21,50 +23,8 @@ const DelivaryDetails = () => {
           >
             Delivery Details
           </AccordionSummary>
-          <AccordionDetails style={form}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="adress"
-              label="Address"
-              name="Address"
-              autoComplete="address"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="zip"
-              label="Zip"
-              name="zip"
-              autoComplete="zip"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="region"
-              label="Region"
-              name="region"
-              autoComplete="region"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="country"
-              label="Country"
-              name="country"
-              autoComplete="country"
-            />
-
-            <Button style={btn} type="submit" variant="contained">
-              Add
-            </Button>
+          <AccordionDetails>
+            <PostNord/>
           </AccordionDetails>
         </Accordion>
       </div>
