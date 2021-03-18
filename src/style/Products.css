@@ -8,6 +8,8 @@
 .product-container{
     width: 75%;
     display: flex;
+    justify-content: center;
+    margin: 0rem auto;
     flex-wrap: wrap;
 }
 
@@ -48,4 +50,37 @@
     color: #fff;
     cursor: pointer;
     outline: none;
+}
+
+@media screen and (max-width: 1400px) {
+    .product-item {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .product-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .product-item {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .product-item {
+        width: 50%;
+    }    
+    .price{
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-item {
+        width: 100%;
+    }
 }

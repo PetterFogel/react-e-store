@@ -18,14 +18,17 @@ function Layout() {
 }
 
 const rootStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  backgroundImage: `url(${Background})`,
-  objectFit: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  width: "100%",
-  height: "100%"
+    display: "flex",
+    flexDirection: "column",
+    backgroundImage: `url(${Background})`,
+    // backgroundAttachment: "fixed",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    width: "100%",
+    maxHeight: "100vh",
+    overflow: "scroll",
+    overflowX: "hidden"
 }
 
 export default Layout;
