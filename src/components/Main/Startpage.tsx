@@ -16,16 +16,14 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 'bold',
       border: 'none',
       cursor: 'pointer',
-      zIndex: 2,
+      zIndex: 1,
       [theme.breakpoints.down('md')]: {
         padding: "1.1rem 2rem",
         fontSize: '1.3rem',
-        zIndex: 2,
       },
       [theme.breakpoints.down('sm')]: {
         padding: "0.8rem 1.7rem",
         fontSize: '1rem',
-        zIndex: 2,
       },
     },
   }),
