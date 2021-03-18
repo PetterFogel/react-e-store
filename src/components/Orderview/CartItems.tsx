@@ -13,8 +13,14 @@ class CartItems extends Component {
           <div className="order-div">
             <h3>{product.title}</h3>
             <img src={product.image}></img>
-            <p>{product.price}</p>
-            <p>{product.quantity}</p>
+            <div className="order-listings">
+            <p>Pris:</p>
+            <p>{product.price + "kr"}</p>
+            </div>
+            <div className="order-listings">
+            <p>Antal:</p>
+            <p>{product.quantity + "st"}</p>
+            </div>
           </div>
         ))}
       </div>

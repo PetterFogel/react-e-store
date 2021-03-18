@@ -5,7 +5,6 @@ import TimeOut from './TimeOut';
 import { Guid } from 'js-guid';
 
 class OrderView extends Component<{}> {
-   
 
     render() {  
       return(

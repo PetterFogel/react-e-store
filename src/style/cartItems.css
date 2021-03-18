@@ -9,6 +9,12 @@
     width: 12rem;
 }
 
+.order-listings {
+    width: 12rem;
+    display: flex;
+    justify-content: space-between;
+}
+
 .order-div img {
     width: 100%;
 }
