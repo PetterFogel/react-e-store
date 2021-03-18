@@ -10,6 +10,8 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 import PostNord from "./DeliveryDetails/PostNord";
+import Dhl from "./DeliveryDetails/Dhl";
+import Bring from "./DeliveryDetails/Bring";
 
 
 const DelivaryDetails = () => {
@@ -23,8 +25,10 @@ const DelivaryDetails = () => {
           >
             Delivery Details
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails style={{display: 'flex', flexDirection: 'column'}}>
             <PostNord/>
+            <Bring />
+            <Dhl/>
           </AccordionDetails>
         </Accordion>
       </div>
