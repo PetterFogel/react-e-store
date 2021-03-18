@@ -10,6 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 
 
+
 const PostNord = () => {
 
     const addDetails = () => {
@@ -37,48 +38,47 @@ const PostNord = () => {
               variant="outlined"
               margin="normal"
               required
-              id="name"
-              label="adress"
-              name="name"
-              key="name"
-              type="text"
-              autoComplete="name"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="adress"
-              key="adress"
+              id="address"
               label="Address"
               name="address"
-              type="text"
+              key="address"
+              type="address"
               autoComplete="address"
               autoFocus
             />
             <TextField
+             
               variant="outlined"
               margin="normal"
               required
-              id="phone"
-              type="phone"
-              label="Phone"
-              name="phone"
-              key="phone"
-              autoComplete="phone"
+              id="zip"
+
+              label="zip"
+              name="zip"
+              type="zip"
+              autoComplete="zip"
               autoFocus
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
-              id="email"
-              type="email"
-              label="Email Adress"
-              name="email"
-              key="email"
-              autoComplete="email"
+              id="region"
+              type="region"
+              label="region"
+              name="region"
+              autoComplete="region"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="country"
+              type="country"
+              label="country"
+              name="counrty"
+              autoComplete="country"
               autoFocus
             />
             <Button onClick={addDetails} style={btn} variant="contained">
