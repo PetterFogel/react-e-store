@@ -1,53 +1,67 @@
-import { Button, TextField } from '@material-ui/core'
+import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
 import React from 'react'
-import '../../../style/Form.css'
 
 const Creditcard = () => {
     return (
-      <div className="modal-container">
-        <h2>Credit Card</h2>
-        <form className="form">
-          <TextField
-            margin="normal"
-            label="Credit Card name"
-            name="ccname"
-            variant="outlined"
-            required
-            InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            margin="normal"
-            label="Credit Card Number"
-            name="ccnumber"
-            variant="outlined"
-            required
-            InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            margin="normal"
-            label="Expiration Date"
-            name="ccexp"
-            variant="outlined"
-            required
-            InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            margin="normal"
-            label="CVC"
-            name="cvc"
-            variant="outlined"
-            required
-            InputLabelProps={{ shrink: true }}
-          />
-          <Button type="submit" variant="contained" style={btn}> Complete Payment </Button>
-        </form>
+      <div>
+        <Accordion>
+          <AccordionSummary style={{ textAlign: "center" }}>
+            <strong>Creditcard</strong>
+          </AccordionSummary>
+          <AccordionDetails style={container}>
+            <TextField
+              margin="normal"
+              label="Credit Card name"
+              name="ccname"
+              variant="outlined"
+              required
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              margin="normal"
+              label="Credit Card Number"
+              name="ccnumber"
+              variant="outlined"
+              required
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              margin="normal"
+              label="Expiration Date"
+              name="ccexp"
+              variant="outlined"
+              required
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              margin="normal"
+              label="CVC"
+              name="cvc"
+              variant="outlined"
+              required
+              InputLabelProps={{ shrink: true }}
+            />
+          </AccordionDetails>
+          <Button type="submit" variant="contained" style={btn}>
+            {" "}
+            Complete Payment{" "}
+          </Button>
+        </Accordion>
       </div>
     );
 }
 
 export default Creditcard
 
+const container: CSSProperties = {
+ width: '20rem',
+  textAlign: 'center',
+ margin: '.5rem 0rem',
+ display: 'flex',
+ justifyContent: 'center',
+ flexDirection: 'column'
+}
 
 const btn: CSSProperties = {
   alignSelf: "center",

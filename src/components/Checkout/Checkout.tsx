@@ -3,7 +3,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import "../../style/Checkout.css";
 import { btnMedium, cursorPointer } from "../../style/GeneralStyle";
 import { CartContext } from "../../contexts/CartContext";
-import Modal from "./Modal";
 import { CSSProperties } from "@material-ui/styles";
 import "../../style/Form.css";
 import { Button } from "@material-ui/core";

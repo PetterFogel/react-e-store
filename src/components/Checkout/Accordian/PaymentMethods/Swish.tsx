@@ -1,32 +1,44 @@
-import { Button, TextField } from '@material-ui/core'
-import { CSSProperties } from '@material-ui/styles'
+import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
+import { CSSProperties } from '@material-ui/styles';
 import React from 'react'
-import '../../../style/Form.css'
+
 
 const Swish = () => {
     return (
-      <div className="modal-container">
-        <form className="form">
-          <h2 style={{textAlign: 'center'}}>Swish</h2>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            id="phone"
-            label="Phone Number"
-            name="phone"
-            autoComplete="phone"
-            autoFocus
-          />
+      <div style={{margin: '1rem 0rem'}}>
+        <Accordion>
+          <AccordionSummary>
+            <strong>Swish</strong>
+          </AccordionSummary>
+          <AccordionDetails style={container}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="phone"
+              label="Phone Number"
+              name="phone"
+              autoComplete="phone"
+              autoFocus
+            />
+          </AccordionDetails>
           <Button variant="contained" type="submit" style={btn}>
             Sign with bankId
           </Button>
-        </form>
+        </Accordion>
       </div>
     );
 }
 
 export default Swish
+
+const container: CSSProperties = {
+  width: "20rem",
+  textAlign: "center",
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+};
 
 const btn: CSSProperties = {
   alignSelf: "center",
