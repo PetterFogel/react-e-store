@@ -21,11 +21,14 @@ const rootStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
     backgroundImage: `url(${Background})`,
-    objectFit: "cover",
+    // backgroundAttachment: "fixed",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
     width: "100%",
-    height: "100%"
+    maxHeight: "100vh",
+    overflow: "scroll",
+    overflowX: "hidden"
 }
 
 export default Layout;

@@ -32,23 +32,23 @@ class Navbar extends Component<{}, State> {
           <nav>
             <ul className="nav-links"
               style={{
-                right: this.state.isMenuOpen ? "0%" : "-50%"
+                right: this.state.isMenuOpen ? "0%" : "-100%"
               }}
             >
             <Link style={{textDecoration: 'none', color: '#000'}} to="/products">
                 <li>Products</li>
             </Link>
-              <li>
-                  <Link to="/checkout" style={{ color: "#333" }}>
-                    <ShoppingCartOutlinedIcon/>
-                  </Link>
-              </li>
-              <li>
-                {this.context.cart.length}
-              </li>
             </ul>
-          </nav>
+              <div className="cart-container">
+                <Link to="/checkout" style={{ color: "#333" }}>
+                    <ShoppingCartOutlinedIcon style={{ fontSize: "1.5rem" }}/>
+                </Link>
+                <div className="cart-content">
+                  {this.context.cart.length}
+                </div>
+          </div>
             <BurgerMenu value={this.state.isMenuOpen} handleClick={this.handleMenuClick}/>
+          </nav>
         </header>
       );
     }
