@@ -19,12 +19,9 @@ class TimeOut extends Component<{}, State> {
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({hidden: false});
-            
-        }, 3000)
-        setTimeout(() => {
             this.context.emptyCart()
-        }, 10000)
+            this.setState({hidden: false});
+        }, 2000)
     }
     render() {
         return this.state.hidden? 

@@ -33,9 +33,6 @@ class Checkout extends Component<Props, State> {
             <h2 className="checkout-title">Checkout</h2>
             <Accordian />
           </form>
-          <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1}}>
-            <Button variant="contained" style={btnMedium}> Confirm Order</Button>
-          </Link>
           </div>
               <div className="order-container">
                 <div className="order-list">
@@ -89,7 +86,7 @@ class Checkout extends Component<Props, State> {
                   <p>{this.context.totalAmount + " " + "SEK"}</p>
                 </div>
               </div>
-            <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1}}>
+          <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1}}>
             <Button variant="contained" style={{...btnMedium, ...BtnAbsolut}}> Confirm Order</Button>
           </Link>
           </div>           
