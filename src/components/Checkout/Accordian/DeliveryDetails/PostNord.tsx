@@ -9,7 +9,16 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 
+
 const PostNord = () => {
+
+    const addDetails = () => {
+          let today = new Date();
+          let tomorrow = new Date();
+          tomorrow.setDate(today.getDate() + (Math.floor(Math.random() * 3) + 1));
+          console.log(tomorrow);
+    }
+
     return (
       <div>
         <Accordion style={form}>
@@ -72,7 +81,7 @@ const PostNord = () => {
               autoComplete="email"
               autoFocus
             />
-            <Button style={btn} variant="contained">
+            <Button onClick={addDetails} style={btn} variant="contained">
               Add
             </Button>
           </AccordionDetails>
