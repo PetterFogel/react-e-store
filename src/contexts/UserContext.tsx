@@ -74,8 +74,6 @@ export default class UserProvider extends Component<{}, State> {
       email: this.state.email
     }
     this.setState({user: newCustomer})
-    console.log(newCustomer)
-    alert("Your personal details were added! Move on to the next step");
   }
 
   render() {
