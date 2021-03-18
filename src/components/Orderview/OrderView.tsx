@@ -1,8 +1,9 @@
 import { CSSProperties } from '@material-ui/styles';
-import { Component } from 'react'
+import React, { Component } from 'react'
 import CartItems from './CartItems';
 import TimeOut from './TimeOut';
 import { Guid } from 'js-guid';
+import UserInput from './UserInput';
 
 class OrderView extends Component<{}> {
 
@@ -13,8 +14,9 @@ class OrderView extends Component<{}> {
               <h4>OrderNR</h4>
               <h4>{Guid.newGuid().toString()}</h4>
             <TimeOut> 
-                <div style={rootStyle}>
+                <div style={containerStyle}>
                     <CartItems/>
+                    <UserInput />
                 </div>
             </TimeOut>  
           </div>
@@ -28,6 +30,11 @@ const rootStyle: CSSProperties = {
     display: 'flex',
     flexDirection: 'column', 
     alignItems: 'center'
+}
+
+const containerStyle: CSSProperties = {
+    width: '100%',
+    display: 'flex'
 }
 
 
