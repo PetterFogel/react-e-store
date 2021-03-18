@@ -1,22 +1,52 @@
 .orderView-container { 
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 30rem;
+    height: 100%;
+}
+.orderProduct-container {
+    width: 30rem;
 }
 
 .order-div {
     display: flex;
-    flex-direction: column;
+    width: 100%;
     margin: 1rem;
-    width: 12rem;
+}
+
+.orderlisting-div {
+    height: 10rem;
+    width: 25rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .order-listings {
+    width: 12rem;
+    margin: 1rem 0;
+}
+
+.order-cart {
     width: 12rem;
     display: flex;
     justify-content: space-between;
 }
 
-.order-div img {
+.order-img {
+    width: 4rem;
+    height: 4rem;
+}
+.orderInfo-item {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
     width: 100%;
+    margin-bottom: .5rem;
+}
+
+.orderPrice {
+    display: flex;
+    justify-content: space-between;
+    width: 25rem;
+    align-items: flex-end;
 }
