@@ -11,9 +11,10 @@ class UserInput extends Component {
             <div className="orderView-container">
                 <div className="order-div">
                     <h3>{this.context.user.name}</h3>
-                    <h5>{this.context.user.adress}</h5>
                     <h5>{this.context.user.email}</h5>
                     <h5>{this.context.user.phone}</h5>
+                    <h5>{this.context.user.adress}</h5>
+                    <h5>{this.context.user.zip}</h5>
                 </div>
 
             </div>

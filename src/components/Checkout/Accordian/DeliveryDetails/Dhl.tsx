@@ -4,7 +4,7 @@ import { UserContext } from '../../../../contexts/UserContext';
 
 
 
-const PostNord = () => {
+const Dhl = () => {
 
     const addDetails = () => {
       let today = new Date();
@@ -16,11 +16,11 @@ const PostNord = () => {
     return (
       <div onClick={addDetails}>
             <div style={{display: 'flex', flexDirection: 'column', textAlign: 'center', background: 'white', margin: '1rem'}}>
-              <strong>Post Nord</strong>
-              <span> 2 - 3 Days</span>
+              <strong>DHL</strong>
+              <span> 1 - 3 Days</span>
             </div>
       </div>
     );
 }
 
-export default PostNord
+export default Dhl

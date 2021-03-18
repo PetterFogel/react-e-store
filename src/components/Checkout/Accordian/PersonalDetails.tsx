@@ -78,6 +78,18 @@ class PersonalDetails extends Component {
               autoFocus
               onChange={this.context.addEmail}
             />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="zip"
+              label="zip"
+              name="zip"
+              type="zip"
+              autoComplete="zip"
+              autoFocus
+              onChange={this.context.addZip}
+            />
             <Button
               onClick={this.context.addToObject}
               style={btn}
