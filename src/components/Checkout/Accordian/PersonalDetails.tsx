@@ -14,9 +14,7 @@ import { eventNames } from "node:process";
 class PersonalDetails extends Component {
   context!: React.ContextType<typeof UserContext>;
   static contextType = UserContext;
-  submitCallback() {
-    
-  }
+ 
   render() {
     return (
       <div>
@@ -88,14 +86,13 @@ class PersonalDetails extends Component {
               <TextField
                 variant="outlined"
                 margin="normal"
-                required
                 id="zip"
                 label="zip"
                 name="zip"
-                type="zip"
+                type="number"
                 autoComplete="zip"
                 autoFocus
-                onChange={this.context.addZip}
+                onInput={this.context.addZip}
               />
               </div>
             </div>
