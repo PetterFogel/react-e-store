@@ -1,4 +1,4 @@
-import { Component, createContext } from 'react'
+import React, { Component, createContext } from 'react'
 
 interface Customer {
   name: string, 
@@ -30,7 +30,7 @@ interface ContextProp extends State {
   addPhone: (event: React.ChangeEvent<HTMLInputElement>) => void;
   addEmail: (event: React.ChangeEvent<HTMLInputElement>) => void;
   addZip: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  addToObject: () => void;
+  addToObject: (event: React.FormEvent) => void;
   addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => void; 
 }
 export const UserContext = createContext<ContextProp>({
@@ -57,7 +57,7 @@ export const UserContext = createContext<ContextProp>({
   addPhone: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addEmail: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addZip: (event: React.ChangeEvent<HTMLInputElement>) => {},
-  addToObject: () => {},
+  addToObject: (event: React.FormEvent) => {},
   addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => {}
 });
 
@@ -125,7 +125,7 @@ export default class UserProvider extends Component<{}, State> {
     }
   }
 
-  addInputsToObject = () => {
+  addInputsToObject = (event: React.FormEvent) => {
     const newCustomer = {
       name: this.state.name,
       adress: this.state.adress, 
@@ -133,7 +133,21 @@ export default class UserProvider extends Component<{}, State> {
       email: this.state.email,
       zip: this.state.zip
     }
-    this.setState({user: newCustomer})
+    if(
+      this.state.name !== '' 
+      && 
+      this.state.adress !== ''
+      &&
+      this.state.phone !== '' 
+      &&
+      this.state.email !== ''
+      &&
+      this.state.zip !== ''
+      ) {
+        event.preventDefault()
+        this.setState({user: newCustomer})
+      }
+      
   }
 
   render() {
