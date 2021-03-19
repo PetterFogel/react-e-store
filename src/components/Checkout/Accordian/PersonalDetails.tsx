@@ -92,7 +92,7 @@ class PersonalDetails extends Component {
                 id="zip"
                 label="zip"
                 name="zip"
-                type="zip"
+                type="number"
                 autoComplete="zip"
                 autoFocus
                 onChange={this.context.addZip}

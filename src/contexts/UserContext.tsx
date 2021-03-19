@@ -133,6 +133,7 @@ export default class UserProvider extends Component<{}, State> {
       email: this.state.email,
       zip: this.state.zip
     }
+    
     if(
       this.state.name !== '' 
       && 
@@ -144,10 +145,15 @@ export default class UserProvider extends Component<{}, State> {
       &&
       this.state.zip !== ''
       ) {
-        event.preventDefault()
-        this.setState({user: newCustomer})
+        if (this.state.zip.length < 5 || this.state.zip.length >= 6) {
+          event.preventDefault();
+          alert("test")
+        } else {
+          event.preventDefault();
+          this.setState({user: newCustomer})
+          console.log(newCustomer)
+        }
       }
-      
   }
 
   render() {
