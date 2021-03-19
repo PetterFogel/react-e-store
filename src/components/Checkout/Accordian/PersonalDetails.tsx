@@ -9,11 +9,14 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 import { UserContext } from '../../../contexts/UserContext'
+import { eventNames } from "node:process";
 
 class PersonalDetails extends Component {
   context!: React.ContextType<typeof UserContext>;
   static contextType = UserContext;
-
+  submitCallback() {
+    
+  }
   render() {
     return (
       <div>
@@ -59,7 +62,7 @@ class PersonalDetails extends Component {
                 margin="normal"
                 required
                 id="phone"
-                type="phone"
+                type="tel"
                 label="Phone"
                 name="phone"
                 key="phone"
@@ -97,6 +100,7 @@ class PersonalDetails extends Component {
               </div>
             </div>
             <Button
+              type='submit'
               onClick={this.context.addToObject}
               style={btn}
               variant="contained"
