@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import "../../style/Checkout.css";
-import { btnMedium, cursorPointer } from "../../style/GeneralStyle";
+import { inactiveBtn,btnMedium, cursorPointer } from "../../style/GeneralStyle";
 import { CartContext } from "../../contexts/CartContext";
 import { CSSProperties } from "@material-ui/styles";
 import "../../style/Form.css";
@@ -10,21 +10,14 @@ import Accordian from "./Accordian/Accordian";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
 
-interface Props {}
-interface State {
-  isModalOpen: boolean;
-}
 
-class Checkout extends Component<Props, State> {
-  context!: React.ContextType<typeof CartContext>;
-  static contextType = CartContext;
 
-  state: State = {
-    isModalOpen: false,
-  };
+const Checkout =  () => {
+  const cartContext = useContext(CartContext)
+  const userContext = useContext(UserContext)
 
-  render() {
     return (
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div className="checkout-container">
@@ -38,7 +31,7 @@ class Checkout extends Component<Props, State> {
             <div className="order-list">
               <h2>Order Summary</h2>
               <div className="test">
-                {this.context.cart.map((productValue) => (
+                {cartContext.cart.map((productValue) => (
                   <div className="order-item">
                     <img
                       className="imageStyle"
@@ -52,13 +45,13 @@ class Checkout extends Component<Props, State> {
                           <AddCircleIcon
                             className="amount-icons"
                             onClick={() =>
-                              this.context.addToCart(productValue)
+                              cartContext.addToCart(productValue)
                             }
                           />
                           <RemoveCircleIcon
                             className="amount-icons"
                             onClick={() =>
-                              this.context.deleteItemQty(productValue)
+                              cartContext.deleteItemQty(productValue)
                             }
                           />
                         </div>
@@ -72,7 +65,7 @@ class Checkout extends Component<Props, State> {
                     </div>
                     <CloseIcon
                       onClick={() =>
-                        this.context.removeFromCart(productValue)
+                        cartContext.removeFromCart(productValue)
                       }
                       style={{
                         ...cursorPointer,
@@ -85,16 +78,19 @@ class Checkout extends Component<Props, State> {
             </div>
             <div className="total-amount-container">
               <strong className="total-amount">Total Amount:</strong>
-              <p>{this.context.totalAmount + " " + "SEK"}</p>
+              <p>{cartContext.totalAmount + " " + "SEK"}</p>
             </div>
           </div>
       </div>
+      {userContext.shopState?
       <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1, margin: "2rem 0rem"}}>
-        <Button variant="contained" style={btnMedium}> Confirm Order</Button>
-      </Link>          
+        <Button onClick={userContext.shopStateFalse} variant="contained" style={btnMedium}> Confirm Order</Button>
+      </Link>
+      : 
+        <Button variant="contained" style={inactiveBtn}> Confirm Order</Button>
+      }
   </div>
-    );
-  }
+  );
 }
 
 const form: CSSProperties = {

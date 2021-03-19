@@ -23,6 +23,8 @@ interface State{
   delivery: Delivery, 
   company: string, 
   date: string
+  shopState: boolean
+  isFilled: boolean
 }
 interface ContextProp extends State {
   addName: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -32,6 +34,9 @@ interface ContextProp extends State {
   addZip: (event: React.ChangeEvent<HTMLInputElement>) => void;
   addToObject: (event: React.FormEvent) => void;
   addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => void; 
+  shopStateTrue: () => void;
+  shopStateFalse: () => void;
+  filledState: () => void;
 }
 export const UserContext = createContext<ContextProp>({
   name: "",
@@ -52,13 +57,18 @@ export const UserContext = createContext<ContextProp>({
   },
   date: '', 
   company: '',
+  shopState: false, 
+  isFilled: false, 
   addName: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addAdress: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addPhone: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addEmail: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addZip: (event: React.ChangeEvent<HTMLInputElement>) => {},
   addToObject: (event: React.FormEvent) => {},
-  addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => {}
+  addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => {},
+  shopStateTrue: () => {}, 
+  shopStateFalse: () => {}, 
+  filledState: () => {}
 });
 
 export default class UserProvider extends Component<{}, State> {
@@ -81,6 +91,8 @@ export default class UserProvider extends Component<{}, State> {
     },
     date: '', 
     company: '',
+    shopState: false,
+    isFilled: false,
   };
 
   addNameToState = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -141,7 +153,9 @@ export default class UserProvider extends Component<{}, State> {
       &&
       this.state.phone !== '' 
       &&
-      this.state.email !== ''
+      this.state.email
+      
+      !== ''
       &&
       this.state.zip !== ''
       ) {
@@ -150,11 +164,26 @@ export default class UserProvider extends Component<{}, State> {
           alert("test")
         } else {
           event.preventDefault();
-          this.setState({user: newCustomer})
-          console.log(newCustomer)
+          this.setState({user: newCustomer, isFilled: true})
+          console.log(this.state.isFilled)
         }
       }
   }
+  
+  setShopStateTrue = () => {
+    this.setState({shopState: true})
+    console.log(this.state.shopState)
+  }
+
+  setShopStateFalse = () => {
+    this.setState({shopState: false})
+    console.log(this.state.shopState)
+  }
+
+  setFilledState = () => {
+    this.setState({isFilled: false})
+  }
+  
 
   render() {
     return (
@@ -178,13 +207,19 @@ export default class UserProvider extends Component<{}, State> {
           },
           date: this.state.date, 
           company: this.state.company,
+          shopState: this.state.shopState,
+          isFilled: this.state.isFilled,
+          
           addName: this.addNameToState,
           addAdress: this.addAdressToState, 
           addPhone: this.addPhoneToState, 
           addEmail: this.addEmailToState,
           addZip: this.addZipToState,
           addToObject: this.addInputsToObject,
-          addDelivery: this.addDeliveryToState
+          addDelivery: this.addDeliveryToState, 
+          shopStateTrue: this.setShopStateTrue,
+          shopStateFalse: this.setShopStateFalse, 
+          filledState: this.setFilledState
         }}
       >
         {this.props.children}

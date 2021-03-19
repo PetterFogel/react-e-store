@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -9,15 +9,9 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 import { UserContext } from '../../../contexts/UserContext'
-import { eventNames } from "node:process";
 
-class PersonalDetails extends Component {
-  context!: React.ContextType<typeof UserContext>;
-  static contextType = UserContext;
-  submitCallback() {
-    
-  }
-  render() {
+const PersonalDetails = () => {
+  const user = useContext(UserContext)
     return (
       <div>
         <Accordion style={form}>
@@ -42,7 +36,7 @@ class PersonalDetails extends Component {
                 type="text"
                 autoComplete="name"
                 autoFocus
-                onChange={this.context.addName}
+                onChange={user.addName}
               />
               <TextField
                 variant="outlined"
@@ -55,7 +49,7 @@ class PersonalDetails extends Component {
                 type="text"
                 autoComplete="address"
                 autoFocus
-                onChange={this.context.addAdress}
+                onChange={user.addAdress}
               />
               <TextField
                 variant="outlined"
@@ -68,7 +62,7 @@ class PersonalDetails extends Component {
                 key="phone"
                 autoComplete="phone"
                 autoFocus
-                onChange={this.context.addPhone}
+                onChange={user.addPhone}
               />
               </div>
               <div style={textfieldsDiv}>
@@ -83,7 +77,7 @@ class PersonalDetails extends Component {
                 key="email"
                 autoComplete="email"
                 autoFocus
-                onChange={this.context.addEmail}
+                onChange={user.addEmail}
               />
               <TextField
                 variant="outlined"
@@ -95,13 +89,13 @@ class PersonalDetails extends Component {
                 type="number"
                 autoComplete="zip"
                 autoFocus
-                onChange={this.context.addZip}
+                onChange={user.addZip}
               />
               </div>
             </div>
             <Button
               type='submit'
-              onClick={this.context.addToObject}
+              onClick={user.addToObject}
               style={btn}
               variant="contained"
             >
@@ -111,7 +105,6 @@ class PersonalDetails extends Component {
         </Accordion>
       </div>
     );
-  }
 }
 
 const textfieldsDiv: CSSProperties = {
