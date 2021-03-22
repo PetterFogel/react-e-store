@@ -73,13 +73,13 @@ export const UserContext = createContext<ContextProp>({
 
 export default class UserProvider extends Component<{}, State> {
   state: State = {
-    name: "",
+    name: '',
     adress: '',
     phone: '', 
     email: '',
     zip: '',
     user: {
-      name: "",
+      name: '',
       adress: '',
       phone: '', 
       email: '',
@@ -140,8 +140,9 @@ export default class UserProvider extends Component<{}, State> {
   }
 
   addInputsToObject = (event: React.FormEvent) => {
+    event.preventDefault();
     const newCustomer = {
-      name: this.state.name,
+      name: this.state.user.name,
       adress: this.state.adress, 
       phone: this.state.phone, 
       email: this.state.email,
@@ -149,7 +150,7 @@ export default class UserProvider extends Component<{}, State> {
     }
     
     // Name Input 
-  if (this.state.name !== "") {
+  if (this.state.user.name !== "") {
 
     // Adress Input
     if (this.state.adress !== "") {
