@@ -13,14 +13,54 @@ import { UserContext } from '../../../contexts/UserContext'
 const PersonalDetails = () => {
   const user = useContext(UserContext)
   const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [adressError, setAdressError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [zipError, setZipError] = useState("");
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!/^[a-zA-Z]+$/.test(e.target.value)) {
-      setNameError("Du måste ange ett riktigt namn");
+    if (!/^[a-öA-Ö\s,'-]+$/.test(e.target.value)) {
+      setNameError("Name is not valid");
     } else {
       setNameError("")
     }
     user.addName(e);
+  }
+
+  const handleAdressChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!/^[a-öA-Ö0-9\s,'-]*$/.test(e.target.value)) {
+      setAdressError("Adress is not valid");
+    } else {
+      setAdressError("")
+    }
+    user.addAdress(e);
+  }
+
+  const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!/^\d{10}$/.test(e.target.value)) {
+      setPhoneError("Phone number is not valid");
+    } else {
+      setPhoneError("")
+    }
+    user.addPhone(e);
+  }
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e.target.value)) {
+      setEmailError("Email is not valid");
+    } else {
+      setEmailError("")
+    }
+    user.addEmail(e);
+  }
+
+  const handleZipChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!/^\d{5}$/.test(e.target.value)) {
+      setZipError("Zip code is not valid");
+    } else {
+      setZipError("")
+    }
+    user.addZip(e);
   }
 
     return (
@@ -62,7 +102,9 @@ const PersonalDetails = () => {
                 type="text"
                 autoComplete="address"
                 autoFocus
-                onChange={user.addAdress}
+                onChange={handleAdressChange}
+                helperText={adressError}
+                error={Boolean(adressError)}
               />
               <TextField
                 variant="outlined"
@@ -75,7 +117,9 @@ const PersonalDetails = () => {
                 key="phone"
                 autoComplete="phone"
                 autoFocus
-                onChange={user.addPhone}
+                onChange={handlePhoneChange}
+                helperText={phoneError}
+                error={Boolean(phoneError)}
               />
               </div>
               <div style={textfieldsDiv}>
@@ -90,7 +134,9 @@ const PersonalDetails = () => {
                 key="email"
                 autoComplete="email"
                 autoFocus
-                onChange={user.addEmail}
+                onChange={handleEmailChange}
+                helperText={emailError}
+                error={Boolean(emailError)}
               />
               <TextField
                 variant="outlined"
@@ -102,7 +148,9 @@ const PersonalDetails = () => {
                 type="number"
                 autoComplete="zip"
                 autoFocus
-                onChange={user.addZip}
+                onChange={handleZipChange}
+                helperText={zipError}
+                error={Boolean(zipError)}
               />
               </div>
             </div>
