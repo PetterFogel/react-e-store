@@ -37,7 +37,6 @@ interface ContextProp extends State {
   shopStateTrue: () => void;
   shopStateFalse: () => void;
   filledState: (filled: boolean) => void;
-  filledStateTrue: () => void;
 }
 export const UserContext = createContext<ContextProp>({
   name: "",
@@ -69,8 +68,7 @@ export const UserContext = createContext<ContextProp>({
   addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => {},
   shopStateTrue: () => {}, 
   shopStateFalse: () => {}, 
-  filledState: () => {},
-  filledStateTrue: () => {}
+  filledState: () => {}
 });
 
 export default class UserProvider extends Component<{}, State> {
@@ -96,7 +94,7 @@ export default class UserProvider extends Component<{}, State> {
     shopState: false,
     isFilled: false,
   };
-  
+
   setShopStateTrue = () => {
     this.setState({shopState: true})
     console.log(this.state.shopState)
@@ -110,9 +108,6 @@ export default class UserProvider extends Component<{}, State> {
     this.setState({isFilled: filled})
   }
 
-  setFilledStateTrue = () => {
-    this.setState({isFilled: true})
-  }
 
   addNameToState = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({name: event.target.value});
@@ -220,7 +215,6 @@ export default class UserProvider extends Component<{}, State> {
           shopStateTrue: this.setShopStateTrue,
           shopStateFalse: this.setShopStateFalse, 
           filledState: this.setFilledState,
-          filledStateTrue: this.setFilledStateTrue
         }}
       >
         {this.props.children}
