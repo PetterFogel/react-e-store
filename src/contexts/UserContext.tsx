@@ -136,29 +136,36 @@ export default class UserProvider extends Component<{}, State> {
       zip: this.state.zip
     }
     
-    if(
-      this.state.name !== '' 
-      && 
-      this.state.adress !== ''
-      &&
-      this.state.phone !== '' 
-      &&
-      this.state.email
-      
-      !== ''
-      &&
-      this.state.zip !== ''
-      ) {
-        if (this.state.zip.length < 5 || this.state.zip.length >= 6) {
-          event.preventDefault();
-          alert("test")
-        } else {
-          event.preventDefault();
-          this.setState({user: newCustomer, isFilled: true})
-          console.log(this.state.isFilled)
-        }
+    // Name Input 
+  if (this.state.name !== "") {
+
+    // Adress Input
+    if (this.state.adress !== "") {
+
+      // Phone Input
+      if (this.state.phone !== "") {
+
+        // Email Input
+        if (this.state.email !== "") {
+          if (this.state.email.includes("@")) {
+            event.preventDefault();
+            // Zip Input
+            if (this.state.zip !== "") {
+              if (this.state.zip.length < 5 || this.state.zip.length >= 6) {
+                event.preventDefault();
+              } else {
+                event.preventDefault();
+                this.setState({user: newCustomer, isFilled: true})
+                console.log(newCustomer)
+              }
+            }
+          }
+        } 
+
       }
+    }
   }
+
   
   setShopStateTrue = () => {
     this.setState({shopState: true})
@@ -178,6 +185,7 @@ export default class UserProvider extends Component<{}, State> {
     this.setState({isFilled: true})
   }
   
+
 
   render() {
     return (
