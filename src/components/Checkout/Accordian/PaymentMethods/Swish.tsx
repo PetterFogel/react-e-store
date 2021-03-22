@@ -1,12 +1,22 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
-import React, { useContext } from 'react'
+import React, { ChangeEvent, useContext, useState } from 'react'
 import { PaymentContext } from '../../../../contexts/PaymentContext';
 import { UserContext } from '../../../../contexts/UserContext';
 
 
 const Swish = () => {
   const payment = useContext(PaymentContext)
+
+  const [swishError, setSwishError] = useState("");
+  const handleSwishChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!/^(?:[0-9]{10}|[0-9]{4}-[0-9]{4} [0-9]{2})$/.test(e.target.value)) {
+      setSwishError("Please type 0701111111 or 0701-1111 11");
+    } else {
+      setSwishError("")
+    }
+    payment.addSwish(e)
+  }
 
     return (
       <div style={{margin: '1rem 0rem'}}>
@@ -24,7 +34,9 @@ const Swish = () => {
               name="phone"
               autoComplete="phone"
               autoFocus
-              onChange={payment.addSwish}
+              helperText={swishError}
+              error={Boolean(swishError)}
+              onChange={handleSwishChange}
             />
           </AccordionDetails>
           <Button onClick={payment.addCompleteSwish} variant="contained" type="submit" style={btn}>
