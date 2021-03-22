@@ -8,6 +8,7 @@ import { ProductData } from '../../data/productData'
 import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
 import AdminPage from './AdminPage';
+import AddNewProduct from './AddNewProduct';
 
 function MainContent() {
     return (
@@ -32,6 +33,9 @@ function MainContent() {
           </Route>
           <Route path="/admin">
             <AdminPage/>
+          </Route>
+          <Route path="/addNewProduct">
+            <AddNewProduct/>
           </Route>
         </Switch>
       </main>
