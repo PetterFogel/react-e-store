@@ -45,8 +45,12 @@ class Navbar extends Component<{}, State> {
               >
                 <li>Products</li>
               </Link>
+              <Link
+                style={{ textDecoration: "none", color: "#000" }}
+                to="/admin"
+              >
                 <li style={adminBtn}>Admin</li>
-              
+              </Link>
             </ul>
             <div className="cart-container">
               <Link to="/checkout" style={{ color: "#333" }}>
