@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import { BrowserRouter } from 'react-router-dom';
 import CartProvider from './contexts/CartContext';
 import UserProvider from './contexts/UserContext';
-import ButtonProvider from './contexts/ButtonContext';
+import PaymentProvider from './contexts/PaymentContext';
 
 class App extends Component {
 
@@ -13,11 +13,11 @@ class App extends Component {
     return (
       <CartProvider>
         <UserProvider>
-          <ButtonProvider>
+          <PaymentProvider>
             <BrowserRouter>
               <Layout />
             </BrowserRouter>
-          </ButtonProvider>
+          </PaymentProvider>
         </UserProvider>
       </CartProvider>
     );
