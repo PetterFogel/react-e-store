@@ -20,23 +20,25 @@ function MainContent() {
           <Route path="/products">
             <ProductPage />
           </Route>
-          {ProductData.map((product) => 
+          {ProductData.map((product) => (
             <Route path={"/" + product.title} key={product.title}>
-                <ProductItem product={product}/>
+              <ProductItem product={product} />
             </Route>
-          )}
+          ))}
           <Route path="/checkout">
-            <Checkout/>
+            <Checkout />
           </Route>
           <Route path="/orderview">
-            <OrderView/>
+            <OrderView />
           </Route>
           <Route path="/admin">
-            <AdminPage/>
+            <AdminPage />
           </Route>
-          <Route path="/addNewProduct">
-            <AddNewProduct/>
-          </Route>
+          {ProductData.map((product) => (
+            <Route path="/addNewProduct">
+              <AddNewProduct product={product} />
+            </Route>
+          ))}
         </Switch>
       </main>
     );
