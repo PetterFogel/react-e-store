@@ -1,12 +1,40 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
-import React, { useContext } from 'react'
+import React, { ChangeEvent, useContext, useState } from 'react'
 import { PaymentContext } from '../../../../contexts/PaymentContext';
 import { UserContext } from '../../../../contexts/UserContext';
 
 const BankTransfer = () => {
-  const user = useContext(UserContext)
   const payment = useContext(PaymentContext)
+  const [nameError, setNameError] = useState("")
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if(!/^[a-zA-Z]+$/.test(e.target.value)){
+      setNameError('Please type in a correct Cardname')
+    } else {
+      setNameError("")
+    }
+    payment.addBankName(e)
+  }
+
+  const [clearingError, setClearingError] = useState("")
+  const handleClearingChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if(!/^(?:[0-9]{5}|[0-9]{4}-[0-9]{1})$/.test(e.target.value)){
+      setClearingError('Please type 12345 or 1234-5')
+    } else {
+      setClearingError("")
+    }
+    payment.addClearingNumber(e)
+  }
+
+  const [accountError, setAccountError] = useState("")
+  const handleAccountChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if(!/^(?:[0-9]{9}|[0-9]{2} [0-9]{3} [0-9]{3}-[0-9]{1})$/.test(e.target.value)){
+      setAccountError('Please type 123456789 or 11 222 333-4')
+    } else {
+      setAccountError("")
+    }
+    payment.addAccountNumber(e)
+  }
 
     return (
       <div>
@@ -22,7 +50,9 @@ const BankTransfer = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
-              onChange={payment.addBankName}
+              helperText={nameError}
+              error={Boolean(nameError)}
+              onChange={handleNameChange}
             />
             <TextField
               margin="normal"
@@ -31,7 +61,9 @@ const BankTransfer = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
-              onChange={payment.addClearingNumber}
+              helperText={clearingError}
+              error={Boolean(clearingError)}
+              onChange={handleClearingChange}
             />
             <TextField
               margin="normal"
@@ -40,7 +72,9 @@ const BankTransfer = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
-              onChange={payment.addAccountNumber}
+              helperText={accountError}
+              error={Boolean(accountError)}
+              onChange={handleAccountChange}
             />
           </AccordionDetails>
           <Button onClick={payment.addBankInfo} variant="contained" type="submit" style={btn}>
