@@ -110,7 +110,7 @@ export default class UserProvider extends Component<{}, State> {
 
 
   addNameToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({name: event.target.value});
+    this.setState({ user: { ...this.state.user, name: event.target.value } });
   };
   addAdressToState = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({adress: event.target.value});

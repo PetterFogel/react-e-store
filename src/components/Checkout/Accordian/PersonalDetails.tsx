@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { ChangeEvent, Component, useContext, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -12,6 +12,17 @@ import { UserContext } from '../../../contexts/UserContext'
 
 const PersonalDetails = () => {
   const user = useContext(UserContext)
+  const [nameError, setNameError] = useState("");
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+      setNameError("Du måste ange ett riktigt namn");
+    } else {
+      setNameError("")
+    }
+    user.addName(e);
+  }
+
     return (
       <div>
         <Accordion style={form}>
@@ -36,7 +47,9 @@ const PersonalDetails = () => {
                 type="text"
                 autoComplete="name"
                 autoFocus
-                onChange={user.addName}
+                onChange={handleNameChange}
+                helperText={nameError}
+                error={Boolean(nameError)}
               />
               <TextField
                 variant="outlined"
