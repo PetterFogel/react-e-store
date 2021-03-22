@@ -36,7 +36,8 @@ interface ContextProp extends State {
   addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => void; 
   shopStateTrue: () => void;
   shopStateFalse: () => void;
-  filledState: () => void;
+  filledState: (filled: boolean) => void;
+  filledStateTrue: () => void;
 }
 export const UserContext = createContext<ContextProp>({
   name: "",
@@ -68,7 +69,8 @@ export const UserContext = createContext<ContextProp>({
   addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => {},
   shopStateTrue: () => {}, 
   shopStateFalse: () => {}, 
-  filledState: () => {}
+  filledState: () => {},
+  filledStateTrue: () => {}
 });
 
 export default class UserProvider extends Component<{}, State> {
@@ -119,22 +121,10 @@ export default class UserProvider extends Component<{}, State> {
     let deliverDate = tomorrow.toString().split(' ')[2]
     let deliverMonth = tomorrow.toString().split(' ')[1]
     
-    if(deliverCompany == 'Bring') {
-      this.setState({
-        company: deliverCompany,
-        date: deliverDay + ' ' + deliverDate + ' ' + deliverMonth
-      })
-    } else if(deliverCompany == 'DHL') {
-      this.setState({
-        company: deliverCompany,
-        date: deliverDay + ' ' + deliverDate + ' ' + deliverMonth
-      })
-    } else if(deliverCompany == 'Postnord') {
-      this.setState({
-        company: deliverCompany,
-        date: deliverDay + ' ' + deliverDate + ' ' + deliverMonth
-      })
-    }
+    this.setState({
+      company: deliverCompany,
+      date: deliverDay + ' ' + deliverDate + ' ' + deliverMonth
+    })
   }
 
   addInputsToObject = (event: React.FormEvent) => {
@@ -180,8 +170,12 @@ export default class UserProvider extends Component<{}, State> {
     console.log(this.state.shopState)
   }
 
-  setFilledState = () => {
-    this.setState({isFilled: false})
+  setFilledState = (filled: boolean) => {
+    this.setState({isFilled: filled})
+  }
+
+  setFilledStateTrue = () => {
+    this.setState({isFilled: true})
   }
   
 
@@ -219,7 +213,8 @@ export default class UserProvider extends Component<{}, State> {
           addDelivery: this.addDeliveryToState, 
           shopStateTrue: this.setShopStateTrue,
           shopStateFalse: this.setShopStateFalse, 
-          filledState: this.setFilledState
+          filledState: this.setFilledState,
+          filledStateTrue: this.setFilledStateTrue
         }}
       >
         {this.props.children}

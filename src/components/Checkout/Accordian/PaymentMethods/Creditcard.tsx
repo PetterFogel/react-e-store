@@ -1,8 +1,10 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../../../../contexts/UserContext';
 
 const Creditcard = () => {
+  const user = useContext(UserContext)
     return (
       <div>
         <Accordion>
@@ -43,7 +45,7 @@ const Creditcard = () => {
               InputLabelProps={{ shrink: true }}
             />
           </AccordionDetails>
-          <Button type="submit" variant="contained" style={btn}>
+          <Button onClick={() => user.filledState(true)} type="submit" variant="contained" style={btn}>
             {" "}
             Complete Payment{" "}
           </Button>

@@ -49,7 +49,7 @@ const Accordian = () => {
 
   const callBackClick = () => {
     nextStep() 
-    value.filledState()
+    value.filledState(false)
   }
 
   const nextStep = () => {
