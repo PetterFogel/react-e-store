@@ -1,10 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
 import React, { useContext } from 'react'
+import { PaymentContext } from '../../../../contexts/PaymentContext';
 import { UserContext } from '../../../../contexts/UserContext';
 
 const BankTransfer = () => {
   const user = useContext(UserContext)
+  const payment = useContext(PaymentContext)
 
     return (
       <div>
@@ -20,6 +22,7 @@ const BankTransfer = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
+              onChange={payment.addBankName}
             />
             <TextField
               margin="normal"
@@ -28,6 +31,7 @@ const BankTransfer = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
+              onChange={payment.addClearingNumber}
             />
             <TextField
               margin="normal"
@@ -36,9 +40,10 @@ const BankTransfer = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
+              onChange={payment.addAccountNumber}
             />
           </AccordionDetails>
-          <Button onClick={() => user.filledState(true)} variant="contained" type="submit" style={btn}>
+          <Button onClick={payment.addBankInfo} variant="contained" type="submit" style={btn}>
             Complete Payment
           </Button>
         </Accordion>

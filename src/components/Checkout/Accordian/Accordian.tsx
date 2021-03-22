@@ -8,6 +8,7 @@ import React, { useContext } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { UserContext } from '../../../contexts/UserContext';
+import { PaymentContext } from '../../../contexts/PaymentContext';
 
 const muiTheme = createMuiTheme({
   overrides: {
@@ -46,6 +47,7 @@ const Accordian = () => {
   const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps();
   const value = useContext(UserContext)
+  const payment = useContext(PaymentContext)
 
   const callBackClick = () => {
     nextStep() 
@@ -93,7 +95,7 @@ const Accordian = () => {
           <Button disabled={activeStep === 0} onClick={previousStep}>
             Back
           </Button>
-          {value.isFilled ? 
+          {value.isFilled || payment.isFilled ? 
             <Button
               style={{
                 background: "#56EAC6",

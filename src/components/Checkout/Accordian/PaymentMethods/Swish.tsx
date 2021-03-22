@@ -1,11 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
 import React, { useContext } from 'react'
+import { PaymentContext } from '../../../../contexts/PaymentContext';
 import { UserContext } from '../../../../contexts/UserContext';
 
 
 const Swish = () => {
-  const user = useContext(UserContext)
+  const payment = useContext(PaymentContext)
 
     return (
       <div style={{margin: '1rem 0rem'}}>
@@ -23,9 +24,10 @@ const Swish = () => {
               name="phone"
               autoComplete="phone"
               autoFocus
+              onChange={payment.addSwish}
             />
           </AccordionDetails>
-          <Button onClick={() => user.filledState(true)} variant="contained" type="submit" style={btn}>
+          <Button onClick={payment.addCompleteSwish} variant="contained" type="submit" style={btn}>
             Sign with bankId
           </Button>
         </Accordion>
