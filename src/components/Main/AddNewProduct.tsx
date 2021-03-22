@@ -2,16 +2,10 @@ import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
 import React from 'react'
 import { btnSmall } from "../../style/GeneralStyle";
-import { Product } from "../../data/productData";
 import '../../style/Admin.css';
 
-interface Props{
-    product: Product
-}
-const addNewProduct = (props: Props) => {
 
-    // const [title, setTitle] = useState('');
-
+const AddNewProduct = () => {
 
     const handleClick = () => {
         console.log('added')
@@ -69,7 +63,7 @@ const addNewProduct = (props: Props) => {
     );
 }
 
-export default addNewProduct
+export default AddNewProduct
 
 const title: CSSProperties = {
   textAlign: "center",

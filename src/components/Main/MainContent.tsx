@@ -34,11 +34,9 @@ function MainContent() {
           <Route path="/admin">
             <AdminPage />
           </Route>
-          {ProductData.map((product) => (
-            <Route path="/addNewProduct">
-              <AddNewProduct product={product} />
-            </Route>
-          ))}
+          <Route path="/addNewProduct">
+            <AddNewProduct />
+          </Route>
         </Switch>
       </main>
     );
