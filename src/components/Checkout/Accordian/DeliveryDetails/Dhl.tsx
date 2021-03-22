@@ -5,8 +5,13 @@ import '../../../../style/Delivery.css'
 
 const Dhl = () => {
     const value = useContext(UserContext)
+
+    const clickCallback = () => {
+      value.addDelivery('DHL', 2, 1)
+      value.filledState(true)
+    }
     return (
-      <div onClick={() => value.addDelivery('DHL', 2, 1)}>
+      <div onClick={clickCallback}>
             <div className="delivery-div">
               <strong>DHL</strong>
               <span> 1 - 3 Days</span>

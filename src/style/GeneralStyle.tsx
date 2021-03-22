@@ -37,6 +37,21 @@ export const btnSmall: CSSProperties = {
     cursor: 'pointer'
 }
 
+export const inactiveBtn: CSSProperties = {
+    padding: '1.1rem 2rem',
+    borderRadius: '2.5rem',
+    outline: 'none',
+    fontSize: '1.3rem',
+    background: 'gray',
+    color: '#fff',
+    fontWeight: 'bold',
+    border: 'none',
+    cursor: 'pointer',
+    textDecoration: 'none', 
+    zIndex: 1, 
+    margin: "2rem 0rem"
+}
+
 export const cursorPointer: CSSProperties = {
     cursor: "pointer"
 }

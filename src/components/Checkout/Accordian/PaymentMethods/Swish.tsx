@@ -1,9 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../../../../contexts/UserContext';
 
 
 const Swish = () => {
+  const user = useContext(UserContext)
+
     return (
       <div style={{margin: '1rem 0rem'}}>
         <Accordion>
@@ -22,7 +25,7 @@ const Swish = () => {
               autoFocus
             />
           </AccordionDetails>
-          <Button variant="contained" type="submit" style={btn}>
+          <Button onClick={() => user.filledState(true)} variant="contained" type="submit" style={btn}>
             Sign with bankId
           </Button>
         </Accordion>

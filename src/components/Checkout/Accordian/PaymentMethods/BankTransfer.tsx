@@ -1,8 +1,11 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../../../../contexts/UserContext';
 
 const BankTransfer = () => {
+  const user = useContext(UserContext)
+
     return (
       <div>
         <Accordion>
@@ -35,7 +38,7 @@ const BankTransfer = () => {
               InputLabelProps={{ shrink: true }}
             />
           </AccordionDetails>
-          <Button variant="contained" type="submit" style={btn}>
+          <Button onClick={() => user.filledState(true)} variant="contained" type="submit" style={btn}>
             Complete Payment
           </Button>
         </Accordion>

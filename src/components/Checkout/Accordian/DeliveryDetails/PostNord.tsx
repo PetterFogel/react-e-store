@@ -6,8 +6,14 @@ import '../../../../style/Delivery.css'
 const PostNord = () => {
 
     const value = useContext(UserContext)
+
+    const clickCallback = () => {
+      value.addDelivery('Postnord', 3, 1)
+      value.filledState(true)
+    }
+
     return (
-      <div onClick={() => value.addDelivery('Postnord', 3, 1)}>
+      <div onClick={clickCallback}>
             <div className="delivery-div">
               <strong>Postnord</strong>
               <span> 2 - 3 Days</span>

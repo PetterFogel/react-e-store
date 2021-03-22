@@ -4,9 +4,10 @@ import PaymentDetails from './PaymentDetails';
 import { Button, Step, StepLabel, Stepper } from '@material-ui/core';
 import { Label } from '@material-ui/icons';
 import { CSSProperties } from '@material-ui/styles';
-import React from 'react';
+import React, { useContext } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { UserContext } from '../../../contexts/UserContext';
 
 const muiTheme = createMuiTheme({
   overrides: {
@@ -44,17 +45,27 @@ const Accordian = () => {
 
   const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps();
+  const value = useContext(UserContext)
+
+  const callBackClick = () => {
+    nextStep() 
+    value.filledState(false)
+  }
 
   const nextStep = () => {
-    if(activeStep < 2)
-        setActiveStep((currentStep) => currentStep + 1)
-    else if(activeStep < 3)
-        alert('Thank you! Now you only have to confirm the order')
+    if(activeStep < 2) {
+      setActiveStep((currentStep) => currentStep + 1)
+      value.shopStateFalse()
+    }
+    else if(activeStep < 3){
+      value.shopStateTrue()
+    }
   }
 
   const previousStep = () => {
     if(activeStep !== -1)
       setActiveStep((currentStep) => currentStep - 1)
+      value.shopStateFalse()
   }
 
     return (
@@ -82,19 +93,34 @@ const Accordian = () => {
           <Button disabled={activeStep === 0} onClick={previousStep}>
             Back
           </Button>
-          <Button
-            style={{
-              background: "#56EAC6",
-              fontWeight: "bold",
-              width: "10rem",
-              height: "3rem",
-            }}
-            variant="contained"
-            color="primary"
-            onClick={nextStep}
-          >
-            {activeStep === steps.length - 1 ? "Finish" : "Next"}
-          </Button>
+          {value.isFilled ? 
+            <Button
+              style={{
+                background: "#56EAC6",
+                fontWeight: "bold",
+                width: "10rem",
+                height: "3rem",
+              }}
+              variant="contained"
+              color="primary"
+              onClick={callBackClick}
+            >
+              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            </Button>
+            : 
+            <Button
+              style={{
+                background: "gray",
+                fontWeight: "bold",
+                width: "10rem",
+                height: "3rem",
+              }}
+              variant="contained"
+              color="primary"
+            >
+              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            </Button>
+          }
         </div>
       </MuiThemeProvider>
     );
