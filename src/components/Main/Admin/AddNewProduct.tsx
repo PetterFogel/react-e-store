@@ -1,9 +1,9 @@
 import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
 import { ChangeEvent } from 'react'
-import { btnSmall } from "../../style/GeneralStyle";
-import '../../style/Admin.css';
-import { Product } from '../../data/productData';
+import { btnSmall } from "../../../style/GeneralStyle";
+import '../../../style/Admin.css';
+import { Product } from '../../../data/productData';
 
 
 const AddNewProduct = () => {

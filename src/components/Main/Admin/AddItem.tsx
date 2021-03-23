@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
 import { Link } from "react-router-dom";
-import { btnMedium } from "../../style/GeneralStyle";
+import { btnMedium } from "../../../style/GeneralStyle";
 
 const AddItem = () => {
     return (
