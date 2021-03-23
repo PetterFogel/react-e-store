@@ -4,13 +4,20 @@ import Startpage from './Startpage';
 import ProductPage from './ProductPage';
 import { Route, Switch } from 'react-router';
 import ProductItem from './ProductItem';
-import { ProductData } from '../../data/productData'
+import { Product, ProductData } from '../../data/productData'
 import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
 import AdminPage from './AdminPage';
 import AddNewProduct from './AddNewProduct';
 
 function MainContent() {
+
+  const ProductData = JSON.parse(localStorage.getItem("ProductData") || "[]")
+
+  if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
+    localStorage.setItem("ProductData", JSON.stringify(ProductData));
+  }
+
     return (
       <main>
         <Switch>
@@ -20,7 +27,7 @@ function MainContent() {
           <Route path="/products">
             <ProductPage />
           </Route>
-          {ProductData.map((product) => (
+          {ProductData.map((product: Product) => (
             <Route path={"/" + product.title} key={product.title}>
               <ProductItem product={product} />
             </Route>

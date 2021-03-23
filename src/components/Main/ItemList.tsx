@@ -5,10 +5,13 @@ import { ProductData } from '../../data/productData'
 
 
 const ItemList = () => {
+
+  const ProductDataList = JSON.parse(localStorage.getItem("ProductData") || "[]")
+
     return (
       <div className="product-list">
         <div className="product-container">
-            {ProductData.map((product) => 
+            {ProductDataList.map((product: any) => 
               <Item 
                 key={product.title}
                 product={product}

@@ -1,14 +1,42 @@
 import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
-import React from 'react'
+import { ChangeEvent } from 'react'
 import { btnSmall } from "../../style/GeneralStyle";
 import '../../style/Admin.css';
+import { Product } from '../../data/productData';
 
 
 const AddNewProduct = () => {
 
+    const newProductData: Product = {
+      title: "",
+      image: "",
+      price: 0,
+      info: "",
+      quantity: 1
+
+    };
+
     const handleClick = () => {
-        console.log('added')
+      const ProductData = JSON.parse(localStorage.getItem("ProductData") || "[]")
+      ProductData.push(newProductData);
+      localStorage.setItem("ProductData", JSON.stringify(ProductData));
+    }
+
+    const handleTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
+      newProductData.title = e.target.value
+    }
+
+    const handleImage = (e: ChangeEvent<HTMLTextAreaElement>) => {
+      newProductData.image = e.target.value
+    }
+
+    const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
+      newProductData.price = parseInt(e.target.value)
+    }
+
+    const handleInfo = (e: ChangeEvent<HTMLTextAreaElement>) => {
+      newProductData.info = e.target.value
     }
 
     return (
@@ -31,6 +59,18 @@ const AddNewProduct = () => {
               name="title"
               type="text"
               autoFocus
+              onChange={handleTitle}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="price"
+              label="Add Image...(Url)"
+              name="image"
+              type="text"
+              autoFocus
+              onChange={handleImage}
             />
             <TextField
               variant="outlined"
@@ -41,6 +81,7 @@ const AddNewProduct = () => {
               name="price"
               type="number"
               autoFocus
+              onChange={handlePrice}
             />
             <TextField
               variant="outlined"
@@ -51,6 +92,7 @@ const AddNewProduct = () => {
               label="Add Info..."
               name="info"
               autoFocus
+              onChange={handleInfo}
             />
             <div style={{ alignSelf: "center" }}>
               <Button onClick={handleClick} style={btnSmall}>
