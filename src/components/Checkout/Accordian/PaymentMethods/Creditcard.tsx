@@ -20,7 +20,7 @@ const Creditcard = () => {
   const [numberError, setNumberError] = useState("");
   const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!/^(?:[0-9]{16}|[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4})$/.test(e.target.value)) {
-      setNumberError("Type in like 1111111111111111 or 1111-2222-3333-4444");
+      setNumberError("Type in like 1111222233334444 or 1111-2222-3333-4444");
     } else {
       setNumberError("")
     }

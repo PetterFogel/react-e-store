@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { UserContext } from '../../../contexts/UserContext';
 import { PaymentContext } from '../../../contexts/PaymentContext';
+import { CartContext } from '../../../contexts/CartContext';
 
 const muiTheme = createMuiTheme({
   overrides: {
@@ -48,6 +49,7 @@ const Accordian = () => {
   const steps = getSteps();
   const value = useContext(UserContext)
   const payment = useContext(PaymentContext)
+  const cart = useContext(CartContext)
 
   const callBackClick = () => {
     nextStep() 
@@ -60,7 +62,9 @@ const Accordian = () => {
       value.shopStateFalse()
     }
     else if(activeStep < 3){
-      value.shopStateTrue()
+      if(cart.cart.length > 0 ) {
+        value.shopStateTrue()
+      }
     }
   }
 
