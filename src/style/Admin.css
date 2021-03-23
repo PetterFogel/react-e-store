@@ -11,16 +11,73 @@
     height: 50vh;
 }
 
+/* Admin Handler */
+.admin-handler-container {
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem;
+    width: 100%;
+}
+
+.admin-item {
+    display: flex;
+    background: #eee;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    width: 100%;
+    margin: 1rem;
+}
+
+.admin-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1380px){
     .container{
     width: 75%;  
-    height: 70vh;
+    height: 70vh;   
+    }
 }
 
+@media screen and (max-width: 968px) {
+    .admin-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .admin-title {
+        font-size: 1rem;
+        margin: 1rem
+    }
+
+    .info-admin-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 75%;
+    }
+
+    .admin-info {
+        margin: 1rem;
+    }
+
+    .admin-price {
+        font-size: 1rem;
+    }
+
 }
+
 @media screen and (max-width: 630px){
     .container{
-    width: 90%;
-    
+        width: 90%;
+    }
+    .admin-handler-container {
+        padding: 0rem
     }   
+    .info-admin-container {
+        width: 100%;
+    }
 }

@@ -1,13 +1,13 @@
 import { CSSProperties } from '@material-ui/styles'
 import React from 'react'
 import AddItem from './AddItem'
-import ItemList from './ItemList'
+import AdminHandler from './AdminHandler'
 
 const AdminPage = () => {
     return (
         <div>
             <h1 style={title}>Admin</h1>
-           <ItemList/>
+           <AdminHandler/> 
            <AddItem/>
         </div>
     )

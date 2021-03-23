@@ -7,16 +7,16 @@ import ProductItem from './ProductItem';
 import { Product, ProductData } from '../../data/productData'
 import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
-import AdminPage from './AdminPage';
-import AddNewProduct from './AddNewProduct';
+import AdminPage from './Admin/AdminPage';
+import AddNewProduct from './Admin/AddNewProduct';
 
 function MainContent() {
 
-  const ProductData = JSON.parse(localStorage.getItem("ProductData") || "[]")
+  const ProductDataLS = JSON.parse(localStorage.getItem("ProductData") || "[]");
 
   if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
     localStorage.setItem("ProductData", JSON.stringify(ProductData));
-  }
+  } 
 
     return (
       <main>
@@ -27,7 +27,7 @@ function MainContent() {
           <Route path="/products">
             <ProductPage />
           </Route>
-          {ProductData.map((product: Product) => (
+          {ProductDataLS.map((product: Product) => (
             <Route path={"/" + product.title} key={product.title}>
               <ProductItem product={product} />
             </Route>

@@ -30,7 +30,7 @@ const Checkout =  () => {
           <div className="order-container">
             <div className="order-list">
               <h2>Order Summary</h2>
-              <div className="test">
+              <div className="overflow-scroll-container">
                 {cartContext.cart.map((productValue) => (
                   <div className="order-item">
                     <img
