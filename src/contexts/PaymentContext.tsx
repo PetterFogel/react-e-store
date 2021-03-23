@@ -83,9 +83,19 @@ class PaymentProvider extends Component<{}, State> {
       Expiration: this.state.Expiration,
       CVC: this.state.CVC 
     }
-    this.setState({
-      isFilled: true
-    })
+    if(
+      this.state.CCName !== ''
+      &&
+      this.state.CCNumber !== ''
+      &&
+      this.state.Expiration !== ''
+      &&
+      this.state.CVC !== ''
+      ) {
+        this.setState({
+          isFilled: true
+        })    
+      }
   }
 
   addSwishToState = (event: React.ChangeEvent<HTMLInputElement>) => {
