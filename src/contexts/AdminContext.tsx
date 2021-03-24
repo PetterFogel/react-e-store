@@ -1,4 +1,5 @@
 import React, { Component, createContext } from "react";
+import { isThisTypeNode } from "typescript";
 import { Product, ProductData } from "../data/productData";
 
 
@@ -11,18 +12,22 @@ interface State {
 interface ContextProps extends State {
   // addToLocalStorage: () => void;
   addNewPrice: (event: React.ChangeEvent<HTMLInputElement>) => void; 
-  submitPrice: (product: Product, productData: any) => void; 
+  submitPrice: (product: Product) => void; 
   editMode: (mode: string) => void; 
+  removeItem: (product: Product) => void; 
+  startLS: () => void;
 }
 
 export const AdminContext = createContext<ContextProps>({
   newPrice: '',
   mode: '', 
-  products: localStorage.setItem("ProductData", JSON.stringify(ProductData)),
+  products: [],
   // addToLocalStorage: () => {}, 
   addNewPrice: () => {},
   submitPrice: () => {},
-  editMode: () => {}
+  editMode: () => {},
+  removeItem: () => {},
+  startLS: () => {}
 });
 
 class AdminProvider extends Component<{}, State> {
@@ -32,35 +37,38 @@ class AdminProvider extends Component<{}, State> {
     products: JSON.parse(localStorage.getItem("ProductData") || "[]"),
   };
 
-
-  // addProductsToLocalStorage = () => {
-  //   const ProductDataLS = JSON.parse(localStorage.getItem("ProductData") || "[]");
-
-  //   if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
-  //     localStorage.setItem("ProductData", JSON.stringify(ProductData));
-  //     this.setState({})
-  //   } 
-  // }
+  removeItemFromData = (product: Product) => {
+    const cartIndex = this.state.products.indexOf(product);
+    this.state.products.splice(cartIndex, 1);
+    this.setState({products: this.state.products})
+  }
 
   addNewPriceToState = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({newPrice: event.target.value})
   }
 
-  submitPriceToLS = (product: Product, productData: any) => {
-    const productIndex = productData.indexOf(product)
-    productData[productIndex] = {
+  submitPriceToLS = (product: Product) => {
+    const productIndex = this.state.products.indexOf(product)
+    this.state.products[productIndex] = {
         title: product.title, 
         image: product.image, 
         info: product.info, 
         price: this.state.newPrice,
         quantity: product.quantity
     }
-    localStorage.setItem("ProductData", JSON.stringify(productData));
-    this.setState({mode: ''})
+    
+    this.setState({mode: '', products: this.state.products})
   }
 
   editModeState = (mode: string) => {
     this.setState({mode: mode})
+  }
+
+  setStarProductsToLS = () => {
+    if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
+      localStorage.setItem("ProductData", JSON.stringify(ProductData));
+   }
+   console.log('asdas')
   }
 
   componentDidUpdate() {
@@ -75,7 +83,9 @@ class AdminProvider extends Component<{}, State> {
           // addToLocalStorage: this.addProductsToLocalStorage,
           addNewPrice: this.addNewPriceToState,
           submitPrice: this.submitPriceToLS, 
-          editMode: this.editModeState
+          editMode: this.editModeState, 
+          removeItem: this.removeItemFromData,
+          startLS: this.setStarProductsToLS,
         }}
       >
         {this.props.children}

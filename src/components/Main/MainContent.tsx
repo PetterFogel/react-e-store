@@ -13,12 +13,9 @@ import { AdminContext } from '../../contexts/AdminContext';
 
 function MainContent() {
 
-  // const ProductDataLS = JSON.parse(localStorage.getItem("ProductData") || "[]");
-
-  // if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
-  //   localStorage.setItem("ProductData", JSON.stringify(ProductData));
-  // } 
   const admin = useContext(AdminContext)
+  admin.startLS()
+  
     return (
       <main>
         <Switch>
