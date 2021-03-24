@@ -1,11 +1,12 @@
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import Layout from './components/Layout';
 import { BrowserRouter } from 'react-router-dom';
 import CartProvider from './contexts/CartContext';
 import UserProvider from './contexts/UserContext';
 import PaymentProvider from './contexts/PaymentContext';
+import AdminProvider  from './contexts/AdminContext';
 
 class App extends Component {
 
@@ -14,9 +15,11 @@ class App extends Component {
       <CartProvider>
         <UserProvider>
           <PaymentProvider>
-            <BrowserRouter>
-              <Layout />
-            </BrowserRouter>
+            <AdminProvider>
+              <BrowserRouter>
+                <Layout />
+              </BrowserRouter>
+            </AdminProvider>
           </PaymentProvider>
         </UserProvider>
       </CartProvider>

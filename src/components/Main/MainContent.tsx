@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../style/Main.css'
 import Startpage from './Startpage';
 import ProductPage from './ProductPage';
@@ -9,15 +9,16 @@ import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
+import { AdminContext } from '../../contexts/AdminContext';
 
 function MainContent() {
 
-  const ProductDataLS = JSON.parse(localStorage.getItem("ProductData") || "[]");
+  // const ProductDataLS = JSON.parse(localStorage.getItem("ProductData") || "[]");
 
-  if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
-    localStorage.setItem("ProductData", JSON.stringify(ProductData));
-  } 
-
+  // if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
+  //   localStorage.setItem("ProductData", JSON.stringify(ProductData));
+  // } 
+  const admin = useContext(AdminContext)
     return (
       <main>
         <Switch>
@@ -27,7 +28,7 @@ function MainContent() {
           <Route path="/products">
             <ProductPage />
           </Route>
-          {ProductDataLS.map((product: Product) => (
+          {admin.products.map((product: Product) => (
             <Route path={"/" + product.title} key={product.title}>
               <ProductItem product={product} />
             </Route>
