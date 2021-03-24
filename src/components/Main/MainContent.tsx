@@ -10,12 +10,11 @@ import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
 import { AdminContext } from '../../contexts/AdminContext';
+import { PinDropSharp } from '@material-ui/icons';
 
 function MainContent() {
+  const admin = useContext(AdminContext) 
 
-  const admin = useContext(AdminContext)
-  admin.startLS()
-  
     return (
       <main>
         <Switch>
@@ -40,8 +39,20 @@ function MainContent() {
             <AdminPage />
           </Route>
           <Route path="/addNewProduct">
-            <AddNewProduct />
+            <AddNewProduct title="Add new product" btnText="Add" state="addNew" 
+            currentProduct={{
+              title: '', 
+              price: 0, 
+              info: '',
+              quantity: 1, 
+              image: ''
+            }}/>
           </Route>
+          {admin.products.map((product: Product) => (
+            <Route path={"/editProduct/" + product.title}>
+              <AddNewProduct title='Edit product' btnText='Save' state="edit" currentProduct={product}/>
+            </Route>
+          ))}
         </Switch>
       </main>
     );

@@ -1,12 +1,21 @@
 import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useContext } from 'react'
 import { btnSmall } from "../../../style/GeneralStyle";
 import '../../../style/Admin.css';
 import { Product } from '../../../data/productData';
+import { AdminContext } from '../../../contexts/AdminContext';
 
+interface Props {
+  title: string, 
+  btnText: string
+  state: string
+  currentProduct: Product
+}
 
-const AddNewProduct = () => {
+const AddNewProduct = (props: Props) => {
+
+  const admin = useContext(AdminContext)
 
     const newProductData: Product = {
       title: "",
@@ -14,29 +23,48 @@ const AddNewProduct = () => {
       price: 0,
       info: "",
       quantity: 1
-
     };
 
     const handleClick = () => {
-      const ProductData = JSON.parse(localStorage.getItem("ProductData") || "[]")
-      ProductData.push(newProductData);
-      localStorage.setItem("ProductData", JSON.stringify(ProductData));
+      if(props.state === 'addNew'){
+        admin.products = JSON.parse(localStorage.getItem("ProductData") || "[]")
+        admin.products.push(newProductData);
+        localStorage.setItem("ProductData", JSON.stringify(admin.products));
+      } else {
+        admin.submitAll(props.currentProduct)
+      }
     }
 
-    const handleTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      newProductData.title = e.target.value
+    const handleTitle = (e: ChangeEvent<HTMLInputElement>) => {
+      if(props.state === 'addNew') {
+        newProductData.title = e.target.value
+      } else {
+        admin.addNewTitle(e)
+      }
     }
 
-    const handleImage = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      newProductData.image = e.target.value
+    const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
+      if(props.state === 'addNew') {
+        newProductData.image = e.target.value
+      } else {
+        admin.addNewImage(e)
+      }
     }
 
     const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
+      if(props.state === 'addNew') {
       newProductData.price = parseInt(e.target.value)
+      } else {
+        admin.addNewPrice(e)
+      }
     }
 
-    const handleInfo = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      newProductData.info = e.target.value
+    const handleInfo = (e: ChangeEvent<HTMLInputElement>) => {
+      if(props.state === 'addNew') {
+        newProductData.info = e.target.value
+      } else {
+        admin.addNewInfo(e)
+      }
     }
 
     return (
@@ -49,13 +77,13 @@ const AddNewProduct = () => {
               justifyContent: "center",
             }}
           >
-            <h1 style={title}>Add a new product</h1>
+            <h1 style={title}>{props.title}</h1>
             <TextField
               variant="outlined"
               margin="normal"
               required
               id="title"
-              label="Add Title..."
+              label="Title..."
               name="title"
               type="text"
               autoFocus
@@ -66,7 +94,7 @@ const AddNewProduct = () => {
               margin="normal"
               required
               id="price"
-              label="Add Image...(Url)"
+              label="Image...(Url)"
               name="image"
               type="text"
               autoFocus
@@ -77,7 +105,7 @@ const AddNewProduct = () => {
               margin="normal"
               required
               id="price"
-              label="Add Price..."
+              label="Price..."
               name="price"
               type="number"
               autoFocus
@@ -89,14 +117,14 @@ const AddNewProduct = () => {
               required
               id="info"
               type="text"
-              label="Add Info..."
+              label="Info..."
               name="info"
               autoFocus
               onChange={handleInfo}
             />
             <div style={{ alignSelf: "center" }}>
               <Button onClick={handleClick} style={btnSmall}>
-                Add
+                {props.btnText}
               </Button>
             </div>
           </div>
