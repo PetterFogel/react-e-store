@@ -39,18 +39,11 @@ function MainContent() {
             <AdminPage />
           </Route>
           <Route path="/addNewProduct">
-            <AddNewProduct title="Add new product" btnText="Add" state="addNew" 
-            currentProduct={{
-              title: '', 
-              price: 0, 
-              info: '',
-              quantity: 1, 
-              image: ''
-            }}/>
+            <AddNewProduct title="Add new product" btnText="Add" />
           </Route>
           {admin.products.map((product: Product) => (
             <Route path={"/editProduct/" + product.title}>
-              <AddNewProduct title='Edit product' btnText='Save' state="edit" currentProduct={product}/>
+              <AddNewProduct title='Edit product' btnText='Save' currentProduct={product}/>
             </Route>
           ))}
         </Switch>

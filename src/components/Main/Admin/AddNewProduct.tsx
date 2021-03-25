@@ -1,70 +1,57 @@
 import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
-import { ChangeEvent, useContext } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { btnSmall } from "../../../style/GeneralStyle";
 import '../../../style/Admin.css';
 import { Product } from '../../../data/productData';
 import { AdminContext } from '../../../contexts/AdminContext';
+import { useRouteMatch } from 'react-router-dom';
+import { ContactSupportOutlined } from '@material-ui/icons';
 
 interface Props {
   title: string, 
   btnText: string
-  state: string
-  currentProduct: Product
+  currentProduct?: Product
 }
 
 const AddNewProduct = (props: Props) => {
+  // const match = useRouteMatch<{ id: string }>();
+  // match.params.id
 
+  const newProductData: Product = {
+    title: "",
+    image: "",
+    price: 0,
+    info: "",
+    quantity: 1
+  };
   const admin = useContext(AdminContext)
+  const [product, setProduct] = useState<Product>(props.currentProduct || newProductData)
 
-    const newProductData: Product = {
-      title: "",
-      image: "",
-      price: 0,
-      info: "",
-      quantity: 1
-    };
 
     const handleClick = () => {
-      if(props.state === 'addNew'){
-        admin.products = JSON.parse(localStorage.getItem("ProductData") || "[]")
-        admin.products.push(newProductData);
-        localStorage.setItem("ProductData", JSON.stringify(admin.products));
+      const isNewProduct = !props.currentProduct
+      if(isNewProduct) {
+        admin.addNewProduct(product)
       } else {
-        admin.submitAll(props.currentProduct)
+        admin.submitAll(product, props.currentProduct)
       }
     }
 
     const handleTitle = (e: ChangeEvent<HTMLInputElement>) => {
-      if(props.state === 'addNew') {
-        newProductData.title = e.target.value
-      } else {
-        admin.addNewTitle(e)
-      }
+      setProduct({ ...product, title: e.target.value })
     }
 
     const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
-      if(props.state === 'addNew') {
-        newProductData.image = e.target.value
-      } else {
-        admin.addNewImage(e)
-      }
+      setProduct({...product, image: e.target.value})
     }
 
     const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
-      if(props.state === 'addNew') {
-      newProductData.price = parseInt(e.target.value)
-      } else {
-        admin.addNewPrice(e)
-      }
+      setProduct({...product, price: parseInt(e.target.value)})
     }
 
     const handleInfo = (e: ChangeEvent<HTMLInputElement>) => {
-      if(props.state === 'addNew') {
-        newProductData.info = e.target.value
-      } else {
-        admin.addNewInfo(e)
-      }
+      setProduct({...product, info: e.target.value})
     }
 
     return (
@@ -87,16 +74,18 @@ const AddNewProduct = (props: Props) => {
               name="title"
               type="text"
               autoFocus
+              value={product.title}
               onChange={handleTitle}
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
-              id="price"
+              id="image"
               label="Image...(Url)"
               name="image"
               type="text"
+              value={product.image}
               autoFocus
               onChange={handleImage}
             />
@@ -108,6 +97,7 @@ const AddNewProduct = (props: Props) => {
               label="Price..."
               name="price"
               type="number"
+              value={product.price}
               autoFocus
               onChange={handlePrice}
             />
@@ -119,6 +109,7 @@ const AddNewProduct = (props: Props) => {
               type="text"
               label="Info..."
               name="info"
+              value={product.info}
               autoFocus
               onChange={handleInfo}
             />

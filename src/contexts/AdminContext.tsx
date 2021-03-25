@@ -19,8 +19,8 @@ interface ContextProps extends State {
   addNewTitle: (event: React.ChangeEvent<HTMLInputElement>) => void; 
   addNewInfo: (event: React.ChangeEvent<HTMLInputElement>) => void; 
   addNewImage: (event: React.ChangeEvent<HTMLInputElement>) => void; 
-  submitAll: (product: Product) => void; 
-  editMode: (mode: string) => void; 
+  submitAll: (product: Product, currentProduct: any) => void; 
+  addNewProduct: (newProductData: Product) => void; 
   removeItem: (product: Product) => void; 
 }
 
@@ -30,14 +30,13 @@ export const AdminContext = createContext<ContextProps>({
   newInfo: '', 
   newImage: '',
   mode: '', 
-  products: [],
-  // addToLocalStorage: () => {}, 
+  products: [], 
   addNewPrice: () => {},
   addNewTitle: () => {},
   addNewInfo: () => {},
   addNewImage: () => {},
   submitAll: () => {},
-  editMode: () => {},
+  addNewProduct: () => {},
   removeItem: () => {}
 });
 
@@ -70,62 +69,17 @@ class AdminProvider extends Component<{}, State> {
     this.setState({newImage: event.target.value})
   }
 
-  submitPriceToLS = (product: Product) => {
-    const productIndex = this.state.products.indexOf(product)
-    console.log(this.state.newTitle)
-
-    // if(this.state.newTitle !== '') {
-    //   this.state.products[productIndex] = {
-    //     title: product.title
-    //   }
-    // }else {
-    //   this.state.products[productIndex] = {
-    //     title: this.state.newTitle
-    //   }
-    // }
-    
-    // if(this.state.newImage !== '') {
-    //   this.state.products[productIndex] = {
-    //     image: product.image
-    //   }
-    // }else {
-    //   this.state.products[productIndex] = {
-    //     image: this.state.newImage
-    //   }
-    // }
-
-    // if(this.state.newInfo !== '') {
-    //   this.state.products[productIndex] = {
-    //     info: product.info
-    //   }
-    // }else {
-    //   this.state.products[productIndex] = {
-    //     info: this.state.newInfo
-    //   }
-    // }
-
-    // if(this.state.newPrice !== '') {
-    //   this.state.products[productIndex] = {
-    //     price: product.price
-    //   }
-    // }else {
-    //   this.state.products[productIndex] = {
-    //     price: this.state.newPrice
-    //   }
-    // }
-    this.state.products[productIndex] = {
-        title: this.state.newTitle, 
-        image: this.state.newImage, 
-        info: this.state.newInfo, 
-        price: this.state.newPrice,
-        quantity: product.quantity
-    }
-    
+  submitEditInput = (editedProduct: Product, currentProduct: any) => {
+    const productIndex = this.state.products.indexOf(currentProduct)
+    this.state.products[productIndex] = editedProduct
     this.setState({mode: '', products: this.state.products})
   }
 
-  editModeState = (mode: string) => {
-    this.setState({mode: mode})
+  addProductToState = (newProductData: Product) => {
+    this.state.products = JSON.parse(localStorage.getItem("ProductData") || "[]")
+    this.state.products.push(newProductData);
+    localStorage.setItem("ProductData", JSON.stringify(this.state.products));
+    this.setState({products: this.state.products})
   }
 
 
@@ -144,13 +98,12 @@ class AdminProvider extends Component<{}, State> {
       <AdminContext.Provider
         value={{
           ...this.state,
-          // addToLocalStorage: this.addProductsToLocalStorage,
           addNewPrice: this.addNewPriceToState,
           addNewTitle: this.addNewTitleToState, 
           addNewImage: this.addNewImageToState, 
           addNewInfo: this.addNewInfoToState,
-          submitAll: this.submitPriceToLS, 
-          editMode: this.editModeState, 
+          submitAll: this.submitEditInput, 
+          addNewProduct: this.addProductToState, 
           removeItem: this.removeItemFromData,
         }}
       >
