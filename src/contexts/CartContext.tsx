@@ -89,7 +89,6 @@ class CartProvider extends Component<{}, State> {
   componentDidUpdate() {
     localStorage.setItem("Products", JSON.stringify(this.state.cart))
     localStorage.setItem("TotalAmount", JSON.stringify(this.state.totalAmount))
-
   }
 
   render() {

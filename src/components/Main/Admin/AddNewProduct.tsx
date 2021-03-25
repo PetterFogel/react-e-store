@@ -1,42 +1,57 @@
 import { Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { btnSmall } from "../../../style/GeneralStyle";
 import '../../../style/Admin.css';
 import { Product } from '../../../data/productData';
+import { AdminContext } from '../../../contexts/AdminContext';
+import { useRouteMatch } from 'react-router-dom';
+import { ContactSupportOutlined } from '@material-ui/icons';
 
+interface Props {
+  title: string, 
+  btnText: string
+  currentProduct?: Product
+}
 
-const AddNewProduct = () => {
+const AddNewProduct = (props: Props) => {
+  // const match = useRouteMatch<{ id: string }>();
+  // match.params.id
 
-    const newProductData: Product = {
-      title: "",
-      image: "",
-      price: 0,
-      info: "",
-      quantity: 1
+  const newProductData: Product = {
+    title: "",
+    image: "",
+    price: 0,
+    info: "",
+    quantity: 1
+  };
+  const admin = useContext(AdminContext)
+  const [product, setProduct] = useState<Product>(props.currentProduct || newProductData)
 
-    };
 
     const handleClick = () => {
-      const ProductData = JSON.parse(localStorage.getItem("ProductData") || "[]")
-      ProductData.push(newProductData);
-      localStorage.setItem("ProductData", JSON.stringify(ProductData));
+      const isNewProduct = !props.currentProduct
+      if(isNewProduct) {
+        admin.addNewProduct(product)
+      } else {
+        admin.submitAll(product, props.currentProduct)
+      }
     }
 
-    const handleTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      newProductData.title = e.target.value
+    const handleTitle = (e: ChangeEvent<HTMLInputElement>) => {
+      setProduct({ ...product, title: e.target.value })
     }
 
-    const handleImage = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      newProductData.image = e.target.value
+    const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
+      setProduct({...product, image: e.target.value})
     }
 
     const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
-      newProductData.price = parseInt(e.target.value)
+      setProduct({...product, price: parseInt(e.target.value)})
     }
 
-    const handleInfo = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      newProductData.info = e.target.value
+    const handleInfo = (e: ChangeEvent<HTMLInputElement>) => {
+      setProduct({...product, info: e.target.value})
     }
 
     return (
@@ -49,26 +64,28 @@ const AddNewProduct = () => {
               justifyContent: "center",
             }}
           >
-            <h1 style={title}>Add a new product</h1>
+            <h1 style={title}>{props.title}</h1>
             <TextField
               variant="outlined"
               margin="normal"
               required
               id="title"
-              label="Add Title..."
+              label="Title..."
               name="title"
               type="text"
               autoFocus
+              value={product.title}
               onChange={handleTitle}
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
-              id="price"
-              label="Add Image...(Url)"
+              id="image"
+              label="Image...(Url)"
               name="image"
               type="text"
+              value={product.image}
               autoFocus
               onChange={handleImage}
             />
@@ -77,9 +94,10 @@ const AddNewProduct = () => {
               margin="normal"
               required
               id="price"
-              label="Add Price..."
+              label="Price..."
               name="price"
               type="number"
+              value={product.price}
               autoFocus
               onChange={handlePrice}
             />
@@ -89,14 +107,15 @@ const AddNewProduct = () => {
               required
               id="info"
               type="text"
-              label="Add Info..."
+              label="Info..."
               name="info"
+              value={product.info}
               autoFocus
               onChange={handleInfo}
             />
             <div style={{ alignSelf: "center" }}>
               <Button onClick={handleClick} style={btnSmall}>
-                Add
+                {props.btnText}
               </Button>
             </div>
           </div>
