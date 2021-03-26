@@ -82,7 +82,6 @@ class CartProvider extends Component<{}, State> {
     }
   }
 
-
   emptyCartItems = () => { 
     this.setState({orderCart: [...this.state.cart] ,cart: [], totalAmount: 0})
  }

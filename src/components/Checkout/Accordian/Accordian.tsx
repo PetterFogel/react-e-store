@@ -42,7 +42,6 @@ const muiTheme = createMuiTheme({
     }
   }
 const Accordian = () => {
-
   const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps();
   const value = useContext(UserContext)

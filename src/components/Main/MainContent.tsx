@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import '../../style/Main.css'
 import Startpage from './Startpage';
 import ProductPage from './ProductPage';
@@ -10,7 +10,6 @@ import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
 import { AdminContext } from '../../contexts/AdminContext';
-
 
 function MainContent() {
   const admin = useContext(AdminContext) 

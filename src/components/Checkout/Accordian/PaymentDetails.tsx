@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -9,7 +8,6 @@ import { CSSProperties } from "@material-ui/styles";
 import Swish from "./PaymentMethods/Swish";
 import Creditcard from "./PaymentMethods/Creditcard";
 import BankTransfer from "./PaymentMethods/BankTransfer";
-
 
 const PaymentDetails = () => {
     return (
@@ -32,8 +30,6 @@ const PaymentDetails = () => {
     );
 }
 
-export default PaymentDetails
-
 const form: CSSProperties = {
   display: "flex",
   flexDirection: "column", 
@@ -42,3 +38,5 @@ const form: CSSProperties = {
   background: "lightgrey",
   fontSize: "1.2rem",
 };
+
+export default PaymentDetails

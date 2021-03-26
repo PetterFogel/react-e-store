@@ -1,16 +1,15 @@
 import Item from './Item';
 import '../../style/Products.css';
-
-
+import { AdminContext } from '../../contexts/AdminContext';
+import { useContext } from 'react';
 
 const ItemList = () => {
-
-  const ProductDataList = JSON.parse(localStorage.getItem("ProductData") || "[]")
+  const productDataList = useContext(AdminContext)
 
     return (
       <div className="product-list">
         <div className="product-container">
-            {ProductDataList.map((product: any) => 
+            {productDataList.products.map((product: any) => 
               <Item 
                 key={product.title}
                 product={product}

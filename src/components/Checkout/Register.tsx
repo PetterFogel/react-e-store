@@ -5,7 +5,6 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import { CSSProperties } from '@material-ui/styles';
-import React from 'react'
 import '../../style/Form.css'
 
 const Register = () => {
@@ -23,7 +22,6 @@ const Register = () => {
             autoComplete="name"
             autoFocus
           />
-
           <TextField
             variant="outlined"
             margin="normal"
@@ -57,7 +55,6 @@ const Register = () => {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-
           <Button type="submit" variant="contained" style={btn}>
             Sign Up
           </Button>
@@ -65,9 +62,6 @@ const Register = () => {
       </div>
     );
 }
-
-export default Register
-
 
 const btn: CSSProperties = {
   alignSelf: "center",
@@ -81,3 +75,5 @@ const btn: CSSProperties = {
   cursor: "pointer",
   margin: "1rem",
 };
+
+export default Register
