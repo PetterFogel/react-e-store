@@ -97,11 +97,9 @@ export default class UserProvider extends Component<{}, State> {
 
   setShopStateTrue = () => {
     this.setState({shopState: true})
-    console.log(this.state.shopState)
   }
   setShopStateFalse = () => {
     this.setState({shopState: false})
-    console.log(this.state.shopState)
   }
 
   setFilledState = (filled: boolean) => {

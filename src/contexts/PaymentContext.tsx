@@ -77,12 +77,6 @@ class PaymentProvider extends Component<{}, State> {
   };
 
   addCCInputToObject = () => {
-    const newCard = {
-      CCName: this.state.CCName,
-      CCNumber: this.state.CCNumber,
-      Expiration: this.state.Expiration,
-      CVC: this.state.CVC 
-    }
     if(
       this.state.CCName !== ''
       &&
@@ -117,11 +111,6 @@ class PaymentProvider extends Component<{}, State> {
   }
 
   addBankInfoToObject = () => {
-    const newBank = {
-      bankName: this.state.bankName,
-      accountNumber: this.state.accountNumber,
-      clearingNumber: this.state.clearingNumber
-    }
     this.setState({isFilled: true})
   }
 

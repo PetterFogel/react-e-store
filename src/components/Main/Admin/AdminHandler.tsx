@@ -5,7 +5,6 @@ import "../../../style/Admin.css";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { AdminContext } from "../../../contexts/AdminContext";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import { Link } from "react-router-dom";
 
 function AdminHandler() {
@@ -15,7 +14,7 @@ function AdminHandler() {
     <div className="admin-handler-container">
       {admin.products.map((product: Product) => (
         <div className="admin-item">
-          <img className="imageStyle" src={product.image} />
+          <img className="imageStyle" src={product.image} alt="of product" />
           <p className="admin-title">{product.title}</p>
           <div className="info-admin-container">
               <h4 className="admin-price">{`${product.price} SEK`}</h4>

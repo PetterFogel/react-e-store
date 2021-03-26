@@ -1,6 +1,4 @@
 import React, { Component, createContext } from "react";
-import { isThisTypeNode } from "typescript";
-import AdminPage from "../components/Main/Admin/AdminPage";
 import { Product, ProductData } from "../data/productData";
 
 
@@ -76,7 +74,6 @@ class AdminProvider extends Component<{}, State> {
   }
 
   addProductToState = (newProductData: Product) => {
-    this.state.products = JSON.parse(localStorage.getItem("ProductData") || "[]")
     this.state.products.push(newProductData);
     localStorage.setItem("ProductData", JSON.stringify(this.state.products));
     this.setState({products: this.state.products})
