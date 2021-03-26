@@ -12,9 +12,9 @@ const AdminPage = () => {
     )
 }
 
-export default AdminPage
-
 const title: CSSProperties = {
     textAlign: 'center',
     margin: '0rem 1rem',
 }
+
+export default AdminPage

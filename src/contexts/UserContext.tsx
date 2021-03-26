@@ -167,7 +167,6 @@ export default class UserProvider extends Component<{}, State> {
               } else {
                 event.preventDefault();
                 this.setState({user: newCustomer, isFilled: true})
-                console.log(newCustomer)
               }
             }
           }
@@ -176,8 +175,6 @@ export default class UserProvider extends Component<{}, State> {
     }  
   }
 }
-  
-
 
   render() {
     return (

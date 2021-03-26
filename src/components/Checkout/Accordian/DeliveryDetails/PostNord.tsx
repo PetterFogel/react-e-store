@@ -2,7 +2,6 @@ import  { useContext } from 'react'
 import { UserContext } from '../../../../contexts/UserContext';
 import '../../../../style/Delivery.css'
 
-
 const PostNord = () => {
 
     const value = useContext(UserContext)

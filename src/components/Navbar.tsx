@@ -66,8 +66,6 @@ class Navbar extends Component<{}, State> {
     }
 }
 
-export default Navbar
-
 const adminBtn: CSSProperties = {
   margin: "-.5rem 1rem",
   background: "#56EAC6",
@@ -75,3 +73,5 @@ const adminBtn: CSSProperties = {
   borderRadius: "2rem",
   color: "#fff",
 };
+
+export default Navbar

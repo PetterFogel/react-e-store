@@ -1,7 +1,6 @@
 import React, { Component, createContext } from "react";
 import { Product, ProductData } from "../data/productData";
 
-
 interface State {
   newPrice: string
   newTitle: string
@@ -12,7 +11,6 @@ interface State {
 }
 
 interface ContextProps extends State {
-  // addToLocalStorage: () => void;
   addNewPrice: (event: React.ChangeEvent<HTMLInputElement>) => void; 
   addNewTitle: (event: React.ChangeEvent<HTMLInputElement>) => void; 
   addNewInfo: (event: React.ChangeEvent<HTMLInputElement>) => void; 
@@ -69,6 +67,7 @@ class AdminProvider extends Component<{}, State> {
 
   submitEditInput = (editedProduct: Product, currentProduct: any) => {
     const productIndex = this.state.products.indexOf(currentProduct)
+    // eslint-disable-next-line react/no-direct-mutation-state
     this.state.products[productIndex] = editedProduct
     this.setState({mode: '', products: this.state.products})
   }
@@ -78,7 +77,6 @@ class AdminProvider extends Component<{}, State> {
     localStorage.setItem("ProductData", JSON.stringify(this.state.products));
     this.setState({products: this.state.products})
   }
-
 
   componentDidMount() {
     if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {

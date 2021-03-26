@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component, useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import {
   Accordion,
   AccordionDetails,

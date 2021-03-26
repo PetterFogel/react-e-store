@@ -1,8 +1,6 @@
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import '../../style/Startpage.css'
-
-import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import "../../style/cartItems.css";
 
-
 class CartItems extends Component {
   context!: React.ContextType<typeof CartContext>;
   static contextType = CartContext;
