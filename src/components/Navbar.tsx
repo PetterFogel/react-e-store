@@ -4,8 +4,6 @@ import '../style/Navbar.css'
 import { CartContext } from '../contexts/CartContext'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import BurgerMenu from './BurgerMenu';
-import { Button } from '@material-ui/core';
-import { btnMedium } from "../style/GeneralStyle";
 import { CSSProperties } from '@material-ui/styles';
 
 interface State {
@@ -69,7 +67,6 @@ class Navbar extends Component<{}, State> {
 }
 
 export default Navbar
-
 
 const adminBtn: CSSProperties = {
   margin: "-.5rem 1rem",

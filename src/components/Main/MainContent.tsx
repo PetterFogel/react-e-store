@@ -4,13 +4,13 @@ import Startpage from './Startpage';
 import ProductPage from './ProductPage';
 import { Route, Switch } from 'react-router';
 import ProductItem from './ProductItem';
-import { Product, ProductData } from '../../data/productData'
+import { Product } from '../../data/productData'
 import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
 import { AdminContext } from '../../contexts/AdminContext';
-import { PinDropSharp } from '@material-ui/icons';
+
 
 function MainContent() {
   const admin = useContext(AdminContext) 

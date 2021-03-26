@@ -1,6 +1,5 @@
 import Item from './Item';
 import '../../style/Products.css';
-import { ProductData } from '../../data/productData'
 
 
 

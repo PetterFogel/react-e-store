@@ -1,5 +1,5 @@
-import { CircularProgress, LinearProgress } from '@material-ui/core';
-import React, { Component, CSSProperties, useEffect } from 'react'
+import { CircularProgress } from '@material-ui/core';
+import React, { Component, CSSProperties } from 'react'
 import { CartContext } from '../../contexts/CartContext';
 
 interface Props{

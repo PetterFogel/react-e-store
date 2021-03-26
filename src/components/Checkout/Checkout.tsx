@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import "../../style/Checkout.css";
 import { inactiveBtn,btnMedium, cursorPointer } from "../../style/GeneralStyle";
@@ -11,8 +11,6 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
-
-
 
 const Checkout =  () => {
   const cartContext = useContext(CartContext)
@@ -78,7 +76,7 @@ const Checkout =  () => {
             </div>
             <div className="total-amount-container">
               <strong className="total-amount">Total Amount:</strong>
-              <p>{cartContext.totalAmount + " " + "SEK"}</p>
+              <p>{cartContext.totalAmount + " SEK"}</p>
             </div>
           </div>
       </div>

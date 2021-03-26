@@ -4,8 +4,6 @@ import MainContent from './Main/MainContent';
 import Navbar from './Navbar';
 import Background from '../assets/main-bg.jpg';
 
-
-
 function Layout() {
     return (
       <>
@@ -21,7 +19,6 @@ const rootStyle: CSSProperties = {
     display: "flex",
     flexDirection: "column",
     backgroundImage: `url(${Background})`,
-    // backgroundAttachment: "fixed",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",

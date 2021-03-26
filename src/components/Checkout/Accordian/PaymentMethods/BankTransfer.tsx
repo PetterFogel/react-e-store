@@ -2,7 +2,6 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from
 import { CSSProperties } from '@material-ui/styles';
 import React, { ChangeEvent, useContext, useState } from 'react'
 import { PaymentContext } from '../../../../contexts/PaymentContext';
-import { UserContext } from '../../../../contexts/UserContext';
 
 const BankTransfer = () => {
   const payment = useContext(PaymentContext)

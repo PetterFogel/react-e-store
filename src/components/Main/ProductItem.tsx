@@ -29,7 +29,7 @@ class ProductItem extends Component<Props> {
           <div className="product-info">
             <div style={{ margin: "2rem 0" }}>
               <h4>Price</h4>
-              <p>{this.props.product.price + " " + "sek"}</p>
+              <p>{this.props.product.price + " sek"}</p>
             </div>
             <div style={{ margin: "2rem 0" }}>
               <h4>Info</h4>

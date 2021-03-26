@@ -1,5 +1,4 @@
 import  { useContext } from 'react'
-import { CSSProperties } from "@material-ui/styles";
 import { UserContext } from '../../../../contexts/UserContext';
 import '../../../../style/Delivery.css'
 
