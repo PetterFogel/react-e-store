@@ -1,6 +1,6 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles';
-import React, { ChangeEvent, useContext, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { PaymentContext } from '../../../../contexts/PaymentContext';
 
 const Creditcard = () => {
@@ -60,7 +60,6 @@ const Creditcard = () => {
               variant="outlined"
               required
               InputLabelProps={{ shrink: true }}
-              // onChange={payment.addCCNumber}
               onChange={handleNumberChange}
               helperText={numberError}
               error={Boolean(numberError)}

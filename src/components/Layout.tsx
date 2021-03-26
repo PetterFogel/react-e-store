@@ -1,4 +1,3 @@
-
 import { CSSProperties } from 'react';
 import MainContent from './Main/MainContent';
 import Navbar from './Navbar';

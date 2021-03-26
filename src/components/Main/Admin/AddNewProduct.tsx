@@ -26,7 +26,6 @@ const AddNewProduct = (props: Props) => {
   const admin = useContext(AdminContext)
   const [product, setProduct] = useState<Product>(props.currentProduct || newProductData)
 
-
     const handleClick = () => {
       const isNewProduct = !props.currentProduct
       if(isNewProduct) {
@@ -122,10 +121,9 @@ const AddNewProduct = (props: Props) => {
     );
 }
 
-export default AddNewProduct
-
 const title: CSSProperties = {
   textAlign: "center",
   margin: "0rem 1rem",
 }
 
+export default AddNewProduct

@@ -2,7 +2,6 @@ import React from 'react'
 import ItemList from './ItemList'
 import { CSSProperties } from "@material-ui/styles";
 
-
 const ProductPage = () => {
     return (
         <div>
@@ -12,9 +11,9 @@ const ProductPage = () => {
     )
 }
 
-export default ProductPage
-
 const title: CSSProperties = {
-  textAlign: "center",
-  margin: "0rem 1rem",
+    textAlign: "center",
+    margin: "0rem 1rem",
 };
+
+export default ProductPage

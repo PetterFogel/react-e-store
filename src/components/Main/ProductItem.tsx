@@ -51,5 +51,4 @@ class ProductItem extends Component<Props> {
   }
 }
 
-
 export default ProductItem;

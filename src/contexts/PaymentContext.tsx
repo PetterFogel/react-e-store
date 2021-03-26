@@ -1,6 +1,5 @@
 import React, { Component, createContext } from "react";
 
-
 interface State {
   CCName: string
   CCNumber: string
@@ -139,4 +138,3 @@ class PaymentProvider extends Component<{}, State> {
 }
 
 export default PaymentProvider;
-

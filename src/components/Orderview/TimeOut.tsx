@@ -2,9 +2,7 @@ import { CircularProgress } from '@material-ui/core';
 import React, { Component, CSSProperties } from 'react'
 import { CartContext } from '../../contexts/CartContext';
 
-interface Props{
-
-}
+interface Props{}
 interface State {
     hidden: boolean
 }
@@ -23,6 +21,7 @@ class TimeOut extends Component<{}, State> {
             this.setState({hidden: false});
         }, 2000)
     }
+
     render() {
         return this.state.hidden? 
         <div style={rootStyle}>
@@ -45,6 +44,5 @@ const loaderStyle: CSSProperties = {
     height: '10rem', 
     width: '10rem'
 }
+
 export default TimeOut;
-
-

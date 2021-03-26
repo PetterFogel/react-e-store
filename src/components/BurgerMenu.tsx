@@ -1,4 +1,3 @@
-import React from 'react';
 import '../style/BurgerMenu.css';
 
 interface Props {
@@ -27,6 +26,5 @@ function BurgerMenu(props: Props) {
         </div>
     );
 }
-
 
 export default BurgerMenu;
