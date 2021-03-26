@@ -5,8 +5,6 @@ import { btnSmall } from "../../../style/GeneralStyle";
 import '../../../style/Admin.css';
 import { Product } from '../../../data/productData';
 import { AdminContext } from '../../../contexts/AdminContext';
-import { useRouteMatch } from 'react-router-dom';
-import { ContactSupportOutlined } from '@material-ui/icons';
 
 interface Props {
   title: string, 
