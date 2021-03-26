@@ -55,4 +55,3 @@ export const inactiveBtn: CSSProperties = {
 export const cursorPointer: CSSProperties = {
     cursor: "pointer"
 }
-
