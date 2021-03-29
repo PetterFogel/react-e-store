@@ -16,6 +16,7 @@ const PostNord = () => {
             <div className="delivery-div">
               <strong>Postnord</strong>
               <span> 2 - 3 Days</span>
+              <span>gratis</span>
             </div>
       </div>
     );

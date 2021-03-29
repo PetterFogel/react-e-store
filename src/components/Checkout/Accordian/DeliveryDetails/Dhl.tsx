@@ -14,6 +14,7 @@ const Dhl = () => {
             <div className="delivery-div">
               <strong>DHL</strong>
               <span> 1 - 3 Days</span>
+              <span>29 sek</span>
             </div>
       </div>
     );
