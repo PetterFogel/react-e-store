@@ -21,7 +21,8 @@ const AddNewProduct = (props: Props) => {
     image: "",
     price: 0,
     info: "",
-    quantity: 1
+    quantity: 1, 
+    size: 0
   };
   
   const admin = useContext(AdminContext)

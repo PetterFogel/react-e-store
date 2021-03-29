@@ -32,6 +32,31 @@
   width: 40%;
 }
 
+.sizes {
+  display: flex;
+  width: 20rem;
+  flex-wrap: wrap;
+}
+
+.size {
+  margin: .5rem;
+  border: black;
+  border-style: groove;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.size p {
+  font-size: 1.3rem;
+}
+
+.size:hover {
+  border: gray;
+}
+
 @media screen and (max-width: 1200px) {
   .productitem-container {
     flex-direction: column;
