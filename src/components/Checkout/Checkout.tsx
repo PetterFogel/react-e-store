@@ -38,6 +38,7 @@ const Checkout =  () => {
                     />
                     <div className="info-container">
                       <p className="order-name">{productValue.title}</p>
+                      <p className="order-qty">{"Size: " + productValue.size}</p>
                       <div className="price-holder">
                         <div>
                           <AddCircleIcon
