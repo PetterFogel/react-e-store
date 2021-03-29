@@ -41,7 +41,7 @@ function MainContent() {
             <AddNewProduct title="Add new product" btnText="Add" />
           </Route>
           {admin.products.map((product: Product) => (
-            <Route path={"/editProduct/" + product.title}>
+            <Route path={"/editProduct"}>
               <AddNewProduct title='Edit product' btnText='Save' currentProduct={product}/>
             </Route>
           ))}
