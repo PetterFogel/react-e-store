@@ -55,3 +55,11 @@ export const inactiveBtn: CSSProperties = {
 export const cursorPointer: CSSProperties = {
     cursor: "pointer"
 }
+
+// ADMIN STYLES
+export const adminIcons: CSSProperties = {
+    textDecoration: "none",
+    fontSize: "2rem",
+    color: "#333",
+    cursor: "pointer"
+}
