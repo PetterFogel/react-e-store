@@ -6,7 +6,7 @@
 }
 
 .product-container{
-    width: 75%;
+    width: 90%;
     display: flex;
     justify-content: center;
     margin: 0rem auto;
@@ -21,12 +21,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 15rem;
+    width: 20rem;
     margin: 2rem;
 }
 .title{
     margin: 0rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    text-align: center;
 }
 .price{
     margin: 1rem;
