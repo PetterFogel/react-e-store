@@ -32,8 +32,13 @@
 }
 
 .admin-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    margin: 1rem;
+}
+
+.info-admin-container {
+    width: 35rem;
 }
 
 @media screen and (max-width: 1380px){
@@ -41,23 +46,18 @@
     width: 75%;  
     height: 70vh;   
     }
+
+    .info-admin-container {
+        margin: 1rem;
+    }
+
+
 }
 
 @media screen and (max-width: 968px) {
     .admin-item {
         flex-direction: column;
         text-align: center;
-    }
-    .admin-title {
-        font-size: 1rem;
-        margin: 1rem
-    }
-
-    .info-admin-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 75%;
     }
 
     .admin-info {
@@ -79,5 +79,9 @@
     }   
     .info-admin-container {
         width: 100%;
+    }
+
+    .admin-info {
+        display: none;
     }
 }
