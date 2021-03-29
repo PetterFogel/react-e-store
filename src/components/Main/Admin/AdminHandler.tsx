@@ -6,6 +6,7 @@ import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { AdminContext } from "../../../contexts/AdminContext";
 import { Link } from "react-router-dom";
+import { adminIcons } from "../../../style/GeneralStyle";
 
 function AdminHandler() {
   const admin = useContext(AdminContext);
@@ -20,14 +21,14 @@ function AdminHandler() {
               <h4 className="admin-price">{`${product.price} SEK`}</h4>
             <p className="admin-info">{product.info}</p>
           </div>
-          <div style={{ width: "1rem" }}>
+          <div>
             <DeleteOutlinedIcon
-              style={{ fontSize: "2rem", cursor: "pointer" }}
+              style={adminIcons}
               onClick={() => admin.removeItem(product)}
             />
             <Link to={"/editProduct"}>
               <CreateOutlinedIcon
-                style={{ fontSize: "2rem", cursor: "pointer" }}
+                style={adminIcons}
               />
             </Link>
           </div>
