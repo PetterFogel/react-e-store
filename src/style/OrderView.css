@@ -1,6 +1,7 @@
 .orderView-section {
     width: 100%;  
     height: 90%;
+    padding: 5rem 0rem ;
     background: white; 
     display: flex;
     flex-direction: column; 

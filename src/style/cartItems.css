@@ -50,3 +50,11 @@
     width: 25rem;
     align-items: flex-end;
 }
+.total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem;
+  font-size: 1.5rem;
+}
