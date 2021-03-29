@@ -23,6 +23,7 @@ const AddNewProduct = (props: Props) => {
     info: "",
     quantity: 1
   };
+  
   const admin = useContext(AdminContext)
   const [product, setProduct] = useState<Product>(props.currentProduct || newProductData)
 

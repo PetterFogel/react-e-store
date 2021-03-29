@@ -75,6 +75,10 @@ const Checkout =  () => {
               </div>
             </div>
             <div className="total-amount-container">
+              <strong className="total-amount">Tax:</strong>
+              <p>{Math.round(cartContext.totalAmount * 0.2) + " SEK"}</p>
+            </div>
+            <div className="total-amount-container">
               <strong className="total-amount">Total Amount:</strong>
               <p>{cartContext.totalAmount + " SEK"}</p>
             </div>

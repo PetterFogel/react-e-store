@@ -25,7 +25,7 @@ function AdminHandler() {
               style={{ fontSize: "2rem", cursor: "pointer" }}
               onClick={() => admin.removeItem(product)}
             />
-            <Link to={"/editProduct/" + product.title}>
+            <Link to={"/editProduct"}>
               <CreateOutlinedIcon
                 style={{ fontSize: "2rem", cursor: "pointer" }}
               />
