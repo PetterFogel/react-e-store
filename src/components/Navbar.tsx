@@ -47,6 +47,12 @@ class Navbar extends Component<{}, State> {
               </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
+                to="/about"
+              >
+                <li>About</li>
+              </Link>
+              <Link
+                style={{ textDecoration: "none", color: "#000" }}
                 to="/admin"
               >
                 <li style={adminBtn}>Admin</li>
