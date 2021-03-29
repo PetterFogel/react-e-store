@@ -15,7 +15,7 @@ class OrderView extends Component<{}> {
     render() {  
       return(
           <div className="orderView-section">
-              <h2 className="title">Orderconfirmation</h2>
+              <h2 className="order-title">Orderconfirmation</h2>
             <TimeOut> 
                 <div className="input-section">
                     <CartItems/>
