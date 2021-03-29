@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
 :root {
     --green: #56EAC6;
 }
@@ -17,19 +17,29 @@
 .start-title {
     font-size: 5rem;
     margin: 0rem;
-    color: #333;
+    color: #111;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 h1 span {
     font-size: 6rem;
     color: var(--green);
-    font-family: 'Lily Script One', cursive;
+    font-family: 'Yellowtail', cursive;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .sub-title {
     font-size: 2rem;
-    font-weight: 400;
-    margin: 1rem
+    font-weight: 500;
+    margin: 1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.match{
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--green);
+    font-family: 'Yellowtail', cursive;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .start-btn {
@@ -65,8 +75,9 @@ h1 span {
         align-items: center;
     }
     .start-title {
+        text-align: center;
         font-size: 3rem;
-        margin-bottom: 4rem;
+        margin-bottom: 1rem;
     }
     h1 span {
         font-size: 3rem;

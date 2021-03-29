@@ -5,6 +5,7 @@ import '../../style/Startpage.css'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
       padding: '1.5rem 2.5rem',
       borderRadius: '3rem',
       outline: 'none',
@@ -35,9 +36,13 @@ function Startpage() {
           Welcome to&nbsp;
           <span>ShoeWay</span>
         </h1>
-        <p className="sub-title">Quality shoes to match your style</p>
-        <Link to="/products" style={{textDecoration: 'none', zIndex: 1}}>
-          <Button variant="contained" className={classes.root}>Go Shopping</Button>
+        <p className="sub-title">
+          Quality shoes to <span className="match" >match</span> your style
+        </p>
+        <Link to="/products" style={{ textDecoration: "none", zIndex: 1 }}>
+          <Button variant="contained" className={classes.root}>
+            Go Shopping
+          </Button>
         </Link>
       </div>
     );

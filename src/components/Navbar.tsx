@@ -6,6 +6,8 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import BurgerMenu from './BurgerMenu';
 import { CSSProperties } from '@material-ui/styles';
 
+
+
 interface State {
   isMenuOpen: boolean;
 }

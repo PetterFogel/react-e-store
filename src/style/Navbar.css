@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
 :root {
     --green: #56EAC6;
 }
@@ -18,11 +18,12 @@
 }
 
 .header-title {
-    font-family: 'Lily Script One', cursive;
+    font-family: 'Yellowtail', cursive;
     color: var(--green);
-    font-size: 2.5rem;
-    font-weight: 300;
-    text-shadow: 1px 1px 3px #ddd;
+    font-size: 3.5rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    
 }
 
 .cart-container {
@@ -81,6 +82,7 @@ nav {
         transition: right 500ms ease-in;
     }
     .nav-links li {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         font-size: 1.5rem;
         margin: 3rem
     }
@@ -105,7 +107,7 @@ nav {
         padding: 0rem 1rem
     }
     .header-title {
-        font-size: 1.6rem;
+        font-size: 2.2rem;
     }
     .cart-content {
         right: 0;
