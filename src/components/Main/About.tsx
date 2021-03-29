@@ -1,13 +1,30 @@
+import { CSSProperties } from '@material-ui/styles';
 import React from 'react'
-import { CSSProperties } from "@material-ui/styles";
+
+import '../../style/About.css';
 
 const About = () => {
     return (
       <div>
         <h1 style={title}>About</h1>
         <div className="container">
-            <p style={paragraf} >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, temporibus aut! Perferendis, perspiciatis! Dicta eum mollitia fugit magnam praesentium, illo cum, totam assumenda excepturi non voluptatem ipsa eius unde in!</p>
-            
+          <p className="paragraf">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi,
+            temporibus aut! Perferendis, perspiciatis! Dicta eum mollitia fugit
+            magnam praesentium, illo cum, totam assumenda excepturi non
+            voluptatem ipsa eius unde in!
+          </p>
+          <ul className="iconList">
+            <li className="icon">
+              <i className="fab fa-facebook-square"></i>
+            </li>
+            <li className="icon">
+              <i className="fab fa-instagram-square"></i>
+            </li>
+            <li className="icon">
+              <i className="fab fa-twitter-square"></i>
+            </li>
+          </ul>
         </div>
       </div>
     );
@@ -16,10 +33,8 @@ const About = () => {
 export default About
 
 const title: CSSProperties = {
-  textAlign: "center",
-  margin: "0rem 1rem 4rem",
-};
-const paragraf: CSSProperties = {
     textAlign: 'center',
-    width: '75%',
+    margin: '1rem 1rem 4rem',
 }
+
+
