@@ -14,6 +14,7 @@ interface Delivery {
 }
 
 interface State{
+  shippingPriceState: number,
   name: string,
   adress: string, 
   phone: string, 
@@ -33,13 +34,14 @@ interface ContextProp extends State {
   addEmail: (event: React.ChangeEvent<HTMLInputElement>) => void;
   addZip: (event: React.ChangeEvent<HTMLInputElement>) => void;
   addToObject: (event: React.FormEvent) => void;
-  addDelivery: (deliverCompany: string, randomDay: number, addNumber: number) => void; 
+  addDelivery: (deliverCompany: string, randomDay: number, addNumber: number, shippingPrice: number) => void; 
   shopStateTrue: () => void;
   shopStateFalse: () => void;
   filledState: (filled: boolean) => void;
 }
 export const UserContext = createContext<ContextProp>({
   name: "",
+  shippingPriceState: 0,
   adress: "", 
   phone: '', 
   email: '',
@@ -74,6 +76,7 @@ export const UserContext = createContext<ContextProp>({
 export default class UserProvider extends Component<{}, State> {
   state: State = {
     name: '',
+    shippingPriceState: 0,
     adress: '',
     phone: '', 
     email: '',
@@ -122,8 +125,7 @@ export default class UserProvider extends Component<{}, State> {
   addZipToState = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({zip: event.target.value});
   };
-
-  addDeliveryToState = (deliverCompany: string, randomDay: number, addNumber: number) => {
+  addDeliveryToState = (deliverCompany: string, randomDay: number, addNumber: number, shippingPrice: number) => {
     let today = new Date();
     let tomorrow = new Date();
     tomorrow.setDate(today.getDate() + (Math.floor(Math.random() * randomDay) + addNumber));
@@ -132,6 +134,7 @@ export default class UserProvider extends Component<{}, State> {
     let deliverMonth = tomorrow.toString().split(' ')[1]
     
     this.setState({
+      shippingPriceState: shippingPrice,
       company: deliverCompany,
       date: deliverDay + ' ' + deliverDate + ' ' + deliverMonth
     })
@@ -181,6 +184,7 @@ export default class UserProvider extends Component<{}, State> {
       <UserContext.Provider
         value={{
           name: this.state.name,
+          shippingPriceState: this.state.shippingPriceState,
           adress: this.state.adress, 
           phone: this.state.phone, 
           email: this.state.email,

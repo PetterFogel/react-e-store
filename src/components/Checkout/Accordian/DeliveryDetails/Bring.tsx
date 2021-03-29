@@ -7,7 +7,7 @@ const Bring = () => {
   const value = useContext(UserContext)
   
   const clickCallback = () => {
-    value.addDelivery('Bring', 5, 3)
+    value.addDelivery('Bring', 5, 3, 39)
     value.filledState(true)
   }
 
@@ -16,6 +16,7 @@ const Bring = () => {
             <div className="delivery-div">
               <strong>Bring</strong>
               <span> 3 - 5 Days</span>
+              <span>39 sek</span>
             </div>
       </div>
     );

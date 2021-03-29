@@ -10,6 +10,7 @@ import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
 import { AdminContext } from '../../contexts/AdminContext';
+import About from './About';
 
 function MainContent() {
   const admin = useContext(AdminContext) 
@@ -34,6 +35,9 @@ function MainContent() {
           <Route path="/orderview">
             <OrderView />
           </Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route path="/admin">
             <AdminPage />
           </Route>
@@ -42,7 +46,11 @@ function MainContent() {
           </Route>
           {admin.products.map((product: Product) => (
             <Route path={"/editProduct"}>
-              <AddNewProduct title='Edit product' btnText='Save' currentProduct={product}/>
+              <AddNewProduct
+                title="Edit product"
+                btnText="Save"
+                currentProduct={product}
+              />
             </Route>
           ))}
         </Switch>

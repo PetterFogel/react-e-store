@@ -6,6 +6,7 @@ interface State {
   totalAmount: number
   tax: number, 
   orderCart: Product[];
+  orderAmount: number
 }
 interface ContextProps extends State {
   addToCart: (product: Product) => void;
@@ -16,6 +17,7 @@ interface ContextProps extends State {
 
 export const CartContext = createContext<ContextProps>({
   cart: [],
+  orderAmount: 0,
   totalAmount: 0,
   tax: 0,
   orderCart: [],
@@ -30,7 +32,8 @@ class CartProvider extends Component<{}, State> {
     cart: JSON.parse(localStorage.getItem("Products") || "[]"),
     totalAmount: Number(JSON.parse(localStorage.getItem("TotalAmount") || "0")),
     tax: 0,
-    orderCart: []
+    orderCart: [],
+    orderAmount: 0,
   };
 
   addProductToCart = (product: Product) => {
@@ -84,7 +87,7 @@ class CartProvider extends Component<{}, State> {
   }
 
   emptyCartItems = () => { 
-    this.setState({orderCart: [...this.state.cart] ,cart: [], totalAmount: 0})
+    this.setState({orderCart: [...this.state.cart], orderAmount: this.state.totalAmount ,cart: [], totalAmount: 0})
  }
 
   componentDidUpdate() {

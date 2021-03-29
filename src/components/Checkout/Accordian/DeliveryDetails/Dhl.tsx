@@ -6,7 +6,7 @@ const Dhl = () => {
     const value = useContext(UserContext)
 
     const clickCallback = () => {
-      value.addDelivery('DHL', 2, 1)
+      value.addDelivery('DHL', 2, 1, 29)
       value.filledState(true)
     }
     return (
@@ -14,6 +14,7 @@ const Dhl = () => {
             <div className="delivery-div">
               <strong>DHL</strong>
               <span> 1 - 3 Days</span>
+              <span>29 sek</span>
             </div>
       </div>
     );

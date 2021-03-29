@@ -12,13 +12,12 @@ class CartItems extends Component {
         {this.context.orderCart.map((product) => (
           <div className="orderInfo-item">
             <div>
-              <h5>{product.title}</h5>
-              <div className="orderPrice">
-                <img className="order-img" src={product.image} alt="" />
-                <p>{`X ${product.quantity}`}</p>
-                <p>
-                  {`${product.quantity * product.price} SEK`}
-                </p>
+              <div>
+                <div className="item">
+                  <h5 className="title">{product.title}</h5>
+                  <img className="order-img" src={product.image} alt="" />
+                  <p>{`X ${product.quantity}`}</p>
+                </div>
               </div>
             </div>
           </div>
