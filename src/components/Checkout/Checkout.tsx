@@ -17,7 +17,13 @@ const Checkout =  () => {
   const userContext = useContext(UserContext)
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <div className="checkout-container">
           <div className="details-container">
             <form action="/" style={form}>
@@ -38,14 +44,14 @@ const Checkout =  () => {
                     />
                     <div className="info-container">
                       <p className="order-name">{productValue.title}</p>
-                      <p className="order-qty">{"Size: " + productValue.size}</p>
+                      <p className="order-qty">
+                        {"Size: " + productValue.size}
+                      </p>
                       <div className="price-holder">
                         <div>
                           <AddCircleIcon
                             className="amount-icons"
-                            onClick={() =>
-                              cartContext.addToCart(productValue)
-                            }
+                            onClick={() => cartContext.addToCart(productValue)}
                           />
                           <RemoveCircleIcon
                             className="amount-icons"
@@ -56,16 +62,12 @@ const Checkout =  () => {
                         </div>
                         <p className="order-qty">{`X ${productValue.quantity}`}</p>
                         <p className="order-price">
-                          {`${
-                            productValue.quantity * productValue.price
-                          } SEK`}
+                          {`${productValue.quantity * productValue.price} SEK`}
                         </p>
                       </div>
                     </div>
                     <CloseIcon
-                      onClick={() =>
-                        cartContext.removeFromCart(productValue)
-                      }
+                      onClick={() => cartContext.removeFromCart(productValue)}
                       style={{
                         ...cursorPointer,
                         fontSize: "2rem",
@@ -80,20 +82,37 @@ const Checkout =  () => {
               <p>{Math.round(cartContext.totalAmount * 0.2) + " SEK"}</p>
             </div>
             <div className="total-amount-container">
+              <strong className="total-amount">Delivary:</strong>
+              <p>{userContext.shippingPriceState + " SEK"}</p>
+            </div>
+            <div className="total-amount-container">
               <strong className="total-amount">Total Amount:</strong>
-              <p>{cartContext.totalAmount + " SEK"}</p>
+              <p>{cartContext.totalAmount + userContext.shippingPriceState + " SEK"}</p>
             </div>
           </div>
+        </div>
+        {userContext.shopState ? (
+          <Link
+            to="/orderview"
+            style={{ textDecoration: "none", zIndex: 1, margin: "2rem 0rem" }}
+          >
+            <Button
+              onClick={userContext.shopStateFalse}
+              variant="contained"
+              style={btnMedium}
+            >
+              {" "}
+              Confirm Order
+            </Button>
+          </Link>
+        ) : (
+          <Button variant="contained" style={inactiveBtn}>
+            {" "}
+            Confirm Order
+          </Button>
+        )}
       </div>
-      {userContext.shopState?
-      <Link to="/orderview" style={{textDecoration: 'none', zIndex: 1, margin: "2rem 0rem"}}>
-        <Button onClick={userContext.shopStateFalse} variant="contained" style={btnMedium}> Confirm Order</Button>
-      </Link>
-      : 
-        <Button variant="contained" style={inactiveBtn}> Confirm Order</Button>
-      }
-  </div>
-  );
+    );
 }
 
 const form: CSSProperties = {
