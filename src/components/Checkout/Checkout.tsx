@@ -37,11 +37,13 @@ const Checkout =  () => {
               <div className="overflow-scroll-container">
                 {cartContext.cart.map((productValue) => (
                   <div className="order-item">
-                    <img
-                      className="imageStyle"
-                      src={productValue.image}
-                      alt=""
-                    />
+                    <div className="image-holder">
+                      <img
+                        className="imageStyle"
+                        src={productValue.image}
+                        alt=""
+                      />
+                    </div>
                     <div className="info-container">
                       <p className="order-name">{productValue.title}</p>
                       <p className="order-qty">
@@ -60,10 +62,12 @@ const Checkout =  () => {
                             }
                           />
                         </div>
-                        <p className="order-qty">{`X ${productValue.quantity}`}</p>
-                        <p className="order-price">
-                          {`${productValue.quantity * productValue.price} SEK`}
-                        </p>
+                        <div className="order-qty-holder">
+                          <p className="order-qty">{`X ${productValue.quantity}`}</p>
+                          <p className="order-price">
+                            {`${productValue.quantity * productValue.price} SEK`}
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <CloseIcon

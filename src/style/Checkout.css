@@ -120,10 +120,11 @@
 
     /* Order Summary Container */
     .order-container {
-        width: 100%; 
+        width: 100%;
+        padding: 1rem
     }
     .total-amount-container {
-    margin: 2rem 0rem;
+        margin: 2rem 0rem;
     }
     .total-amount{
         font-size: 1.6rem;
@@ -133,6 +134,15 @@
         height: 100%;
     }
 
+}
+
+@media screen and (max-width: 968px) {
+    .order-name {
+        font-size: 1.2rem;
+    }
+    .order-item {
+        padding: 1rem;
+    }
 }
 
 @media screen and (max-width: 630px){
@@ -150,21 +160,65 @@
         width: 90%;
     }
 
-    .order-container {
-        text-align: center;
+    .image-holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+    }
+
+    .imageStyle {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .order-name {
+        font-size: 0.9rem;
+        font-weight: bold;
     }
 
     .order-qty {
-        font-size: 1.3rem;
+        font-size: 0.9rem;
     }
 
     .order-price {
-        font-size: 1.3rem;
+        font-size: 0.9rem;
+    }
+
+    .price-holder {
+        height: 4rem;
     }
 
     .total-amount-container{
         display: flex;
         flex-direction: column;
         text-align: center;
+    }
+    .total-amount-container strong {
+        font-size: 1.2rem;;
+    }
+
+    .total-amount-container p {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .order-list h2 {
+        font-size: 1.5rem;
+    }
+    .imageStyle {
+        display: none;
+    }
+
+    .info-container {
+        width: 100%;
+    }
+
+    .order-name,
+    .order-qty,
+    .order-price {
+        font-size: 1rem;
     }
 }

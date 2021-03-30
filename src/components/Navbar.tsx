@@ -42,24 +42,30 @@ class Navbar extends Component<{}, State> {
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
                 to="/products"
+                onClick={this.handleMenuClick}
               >
                 <li>Products</li>
               </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
                 to="/about"
+                onClick={this.handleMenuClick}
               >
                 <li>About</li>
               </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
                 to="/admin"
+                onClick={this.handleMenuClick}
               >
                 <li style={adminBtn}>Admin</li>
               </Link>
             </ul>
             <div className="cart-container">
-              <Link to="/checkout" style={{ color: "#333" }}>
+              <Link 
+                to="/checkout" 
+                style={{ color: "#333" }}
+                >
                 <ShoppingCartOutlinedIcon style={{ fontSize: "1.5rem" }} />
               </Link>
               <div className="cart-content">{this.context.cart.length}</div>

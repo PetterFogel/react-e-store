@@ -76,7 +76,7 @@ nav {
     .nav-links {
         position: fixed;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         background: #fff;
         z-index: 200;
@@ -86,7 +86,6 @@ nav {
         transition: right 500ms ease-in;
     }
     .nav-links li {
-        
         font-size: 1.5rem;
         margin: 1.5rem 0rem;
     }
