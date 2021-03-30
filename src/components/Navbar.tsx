@@ -4,7 +4,6 @@ import '../style/Navbar.css'
 import { CartContext } from '../contexts/CartContext'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import BurgerMenu from './BurgerMenu';
-import { CSSProperties } from '@material-ui/styles';
 import { Avatar } from '@material-ui/core';
 
 
@@ -77,10 +76,11 @@ class Navbar extends Component<{}, State> {
                 color: "#000",
               }}
               to="/admin"
-              onClick={this.handleMenuClick}
+              onClick={this.handleBurgerMenuExit}
             >
               <Avatar
                 style={{ background: "#333", marginBottom: ".5rem" }}
+                
                 src=""
               />
             </Link>
@@ -99,9 +99,5 @@ class Navbar extends Component<{}, State> {
       );
     }
 }
-
-const adminBtn: CSSProperties = {
-  background: "#56EAC6",
-};
 
 export default Navbar

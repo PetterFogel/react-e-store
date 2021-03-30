@@ -1,4 +1,4 @@
-import React, { Component, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from '@material-ui/core'
 import { btnMedium } from '../../style/GeneralStyle'
 import { inactiveBtn } from '../../style/GeneralStyle'
@@ -7,9 +7,6 @@ import '../../style/productItem.css'
 import { Product } from "../../data/productData";
 import { AdminContext } from "../../contexts/AdminContext";
 import { useRouteMatch } from "react-router";
-
-
-
 
 const ProductItem = () => {
 

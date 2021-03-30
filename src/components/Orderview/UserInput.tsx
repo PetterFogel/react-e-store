@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import "../../style/cartItems.css";
 import { Guid } from 'js-guid';
-import Creditcard from "../Checkout/Accordian/PaymentMethods/Creditcard";
 import { CartContext } from "../../contexts/CartContext";
 
 
