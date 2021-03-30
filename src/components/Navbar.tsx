@@ -27,10 +27,19 @@ class Navbar extends Component<{}, State> {
       })
     }
 
+    handleBurgerMenuExit = () => {
+      this.setState({
+        isMenuOpen: false
+      })
+    }
+
     render() {
       return (
         <header className="main-header">
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link 
+            style={{ textDecoration: "none" }} to="/"
+            onClick={this.handleBurgerMenuExit}
+            >
             <h2 className="header-title">ShoeWay</h2>
           </Link>
           <nav>
@@ -72,7 +81,7 @@ class Navbar extends Component<{}, State> {
               />
             </Link>
             <div className="cart-container">
-              <Link to="/checkout" style={{ color: "#333" }}>
+              <Link to="/checkout" style={{ color: "#333" }} onClick={this.handleBurgerMenuExit}>
                 <ShoppingCartOutlinedIcon style={{ fontSize: "2rem" }} />
               </Link>
               <div className="cart-content">{this.context.cart.length}</div>
