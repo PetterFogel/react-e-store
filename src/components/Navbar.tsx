@@ -49,7 +49,11 @@ class Navbar extends Component<{}, State> {
                 right: this.state.isMenuOpen ? "0%" : "-100%",
               }}
             >
-              <Link style={{ textDecoration: "none", color: "#000" }} to="/">
+              <Link 
+                style={{ textDecoration: "none", color: "#000" }} 
+                to="/"
+                onClick={this.handleMenuClick}
+                >
                 <li>Home</li>
               </Link>
               <Link
