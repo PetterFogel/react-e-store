@@ -26,7 +26,7 @@ function AdminHandler() {
               style={adminIcons}
               onClick={() => admin.removeItem(product)}
             />
-            <Link to={"/editProduct"}>
+            <Link to={"/editProduct/" + product.title}>
               <CreateOutlinedIcon
                 style={adminIcons}
               />
