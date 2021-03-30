@@ -14,6 +14,7 @@ const UserInput = () =>{
     return (
       <div>
         <div className="orderView-container">
+
           <div className="orderlisting-div1">
             <div className="order-listings">
               <h5>Name:</h5>
@@ -32,6 +33,7 @@ const UserInput = () =>{
               <p>{user.adress}</p>
             </div>
           </div>
+
           <div className="orderlistings-div2">
             <div className="order-listings">
               <h5>Zip-Code:</h5>
@@ -50,8 +52,9 @@ const UserInput = () =>{
               <p>{Guid.newGuid().toString()}</p>
             </div>
           </div>
+
         </div>
-        <div className="order-listings">
+        <div className="total-price">
           <h5>Total price</h5>
           {`${user.shippingPriceState + cart.orderAmount} SEK`}
         </div>
