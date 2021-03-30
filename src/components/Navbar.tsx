@@ -5,6 +5,7 @@ import { CartContext } from '../contexts/CartContext'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import BurgerMenu from './BurgerMenu';
 import { CSSProperties } from '@material-ui/styles';
+import { Avatar } from '@material-ui/core';
 
 
 
@@ -39,6 +40,9 @@ class Navbar extends Component<{}, State> {
                 right: this.state.isMenuOpen ? "0%" : "-100%",
               }}
             >
+              <Link style={{ textDecoration: "none", color: "#000" }} to="/">
+                <li>Home</li>
+              </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
                 to="/products"
@@ -53,20 +57,23 @@ class Navbar extends Component<{}, State> {
               >
                 <li>About</li>
               </Link>
-              <Link
-                style={{ textDecoration: "none", color: "#000" }}
-                to="/admin"
-                onClick={this.handleMenuClick}
-              >
-                <li style={adminBtn}>Admin</li>
-              </Link>
             </ul>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "#000",
+              }}
+              to="/admin"
+              onClick={this.handleMenuClick}
+            >
+              <Avatar
+                style={{ background: "#333", marginBottom: ".5rem" }}
+                src=""
+              />
+            </Link>
             <div className="cart-container">
-              <Link 
-                to="/checkout" 
-                style={{ color: "#333" }}
-                >
-                <ShoppingCartOutlinedIcon style={{ fontSize: "1.5rem" }} />
+              <Link to="/checkout" style={{ color: "#333" }}>
+                <ShoppingCartOutlinedIcon style={{ fontSize: "2rem" }} />
               </Link>
               <div className="cart-content">{this.context.cart.length}</div>
             </div>
@@ -81,11 +88,7 @@ class Navbar extends Component<{}, State> {
 }
 
 const adminBtn: CSSProperties = {
-  margin: "-.5rem 1rem",
   background: "#56EAC6",
-  padding: ".5rem 2rem",
-  borderRadius: "2rem",
-  color: "#fff",
 };
 
 export default Navbar
