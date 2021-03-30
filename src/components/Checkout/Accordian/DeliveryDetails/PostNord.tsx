@@ -7,16 +7,17 @@ const PostNord = () => {
     const value = useContext(UserContext)
 
     const clickCallback = () => {
-      value.addDelivery('Postnord', 3, 1)
+      value.addDelivery('Postnord', 3, 1, 0)
       value.filledState(true)
     }
 
     return (
       <div onClick={clickCallback}>
-            <div className="delivery-div">
-              <strong>Postnord</strong>
-              <span> 2 - 3 Days</span>
-            </div>
+        <div className="delivery-div">
+          <strong className="company">Postnord</strong>
+          <span> 2 - 3 Days</span>
+          <span>gratis</span>
+        </div>
       </div>
     );
 }

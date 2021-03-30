@@ -1,29 +1,32 @@
 .orderView-container { 
     display: flex;
-    justify-content: center;
-    width: 30rem;
-    height: 100%;
-}
-.orderProduct-container {
-    width: 30rem;
-}
-
-.order-div {
-    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
-    margin: 1rem;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
 }
 
-.orderlisting-div {
-    height: 10rem;
-    width: 25rem;
+.orderlisting-div1 {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+     
+}
+.orderlisting-div2 {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;   
 }
 
 .order-listings {
-    width: 12rem;
-    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem 0rem;
 }
 
 .order-cart {
@@ -32,21 +35,61 @@
     justify-content: space-between;
 }
 
+
+/* The product*/
+
+.orderinfo-item {
+ padding: .5rem;
+}
+.title{
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
 .order-img {
-    width: 4rem;
-    height: 4rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    align-self: center;
 }
 .orderInfo-item {
     display: flex;
-    justify-content: space-between;
-    background: #fff;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
+}
+.quantity{
+    text-align: center;
     margin-bottom: .5rem;
 }
-
-.orderPrice {
+.item {
     display: flex;
-    justify-content: space-between;
-    width: 25rem;
-    align-items: flex-end;
+    width: 100%;
+    margin: 0rem auto;
+    justify-content: center;
+    flex-direction: column;
+}
+.total-price{
+    text-align: center;
+}
+
+
+@media screen and (max-width: 1380px){
+
+    .orderView-container { 
+
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+    
+}
+
+@media screen and (max-width: 630px){
+
+.orderlisting-div { 
+         width: 100%;
+    }
+    
 }

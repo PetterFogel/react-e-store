@@ -5,6 +5,7 @@ import { CartContext } from '../contexts/CartContext'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import BurgerMenu from './BurgerMenu';
 import { CSSProperties } from '@material-ui/styles';
+import { Avatar } from '@material-ui/core';
 
 
 
@@ -26,10 +27,19 @@ class Navbar extends Component<{}, State> {
       })
     }
 
+    handleBurgerMenuExit = () => {
+      this.setState({
+        isMenuOpen: false
+      })
+    }
+
     render() {
       return (
         <header className="main-header">
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link 
+            style={{ textDecoration: "none" }} to="/"
+            onClick={this.handleBurgerMenuExit}
+            >
             <h2 className="header-title">ShoeWay</h2>
           </Link>
           <nav>
@@ -39,22 +49,40 @@ class Navbar extends Component<{}, State> {
                 right: this.state.isMenuOpen ? "0%" : "-100%",
               }}
             >
+              <Link style={{ textDecoration: "none", color: "#000" }} to="/">
+                <li>Home</li>
+              </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
                 to="/products"
+                onClick={this.handleMenuClick}
               >
                 <li>Products</li>
               </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
-                to="/admin"
+                to="/about"
+                onClick={this.handleMenuClick}
               >
-                <li style={adminBtn}>Admin</li>
+                <li>About</li>
               </Link>
             </ul>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "#000",
+              }}
+              to="/admin"
+              onClick={this.handleMenuClick}
+            >
+              <Avatar
+                style={{ background: "#333", marginBottom: ".5rem" }}
+                src=""
+              />
+            </Link>
             <div className="cart-container">
-              <Link to="/checkout" style={{ color: "#333" }}>
-                <ShoppingCartOutlinedIcon style={{ fontSize: "1.5rem" }} />
+              <Link to="/checkout" style={{ color: "#333" }} onClick={this.handleBurgerMenuExit}>
+                <ShoppingCartOutlinedIcon style={{ fontSize: "2rem" }} />
               </Link>
               <div className="cart-content">{this.context.cart.length}</div>
             </div>
@@ -69,11 +97,7 @@ class Navbar extends Component<{}, State> {
 }
 
 const adminBtn: CSSProperties = {
-  margin: "-.5rem 1rem",
   background: "#56EAC6",
-  padding: ".5rem 2rem",
-  borderRadius: "2rem",
-  color: "#fff",
 };
 
 export default Navbar

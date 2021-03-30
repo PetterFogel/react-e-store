@@ -7,7 +7,7 @@ import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
-
+import About from './About';
 
 function MainContent() {
 
@@ -29,15 +29,18 @@ function MainContent() {
           <Route path="/orderview">
             <OrderView />
           </Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route path="/admin">
             <AdminPage />
           </Route>
           <Route path="/addNewProduct">
             <AddNewProduct title="Add new product" btnText="Add" />
           </Route>
-            <Route path={"/editProduct/:id"}>
-              <AddNewProduct title='Edit product' btnText='Save'/>
-            </Route>
+          <Route path={"/editProduct/:id"}>
+            <AddNewProduct title='Edit product' btnText='Save'/>
+           </Route>
         </Switch>
       </main>
     );
