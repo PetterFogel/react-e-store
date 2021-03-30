@@ -5,16 +5,15 @@ import { btnSmall } from "../../../style/GeneralStyle";
 import '../../../style/Admin.css';
 import { Product } from '../../../data/productData';
 import { AdminContext } from '../../../contexts/AdminContext';
+import { useRouteMatch } from 'react-router';
 
 interface Props {
   title: string, 
   btnText: string
-  currentProduct?: Product
 }
 
 const AddNewProduct = (props: Props) => {
-  // const match = useRouteMatch<{ id: string }>();
-  // match.params.id
+  const match = useRouteMatch<{ id: string }>();
 
   const newProductData: Product = {
     title: "",
@@ -24,16 +23,18 @@ const AddNewProduct = (props: Props) => {
     quantity: 1, 
     size: 0
   };
-  
   const admin = useContext(AdminContext)
-  const [product, setProduct] = useState<Product>(props.currentProduct || newProductData)
+
+  let currentProduct: Product = admin.products.find((specificProduct: { title: string; }) => specificProduct.title === match.params.id)
+
+  const [product, setProduct] = useState<Product>(currentProduct || newProductData)
 
     const handleClick = () => {
-      const isNewProduct = !props.currentProduct
+      const isNewProduct = !currentProduct
       if(isNewProduct) {
         admin.addNewProduct(product)
       } else {
-        admin.submitAll(product, props.currentProduct)
+        admin.submitAll(product, currentProduct)
       }
     }
 

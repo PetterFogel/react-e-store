@@ -12,7 +12,7 @@ const Item = (props: Props) => {
         <h2 className="title">{props.product.title}</h2>
         <img className="product-image" src={props.product.image} alt=""/>
         <h4 className="price">{props.product.price + " sek"}</h4>
-        <Link to={"/" + props.product.title}>
+        <Link to={"/productItem/" + props.product.title}>
           <button className="add-btn">
             More info...
           </button>

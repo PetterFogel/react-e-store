@@ -1,19 +1,15 @@
-import { useContext } from 'react';
 import '../../style/Main.css'
 import Startpage from './Startpage';
 import ProductPage from './ProductPage';
 import { Route, Switch } from 'react-router';
 import ProductItem from './ProductItem';
-import { Product } from '../../data/productData'
 import Checkout from '../Checkout/Checkout';
 import OrderView from '../Orderview/OrderView';
 import AdminPage from './Admin/AdminPage';
 import AddNewProduct from './Admin/AddNewProduct';
-import { AdminContext } from '../../contexts/AdminContext';
 import About from './About';
 
 function MainContent() {
-  const admin = useContext(AdminContext) 
 
     return (
       <main>
@@ -24,11 +20,9 @@ function MainContent() {
           <Route path="/products">
             <ProductPage />
           </Route>
-          {admin.products.map((product: Product) => (
-            <Route path={"/" + product.title} key={product.title}>
-              <ProductItem product={product} />
+            <Route path={"/productItem/:id"}>
+              <ProductItem />
             </Route>
-          ))}
           <Route path="/checkout">
             <Checkout />
           </Route>
@@ -44,15 +38,9 @@ function MainContent() {
           <Route path="/addNewProduct">
             <AddNewProduct title="Add new product" btnText="Add" />
           </Route>
-          {admin.products.map((product: Product) => (
-            <Route path={"/editProduct"}>
-              <AddNewProduct
-                title="Edit product"
-                btnText="Save"
-                currentProduct={product}
-              />
-            </Route>
-          ))}
+          <Route path={"/editProduct/:id"}>
+            <AddNewProduct title='Edit product' btnText='Save'/>
+           </Route>
         </Switch>
       </main>
     );

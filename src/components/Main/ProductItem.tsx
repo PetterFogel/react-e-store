@@ -1,75 +1,69 @@
-import React, { Component } from "react";
+import React, { Component, useContext, useState } from "react";
 import { Button } from '@material-ui/core'
 import { btnMedium } from '../../style/GeneralStyle'
 import { inactiveBtn } from '../../style/GeneralStyle'
 import { CartContext } from "../../contexts/CartContext";
 import '../../style/productItem.css'
 import { Product } from "../../data/productData";
+import { AdminContext } from "../../contexts/AdminContext";
+import { useRouteMatch } from "react-router";
 
-interface Props {
-  product: Product 
-}
 
-interface State {
-  isSize: boolean
-}
 
-class ProductItem extends Component<Props, State> {
-  
-  state: State = {
-    isSize: false
+
+const ProductItem = () => {
+
+  const match = useRouteMatch<{ id: string }>();
+  const cart = useContext(CartContext)
+  const admin = useContext(AdminContext)
+  let currentProduct: Product = admin.products.find((specificProduct: { title: string; }) => specificProduct.title === match.params.id)
+  const [isSize, setSize] = useState(false)
+
+  const handleClick = (size: number) => {
+   currentProduct.size = size
+    setSize(!isSize)
   }
-
-
-  context!: React.ContextType<typeof CartContext>
-  static contextType = CartContext;
-  
-  handleClick = (size: number) => {
-    this.props.product.size = size
-    this.setState({isSize: true})
-  }
-
-  render() {
+  console.log(currentProduct)
     return (
       <div className="productitem-container">
         <div className="image-div">
           <img
             className="image-style"
-            src={this.props.product.image}
+            src={currentProduct.image}
             alt=""
           />
         </div>
         <div className="product-div">
-          <h2>{this.props.product.title}</h2>
+          <h2>{currentProduct.title}</h2>
           <div className="product-info">
             <div style={{ margin: "2rem 0" }}>
               <h4>Price</h4>
-              <p>{this.props.product.price + " sek"}</p>
+              <p>{currentProduct.price + " sek"}</p>
             </div>
             <div style={{ margin: "2rem 0" }}>
               <h4>Info</h4>
               <p>
-                {this.props.product.info}
+                {currentProduct.info}
               </p>
             </div>
             <div className="sizes">
-              <div className="size" onClick={() => this.handleClick(36)}><p>36</p></div>
-              <div className="size" onClick={() => this.handleClick(37)}><p>37</p></div>
-              <div className="size" onClick={() => this.handleClick(38)}><p>38</p></div>
-              <div className="size" onClick={() => this.handleClick(39)}><p>39</p></div>
-              <div className="size" onClick={() => this.handleClick(40)}><p>40</p></div>
-              <div className="size" onClick={() => this.handleClick(41)}><p>41</p></div>
-              <div className="size" onClick={() => this.handleClick(42)}><p>42</p></div>
-              <div className="size" onClick={() => this.handleClick(43)}><p>43</p></div>
-              <div className="size" onClick={() => this.handleClick(44)}><p>44</p></div>
+              <div className="size" onClick={() => handleClick(36)}><p>36</p></div>
+              <div className="size" onClick={() => handleClick(37)}><p>37</p></div>
+              <div className="size" onClick={() => handleClick(38)}><p>38</p></div>
+              <div className="size" onClick={() => handleClick(39)}><p>39</p></div>
+              <div className="size" onClick={() => handleClick(40)}><p>40</p></div>
+              <div className="size" onClick={() => handleClick(41)}><p>41</p></div>
+              <div className="size" onClick={() => handleClick(42)}><p>42</p></div>
+              <div className="size" onClick={() => handleClick(43)}><p>43</p></div>
+              <div className="size" onClick={() => handleClick(44)}><p>44</p></div>
             </div>
           </div>
 
-          {this.state.isSize? 
+          {isSize? 
           <Button 
             variant="contained" 
             style={btnMedium}
-            onClick={() => this.context.addToCart(this.props.product)}
+            onClick={() => cart.addToCart(currentProduct)}
             >
               Add to cart
           </Button>
@@ -84,7 +78,6 @@ class ProductItem extends Component<Props, State> {
         </div>
       </div>
     );
-  }
 }
 
 export default ProductItem;
