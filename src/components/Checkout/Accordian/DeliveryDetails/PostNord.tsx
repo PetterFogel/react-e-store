@@ -13,11 +13,11 @@ const PostNord = () => {
 
     return (
       <div onClick={clickCallback}>
-            <div className="delivery-div">
-              <strong>Postnord</strong>
-              <span> 2 - 3 Days</span>
-              <span>gratis</span>
-            </div>
+        <div className="delivery-div">
+          <strong className="company">Postnord</strong>
+          <span> 2 - 3 Days</span>
+          <span>gratis</span>
+        </div>
       </div>
     );
 }

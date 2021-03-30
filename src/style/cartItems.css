@@ -1,26 +1,24 @@
 .orderView-container { 
-    background: red;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
+    justify-content: center;
     padding: 1rem;
+    text-align: center;
 }
 
 .orderlisting-div1 {
-    background: blue;
     width: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;   
+     
 }
 .orderlisting-div2 {
     width: 100%;
-    background: green;
-    margin: 1rem auto;
+    
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;   
+    flex-direction: column;   
 }
 
 .order-listings {
@@ -62,6 +60,7 @@
 }
 .quantity{
     text-align: center;
+    margin-bottom: .5rem;
 }
 .item {
     display: flex;
@@ -78,10 +77,10 @@
 @media screen and (max-width: 1380px){
 
     .orderView-container { 
-    background: red;
+
+    text-align: start;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
 }
     

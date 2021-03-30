@@ -12,7 +12,7 @@ const Dhl = () => {
     return (
       <div onClick={clickCallback}>
             <div className="delivery-div">
-              <strong>DHL</strong>
+              <strong className="company">DHL</strong>
               <span> 1 - 3 Days</span>
               <span>29 sek</span>
             </div>

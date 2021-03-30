@@ -2,6 +2,10 @@
 .orderView-section{
     background: white;
     padding: 1rem 0rem ;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
 }
 .order-title {
     text-align: center;
