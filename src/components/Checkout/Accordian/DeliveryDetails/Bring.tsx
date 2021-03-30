@@ -13,11 +13,11 @@ const Bring = () => {
 
     return (
       <div onClick={clickCallback}>
-            <div className="delivery-div">
-              <strong>Bring</strong>
-              <span> 3 - 5 Days</span>
-              <span>39 sek</span>
-            </div>
+        <div className="delivery-div">
+          <strong className="company">Bring</strong>
+          <span> 3 - 5 Days</span>
+          <span>39 sek</span>
+        </div>
       </div>
     );
 }

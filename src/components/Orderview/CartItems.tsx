@@ -16,7 +16,7 @@ class CartItems extends Component {
                 <div className="item">
                   <h5 className="title">{product.title}</h5>
                   <img className="order-img" src={product.image} alt="" />
-                  <p>{`X ${product.quantity}`}</p>
+                  <p className="quantity">{`X ${product.quantity}`}</p>
                 </div>
               </div>
             </div>
