@@ -1,10 +1,4 @@
 import React from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CSSProperties } from "@material-ui/styles";
 import PostNord from "./DeliveryDetails/PostNord";
 import Dhl from "./DeliveryDetails/Dhl";
@@ -13,20 +7,16 @@ import Bring from "./DeliveryDetails/Bring";
 const DelivaryDetails = () => {
     return (
       <div>
-        <Accordion style={form}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+        <div style={form}>
+          <div style={{marginBottom: '1rem'}}>
             Delivery Details
-          </AccordionSummary>
-          <AccordionDetails style={{display: 'flex', flexDirection: 'column'}}>
+          </div>
+          <div style={{display: 'flex', flexDirection: 'column'}}>
             <PostNord/>
             <Bring />
             <Dhl/>
-          </AccordionDetails>
-        </Accordion>
+          </div>
+        </div>
       </div>
     );
 }
@@ -39,6 +29,8 @@ const form: CSSProperties = {
   margin: "1rem 2rem",
   background: "lightgrey",
   fontSize: "1.2rem",
-
+  padding: "1rem 4rem",
+  boxShadow: "1px 1px 3px grey",
+  borderRadius: '.5rem'
 };
 export default DelivaryDetails
