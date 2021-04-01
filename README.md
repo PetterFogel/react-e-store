@@ -2,11 +2,11 @@
 
 I detta projekt har vi skapat en e-handels sida med funktionalitet för att köpa skor. Användaren får gå genom ett antal steg, lägga till produkter i varukorgen, fylla i personuppgifter, fraktsätt och betalsätt i validerings formulär för att sedan få en orderbekräftelse med formuläruppgifterna och levererings datum. Användaren har även möjlighet att ta bort produkter från varukorgen eller öka antalet.  
 
-## [Github-repo](https://github.com/PetterFogel/react-e-store)
-## [Netlify-site](https://shoeway.netlify.app/)
+### [Github-repo](https://github.com/PetterFogel/react-e-store)
+### [Netlify-site](https://shoeway.netlify.app/)
 
-## Design-system [Material-ui](https://material-ui.com/)
-## Bilder på skor fick vi tillåtelse att låna utav [Shelta](https://shelta.se/)
+### Design-system [Material-ui](https://material-ui.com/)
+### Bilder på skor fick vi tillåtelse att låna utav [Shelta](https://shelta.se/)
 
 # Starta Projektet
 
