@@ -36,10 +36,10 @@ function MainContent() {
             <AdminPage />
           </Route>
           <Route path="/addNewProduct">
-            <AddNewProduct title="Add new product" btnText="Add" />
+            <AddNewProduct />
           </Route>
           <Route path={"/editProduct/:id"}>
-            <AddNewProduct title='Edit product' btnText='Save'/>
+            <AddNewProduct />
            </Route>
         </Switch>
       </main>
