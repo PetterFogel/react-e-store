@@ -15,11 +15,6 @@ interface Delivery {
 
 interface State{
   shippingPriceState: number,
-  name: string,
-  adress: string, 
-  phone: string, 
-  email: string, 
-  zip: string,
   user: Customer, 
   delivery: Delivery, 
   company: string, 
@@ -40,12 +35,7 @@ interface ContextProp extends State {
   filledState: (filled: boolean) => void;
 }
 export const UserContext = createContext<ContextProp>({
-  name: "",
   shippingPriceState: 0,
-  adress: "", 
-  phone: '', 
-  email: '',
-  zip: '',
   user: {
     name: "",
     adress: '',
@@ -75,12 +65,7 @@ export const UserContext = createContext<ContextProp>({
 
 export default class UserProvider extends Component<{}, State> {
   state: State = {
-    name: '',
     shippingPriceState: 0,
-    adress: '',
-    phone: '', 
-    email: '',
-    zip: '',
     user: {
       name: '',
       adress: '',
@@ -114,16 +99,16 @@ export default class UserProvider extends Component<{}, State> {
     this.setState({ user: { ...this.state.user, name: event.target.value } });
   };
   addAdressToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({adress: event.target.value});
+    this.setState({ user: { ...this.state.user, adress: event.target.value } });
   };
   addPhoneToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({phone: event.target.value});
+    this.setState({ user: { ...this.state.user, phone: event.target.value } });
   };
   addEmailToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({email: event.target.value});
+    this.setState({ user: { ...this.state.user, email: event.target.value } });
   };
   addZipToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({zip: event.target.value});
+    this.setState({ user: { ...this.state.user, zip: event.target.value } });
   };
   addDeliveryToState = (deliverCompany: string, randomDay: number, addNumber: number, shippingPrice: number) => {
     let today = new Date();
@@ -144,28 +129,28 @@ export default class UserProvider extends Component<{}, State> {
     event.preventDefault();
     const newCustomer = {
       name: this.state.user.name,
-      adress: this.state.adress, 
-      phone: this.state.phone, 
-      email: this.state.email,
-      zip: this.state.zip
+      adress: this.state.user.adress, 
+      phone: this.state.user.phone, 
+      email: this.state.user.email,
+      zip: this.state.user.zip
     }
     
     // Name Input 
   if (this.state.user.name !== "") {
 
     // Adress Input
-    if (this.state.adress !== "") {
+    if (this.state.user.adress !== "") {
 
       // Phone Input
-      if (this.state.phone !== "") {
+      if (this.state.user.phone !== "") {
 
         // Email Input
-        if (this.state.email !== "") {
-          if (this.state.email.includes("@")) {
+        if (this.state.user.email !== "") {
+          if (this.state.user.email.includes("@")) {
             event.preventDefault();
             // Zip Input
-            if (this.state.zip !== "") {
-              if (this.state.zip.length < 5 || this.state.zip.length >= 6) {
+            if (this.state.user.zip !== "") {
+              if (this.state.user.zip.length < 5 || this.state.user.zip.length >= 6) {
                 event.preventDefault();
               } else {
                 event.preventDefault();
@@ -183,18 +168,13 @@ export default class UserProvider extends Component<{}, State> {
     return (
       <UserContext.Provider
         value={{
-          name: this.state.name,
           shippingPriceState: this.state.shippingPriceState,
-          adress: this.state.adress, 
-          phone: this.state.phone, 
-          email: this.state.email,
-          zip: this.state.zip,
           user: {
             name: this.state.user.name,
             adress: this.state.user.adress,
             phone: this.state.user.phone,
             email: this.state.user.email,
-            zip: this.state.zip
+            zip: this.state.user.zip
           },
           delivery: {
             company: this.state.company, 

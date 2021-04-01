@@ -1,14 +1,21 @@
 import React, { Component, createContext } from "react";
 
-interface State {
-  CCName: string
-  CCNumber: string
-  Expiration: string
+interface BankCard {
+  CCName: string, 
+  CCNumber: string, 
+  Expiration: string, 
   CVC: string
-  swishNumber: string, 
+}
+
+interface BankPayment {
   bankName: string, 
   clearingNumber: string, 
   accountNumber: string, 
+}
+interface State {
+  bankCard: BankCard
+  bankPayment: BankPayment
+  swishNumber: string, 
   isFilled: boolean
 }
 
@@ -27,14 +34,18 @@ interface ContextProps extends State {
 }
 
 export const PaymentContext = createContext<ContextProps>({
-  CCName: '', 
-  CCNumber: '', 
-  Expiration: '', 
-  CVC: '',
-  swishNumber: '',
-  bankName: '', 
-  clearingNumber: '', 
-  accountNumber: '', 
+  bankCard: {
+    CCName: '', 
+    CCNumber: '', 
+    Expiration: '', 
+    CVC: '',
+  },
+  bankPayment: {
+    bankName: '', 
+    clearingNumber: '', 
+    accountNumber: '',
+  },
+  swishNumber: '', 
   isFilled: false, 
   addCCName: () => {},
   addCCNumber: () => {},
@@ -51,39 +62,43 @@ export const PaymentContext = createContext<ContextProps>({
 
 class PaymentProvider extends Component<{}, State> {
   state: State = { 
-    CCName: '', 
-    CCNumber: '', 
-    Expiration: '', 
-    CVC: '',
+    bankCard: {
+      CCName: '', 
+      CCNumber: '', 
+      Expiration: '', 
+      CVC: '',
+    },
+    bankPayment: {
+      bankName: '', 
+      clearingNumber: '', 
+      accountNumber: '',
+    },
     swishNumber: '', 
-    bankName: '', 
-    clearingNumber: '', 
-    accountNumber: '',
     isFilled: false,
   };
 
   addCCNameToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({CCName: event.target.value});
+    this.setState({ bankCard: { ...this.state.bankCard, CCName: event.target.value } });
   };
   addCCNumberToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({CCNumber: event.target.value});
+    this.setState({ bankCard: { ...this.state.bankCard, CCNumber: event.target.value } });
   };
   addExpirationToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({Expiration: event.target.value});
+    this.setState({ bankCard: { ...this.state.bankCard, Expiration: event.target.value } });
   };
   addCVCToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({CVC: event.target.value});
+    this.setState({ bankCard: { ...this.state.bankCard, CVC: event.target.value } });
   };
 
   addCCInputToObject = () => {
     if(
-      this.state.CCName !== ''
+      this.state.bankCard.CCName !== ''
       &&
-      this.state.CCNumber !== ''
+      this.state.bankCard.CCNumber !== ''
       &&
-      this.state.Expiration !== ''
+      this.state.bankCard.Expiration !== ''
       &&
-      this.state.CVC !== ''
+      this.state.bankCard.CVC !== ''
       ) {
         this.setState({
           isFilled: true
@@ -100,13 +115,13 @@ class PaymentProvider extends Component<{}, State> {
   }
 
   addAccountToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({accountNumber: event.target.value})
+    this.setState({ bankPayment: { ...this.state.bankPayment, accountNumber: event.target.value } });
   }
   addClearingToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({clearingNumber: event.target.value})
+    this.setState({ bankPayment: { ...this.state.bankPayment, clearingNumber: event.target.value } });
   }
   addBanknameToState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({bankName: event.target.value})
+    this.setState({ bankPayment: { ...this.state.bankPayment, bankName: event.target.value } });
   }
 
   addBankInfoToObject = () => {
