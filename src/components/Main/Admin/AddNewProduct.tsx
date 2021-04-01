@@ -7,12 +7,9 @@ import { Product } from '../../../data/productData';
 import { AdminContext } from '../../../contexts/AdminContext';
 import { useRouteMatch } from 'react-router';
 
-interface Props {
-  title: string, 
-  btnText: string
-}
 
-const AddNewProduct = (props: Props) => {
+
+const AddNewProduct = () => {
   const match = useRouteMatch<{ id: string }>();
 
   const newProductData: Product = {
@@ -20,12 +17,11 @@ const AddNewProduct = (props: Props) => {
     image: "",
     price: 0,
     info: "",
-    quantity: 1, 
     size: 0
   };
   const admin = useContext(AdminContext)
 
-  let currentProduct: Product = admin.products.find((specificProduct: { title: string; }) => specificProduct.title === match.params.id)
+  let currentProduct = admin.products.find((specificProduct) => specificProduct.title === match.params.id)
 
   const [product, setProduct] = useState<Product>(currentProduct || newProductData)
 
@@ -53,7 +49,6 @@ const AddNewProduct = (props: Props) => {
     const handleInfo = (e: ChangeEvent<HTMLInputElement>) => {
       setProduct({...product, info: e.target.value})
     }
-
     return (
       <div>
         <div className="container">
@@ -64,7 +59,11 @@ const AddNewProduct = (props: Props) => {
               justifyContent: "center",
             }}
           >
-            <h1 style={title}>{props.title}</h1>
+            {!currentProduct?
+              <h1 style={title}>Add new product</h1>
+              :
+              <h1 style={title}>Edit product</h1>
+            }
             <TextField
               variant="outlined"
               margin="normal"
@@ -115,7 +114,7 @@ const AddNewProduct = (props: Props) => {
             />
             <div style={{ alignSelf: "center" }}>
               <Button onClick={handleClick} style={btnSmall}>
-                {props.btnText}
+                Save
               </Button>
             </div>
           </div>
