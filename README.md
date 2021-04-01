@@ -1,3 +1,35 @@
+# Shoeway
+
+I detta projekt har vi skapat en e-handels sida med funktionalitet för att köpa skor. Användaren får gå genom ett antal steg, lägga till produkter i varukorgen, fylla i personuppgifter, fraktsätt och betalsätt i validerings formulär för att sedan få en orderbekräftelse med formuläruppgifterna och levererings datum. Användaren har även möjlighet att ta bort produkter från varukorgen eller öka antalet.  
+
+[Github-repo](https://github.com/PetterFogel/react-e-store)
+[Netlify-site](https://shoeway.netlify.app/)
+
+Design-system [Material-ui](https://material-ui.com/)
+Bilder på skor fick vi tillåtelse att låna utav [Shelta](https://shelta.se/)
+
+# Starta Projektet
+
+För att utveckla eller inspektera arbetet behöver du köra följande kommandon:
+
+## CD
+
+Först behöver du skriva `cd react-e-store` för att hamna i rätt mapp.
+
+## npm install 
+
+`npm install` behöver köras för att få ned node_modules osv
+
+## npm start 
+
+`npm start` när du väl gjort detta är projektet redo att byggas vidare på och kommer även starta en live-server så du lätt kan följa ditt arbete.
+
+## Bygga projektet
+
+`npm run build` körs för att bundla ihop projektet
+
+# Nedan är övriga kommandon som kommer via create-react-app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
