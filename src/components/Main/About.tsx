@@ -9,10 +9,7 @@ const About = () => {
         <h1 style={title}>About</h1>
         <div className="container">
           <p className="paragraf">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi,
-            temporibus aut! Perferendis, perspiciatis! Dicta eum mollitia fugit
-            magnam praesentium, illo cum, totam assumenda excepturi non
-            voluptatem ipsa eius unde in!
+           Petter Hampus and Oliver are the people behind this site. Pics from Shelta.se
           </p>
           <ul className="iconList">
             <li className="icon">

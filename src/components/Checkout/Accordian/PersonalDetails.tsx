@@ -1,12 +1,9 @@
 import { ChangeEvent, useContext, useState } from "react";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Button,
   TextField,
 } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import { CSSProperties } from "@material-ui/styles";
 import { UserContext } from '../../../contexts/UserContext'
 
@@ -64,116 +61,99 @@ const PersonalDetails = () => {
   }
 
     return (
-      <div>
-        <Accordion style={form}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            Personal Details
-          </AccordionSummary>
-          <AccordionDetails style={form}>
-            <div style={{ display: "flex" }}>
-              <div style={textfieldsDiv}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="name"
-                label="Name"
-                name="name"
-                key="name"
-                type="text"
-                autoComplete="name"
-                autoFocus
-                onChange={handleNameChange}
-                helperText={nameError}
-                error={Boolean(nameError)}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="adress"
-                key="adress"
-                label="Address"
-                name="address"
-                type="text"
-                autoComplete="address"
-                autoFocus
-                onChange={handleAdressChange}
-                helperText={adressError}
-                error={Boolean(adressError)}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="phone"
-                type="tel"
-                label="Phone"
-                name="phone"
-                key="phone"
-                autoComplete="phone"
-                autoFocus
-                onChange={handlePhoneChange}
-                helperText={phoneError}
-                error={Boolean(phoneError)}
-              />
-              </div>
-              <div style={textfieldsDiv}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="email"
-                type="email"
-                label="Email Adress"
-                name="email"
-                key="email"
-                autoComplete="email"
-                autoFocus
-                onChange={handleEmailChange}
-                helperText={emailError}
-                error={Boolean(emailError)}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="zip"
-                label="zip"
-                name="zip"
-                type="number"
-                autoComplete="zip"
-                autoFocus
-                onChange={handleZipChange}
-                helperText={zipError}
-                error={Boolean(zipError)}
-              />
-              </div>
-            </div>
-            <Button
-              type='submit'
-              onClick={user.addToObject}
-              style={btn}
-              variant="contained"
-            >
-              Add
-            </Button>
-          </AccordionDetails>
-        </Accordion>
-      </div>
+      <form style={form}>
+        <div style={{ marginTop: "1rem" }}>Personal Details</div>
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          required
+          id="name"
+          label="Name"
+          name="name"
+          key="name"
+          type="text"
+          autoComplete="name"
+          autoFocus
+          onChange={handleNameChange}
+          helperText={nameError}
+          error={Boolean(nameError)}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          required
+          id="adress"
+          key="adress"
+          label="Address"
+          name="address"
+          type="text"
+          autoComplete="address"
+          autoFocus
+          onChange={handleAdressChange}
+          helperText={adressError}
+          error={Boolean(adressError)}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          required
+          id="phone"
+          type="tel"
+          label="Phone"
+          name="phone"
+          key="phone"
+          autoComplete="phone"
+          autoFocus
+          onChange={handlePhoneChange}
+          helperText={phoneError}
+          error={Boolean(phoneError)}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          required
+          id="email"
+          type="email"
+          label="Email Adress"
+          name="email"
+          key="email"
+          autoComplete="email"
+          autoFocus
+          onChange={handleEmailChange}
+          helperText={emailError}
+          error={Boolean(emailError)}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          required
+          id="zip"
+          label="zip"
+          name="zip"
+          type="number"
+          autoComplete="zip"
+          autoFocus
+          onChange={handleZipChange}
+          helperText={zipError}
+          error={Boolean(zipError)}
+        />
+        <Button
+          type="submit"
+          onClick={user.addToObject}
+          style={btn}
+          variant="contained"
+        >
+          Add
+        </Button>
+      </form>
     );
 }
 
-const textfieldsDiv: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  margin: "0.5rem"
-
-}
 
 const form: CSSProperties = {
   display: "flex",
@@ -183,11 +163,15 @@ const form: CSSProperties = {
   marginBottom: "1rem",
   background: "lightgrey",
   fontSize: "1.2rem",
+  padding: "1rem",
+  width: "20rem",
+  borderRadius: ".5rem",
+  boxShadow: "1px 1px 3px grey",
 };
 
 const btn: CSSProperties = {
   alignSelf: "center",
-  bordeeRadius: "3rem",
+  borderRadius: ".5rem",
   outline: "none",
   fontSize: "1rem",
   background: "#56EAC6",
@@ -196,6 +180,7 @@ const btn: CSSProperties = {
   border: "none",
   cursor: "pointer",
   padding: "1rem",
+  width: '10rem'
 };
 
 export default PersonalDetails

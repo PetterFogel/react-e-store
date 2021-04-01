@@ -3,7 +3,7 @@ import { Product, ProductData } from "../data/productData";
 
 interface State {
   mode: string
-  products: any
+  products: Product[]
 }
 
 interface ContextProps extends State {

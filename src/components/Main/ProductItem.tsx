@@ -13,14 +13,19 @@ const ProductItem = () => {
   const match = useRouteMatch<{ id: string }>();
   const cart = useContext(CartContext)
   const admin = useContext(AdminContext)
-  let currentProduct: Product = admin.products.find((specificProduct: { title: string; }) => specificProduct.title === match.params.id)
+  let currentProduct = admin.products.find((specificProduct) => specificProduct.title === match.params.id)
   const [isSize, setSize] = useState(false)
 
   const handleClick = (size: number) => {
-   currentProduct.size = size
-    setSize(!isSize)
+    //mutera ej statet
+    if(currentProduct) {
+      currentProduct.size = size
+      setSize(!isSize)
+    }
   }
-  console.log(currentProduct)
+  if(!currentProduct) {
+    return <p>Product isnt available</p>
+  }
     return (
       <div className="productitem-container">
         <div className="image-div">
@@ -60,7 +65,7 @@ const ProductItem = () => {
           <Button 
             variant="contained" 
             style={btnMedium}
-            onClick={() => cart.addToCart(currentProduct)}
+            onClick={() => cart.addToCart(currentProduct!)}
             >
               Add to cart
           </Button>
