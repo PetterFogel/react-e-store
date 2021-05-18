@@ -42,9 +42,10 @@ module.exports.addNewProduct = function(req: Request, res: Response) {
 
 module.exports.deleteProduct = function (req: Request, res: Response) {
   const id = req.params.id;
-  Product.findById(id)
+
+  Product.findByIdAndDelete(id)
     .then((result: any) => {
-    res.status(200).json(result);
+    res.status(202).json(result);
     })
     .catch((error: any) => {
     res.status(400).json(error);
@@ -52,5 +53,19 @@ module.exports.deleteProduct = function (req: Request, res: Response) {
 };
 
 module.exports.editProduct = function (req: Request, res: Response) {
-  res.send("edit");
+  const id = req.params.id;
+
+  Product.findByIdAndUpdate(id, {
+    title: req.body.title,
+    price: req.body.price,
+    size: req.body.size,
+    quantity: req.body.quantity,
+    category: req.body.category,
+  })
+    .then((result: any) => {
+      res.status(202).json(result);
+    })
+    .catch((error: any) => {
+      res.status(400).json(error);
+    });
 };
