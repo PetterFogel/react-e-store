@@ -1,21 +1,29 @@
 const Product = require('./Model')
+import { Request, Response } from 'express';
 
-module.exports.getProducts = function(req: any, res: any) {
+module.exports.getProducts = function(req: Request, res: Response) {
     Product.find().sort()
     .then((result: any) => {
       res.status(200).json(result)
       console.log(Product)
     })
-    .catch((err: any) => {
-      console.log(err);
+    .catch((error: any) => {
+      res.status(400).json(error);
     })
 };
 
-module.exports.getSpecific = function(req: any, res: any) {
-  res.send("specific");
+module.exports.getSpecific = function(req: Request, res: Response) {
+  const id = req.params.id;
+  Product.findById(id)
+    .then((result: any) => {
+      res.status(200).json(result)
+    })
+    .catch((error: any) => {
+      res.status(400).json(error)
+    })
 };
 
-module.exports.addNewProduct = function(req: any, res: any) {
+module.exports.addNewProduct = function(req: Request, res: Response) {
   if(req.body){
     if(!req.body.title){
       return res.status(400).json('Cant add product')
@@ -32,10 +40,17 @@ module.exports.addNewProduct = function(req: any, res: any) {
   }
 };
 
-module.exports.deleteProduct = function (req: any, res: any) {
-  res.send("deleted");
+module.exports.deleteProduct = function (req: Request, res: Response) {
+  const id = req.params.id;
+  Product.findById(id)
+    .then((result: any) => {
+    res.status(200).json(result);
+    })
+    .catch((error: any) => {
+    res.status(400).json(error);
+    })
 };
 
-module.exports.editProduct = function (req: any, res: any) {
+module.exports.editProduct = function (req: Request, res: Response) {
   res.send("edit");
 };
