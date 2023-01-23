@@ -7,10 +7,11 @@ import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { AdminContext } from "../../../contexts/AdminContext";
 import { Link } from "react-router-dom";
 import { adminIcons } from "../../../style/GeneralStyle";
+import { routeFactory } from "../../../route-factory/routeFactory";
 
 function AdminHandler() {
   const admin = useContext(AdminContext);
-  
+
   return (
     <div className="admin-handler-container">
       {admin.products.map((product: Product) => (
@@ -18,7 +19,7 @@ function AdminHandler() {
           <img className="imageStyle" src={product.image} alt="of product" />
           <p className="admin-title">{product.title}</p>
           <div className="info-admin-container">
-              <h4 className="admin-price">{`${product.price} SEK`}</h4>
+            <h4 className="admin-price">{`${product.price} SEK`}</h4>
             <p className="admin-info">{product.info}</p>
           </div>
           <div>
@@ -26,10 +27,8 @@ function AdminHandler() {
               style={adminIcons}
               onClick={() => admin.removeItem(product)}
             />
-            <Link to={"/editProduct/" + product.title}>
-              <CreateOutlinedIcon
-                style={adminIcons}
-              />
+            <Link to={routeFactory.adminScreen.editProduct(product.title)}>
+              <CreateOutlinedIcon style={adminIcons} />
             </Link>
           </div>
         </div>
