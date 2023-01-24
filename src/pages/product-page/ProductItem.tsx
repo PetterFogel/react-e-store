@@ -17,7 +17,7 @@ export const ProductItem: FC<Props> = ({ product }) => {
         style={{ textDecoration: "none" }}
       >
         <img
-          className={classes.image}
+          className={classes.listImage}
           src={product.image}
           alt={product.image}
         />

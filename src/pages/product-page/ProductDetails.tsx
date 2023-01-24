@@ -1,14 +1,13 @@
 import { FC, useContext, useState } from "react";
-import { btnMedium } from "../../style/GeneralStyle";
-import { inactiveBtn } from "../../style/GeneralStyle";
 import { CartContext } from "../../contexts/CartContext";
 import { AdminContext } from "../../contexts/AdminContext";
 import { useParams } from "react-router";
-import { Button } from "@mui/material";
-import "./style/productItem.css";
+import { Button, Divider, Typography } from "@mui/material";
+import { productPageStyles } from "./style/productPageStyles";
 
 export const ProductDetails: FC = () => {
   const { id } = useParams();
+  const classes = productPageStyles();
   const cart = useContext(CartContext);
   const admin = useContext(AdminContext);
   let currentProduct = admin.products.find(
@@ -27,65 +26,79 @@ export const ProductDetails: FC = () => {
     return <p>Product isnt available</p>;
   }
   return (
-    <div className="productitem-container">
-      <div className="image-div">
-        <img className="image-style" src={currentProduct.image} alt="" />
+    <div className={classes.detailsRoot}>
+      <div className={classes.detailsImage}>
+        <img
+          className={classes.detailsImageStyle}
+          src={currentProduct.image}
+          alt={currentProduct.image}
+        />
       </div>
-      <div className="product-div">
-        <h2>{currentProduct.title}</h2>
-        <div className="product-info">
-          <div style={{ margin: "2rem 0" }}>
-            <h4>Price</h4>
-            <p>{currentProduct.price + " sek"}</p>
-          </div>
-          <div style={{ margin: "2rem 0" }}>
-            <h4>Info</h4>
-            <p>{currentProduct.info}</p>
-          </div>
-          {/* <div className="sizes">
-            <div className="size" onClick={() => handleClick(36)}>
-              <p>36</p>
-            </div>
-            <div className="size" onClick={() => handleClick(37)}>
-              <p>37</p>
-            </div>
-            <div className="size" onClick={() => handleClick(38)}>
-              <p>38</p>
-            </div>
-            <div className="size" onClick={() => handleClick(39)}>
-              <p>39</p>
-            </div>
-            <div className="size" onClick={() => handleClick(40)}>
-              <p>40</p>
-            </div>
-            <div className="size" onClick={() => handleClick(41)}>
-              <p>41</p>
-            </div>
-            <div className="size" onClick={() => handleClick(42)}>
-              <p>42</p>
-            </div>
-            <div className="size" onClick={() => handleClick(43)}>
-              <p>43</p>
-            </div>
-            <div className="size" onClick={() => handleClick(44)}>
-              <p>44</p>
-            </div>
-          </div> */}
+      <div className={classes.detailsInfo}>
+        <Typography variant={"h3"}>{currentProduct.title}</Typography>
+        <Typography variant={"h3"}>{currentProduct.price} SEK</Typography>
+
+        <Divider />
+
+        <div>
+          <Typography variant={"subtitle1"} mb={0.5}>
+            Product info
+          </Typography>
+          <Typography variant={"subtitle2"}>{currentProduct.info}</Typography>
         </div>
 
-        {isSize ? (
-          <Button
-            variant="contained"
-            style={btnMedium}
-            onClick={() => cart.addToCart(currentProduct!)}
-          >
-            Add to cart
-          </Button>
-        ) : (
-          <Button variant="contained" style={inactiveBtn}>
-            Please choose size
-          </Button>
-        )}
+        <Divider />
+
+        <div>
+          <Typography variant={"subtitle1"} mb={0.5}>
+            Size
+          </Typography>
+          <div className={classes.sizes}>
+            <div className={classes.size} onClick={() => handleClick(36)}>
+              <p>36</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(37)}>
+              <p>37</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(38)}>
+              <p>38</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(39)}>
+              <p>39</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(40)}>
+              <p>40</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(41)}>
+              <p>41</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(42)}>
+              <p>42</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(43)}>
+              <p>43</p>
+            </div>
+            <div className={classes.size} onClick={() => handleClick(44)}>
+              <p>44</p>
+            </div>
+          </div>
+        </div>
+
+        <Divider />
+
+        {/* {isSize ? ( */}
+        <Button
+          variant="contained"
+          size="large"
+          onClick={() => cart.addToCart(currentProduct!)}
+        >
+          Add to cart
+        </Button>
+        {/* ) : ( */}
+        <Button variant="contained" size="large">
+          Please choose size
+        </Button>
+        {/* )} */}
       </div>
     </div>
   );

@@ -20,7 +20,49 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
       gap: theme.spacing(1),
     },
   },
-  image: {
+  listImage: {
     width: "100%",
+  },
+  detailsRoot: {
+    maxWidth: "900px",
+    margin: "auto",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+    },
+  },
+  detailsImage: {
+    flex: "1",
+    paddingRight: theme.spacing(1.5),
+    [theme.breakpoints.down("md")]: {
+      paddingRight: theme.spacing(0),
+    },
+  },
+  detailsImageStyle: {
+    width: "100%",
+  },
+  detailsInfo: {
+    flex: "1",
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(3, 1.5),
+    gap: theme.spacing(2),
+  },
+  sizes: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: theme.spacing(1),
+  },
+  size: {
+    border: "1px solid #ddd",
+    display: "flex",
+    justifyContent: "center",
+    cursor: "pointer",
+    padding: theme.spacing(0.7, 1.8),
+    "&:hover": {
+      background: "#ddd",
+    },
   },
 }));

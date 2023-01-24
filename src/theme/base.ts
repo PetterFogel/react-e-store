@@ -61,12 +61,16 @@ export const theme = createTheme({
       },
     },
     subtitle1: {
-      fontSize: "1.2em",
-      color: "#0A5A7A",
+      color: "#333",
+      fontSize: "0.8rem",
+      letterSpacing: "0.5px",
+      fontWeight: 600,
     },
     subtitle2: {
-      fontSize: "0.8em",
-      color: "#333333",
+      color: "#333",
+      fontSize: "0.8rem",
+      letterSpacing: "0.5px",
+      fontWeight: 600,
     },
   },
   spacing: 10,
@@ -91,8 +95,19 @@ export const theme = createTheme({
       },
       variants: [
         {
-          props: { variant: "contained" },
+          props: { variant: "text" },
           style: { fontWeight: 600, letterSpacing: "1px", borderRadius: "0px" },
+        },
+        {
+          props: { variant: "contained" },
+          style: {
+            fontWeight: 600,
+            letterSpacing: "1px",
+            borderRadius: "0px",
+            background: "#222",
+            color: "#fff",
+            padding: "14px",
+          },
         },
       ],
     },
