@@ -10,7 +10,7 @@ export const ProductList: FC = () => {
   return (
     <div className={classes.listContainer}>
       {productDataList.products.map((product) => (
-        <ProductItem key={product.title} product={product} />
+        <ProductItem key={product.id} product={product} />
       ))}
     </div>
   );

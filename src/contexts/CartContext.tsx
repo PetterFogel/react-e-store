@@ -1,7 +1,8 @@
 import { Component, createContext } from "react";
-import { Product } from "../data/productData";
+import { Product } from "../models/Product";
 
 interface CartItem {
+  id: string;
   title: string;
   info: string;
   price: number;
@@ -17,9 +18,9 @@ interface State {
   orderAmount: number;
 }
 interface ContextProps extends State {
-  addToCart: (product: Product) => void;
-  removeFromCart: (product: CartItem) => void;
-  deleteItemQty: (product: CartItem) => void;
+  addToCart: (product: any) => void;
+  removeFromCart: (product: any) => void;
+  deleteItemQty: (productId: string) => void;
   emptyCart: () => void;
 }
 
@@ -44,7 +45,7 @@ class CartProvider extends Component<any, State> {
     orderAmount: 0,
   };
 
-  addProductToCart = (product: Product) => {
+  addProductToCart = (product: CartItem) => {
     let currentProduct = this.state.cart.find(
       (specificProduct) => specificProduct.title === product.title
     );
@@ -92,9 +93,9 @@ class CartProvider extends Component<any, State> {
     this.setState({ tax: roundedTax });
   };
 
-  deleteItemFromQty = (product: Product) => {
+  deleteItemFromQty = (productId: string) => {
     let currentProduct = this.state.cart.find(
-      (specificProduct) => specificProduct.title === product.title
+      (specificProduct) => specificProduct.id === productId
     );
     if (currentProduct!.quantity === 1) {
       this.removeProductFromCart(currentProduct!);

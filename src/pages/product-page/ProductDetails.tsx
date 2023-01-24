@@ -42,7 +42,7 @@ export const ProductDetails: FC = () => {
             <h4>Info</h4>
             <p>{currentProduct.info}</p>
           </div>
-          <div className="sizes">
+          {/* <div className="sizes">
             <div className="size" onClick={() => handleClick(36)}>
               <p>36</p>
             </div>
@@ -70,7 +70,7 @@ export const ProductDetails: FC = () => {
             <div className="size" onClick={() => handleClick(44)}>
               <p>44</p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {isSize ? (

@@ -61,7 +61,7 @@ const Checkout = () => {
                         <RemoveCircleIcon
                           className="amount-icons"
                           onClick={() =>
-                            cartContext.deleteItemQty(productValue)
+                            cartContext.deleteItemQty(productValue.id)
                           }
                         />
                       </div>

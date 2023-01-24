@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-import { Product } from "../../data/productData";
 import { routeFactory } from "../../route-factory/routeFactory";
 import { productPageStyles } from "./style/productPageStyles";
+import { Product } from "../../models/Product";
 
 interface Props {
   product: Product;

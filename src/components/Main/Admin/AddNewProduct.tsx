@@ -1,21 +1,24 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { btnSmall } from "../../../style/GeneralStyle";
-import { Product } from "../../../data/productData";
 import { AdminContext } from "../../../contexts/AdminContext";
 import { useParams } from "react-router";
 import { Button, TextField } from "@mui/material";
 import { CSSProperties } from "@mui/styles";
+import { Product } from "../../../models/Product";
 import "../../../style/Admin.css";
 
 const AddNewProduct = () => {
   const { id } = useParams();
 
   const newProductData: Product = {
+    id: "",
+    category: "",
     title: "",
     image: "",
     price: 0,
     info: "",
     size: 0,
+    rating: 0,
   };
   const admin = useContext(AdminContext);
 

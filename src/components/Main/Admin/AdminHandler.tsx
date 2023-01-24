@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../../data/productData";
+import { Product } from "../../../models/Product";
 import { useContext } from "react";
 import { adminIcons } from "../../../style/GeneralStyle";
 import { routeFactory } from "../../../route-factory/routeFactory";

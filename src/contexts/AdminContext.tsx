@@ -1,5 +1,6 @@
+import { Product } from "../models/Product";
+import { ProductData } from "../data/productData";
 import { Component, createContext } from "react";
-import { Product, ProductData } from "../data/productData";
 
 interface State {
   mode: string;
