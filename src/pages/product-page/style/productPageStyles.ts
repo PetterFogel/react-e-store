@@ -56,13 +56,22 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     gap: theme.spacing(1),
   },
   size: {
-    border: "1px solid #ddd",
     display: "flex",
-    justifyContent: "center",
     cursor: "pointer",
+    justifyContent: "center",
+    border: "1px solid #ddd",
     padding: theme.spacing(0.7, 1.8),
     "&:hover": {
       background: "#ddd",
     },
+  },
+  activeSize: {
+    display: "flex",
+    cursor: "pointer",
+    border: "1px solid #ddd",
+    justifyContent: "center",
+    background: "#333",
+    color: "#fff",
+    padding: theme.spacing(0.7, 1.8),
   },
 }));

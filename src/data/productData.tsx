@@ -34,7 +34,7 @@ export const ProductData: Product[] = [
     rating: 4,
   },
   {
-    id: "2312312",
+    id: "23122312",
     category: "SHOE",
     title: "Reebok Instapump Fury OG NM",
     info: "Do you wanna stroll around looking light Buzz Lightyear, buy these awesome lightning looking kicks!",

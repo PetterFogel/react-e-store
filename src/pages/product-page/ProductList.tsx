@@ -9,8 +9,8 @@ export const ProductList: FC = () => {
 
   return (
     <div className={classes.listContainer}>
-      {productDataList.products.map((product) => (
-        <ProductItem key={product.id} product={product} />
+      {productDataList.products.map((product, index) => (
+        <ProductItem key={index} product={product} />
       ))}
     </div>
   );

@@ -46,6 +46,7 @@ class CartProvider extends Component<any, State> {
   };
 
   addProductToCart = (product: CartItem) => {
+    console.log(product);
     let currentProduct = this.state.cart.find(
       (specificProduct) => specificProduct.title === product.title
     );

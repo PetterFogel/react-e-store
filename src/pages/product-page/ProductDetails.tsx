@@ -4,85 +4,76 @@ import { AdminContext } from "../../contexts/AdminContext";
 import { useParams } from "react-router";
 import { Button, Divider, Typography } from "@mui/material";
 import { productPageStyles } from "./style/productPageStyles";
-
-const sizes = ["36", "37", "38", "39", "40", "41", "42", "43", "44"];
+import { shoeSizes } from "../../common/constants/shoeSizes";
 
 export const ProductDetails: FC = () => {
   const { id } = useParams();
   const classes = productPageStyles();
   const cart = useContext(CartContext);
   const admin = useContext(AdminContext);
-  let currentProduct = admin.products.find(
+  const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
+
+  const product = admin.products.find(
     (specificProduct) => specificProduct.title === id
   );
-  const [isSize, setSize] = useState(false);
 
-  const handleClick = (size: number) => {
-    //mutera ej statet
-    if (currentProduct) {
-      currentProduct.size = size;
-      setSize(!isSize);
+  const sizeSelectHandler = (size: number) => {
+    if (product) {
+      product.size = size;
+      setSizeValue(size.toString());
     }
   };
-  if (!currentProduct) {
-    return <p>Product isnt available</p>;
-  }
+
+  if (!product) return <p>Product isnt available</p>;
+
   return (
     <div className={classes.detailsRoot}>
       <div className={classes.detailsImage}>
         <img
           className={classes.detailsImageStyle}
-          src={currentProduct.image}
-          alt={currentProduct.image}
+          src={product.image}
+          alt={product.image}
         />
       </div>
       <div className={classes.detailsInfo}>
-        <Typography variant={"h3"}>{currentProduct.title}</Typography>
-        <Typography variant={"h3"}>{currentProduct.price} SEK</Typography>
-
+        <Typography variant={"h3"}>{product.title}</Typography>
+        <Typography variant={"h3"}>{product.price} SEK</Typography>
         <Divider />
-
-        <div>
-          <Typography variant={"subtitle1"} mb={0.5}>
-            Product info
-          </Typography>
-          <Typography variant={"subtitle2"}>{currentProduct.info}</Typography>
-        </div>
-
-        <Divider />
-
         <div>
           <Typography variant={"subtitle1"} mb={0.5}>
             Size
           </Typography>
           <div className={classes.sizes}>
-            {sizes.map((size, index) => (
+            {shoeSizes.map((size, index) => (
               <div
                 key={index}
-                className={classes.size}
-                onClick={() => handleClick(parseInt(size))}
+                className={
+                  size === sizeValue ? classes.activeSize : classes.size
+                }
+                onClick={() => sizeSelectHandler(parseInt(size))}
               >
-                <Typography variant="subtitle1">{size}</Typography>
+                <p>{size}</p>
               </div>
             ))}
           </div>
         </div>
-
         <Divider />
-
-        {/* {isSize ? ( */}
         <Button
           variant="contained"
           size="large"
-          onClick={() => cart.addToCart(currentProduct!)}
+          onClick={() =>
+            cart.addToCart({ ...product, size: parseInt(sizeValue) })
+          }
         >
           Add to cart
         </Button>
-        {/* ) : ( */}
-        <Button variant="contained" size="large">
-          Please choose size
-        </Button>
-        {/* )} */}
+        <Divider />
+        <div>
+          <Typography variant={"subtitle1"} mb={0.5}>
+            Product info
+          </Typography>
+          <Typography variant={"subtitle2"}>{product.info}</Typography>
+        </div>
       </div>
     </div>
   );
