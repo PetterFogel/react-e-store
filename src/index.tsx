@@ -1,6 +1,7 @@
 import { App } from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./theme/base";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
@@ -13,8 +14,6 @@ import "./index.css";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-
-const theme = createTheme({});
 
 root.render(
   <React.StrictMode>
