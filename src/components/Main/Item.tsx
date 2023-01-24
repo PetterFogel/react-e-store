@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Product } from "../../data/productData";
 import { routeFactory } from "../../route-factory/routeFactory";

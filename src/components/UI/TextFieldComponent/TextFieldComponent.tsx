@@ -1,5 +1,5 @@
-import { TextField } from "@material-ui/core";
-import React, { ChangeEvent, FC } from "react";
+import { TextField } from "@mui/material";
+import { ChangeEvent, FC } from "react";
 
 type TextFieldComponentProps = {
   label: string;

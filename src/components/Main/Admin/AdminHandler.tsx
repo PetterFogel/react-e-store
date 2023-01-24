@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { Product } from "../../../data/productData";
-import "../../../style/Checkout.css";
-import "../../../style/Admin.css";
-import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-import { AdminContext } from "../../../contexts/AdminContext";
 import { Link } from "react-router-dom";
+import { Product } from "../../../data/productData";
+import { useContext } from "react";
 import { adminIcons } from "../../../style/GeneralStyle";
 import { routeFactory } from "../../../route-factory/routeFactory";
+import { AdminContext } from "../../../contexts/AdminContext";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
+import "../../../style/Checkout.css";
+import "../../../style/Admin.css";
 
 function AdminHandler() {
   const admin = useContext(AdminContext);
@@ -23,12 +23,12 @@ function AdminHandler() {
             <p className="admin-info">{product.info}</p>
           </div>
           <div>
-            <DeleteOutlinedIcon
+            <DeleteOutlineIcon
               style={adminIcons}
               onClick={() => admin.removeItem(product)}
             />
             <Link to={routeFactory.adminScreen.editProduct(product.title)}>
-              <CreateOutlinedIcon style={adminIcons} />
+              <EditIcon style={adminIcons} />
             </Link>
           </div>
         </div>

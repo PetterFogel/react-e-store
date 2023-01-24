@@ -35,7 +35,7 @@ export const CartContext = createContext<ContextProps>({
   emptyCart: () => {},
 });
 
-class CartProvider extends Component<{}, State> {
+class CartProvider extends Component<any, State> {
   state: State = {
     cart: JSON.parse(localStorage.getItem("Products") || "[]"),
     totalAmount: Number(JSON.parse(localStorage.getItem("TotalAmount") || "0")),
@@ -48,7 +48,10 @@ class CartProvider extends Component<{}, State> {
     let currentProduct = this.state.cart.find(
       (specificProduct) => specificProduct.title === product.title
     );
-    if (currentProduct?.quantity !== undefined && currentProduct.size === product.size) {
+    if (
+      currentProduct?.quantity !== undefined &&
+      currentProduct.size === product.size
+    ) {
       currentProduct.quantity += 1;
       this.setState({});
       const updatedCart = [...this.state.cart];

@@ -1,7 +1,8 @@
 import { App } from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import CartProvider from "./contexts/CartContext";
 import UserProvider from "./contexts/UserContext";
@@ -9,21 +10,28 @@ import PaymentProvider from "./contexts/PaymentContext";
 import AdminProvider from "./contexts/AdminContext";
 import "./index.css";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
+const theme = createTheme({});
+
+root.render(
   <React.StrictMode>
-    <CartProvider>
-      <UserProvider>
-        <PaymentProvider>
-          <AdminProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </AdminProvider>
-        </PaymentProvider>
-      </UserProvider>
-    </CartProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <ThemeProvider theme={theme}>
+      <CartProvider>
+        <UserProvider>
+          <PaymentProvider>
+            <AdminProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </AdminProvider>
+          </PaymentProvider>
+        </UserProvider>
+      </CartProvider>
+    </ThemeProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

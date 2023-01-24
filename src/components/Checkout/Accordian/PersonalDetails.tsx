@@ -1,6 +1,7 @@
+import { Button } from "@mui/material";
+import { CSSProperties } from "@mui/styles";
 import { ChangeEvent, useContext, useState } from "react";
-import { Button } from "@material-ui/core";
-import { CSSProperties } from "@material-ui/styles";
+
 import { UserContext } from "../../../contexts/UserContext";
 import TextFieldComponent from "../../UI/TextFieldComponent/TextFieldComponent";
 

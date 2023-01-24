@@ -1,25 +1,22 @@
-import React from "react";
-import { CSSProperties } from "@material-ui/styles";
-import PostNord from "./DeliveryDetails/PostNord";
+import { CSSProperties } from "react";
 import Dhl from "./DeliveryDetails/Dhl";
 import Bring from "./DeliveryDetails/Bring";
+import PostNord from "./DeliveryDetails/PostNord";
 
 const DelivaryDetails = () => {
-    return (
-      <div>
-        <div style={form}>
-          <div style={{marginBottom: '1rem'}}>
-            Delivery Details
-          </div>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            <PostNord/>
-            <Bring />
-            <Dhl/>
-          </div>
+  return (
+    <div>
+      <div style={form}>
+        <div style={{ marginBottom: "1rem" }}>Delivery Details</div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <PostNord />
+          <Bring />
+          <Dhl />
         </div>
       </div>
-    );
-}
+    </div>
+  );
+};
 
 const form: CSSProperties = {
   display: "flex",
@@ -31,6 +28,6 @@ const form: CSSProperties = {
   fontSize: "1.2rem",
   padding: "1rem 4rem",
   boxShadow: "1px 1px 3px grey",
-  borderRadius: '.5rem'
+  borderRadius: ".5rem",
 };
-export default DelivaryDetails
+export default DelivaryDetails;
