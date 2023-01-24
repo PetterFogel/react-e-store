@@ -70,7 +70,7 @@ export const theme = createTheme({
       color: "#333",
       fontSize: "0.8rem",
       letterSpacing: "0.5px",
-      fontWeight: 600,
+      fontWeight: 400,
     },
   },
   spacing: 10,

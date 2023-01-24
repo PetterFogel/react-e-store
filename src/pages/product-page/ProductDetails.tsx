@@ -5,6 +5,8 @@ import { useParams } from "react-router";
 import { Button, Divider, Typography } from "@mui/material";
 import { productPageStyles } from "./style/productPageStyles";
 
+const sizes = ["36", "37", "38", "39", "40", "41", "42", "43", "44"];
+
 export const ProductDetails: FC = () => {
   const { id } = useParams();
   const classes = productPageStyles();
@@ -54,33 +56,15 @@ export const ProductDetails: FC = () => {
             Size
           </Typography>
           <div className={classes.sizes}>
-            <div className={classes.size} onClick={() => handleClick(36)}>
-              <p>36</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(37)}>
-              <p>37</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(38)}>
-              <p>38</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(39)}>
-              <p>39</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(40)}>
-              <p>40</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(41)}>
-              <p>41</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(42)}>
-              <p>42</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(43)}>
-              <p>43</p>
-            </div>
-            <div className={classes.size} onClick={() => handleClick(44)}>
-              <p>44</p>
-            </div>
+            {sizes.map((size, index) => (
+              <div
+                key={index}
+                className={classes.size}
+                onClick={() => handleClick(parseInt(size))}
+              >
+                <Typography variant="subtitle1">{size}</Typography>
+              </div>
+            ))}
           </div>
         </div>
 
