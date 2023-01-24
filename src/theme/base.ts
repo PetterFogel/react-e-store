@@ -35,22 +35,29 @@ export const theme = createTheme({
       },
     },
     h4: {
-      fontSize: "1.2em",
-      fontWeight: 400,
-      color: "#333333",
-    },
-    h5: {
-      fontSize: "1em",
-      fontWeight: 400,
-      color: "#333333",
-    },
-    h6: {
       fontSize: "0.9em",
       fontWeight: "normal",
       color: "#0A5A7A",
       cursor: "pointer",
       "@media (max-width:600px)": {
         fontSize: "0.8em",
+      },
+    },
+    h5: {
+      fontSize: "0.7rem",
+      fontWeight: 600,
+      color: "#333",
+      letterSpacing: "1px",
+      "@media (max-width:600px)": {
+        fontSize: "0.5rem",
+      },
+    },
+    h6: {
+      fontSize: "0.9rem",
+      fontWeight: 400,
+      color: "#004466",
+      "@media (max-width:600px)": {
+        fontSize: "0.6rem",
       },
     },
     subtitle1: {

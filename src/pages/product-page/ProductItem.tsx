@@ -1,24 +1,31 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Product } from "../../data/productData";
 import { routeFactory } from "../../route-factory/routeFactory";
-import "./style/Products.css";
+import { productPageStyles } from "./style/productPageStyles";
 
 interface Props {
   product: Product;
 }
 export const ProductItem: FC<Props> = ({ product }) => {
+  const classes = productPageStyles();
   return (
-    <div className="product-item">
-      <h2 className="title">{product.title}</h2>
-      <img className="product-image" src={product.image} alt="" />
-      <h4 className="price">{product.price + " sek"}</h4>
-      <Link to={routeFactory.productScreen.productDetails(product.title)}>
-        <Button variant="contained" className="add-btn">
-          More info...
-        </Button>
+    <div>
+      <Link
+        to={routeFactory.productScreen.productDetails(product.title)}
+        style={{ textDecoration: "none" }}
+      >
+        <img
+          className={classes.image}
+          src={product.image}
+          alt={product.image}
+        />
+        <Typography variant="h5" mb={0.2}>
+          {product.title}
+        </Typography>
       </Link>
+      <Typography variant="h6">{product.price + " SEK"}</Typography>
     </div>
   );
 };

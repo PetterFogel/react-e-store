@@ -12,7 +12,7 @@ import About from "../components/Main/About";
 
 export const AppRoutes: FC = () => {
   return (
-    <main style={{ marginTop: "6vh" }}>
+    <main style={{ marginTop: "5vh" }}>
       <Routes>
         <Route path={routeFactory.homeScreen()} element={<HomePage />} />
         <Route

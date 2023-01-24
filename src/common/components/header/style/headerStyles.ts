@@ -6,7 +6,7 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "6vh",
+    height: "5vh",
     padding: "0rem 2rem",
     position: "fixed",
     top: 0,
@@ -14,6 +14,7 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     right: 0,
     zIndex: 99,
     background: "#fff",
+    borderBottom: "1px solid #ddd",
     [theme.breakpoints.down("lg")]: {
       padding: "0rem 1rem",
     },
