@@ -1,21 +1,26 @@
 import { FC } from "react";
-import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
-import { homePageStyles } from "./styles/HomePageStyles";
+import { homePageStyles } from "./style/HomePageStyles";
+import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 export const HomePage: FC = () => {
   const classes = homePageStyles();
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isBreakpointMd = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <div className={classes.root}>
       <div className={classes.introContainer}>
-        <h1 className={classes.headTitle}>Welcome to shoeway</h1>
-        <p className={classes.subTitle}>Quality shoes to match your style</p>
+        <Typography variant="h1">WELCOME TO SHOEWAY</Typography>
+        <Typography variant="h2" mt={2} mb={2}>
+          Quality shoes to match your style
+        </Typography>
         <Button
           onClick={() => navigate("/products")}
+          color="info"
           variant="contained"
-          size="large"
-          className={classes.button}
+          size={isBreakpointMd ? "medium" : "large"}
         >
           Go Shopping
         </Button>

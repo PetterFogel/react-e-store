@@ -1,54 +1,57 @@
 import { FC, useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../../contexts/CartContext";
+import { Typography } from "@mui/material";
 import { BurgerMenu } from "../burger-menu/BurgerMenu";
-import "../../../style/Header.css";
+import { CartContext } from "../../../contexts/CartContext";
+import { homePageStyles } from "./style/headerStyles";
+import { routeFactory } from "../../../route-factory/routeFactory";
 
 export const Header: FC = () => {
+  const classes = homePageStyles();
   const { cart } = useContext(CartContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="main-header">
+    <header className={classes.header}>
       <Link
         style={{ textDecoration: "none" }}
-        to="/"
+        to={routeFactory.homeScreen()}
         onClick={() => setIsMenuOpen(false)}
       >
-        <h2 className="header-title">SHOEWAY</h2>
+        <Typography variant="h3">SHOEWAY</Typography>
       </Link>
-      <nav>
+      <nav className={classes.nav}>
         <ul
-          className="nav-links"
+          className={classes.ul}
           style={{
             right: isMenuOpen ? "0%" : "-100%",
           }}
         >
           <Link
-            className="link"
-            to="/products"
+            className={classes.link}
+            to={routeFactory.productScreen.products()}
             onClick={() => setIsMenuOpen(false)}
           >
             <li className="link">PRODUCTS</li>
           </Link>
           <Link
-            className="link"
-            to="/about"
+            className={classes.link}
+            to={routeFactory.aboutScreen()}
             onClick={() => setIsMenuOpen(false)}
           >
             <li>ABOUT</li>
           </Link>
           <Link
-            className="link"
-            to="/admin"
+            className={classes.link}
+            to={routeFactory.adminScreen.admin()}
             onClick={() => setIsMenuOpen(false)}
           >
             <li>ADMIN</li>
           </Link>
         </ul>
         <Link
-          className="cart-link"
-          to="/checkout"
+          className={classes.cartLink}
+          to={routeFactory.checkoutScreen.checkout()}
           onClick={() => setIsMenuOpen(false)}
         >
           CART({cart.length})

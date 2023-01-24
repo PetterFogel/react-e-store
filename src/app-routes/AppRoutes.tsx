@@ -10,17 +10,9 @@ import OrderView from "../components/Orderview/OrderView";
 import AdminPage from "../components/Main/Admin/AdminPage";
 import AddNewProduct from "../components/Main/Admin/AddNewProduct";
 import About from "../components/Main/About";
-import Background from "../assets/main-bg.jpg";
 
 const useStyles = makeStyles({
-  root: {
-    backgroundImage: `url(${Background})`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    height: "100vh",
-    marginTop: "6vh",
-  },
+  root: { marginTop: "6vh" },
 });
 
 export const AppRoutes: FC = () => {
