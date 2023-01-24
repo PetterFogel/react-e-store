@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { btnMedium } from "../../style/GeneralStyle";
 import { inactiveBtn } from "../../style/GeneralStyle";
 import { CartContext } from "../../contexts/CartContext";
-import "../../style/productItem.css";
 import { AdminContext } from "../../contexts/AdminContext";
 import { useParams } from "react-router";
 import { Button } from "@mui/material";
+import "./style/productItem.css";
 
-const ProductItem = () => {
+export const ProductDetails: FC = () => {
   const { id } = useParams();
   const cart = useContext(CartContext);
   const admin = useContext(AdminContext);
@@ -90,5 +90,3 @@ const ProductItem = () => {
     </div>
   );
 };
-
-export default ProductItem;
