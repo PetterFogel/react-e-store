@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Route, Switch } from "react-router";
-import Startpage from "../components/Main/Startpage";
+import { routeFactory } from "../route-factory/routeFactory";
+import { HomePage } from "../pages/home-page/HomePage";
 import ProductPage from "../components/Main/ProductPage";
 import ProductItem from "../components/Main/ProductItem";
 import Checkout from "../components/Checkout/Checkout";
@@ -10,7 +11,6 @@ import AdminPage from "../components/Main/Admin/AdminPage";
 import AddNewProduct from "../components/Main/Admin/AddNewProduct";
 import About from "../components/Main/About";
 import Background from "../assets/main-bg.jpg";
-import { routeFactory } from "../route-factory/routeFactory";
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +29,7 @@ export const Routes: FC = () => {
     <main className={classes.root}>
       <Switch>
         <Route exact path={routeFactory.homeScreen()}>
-          <Startpage />
+          <HomePage />
         </Route>
         <Route path={routeFactory.productScreen.products()}>
           <ProductPage />
