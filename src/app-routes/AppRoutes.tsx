@@ -4,11 +4,11 @@ import { ProductPage } from "../pages/product-page/ProductPage";
 import { routeFactory } from "../route-factory/routeFactory";
 import { Route, Routes } from "react-router";
 import { ProductDetails } from "../pages/product-page/ProductDetails";
+import { AboutPage } from "../pages/about-page/AboutPage";
 import Checkout from "../components/Checkout/Checkout";
 import OrderView from "../components/Orderview/OrderView";
 import AdminPage from "../components/Main/Admin/AdminPage";
 import AddNewProduct from "../components/Main/Admin/AddNewProduct";
-import About from "../components/Main/About";
 
 export const AppRoutes: FC = () => {
   return (
@@ -33,7 +33,7 @@ export const AppRoutes: FC = () => {
           path={routeFactory.checkoutScreen.orderView()}
           element={<OrderView />}
         />
-        <Route path={routeFactory.aboutScreen()} element={<About />} />
+        <Route path={routeFactory.aboutScreen()} element={<AboutPage />} />
 
         <Route
           path={routeFactory.adminScreen.admin()}
