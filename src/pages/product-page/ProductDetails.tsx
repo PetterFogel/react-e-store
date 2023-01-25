@@ -1,27 +1,22 @@
 import { FC, useContext, useState } from "react";
+import { useParams } from "react-router";
+import { shoeSizes } from "../../common/constants/shoeSizes";
 import { CartContext } from "../../contexts/CartContext";
 import { AdminContext } from "../../contexts/AdminContext";
-import { useParams } from "react-router";
-import { Button, Divider, Typography } from "@mui/material";
 import { productPageStyles } from "./style/productPageStyles";
-import { shoeSizes } from "../../common/constants/shoeSizes";
+import { Button, Divider, Typography } from "@mui/material";
 
 export const ProductDetails: FC = () => {
-  const { id } = useParams();
   const classes = productPageStyles();
-  const cart = useContext(CartContext);
-  const admin = useContext(AdminContext);
+  const { id } = useParams();
+  const { products } = useContext(AdminContext);
+  const { addToCart } = useContext(CartContext);
   const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
 
-  const product = admin.products.find(
-    (specificProduct) => specificProduct.title === id
-  );
+  const product = products.find((product) => product.id === id);
 
   const sizeSelectHandler = (size: number) => {
-    if (product) {
-      product.size = size;
-      setSizeValue(size.toString());
-    }
+    if (product) return setSizeValue(size.toString());
   };
 
   if (!product) return <p>Product isnt available</p>;
@@ -61,9 +56,7 @@ export const ProductDetails: FC = () => {
         <Button
           variant="contained"
           size="large"
-          onClick={() =>
-            cart.addToCart({ ...product, size: parseInt(sizeValue) })
-          }
+          onClick={() => addToCart({ ...product, size: parseInt(sizeValue) })}
         >
           Add to cart
         </Button>

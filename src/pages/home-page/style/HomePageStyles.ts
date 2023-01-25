@@ -7,7 +7,7 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "94vh",
+    height: "95vh",
     width: "100%",
     backgroundImage: `url(${Background})`,
     backgroundPosition: "center",

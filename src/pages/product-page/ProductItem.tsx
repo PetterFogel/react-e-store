@@ -13,7 +13,7 @@ export const ProductItem: FC<Props> = ({ product }) => {
   return (
     <div>
       <Link
-        to={routeFactory.productScreen.productDetails(product.title)}
+        to={routeFactory.productScreen.productDetails(product.id)}
         style={{ textDecoration: "none" }}
       >
         <img

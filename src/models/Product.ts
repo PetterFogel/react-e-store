@@ -7,4 +7,5 @@ export interface Product {
   image: string;
   size: number;
   rating: number;
+  sizes: string[];
 }

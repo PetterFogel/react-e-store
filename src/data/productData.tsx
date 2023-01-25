@@ -11,6 +11,7 @@ export const ProductData: Product[] = [
       "https://shelta.se/pub_images/original/EYT-OACB_1x.jpg?timestamp=1613295294",
     size: 0,
     rating: 3.5,
+    sizes: ["36", "39", "42"],
   },
   {
     id: "213213",
@@ -22,6 +23,7 @@ export const ProductData: Product[] = [
       "https://shelta.se/pub_images/original/NF0A46B3L0E1_1.jpg?timestamp=1612434569",
     size: 0,
     rating: 2,
+    sizes: ["37", "38", "39", "41", "42"],
   },
   {
     id: "45667543",
@@ -32,6 +34,7 @@ export const ProductData: Product[] = [
     image: "https://shelta.se/pub_images/original/CJ1229-300_1.jpg",
     size: 0,
     rating: 4,
+    sizes: ["37", "38", "39", "41", "42", "43"],
   },
   {
     id: "23122312",
@@ -42,6 +45,7 @@ export const ProductData: Product[] = [
     image: "https://shelta.se/pub_images/original/FV1577_1.jpg",
     size: 0,
     rating: 3,
+    sizes: ["36", "37", "38", "39", "41", "42", "44"],
   },
   {
     id: "908123",
@@ -52,6 +56,7 @@ export const ProductData: Product[] = [
     image: "https://shelta.se/pub_images/original/554724-069_1.jpg",
     size: 0,
     rating: 3.5,
+    sizes: ["38", "39", "42"],
   },
   {
     id: "13453445",
@@ -62,6 +67,7 @@ export const ProductData: Product[] = [
     image: "https://shelta.se/pub_images/original/yeezreel.jpg",
     size: 0,
     rating: 2,
+    sizes: ["36", "38", "39", "41", "42"],
   },
   {
     id: "3242342",
@@ -72,6 +78,7 @@ export const ProductData: Product[] = [
     image: "https://shelta.se/pub_images/original/26147073_1.jpg",
     size: 0,
     rating: 5,
+    sizes: ["36", "37", "38", "39", "41", "42", "43", "44"],
   },
   {
     id: "24324343",
@@ -82,5 +89,6 @@ export const ProductData: Product[] = [
     image: "https://shelta.se/pub_images/original/da9612_1.jpg",
     size: 0,
     rating: 4.5,
+    sizes: ["37", "38", "39", "41", "42"],
   },
 ];

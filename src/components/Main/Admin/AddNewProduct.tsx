@@ -19,6 +19,7 @@ const AddNewProduct = () => {
     info: "",
     size: 0,
     rating: 0,
+    sizes: [],
   };
   const admin = useContext(AdminContext);
 
