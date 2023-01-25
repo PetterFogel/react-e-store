@@ -6,7 +6,7 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "5vh",
+    height: "6vh",
     padding: "0rem 2rem",
     position: "fixed",
     top: 0,

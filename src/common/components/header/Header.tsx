@@ -18,7 +18,7 @@ export const Header: FC = () => {
         to={routeFactory.homeScreen()}
         onClick={() => setIsMenuOpen(false)}
       >
-        <Typography variant="h3">SHOEWAY</Typography>
+        <Typography variant="h3">THE MANY SAINTS</Typography>
       </Link>
       <nav className={classes.nav}>
         <ul
