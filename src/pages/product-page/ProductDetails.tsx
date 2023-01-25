@@ -24,11 +24,7 @@ export const ProductDetails: FC = () => {
   return (
     <div className={classes.detailsRoot}>
       <div className={classes.detailsImage}>
-        <img
-          className={classes.detailsImageStyle}
-          src={product.image}
-          alt={product.image}
-        />
+        <img className={classes.detailsImageStyle} src={product.image} alt={product.image} />
       </div>
       <div className={classes.detailsInfo}>
         <Typography variant={"h3"}>{product.title}</Typography>
@@ -42,11 +38,8 @@ export const ProductDetails: FC = () => {
             {shoeSizes.map((size, index) => (
               <div
                 key={index}
-                className={
-                  size === sizeValue ? classes.activeSize : classes.size
-                }
-                onClick={() => sizeSelectHandler(parseInt(size))}
-              >
+                className={size === sizeValue ? classes.activeSize : classes.size}
+                onClick={() => sizeSelectHandler(parseInt(size))}>
                 <p>{size}</p>
               </div>
             ))}
@@ -56,8 +49,7 @@ export const ProductDetails: FC = () => {
         <Button
           variant="contained"
           size="large"
-          onClick={() => addToCart({ ...product, size: parseInt(sizeValue) })}
-        >
+          onClick={() => addToCart({ ...product, size: parseInt(sizeValue) })}>
           Add to cart
         </Button>
         <Divider />

@@ -5,14 +5,14 @@ interface ContextProps {
   products: Product[];
   isLoading: boolean;
   error: string | null;
-  fetchProducts: () => void;
+  fetchProductsHandler: () => void;
 }
 
 export const ProductsContext = createContext<ContextProps>({
   products: [],
   isLoading: false,
   error: null,
-  fetchProducts: () => {},
+  fetchProductsHandler: () => {}
 });
 
 interface Props {
@@ -26,12 +26,10 @@ export const PrdouctsProvider: FC<Props> = ({ children }) => {
 
   const fetchProductsHandler = async () => {
     try {
-      setIsLoading(false);
+      setIsLoading(true);
       setError(null);
 
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASEURL}/shoes`
-      );
+      const response = await fetch(`${process.env.REACT_APP_API_BASEURL}/shoes`);
       const data = await response.json();
 
       setData(data);
@@ -49,12 +47,8 @@ export const PrdouctsProvider: FC<Props> = ({ children }) => {
     products: data,
     isLoading,
     error,
-    fetchProducts: fetchProductsHandler,
+    fetchProductsHandler
   };
 
-  return (
-    <ProductsContext.Provider value={contextValue}>
-      {children}
-    </ProductsContext.Provider>
-  );
+  return <ProductsContext.Provider value={contextValue}>{children}</ProductsContext.Provider>;
 };

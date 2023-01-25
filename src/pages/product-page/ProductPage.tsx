@@ -6,10 +6,10 @@ import { ProductsContext } from "../../contexts/ProductContext";
 
 export const ProductPage: FC = () => {
   const classes = productPageStyles();
-  const { products, isLoading, error, fetchProducts } = useContext(ProductsContext);
+  const { products, isLoading, error, fetchProductsHandler } = useContext(ProductsContext);
 
   useEffect(() => {
-    fetchProducts();
+    fetchProductsHandler();
   }, []);
 
   if (error) return <Typography variant={"h3"}>{error}</Typography>;
