@@ -2,14 +2,14 @@ import { FC, useContext, useState } from "react";
 import { useParams } from "react-router";
 import { shoeSizes } from "../../common/constants/shoeSizes";
 import { CartContext } from "../../contexts/CartContext";
-import { AdminContext } from "../../contexts/AdminContext";
 import { productPageStyles } from "./style/productPageStyles";
 import { Button, Divider, Typography } from "@mui/material";
+import { ProductsContext } from "../../contexts/ProductContext";
 
 export const ProductDetails: FC = () => {
   const classes = productPageStyles();
   const { id } = useParams();
-  const { products } = useContext(AdminContext);
+  const { products } = useContext(ProductsContext);
   const { addToCart } = useContext(CartContext);
   const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
 

@@ -10,6 +10,7 @@ import UserProvider from "./contexts/UserContext";
 import PaymentProvider from "./contexts/PaymentContext";
 import AdminProvider from "./contexts/AdminContext";
 import "./index.css";
+import { PrdouctsProvider } from "./contexts/ProductContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,17 +19,19 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CartProvider>
-        <UserProvider>
-          <PaymentProvider>
-            <AdminProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
-            </AdminProvider>
-          </PaymentProvider>
-        </UserProvider>
-      </CartProvider>
+      <PrdouctsProvider>
+        <CartProvider>
+          <UserProvider>
+            <PaymentProvider>
+              <AdminProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </AdminProvider>
+            </PaymentProvider>
+          </UserProvider>
+        </CartProvider>
+      </PrdouctsProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
