@@ -1,16 +1,18 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
+import { Product } from "../../models/Product";
 import { ProductItem } from "./ProductItem";
-import { AdminContext } from "../../contexts/AdminContext";
 import { productPageStyles } from "./style/productPageStyles";
 
-export const ProductList: FC = () => {
-  const classes = productPageStyles();
-  const productDataList = useContext(AdminContext);
+interface Props {
+  products: Product[];
+}
 
+export const ProductList: FC<Props> = ({ products }) => {
+  const classes = productPageStyles();
   return (
     <div className={classes.listContainer}>
-      {productDataList.products.map((product, index) => (
-        <ProductItem key={index} product={product} />
+      {products.map((product) => (
+        <ProductItem key={product.id} product={product} />
       ))}
     </div>
   );
