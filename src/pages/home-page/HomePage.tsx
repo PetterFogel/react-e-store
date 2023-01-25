@@ -12,7 +12,9 @@ export const HomePage: FC = () => {
   return (
     <div className={classes.root}>
       <div className={classes.introContainer}>
-        <Typography variant="h1">WELCOME TO SHOEWAY</Typography>
+        <Typography variant="h1">
+          WELCOME TO <br /> THE MANY SAINTS
+        </Typography>
         <Typography variant="h2" mt={2} mb={2}>
           Quality shoes to match your style
         </Typography>

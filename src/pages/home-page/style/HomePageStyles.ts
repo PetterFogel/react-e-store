@@ -15,7 +15,7 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     backgroundSize: "cover",
   },
   introContainer: {
-    background: "#00ffa2",
+    background: "#fff",
     padding: "2rem",
     marginBottom: "7rem",
     [theme.breakpoints.down("md")]: {

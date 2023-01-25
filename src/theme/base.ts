@@ -2,11 +2,12 @@ import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   typography: {
+    fontFamily: "'Source Sans Pro', 'sans-serif'",
     h1: {
       fontSize: "4rem",
-      fontWeight: 700,
-      color: "#004466",
-      letterSpacing: "2.5px",
+      fontWeight: 600,
+      color: "#333",
+      letterSpacing: "4px",
       "@media (max-width:900px)": {
         fontSize: "3rem",
       },
@@ -18,7 +19,7 @@ export const theme = createTheme({
     h2: {
       fontSize: "2rem",
       fontWeight: 400,
-      color: "#004466",
+      color: "#333",
       letterSpacing: "1px",
       "@media (max-width:600px)": {
         fontSize: "1.5rem",
@@ -55,7 +56,7 @@ export const theme = createTheme({
     h6: {
       fontSize: "0.9rem",
       fontWeight: 400,
-      color: "#004466",
+      color: "#333",
       "@media (max-width:600px)": {
         fontSize: "0.6rem",
       },
