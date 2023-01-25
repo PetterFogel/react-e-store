@@ -4,8 +4,11 @@ import { makeStyles } from "@mui/styles";
 export const productPageStyles = makeStyles((theme: Theme) => ({
   root: {
     maxWidth: "1400px",
-    margin: "4rem auto",
+    margin: "5rem auto",
     padding: theme.spacing(0, 2),
+    [theme.breakpoints.down("md")]: {
+      margin: "4.5rem auto",
+    },
   },
   listContainer: {
     display: "grid",

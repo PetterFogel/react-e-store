@@ -24,7 +24,6 @@ export const aboutPageStyles = makeStyles((theme: Theme) => ({
   contentImage: {
     flex: 1,
     height: "60vh",
-    background: "red",
     marginBottom: theme.spacing(3),
     [theme.breakpoints.down("md")]: {
       height: "70vh",
