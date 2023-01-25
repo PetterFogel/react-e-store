@@ -1,5 +1,4 @@
 import { Component, createContext } from "react";
-import { Product } from "../models/Product";
 
 interface CartItem {
   id: string;
