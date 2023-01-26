@@ -4,6 +4,7 @@ import { ProductList } from "./ProductList";
 import { productPageStyles } from "./style/productPageStyles";
 import { ProductsContext } from "../../contexts/ProductContext";
 import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
+import { Loader } from "../../common/components/loader/Loader";
 
 export const ProductPage: FC = () => {
   const classes = productPageStyles();
@@ -19,7 +20,7 @@ export const ProductPage: FC = () => {
   return (
     <div className={classes.root}>
       {isLoading ? (
-        <Typography variant={"h3"}>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant={"h2"}>Products</Typography>
