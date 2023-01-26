@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../../models/Product";
-import { useContext } from "react";
-import { adminIcons } from "../../../style/GeneralStyle";
-import { routeFactory } from "../../../route-factory/routeFactory";
-import { AdminContext } from "../../../contexts/AdminContext";
+import { Product } from "../../models/Product";
+import { FC, useContext } from "react";
+import { adminIcons } from "../../style/GeneralStyle";
+import { AdminContext } from "../../contexts/AdminContext";
+import { routeFactory } from "../../route-factory/routeFactory";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import "../../../style/Checkout.css";
-import "../../../style/Admin.css";
+import "./style/Checkout.css";
+import "./style/Admin.css";
 
-function AdminHandler() {
+export const AdminHandler: FC = () => {
   const admin = useContext(AdminContext);
 
   return (
@@ -35,6 +35,4 @@ function AdminHandler() {
       ))}
     </div>
   );
-}
-
-export default AdminHandler;
+};

@@ -1,13 +1,13 @@
-import { ChangeEvent, useContext, useState } from "react";
-import { btnSmall } from "../../../style/GeneralStyle";
-import { AdminContext } from "../../../contexts/AdminContext";
+import { ChangeEvent, FC, useContext, useState } from "react";
+import { Product } from "../../models/Product";
+import { btnSmall } from "../../style/GeneralStyle";
 import { useParams } from "react-router";
-import { Button, TextField } from "@mui/material";
+import { AdminContext } from "../../contexts/AdminContext";
 import { CSSProperties } from "@mui/styles";
-import { Product } from "../../../models/Product";
-import "../../../style/Admin.css";
+import { Button, TextField } from "@mui/material";
+import "./style/Admin.css";
 
-const AddNewProduct = () => {
+export const AddNewProduct: FC = () => {
   const { id } = useParams();
 
   const newProductData: Product = {
@@ -19,7 +19,7 @@ const AddNewProduct = () => {
     info: "",
     size: 0,
     rating: 0,
-    sizes: [],
+    sizes: []
   };
   const admin = useContext(AdminContext);
 
@@ -62,9 +62,8 @@ const AddNewProduct = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
+            justifyContent: "center"
+          }}>
           {!currentProduct ? (
             <h1 style={title}>Add new product</h1>
           ) : (
@@ -131,7 +130,5 @@ const AddNewProduct = () => {
 
 const title: CSSProperties = {
   textAlign: "center",
-  margin: "0rem 1rem",
+  margin: "0rem 1rem"
 };
-
-export default AddNewProduct;
