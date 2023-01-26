@@ -1,4 +1,4 @@
-import { Product } from "../models/Product";
+import { Product } from "../models/product";
 import { ProductData } from "../data/productData";
 import { Component, createContext } from "react";
 
@@ -18,13 +18,13 @@ export const AdminContext = createContext<ContextProps>({
   products: [],
   submitAll: () => {},
   addNewProduct: () => {},
-  removeItem: () => {},
+  removeItem: () => {}
 });
 
 class AdminProvider extends Component<any, State> {
   state: State = {
     mode: "",
-    products: JSON.parse(localStorage.getItem("ProductData") || "[]"),
+    products: JSON.parse(localStorage.getItem("ProductData") || "[]")
   };
 
   removeItemFromData = (product: Product) => {
@@ -63,9 +63,8 @@ class AdminProvider extends Component<any, State> {
           ...this.state,
           submitAll: this.submitEditInput,
           addNewProduct: this.addProductToState,
-          removeItem: this.removeItemFromData,
-        }}
-      >
+          removeItem: this.removeItemFromData
+        }}>
         {this.props.children}
       </AdminContext.Provider>
     );

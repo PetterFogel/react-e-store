@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../models/Product";
+import { Product } from "../../models/product";
 import { FC, useContext } from "react";
 import { adminIcons } from "../../style/GeneralStyle";
 import { AdminContext } from "../../contexts/AdminContext";

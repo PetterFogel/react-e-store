@@ -1,5 +1,5 @@
 import { createContext, FC, ReactNode, useState } from "react";
-import { Product } from "../models/Product";
+import { Product } from "../models/product";
 
 interface ContextProps {
   products: Product[];
@@ -29,7 +29,9 @@ export const PrdouctsProvider: FC<Props> = ({ children }) => {
       setIsLoading(true);
       setError(null);
 
-      const response = await fetch(`${process.env.REACT_APP_API_BASEURL}/shoes`);
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASEURL}/shoes`
+      );
       const data = await response.json();
 
       setData(data);
@@ -50,5 +52,9 @@ export const PrdouctsProvider: FC<Props> = ({ children }) => {
     fetchProductsHandler
   };
 
-  return <ProductsContext.Provider value={contextValue}>{children}</ProductsContext.Provider>;
+  return (
+    <ProductsContext.Provider value={contextValue}>
+      {children}
+    </ProductsContext.Provider>
+  );
 };

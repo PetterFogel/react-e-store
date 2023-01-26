@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useContext, useState } from "react";
-import { Product } from "../../models/Product";
+import { Product } from "../../models/product";
 import { btnSmall } from "../../style/GeneralStyle";
 import { useParams } from "react-router";
 import { AdminContext } from "../../contexts/AdminContext";

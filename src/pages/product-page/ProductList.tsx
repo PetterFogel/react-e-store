@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Product } from "../../models/Product";
+import { Product } from "../../models/product";
 import { ProductItem } from "./ProductItem";
 import { productPageStyles } from "./style/productPageStyles";
 

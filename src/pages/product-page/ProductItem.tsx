@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { Product } from "../../models/product";
 import { Typography } from "@mui/material";
 import { routeFactory } from "../../route-factory/routeFactory";
 import { productPageStyles } from "./style/productPageStyles";
-import { Product } from "../../models/Product";
 
 interface Props {
   product: Product;
@@ -14,8 +14,7 @@ export const ProductItem: FC<Props> = ({ product }) => {
     <div>
       <Link
         to={routeFactory.productScreen.productDetails(product.id)}
-        style={{ textDecoration: "none" }}
-      >
+        style={{ textDecoration: "none" }}>
         <img
           className={classes.listImage}
           src={product.image}
