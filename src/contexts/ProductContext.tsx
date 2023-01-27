@@ -29,7 +29,7 @@ interface Props {
   children: ReactNode;
 }
 
-export const PrdouctsProvider: FC<Props> = ({ children }) => {
+export const ProductsProvider: FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isProductsLoading, setIsProductsLoading] = useState(false);
   const [productsError, setProductsError] = useState<string | null>(null);

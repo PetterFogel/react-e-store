@@ -3,16 +3,16 @@ import { Loader } from "../../common/components/loader/Loader";
 import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
 import { Typography } from "@mui/material";
 import { adminPageStyles } from "./style/adminPageStyles";
-import { ProductsContext } from "../../contexts/ProductContext";
 import { AdminFilterPanel } from "./AdminsFilterPanel";
 import { AdminProductsList } from "./AdminProductsList";
 import { ProductsAddDialog } from "./ProductsAddDialog";
+import { AdminContext } from "../../contexts/AdminContext";
 
 export const AdminPage: FC = () => {
   const classes = adminPageStyles();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { products, isProductsLoading, productsError, fetchProductsHandler } =
-    useContext(ProductsContext);
+    useContext(AdminContext);
 
   useEffect(() => {
     fetchProductsHandler();

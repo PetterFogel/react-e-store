@@ -1,16 +1,16 @@
 import { App } from "./App";
+import { theme } from "./theme/base";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./theme/base";
+import { AdminProvider } from "./contexts/AdminContext";
+import { ProductsProvider } from "./contexts/ProductContext";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import CartProvider from "./contexts/CartContext";
 import UserProvider from "./contexts/UserContext";
 import PaymentProvider from "./contexts/PaymentContext";
-import AdminProvider from "./contexts/AdminContext";
 import "./index.css";
-import { PrdouctsProvider } from "./contexts/ProductContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,7 +19,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <PrdouctsProvider>
+      <ProductsProvider>
         <CartProvider>
           <UserProvider>
             <PaymentProvider>
@@ -31,7 +31,7 @@ root.render(
             </PaymentProvider>
           </UserProvider>
         </CartProvider>
-      </PrdouctsProvider>
+      </ProductsProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

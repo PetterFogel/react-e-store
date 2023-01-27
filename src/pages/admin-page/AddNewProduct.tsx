@@ -3,7 +3,6 @@ import { Product } from "../../models/product";
 import { btnSmall } from "../../style/GeneralStyle";
 import { useParams } from "react-router";
 import { AdminContext } from "../../contexts/AdminContext";
-import { CSSProperties } from "@mui/styles";
 import { Button, TextField } from "@mui/material";
 import "./style/Admin.css";
 
@@ -31,15 +30,6 @@ export const AddNewProduct: FC = () => {
     currentProduct || newProductData
   );
 
-  const handleClick = () => {
-    const isNewProduct = !currentProduct;
-    if (isNewProduct) {
-      admin.addNewProduct(product);
-    } else {
-      admin.submitAll(product, currentProduct);
-    }
-  };
-
   const handleTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setProduct({ ...product, title: e.target.value });
   };
@@ -64,11 +54,7 @@ export const AddNewProduct: FC = () => {
             flexDirection: "column",
             justifyContent: "center"
           }}>
-          {!currentProduct ? (
-            <h1 style={title}>Add new product</h1>
-          ) : (
-            <h1 style={title}>Edit product</h1>
-          )}
+          {!currentProduct ? <h1>Add new product</h1> : <h1>Edit product</h1>}
           <TextField
             variant="outlined"
             margin="normal"
@@ -118,17 +104,10 @@ export const AddNewProduct: FC = () => {
             onChange={handleInfo}
           />
           <div style={{ alignSelf: "center" }}>
-            <Button onClick={handleClick} style={btnSmall}>
-              Save
-            </Button>
+            <Button style={btnSmall}>Save</Button>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-const title: CSSProperties = {
-  textAlign: "center",
-  margin: "0rem 1rem"
 };

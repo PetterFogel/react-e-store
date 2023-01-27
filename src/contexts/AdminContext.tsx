@@ -1,74 +1,96 @@
+import { createContext, FC, ReactNode, useState } from "react";
 import { Product } from "../models/product";
-import { ProductData } from "../data/productData";
-import { Component, createContext } from "react";
+import { productState } from "../common/constants/productState";
+import axios, { AxiosError } from "axios";
 
-interface State {
-  mode: string;
+interface ContextProps {
   products: Product[];
-}
-
-interface ContextProps extends State {
-  submitAll: (product: Product, currentProduct: any) => void;
-  addNewProduct: (newProductData: Product) => void;
-  removeItem: (product: Product) => void;
+  isProductsLoading: boolean;
+  productsError: string | null;
+  fetchProductsHandler: () => void;
+  product: Product;
+  isProductLoading: boolean;
+  productError: string | null;
+  fetchSpecificProductHandler: (productId: string) => void;
 }
 
 export const AdminContext = createContext<ContextProps>({
-  mode: "",
   products: [],
-  submitAll: () => {},
-  addNewProduct: () => {},
-  removeItem: () => {}
+  isProductsLoading: false,
+  productsError: null,
+  product: productState,
+  isProductLoading: false,
+  productError: null,
+  fetchProductsHandler: () => {},
+  fetchSpecificProductHandler: () => {}
 });
 
-class AdminProvider extends Component<any, State> {
-  state: State = {
-    mode: "",
-    products: JSON.parse(localStorage.getItem("ProductData") || "[]")
-  };
-
-  removeItemFromData = (product: Product) => {
-    const cartIndex = this.state.products.indexOf(product);
-    this.state.products.splice(cartIndex, 1);
-    this.setState({ products: this.state.products });
-  };
-
-  submitEditInput = (editedProduct: Product, currentProduct: any) => {
-    const productIndex = this.state.products.indexOf(currentProduct);
-    // eslint-disable-next-line react/no-direct-mutation-state
-    this.state.products[productIndex] = editedProduct;
-    this.setState({ mode: "", products: this.state.products });
-  };
-
-  addProductToState = (newProductData: Product) => {
-    this.state.products.push(newProductData);
-    localStorage.setItem("ProductData", JSON.stringify(this.state.products));
-    this.setState({ products: this.state.products });
-  };
-
-  componentDidMount() {
-    if (JSON.parse(localStorage.getItem("ProductData") || "[]").length === 0) {
-      localStorage.setItem("ProductData", JSON.stringify(ProductData));
-    }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem("ProductData", JSON.stringify(this.state.products));
-  }
-
-  render() {
-    return (
-      <AdminContext.Provider
-        value={{
-          ...this.state,
-          submitAll: this.submitEditInput,
-          addNewProduct: this.addProductToState,
-          removeItem: this.removeItemFromData
-        }}>
-        {this.props.children}
-      </AdminContext.Provider>
-    );
-  }
+interface Props {
+  children: ReactNode;
 }
 
-export default AdminProvider;
+export const AdminProvider: FC<Props> = ({ children }) => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isProductsLoading, setIsProductsLoading] = useState(false);
+  const [productsError, setProductsError] = useState<string | null>(null);
+
+  const [product, setProduct] = useState<Product>(productState);
+  const [isProductLoading, setIsProductLoading] = useState(false);
+  const [productError, setProductError] = useState<string | null>(null);
+
+  const fetchProductsHandler = async () => {
+    try {
+      setIsProductsLoading(true);
+      setProductsError(null);
+
+      const response = await axios(
+        `${process.env.REACT_APP_API_BASEURL}/shoes`
+      );
+
+      setProducts(response.data);
+      setIsProductsLoading(false);
+    } catch (error) {
+      if (error instanceof Error) {
+        const errorMsg = error.message;
+        setIsProductsLoading(false);
+        setProductsError(errorMsg);
+      }
+    }
+  };
+
+  const fetchSpecificProductHandler = async (productId: string) => {
+    try {
+      setIsProductLoading(true);
+      setProductError(null);
+
+      const response = await axios(
+        `${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`
+      );
+
+      setProduct(response.data);
+      setIsProductLoading(false);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setIsProductLoading(false);
+        setProductError(error.message);
+      }
+    }
+  };
+
+  const contextValue: ContextProps = {
+    products,
+    isProductsLoading,
+    productsError,
+    fetchProductsHandler,
+    product,
+    isProductLoading,
+    productError,
+    fetchSpecificProductHandler
+  };
+
+  return (
+    <AdminContext.Provider value={contextValue}>
+      {children}
+    </AdminContext.Provider>
+  );
+};
