@@ -1,12 +1,12 @@
 import { FC, useContext, useEffect, useState } from "react";
+import { Loader } from "../../common/components/loader/Loader";
 import { useParams } from "react-router";
 import { shoeSizes } from "../../common/constants/shoeSizes";
+import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
 import { CartContext } from "../../contexts/CartContext";
+import { ProductsContext } from "../../contexts/ProductContext";
 import { productPageStyles } from "./style/productPageStyles";
 import { Button, Divider, Typography } from "@mui/material";
-import { ProductsContext } from "../../contexts/ProductContext";
-import { Loader } from "../../common/components/loader/Loader";
-import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
 
 export const ProductDetails: FC = () => {
   const classes = productPageStyles();
@@ -64,6 +64,7 @@ export const ProductDetails: FC = () => {
             </div>
             <Divider />
             <Button
+              disabled={product.sizes.length === 0}
               variant="contained"
               color="success"
               size="large"
