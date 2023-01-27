@@ -38,11 +38,7 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     }
   },
   detailsImage: {
-    flex: "1",
-    paddingRight: theme.spacing(1.5),
-    [theme.breakpoints.down("md")]: {
-      paddingRight: theme.spacing(0)
-    }
+    flex: "1"
   },
   detailsImageStyle: {
     width: "100%"

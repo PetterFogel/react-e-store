@@ -6,7 +6,7 @@ import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
 import { CartContext } from "../../contexts/CartContext";
 import { ProductsContext } from "../../contexts/ProductContext";
 import { productPageStyles } from "./style/productPageStyles";
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Divider, Rating, Stack, Typography } from "@mui/material";
 
 export const ProductDetails: FC = () => {
   const classes = productPageStyles();
@@ -44,6 +44,15 @@ export const ProductDetails: FC = () => {
           <div className={classes.detailsInfo}>
             <Typography variant={"h3"}>{product.title}</Typography>
             <Typography variant={"h3"}>{product.price} SEK</Typography>
+            <Stack spacing={1}>
+              <Rating
+                readOnly
+                size="small"
+                precision={0.5}
+                defaultValue={2.5}
+                sx={{ color: "#333" }}
+              />
+            </Stack>
             <Divider />
             <div>
               <Typography variant={"subtitle1"} mb={0.5}>
