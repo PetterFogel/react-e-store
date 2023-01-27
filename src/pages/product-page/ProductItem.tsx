@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Product } from "../../models/product";
 import { Typography } from "@mui/material";
 import { routeFactory } from "../../route-factory/routeFactory";
@@ -10,20 +10,20 @@ interface Props {
 }
 export const ProductItem: FC<Props> = ({ product }) => {
   const classes = productPageStyles();
+  const navigate = useNavigate();
   return (
-    <div>
-      <Link
-        to={routeFactory.productScreen.productDetails(product.id)}
-        style={{ textDecoration: "none" }}>
-        <img
-          className={classes.listImage}
-          src={product.image}
-          alt={product.image}
-        />
-        <Typography variant="h5" mb={0.2}>
-          {product.title}
-        </Typography>
-      </Link>
+    <div
+      onClick={() =>
+        navigate(routeFactory.productScreen.productDetails(product.id))
+      }>
+      <img
+        className={classes.listImage}
+        src={product.image}
+        alt={product.image}
+      />
+      <Typography variant="h5" mb={0.2} sx={{ cursor: "pointer" }}>
+        {product.title}
+      </Typography>
       <Typography variant="h6">{product.price + " SEK"}</Typography>
     </div>
   );

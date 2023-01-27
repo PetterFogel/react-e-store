@@ -7,8 +7,8 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     margin: "5rem auto",
     padding: theme.spacing(0, 2),
     [theme.breakpoints.down("md")]: {
-      margin: "4.5rem auto",
-    },
+      margin: "4.5rem auto"
+    }
   },
   listContainer: {
     display: "grid",
@@ -16,15 +16,16 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(2),
     gap: theme.spacing(2),
     [theme.breakpoints.down("lg")]: {
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "repeat(3, 1fr)"
     },
     [theme.breakpoints.down("md")]: {
       gridTemplateColumns: "repeat(2, 1fr)",
-      gap: theme.spacing(1),
-    },
+      gap: theme.spacing(1)
+    }
   },
   listImage: {
     width: "100%",
+    cursor: "pointer"
   },
   detailsRoot: {
     maxWidth: "900px",
@@ -33,30 +34,30 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "flex-start",
     [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-    },
+      flexDirection: "column"
+    }
   },
   detailsImage: {
     flex: "1",
     paddingRight: theme.spacing(1.5),
     [theme.breakpoints.down("md")]: {
-      paddingRight: theme.spacing(0),
-    },
+      paddingRight: theme.spacing(0)
+    }
   },
   detailsImageStyle: {
-    width: "100%",
+    width: "100%"
   },
   detailsInfo: {
     flex: "1",
     display: "flex",
     flexDirection: "column",
     padding: theme.spacing(3, 1.5),
-    gap: theme.spacing(2),
+    gap: theme.spacing(2)
   },
   sizes: {
     display: "flex",
     flexWrap: "wrap",
-    gap: theme.spacing(1),
+    gap: theme.spacing(1)
   },
   size: {
     display: "flex",
@@ -65,8 +66,8 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     border: "1px solid #ddd",
     padding: theme.spacing(0.7, 1.8),
     "&:hover": {
-      background: "#ddd",
-    },
+      background: "#ddd"
+    }
   },
   activeSize: {
     display: "flex",
@@ -75,6 +76,6 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     background: "#333",
     color: "#fff",
-    padding: theme.spacing(0.7, 1.8),
-  },
+    padding: theme.spacing(0.7, 1.8)
+  }
 }));

@@ -1,18 +1,27 @@
 import { createContext, FC, ReactNode, useState } from "react";
 import { Product } from "../models/product";
+import { productState } from "../common/constants/productState";
 
 interface ContextProps {
   products: Product[];
-  isLoading: boolean;
-  error: string | null;
+  isProductsLoading: boolean;
+  productsError: string | null;
   fetchProductsHandler: () => void;
+  product: Product;
+  isProductLoading: boolean;
+  productError: string | null;
+  fetchSpecificProductHandler: (productId: string) => void;
 }
 
 export const ProductsContext = createContext<ContextProps>({
   products: [],
-  isLoading: false,
-  error: null,
-  fetchProductsHandler: () => {}
+  isProductsLoading: false,
+  productsError: null,
+  product: productState,
+  isProductLoading: false,
+  productError: null,
+  fetchProductsHandler: () => {},
+  fetchSpecificProductHandler: () => {}
 });
 
 interface Props {
@@ -20,36 +29,67 @@ interface Props {
 }
 
 export const PrdouctsProvider: FC<Props> = ({ children }) => {
-  const [data, setData] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isProductsLoading, setIsProductsLoading] = useState(false);
+  const [productsError, setProductsError] = useState<string | null>(null);
+
+  const [product, setProduct] = useState<Product>(productState);
+  const [isProductLoading, setIsProductLoading] = useState(false);
+  const [productError, setProductError] = useState<string | null>(null);
 
   const fetchProductsHandler = async () => {
     try {
-      setIsLoading(true);
-      setError(null);
+      setIsProductsLoading(true);
+      setProductsError(null);
 
       const response = await fetch(
         `${process.env.REACT_APP_API_BASEURL}/shoes`
       );
+
       const data = await response.json();
 
-      setData(data);
-      setIsLoading(false);
+      setProducts(data);
+      setIsProductsLoading(false);
     } catch (error) {
       if (error instanceof Error) {
         const errorMsg = error.message;
-        setIsLoading(false);
-        setError(errorMsg);
+        setIsProductsLoading(false);
+        setProductsError(errorMsg);
+      }
+    }
+  };
+
+  const fetchSpecificProductHandler = async (productId: string) => {
+    try {
+      setIsProductLoading(true);
+      setProductError(null);
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`
+      );
+
+      const data = await response.json();
+
+      setProduct(data);
+      setIsProductLoading(false);
+    } catch (error) {
+      if (error instanceof Error) {
+        const errorMsg = error.message;
+        setIsProductLoading(false);
+        setProductError(errorMsg);
       }
     }
   };
 
   const contextValue: ContextProps = {
-    products: data,
-    isLoading,
-    error,
-    fetchProductsHandler
+    products,
+    isProductsLoading,
+    productsError,
+    fetchProductsHandler,
+    product,
+    isProductLoading,
+    productError,
+    fetchSpecificProductHandler
   };
 
   return (

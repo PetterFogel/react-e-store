@@ -14,7 +14,7 @@ export const AppRoutes: FC = () => {
   return (
     <main
       style={{
-        marginTop: "5vh"
+        marginTop: "6vh"
       }}>
       <Routes>
         <Route path={routeFactory.homeScreen()} element={<HomePage />} />

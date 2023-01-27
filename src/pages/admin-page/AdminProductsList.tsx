@@ -19,7 +19,7 @@ interface Props {
 export const AdminProductsList: FC<Props> = ({ products }) => {
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table sx={{ minWidth: 900 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell></TableCell>

@@ -8,18 +8,18 @@ import { Loader } from "../../common/components/loader/Loader";
 
 export const ProductPage: FC = () => {
   const classes = productPageStyles();
-  const { products, isLoading, error, fetchProductsHandler } =
+  const { products, isProductsLoading, productsError, fetchProductsHandler } =
     useContext(ProductsContext);
 
   useEffect(() => {
     fetchProductsHandler();
   }, []);
 
-  if (error) return <ErrorPanel errorMsg={error} />;
+  if (productsError) return <ErrorPanel errorMsg={productsError} />;
 
   return (
     <div className={classes.root}>
-      {isLoading ? (
+      {isProductsLoading ? (
         <Loader />
       ) : (
         <>
