@@ -15,5 +15,14 @@ export const adminPageStyles = makeStyles((theme: Theme) => ({
   filterPanel: {
     alignSelf: "flex-end",
     marginBottom: theme.spacing(2)
+  },
+  addDialogButtonHolder: {
+    padding: theme.spacing(2),
+    display: "flex",
+    justifyContent: "flex-end",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      width: "100%"
+    }
   }
 }));
