@@ -16,12 +16,12 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     background: "#fff",
     borderBottom: "1px solid #ddd",
     [theme.breakpoints.down("lg")]: {
-      padding: "0rem 1rem",
-    },
+      padding: "0rem 1rem"
+    }
   },
   nav: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
   ul: {
     display: "flex",
@@ -38,32 +38,30 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
       width: "50%",
       height: "94vh",
       top: "6vh",
-      transition: "right 500ms ease-in",
+      transition: "right 500ms ease-in"
     },
     [theme.breakpoints.down("md")]: {
       position: "absolute",
       width: "100%",
-      right: "-100%",
-    },
+      right: "-100%"
+    }
   },
   cartLink: {
     marginLeft: "1.5rem",
     letterSpacing: "1px",
     fontSize: "0.9rem",
-    textDecoration: "none",
     color: "#333",
     [theme.breakpoints.down("lg")]: {
-      marginLeft: "0rem",
-    },
+      marginLeft: "0rem"
+    }
   },
   link: {
     letterSpacing: "1px",
     fontSize: "0.9rem",
-    textDecoration: "none",
     color: "#333",
     [theme.breakpoints.down("lg")]: {
       fontSize: "1.3rem",
-      margin: "1rem 0rem",
-    },
-  },
+      margin: "1rem 0rem"
+    }
+  }
 }));

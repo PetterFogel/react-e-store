@@ -13,47 +13,38 @@ export const Header: FC = () => {
 
   return (
     <header className={classes.header}>
-      <Link
-        style={{ textDecoration: "none" }}
-        to={routeFactory.homeScreen()}
-        onClick={() => setIsMenuOpen(false)}
-      >
+      <Link to={routeFactory.homeScreen()} onClick={() => setIsMenuOpen(false)}>
         <Typography variant="h3">THE MANY SAINTS</Typography>
       </Link>
       <nav className={classes.nav}>
         <ul
           className={classes.ul}
           style={{
-            right: isMenuOpen ? "0%" : "-100%",
-          }}
-        >
+            right: isMenuOpen ? "0%" : "-100%"
+          }}>
           <Link
             className={classes.link}
             to={routeFactory.productScreen.products()}
-            onClick={() => setIsMenuOpen(false)}
-          >
+            onClick={() => setIsMenuOpen(false)}>
             <li className="link">PRODUCTS</li>
           </Link>
           <Link
             className={classes.link}
             to={routeFactory.aboutScreen()}
-            onClick={() => setIsMenuOpen(false)}
-          >
+            onClick={() => setIsMenuOpen(false)}>
             <li>ABOUT</li>
           </Link>
           <Link
             className={classes.link}
             to={routeFactory.adminScreen.admin()}
-            onClick={() => setIsMenuOpen(false)}
-          >
+            onClick={() => setIsMenuOpen(false)}>
             <li>ADMIN</li>
           </Link>
         </ul>
         <Link
           className={classes.cartLink}
           to={routeFactory.checkoutScreen.checkout()}
-          onClick={() => setIsMenuOpen(false)}
-        >
+          onClick={() => setIsMenuOpen(false)}>
           CART({cart.length})
         </Link>
         <BurgerMenu

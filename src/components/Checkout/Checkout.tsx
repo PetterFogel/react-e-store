@@ -1,14 +1,13 @@
 import {
   inactiveBtn,
   btnMedium,
-  cursorPointer,
+  cursorPointer
 } from "../../style/GeneralStyle";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { UserContext } from "../../contexts/UserContext";
 import { CartContext } from "../../contexts/CartContext";
-import { CSSProperties } from "@mui/styles";
 import Accordian from "./Accordian/Accordian";
 import CloseIcon from "@mui/icons-material/Close";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -26,12 +25,11 @@ const Checkout = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+        alignItems: "center"
+      }}>
       <div className="checkout-container">
         <div className="details-container">
-          <form action="/" style={form}>
+          <form action="/">
             <h2 className="checkout-title">Checkout</h2>
             <Accordian />
           </form>
@@ -41,7 +39,7 @@ const Checkout = () => {
             <h2>Order Summary</h2>
             <div className="overflow-scroll-container">
               {cartContext.cart.map((productValue) => (
-                <div className="order-item">
+                <div key={productValue.id} className="order-item">
                   <div className="image-holder">
                     <img
                       className="imageStyle"
@@ -77,7 +75,7 @@ const Checkout = () => {
                     onClick={() => cartContext.removeFromCart(productValue)}
                     style={{
                       ...cursorPointer,
-                      fontSize: "2rem",
+                      fontSize: "2rem"
                     }}
                   />
                 </div>
@@ -105,13 +103,11 @@ const Checkout = () => {
       {userContext.shopState ? (
         <Link
           to={routeFactory.checkoutScreen.orderView()}
-          style={{ textDecoration: "none", zIndex: 1, margin: "2rem 0rem" }}
-        >
+          style={{ zIndex: 1, margin: "2rem 0rem" }}>
           <Button
             onClick={userContext.shopStateFalse}
             variant="contained"
-            style={btnMedium}
-          >
+            style={btnMedium}>
             {" "}
             Confirm Order
           </Button>
@@ -124,14 +120,6 @@ const Checkout = () => {
       )}
     </div>
   );
-};
-
-const form: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  margin: "0.5rem 1rem",
-  fontSize: "1.2rem",
 };
 
 export default Checkout;
