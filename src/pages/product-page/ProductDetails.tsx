@@ -21,14 +21,10 @@ export const ProductDetails: FC = () => {
   const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
 
   useEffect(() => {
-    fetchSpecificProductHandler("asdasd" ?? "");
+    fetchSpecificProductHandler(id ?? "");
   }, []);
 
-  const sizeSelectHandler = (size: number) => {
-    setSizeValue(size.toString());
-  };
-
-  console.log(productError);
+  const sizeSelectHandler = (size: number) => setSizeValue(size.toString());
 
   if (productError) return <ErrorPanel errorMsg={productError} />;
 

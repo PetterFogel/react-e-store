@@ -1,6 +1,7 @@
 import { createContext, FC, ReactNode, useState } from "react";
 import { Product } from "../models/product";
 import { productState } from "../common/constants/productState";
+import axios, { AxiosError } from "axios";
 
 interface ContextProps {
   products: Product[];
@@ -42,13 +43,11 @@ export const PrdouctsProvider: FC<Props> = ({ children }) => {
       setIsProductsLoading(true);
       setProductsError(null);
 
-      const response = await fetch(
+      const response = await axios(
         `${process.env.REACT_APP_API_BASEURL}/shoes`
       );
 
-      const data = await response.json();
-
-      setProducts(data);
+      setProducts(response.data);
       setIsProductsLoading(false);
     } catch (error) {
       if (error instanceof Error) {
@@ -64,19 +63,16 @@ export const PrdouctsProvider: FC<Props> = ({ children }) => {
       setIsProductLoading(true);
       setProductError(null);
 
-      const response = await fetch(
+      const response = await axios(
         `${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`
       );
 
-      const data = await response.json();
-
-      setProduct(data);
+      setProduct(response.data);
       setIsProductLoading(false);
     } catch (error) {
-      if (error instanceof Error) {
-        const errorMsg = error.message;
+      if (error instanceof AxiosError) {
         setIsProductLoading(false);
-        setProductError(errorMsg);
+        setProductError(error.message);
       }
     }
   };
