@@ -1,25 +1,25 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import {
   Box,
   Button,
-  Checkbox,
   DialogContent,
   FormControl,
+  FormHelperText,
   Grid,
-  InputAdornment,
   InputLabel,
   ListItemText,
   MenuItem,
   OutlinedInput,
   Select,
-  SelectChangeEvent,
-  TextField,
   useMediaQuery,
   useTheme
 } from "@mui/material";
 import { adminPageStyles } from "./style/adminPageStyles";
 import { categories } from "../../common/constants/categories";
 import { shoeSizes } from "../../common/constants/shoeSizes";
+import { useFormik } from "formik";
+import { ProductItem } from "../../models/product";
+import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -40,121 +40,158 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
   const classes = adminPageStyles();
   const theme = useTheme();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const [category, setCategory] = useState("");
-  const [sizes, setSizes] = useState<string[]>([]);
 
-  const categorySelectHandler = (event: SelectChangeEvent) => {
-    setCategory(event.target.value);
+  const validate = (values: ProductItem) => {
+    const errors: Record<string, string> = {};
+    if (!values.title) {
+      errors.title = "Please enter title";
+    }
+    if (!values.imageUrl) {
+      errors.imageUrl = "Please enter image url";
+    }
+    if (!values.category) {
+      errors.category = "Please select category";
+    }
+    if (values.sizes.length === 0) {
+      errors.sizes = "Please select sizes";
+    }
+    if (values.price <= 0) {
+      errors.price = "Please enter price";
+    }
+    if (values.rating <= 0) {
+      errors.rating = "Please enter rating";
+    }
+    if (!values.info) {
+      errors.info = "Please enter product info";
+    }
+
+    return errors;
   };
 
-  const sizesSelectHandler = (event: SelectChangeEvent<typeof sizes>) => {
-    const {
-      target: { value }
-    } = event;
-    setSizes(typeof value === "string" ? value.split(",") : value);
-  };
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      imageUrl: "",
+      category: "",
+      info: "",
+      sizes: [],
+      size: 0,
+      price: 0,
+      rating: 0
+    },
+    validate,
+    enableReinitialize: false,
+    validateOnMount: true,
+    onSubmit: (values, { resetForm }) => {
+      console.log(values);
+    }
+  });
 
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <DialogContent>
         <Grid container spacing={1}>
-          {/* Title STRING */}
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              type="text"
-              size="small"
-              label="Title"
-              margin="dense"
-              autoComplete={"on"}
+            <FormikTextField
+              id={"title"}
+              type={"text"}
+              label={"Title"}
+              helperText={formik.touched.title && formik.errors.title}
+              error={formik.touched.title && Boolean(formik.errors.title)}
+              formik={formik}
             />
           </Grid>
-          {/* Image STRING */}
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              type="url"
-              size="small"
-              label="Image url"
-              margin="dense"
-              autoComplete={"on"}
+            <FormikTextField
+              id={"imageUrl"}
+              type={"url"}
+              label={"Image url"}
+              helperText={formik.touched.imageUrl && formik.errors.imageUrl}
+              error={formik.touched.imageUrl && Boolean(formik.errors.imageUrl)}
+              formik={formik}
             />
           </Grid>
-          {/* Category STRING */}
           <Grid item md={6} xs={12}>
-            <FormControl fullWidth size={"small"} margin="dense">
+            <FormControl
+              fullWidth
+              size={"small"}
+              margin="dense"
+              error={
+                formik.touched.category && Boolean(formik.errors.category)
+              }>
               <InputLabel>Category</InputLabel>
               <Select
-                value={category}
+                id={"category"}
                 label="Category"
-                onChange={categorySelectHandler}>
+                {...formik.getFieldProps("category")}>
                 {categories.map((category, index) => (
                   <MenuItem key={index} value={category}>
                     {category}
                   </MenuItem>
                 ))}
               </Select>
+              {formik.touched.category && (
+                <FormHelperText>{formik.errors.category}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
-          {/* sizes STRING ARRAY */}
           <Grid item md={6} xs={12}>
-            <FormControl fullWidth size={"small"} margin="dense">
+            <FormControl
+              fullWidth
+              size={"small"}
+              margin="dense"
+              error={formik.touched.sizes && Boolean(formik.errors.sizes)}>
               <InputLabel>Sizes</InputLabel>
               <Select
                 multiple
-                value={sizes}
-                onChange={sizesSelectHandler}
+                id={"sizes"}
                 input={<OutlinedInput label="Tag" />}
                 renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}>
+                MenuProps={MenuProps}
+                {...formik.getFieldProps("sizes")}>
                 {shoeSizes.map((size, index) => (
                   <MenuItem key={index} value={size}>
-                    <Checkbox checked={sizes.indexOf(size) > -1} />
                     <ListItemText primary={size} />
                   </MenuItem>
                 ))}
               </Select>
+              {formik.touched.sizes && (
+                <FormHelperText>{formik.errors.sizes}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
-          {/* Price NUMBER */}
           <Grid item md={6} xs={12}>
-            <TextField
-              fullWidth
+            <FormikTextField
+              id="price"
               type="number"
-              size="small"
               label="Price"
-              margin="dense"
-              autoComplete={"on"}
-              InputProps={{
-                endAdornment: <InputAdornment position="end">KR</InputAdornment>
-              }}
+              adornmentSymbol="SEK"
+              helperText={formik.touched.price && formik.errors.price}
+              error={formik.touched.price && Boolean(formik.errors.price)}
+              formik={formik}
             />
           </Grid>
-          {/* Price NUMBER */}
           <Grid item md={6} xs={12}>
-            <TextField
-              fullWidth
+            <FormikTextField
+              id="rating"
               type="number"
-              size="small"
               label="Rating"
-              margin="dense"
-              autoComplete={"on"}
+              helperText={formik.touched.rating && formik.errors.rating}
+              error={formik.touched.rating && Boolean(formik.errors.rating)}
+              formik={formik}
             />
           </Grid>
-          {/* Info STRING */}
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              type="text"
-              size="small"
-              label="Product Info"
-              margin="dense"
-              autoComplete={"on"}
+            <FormikTextField
+              id="info"
+              type="number"
+              label="Product info"
               multiline
-              rows={3}
+              helperText={formik.touched.info && formik.errors.info}
+              error={formik.touched.info && Boolean(formik.errors.info)}
+              formik={formik}
             />
           </Grid>
-          {/* rating NUMBER */}
         </Grid>
       </DialogContent>
       <Box className={classes.addDialogButtonHolder}>
