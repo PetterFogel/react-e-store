@@ -6,7 +6,7 @@ export const productState: Product = {
   category: "",
   info: "",
   price: 0,
-  image: "",
+  imageUrl: "",
   size: 0,
   rating: 0,
   sizes: []

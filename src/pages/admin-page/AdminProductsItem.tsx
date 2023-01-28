@@ -14,8 +14,8 @@ export const AdminProductsItem: FC<Props> = ({ product }) => {
     <TableRow>
       <TableCell style={{ width: "4rem", height: "4rem", padding: 8 }}>
         <img
-          src={product.image}
-          alt={product.image}
+          src={product.imageUrl}
+          alt={product.imageUrl}
           style={{
             width: "100%",
             borderRadius: "100%"

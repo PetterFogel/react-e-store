@@ -37,8 +37,8 @@ export const ProductDetails: FC = () => {
           <div className={classes.detailsImage}>
             <img
               className={classes.detailsImageStyle}
-              src={product.image}
-              alt={product.image}
+              src={product.imageUrl}
+              alt={product.imageUrl}
             />
           </div>
           <div className={classes.detailsInfo}>

@@ -13,7 +13,7 @@ export const AddNewProduct: FC = () => {
     id: "",
     category: "",
     title: "",
-    image: "",
+    imageUrl: "",
     price: 0,
     info: "",
     size: 0,
@@ -35,7 +35,7 @@ export const AddNewProduct: FC = () => {
   };
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
-    setProduct({ ...product, image: e.target.value });
+    setProduct({ ...product, imageUrl: e.target.value });
   };
 
   const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
@@ -75,7 +75,7 @@ export const AddNewProduct: FC = () => {
             label="Image...(Url)"
             name="image"
             type="text"
-            value={product.image}
+            value={product.imageUrl}
             autoFocus
             onChange={handleImage}
           />

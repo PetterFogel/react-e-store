@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Product } from "../../models/product";
 import { Typography } from "@mui/material";
 import { routeFactory } from "../../route-factory/routeFactory";
@@ -18,8 +18,8 @@ export const ProductItem: FC<Props> = ({ product }) => {
       }>
       <img
         className={classes.listImage}
-        src={product.image}
-        alt={product.image}
+        src={product.imageUrl}
+        alt={product.imageUrl}
       />
       <Typography variant="h5" mb={0.2} sx={{ cursor: "pointer" }}>
         {product.title}
