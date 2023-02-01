@@ -1,5 +1,5 @@
-import { createContext, FC, ReactNode, useState } from "react";
-import { Product } from "../models/product";
+import { createContext, FC, ReactElement, useState } from "react";
+import { Product, ProductItem } from "../models/product";
 import { productState } from "../common/constants/productState";
 import axios, { AxiosError } from "axios";
 
@@ -12,21 +12,25 @@ interface ContextProps {
   isProductLoading: boolean;
   productError: string | null;
   fetchSpecificProductHandler: (productId: string) => void;
+  isModifiedProductLoading: boolean;
+  addProductHandler: (product: ProductItem) => void;
 }
 
 export const AdminContext = createContext<ContextProps>({
   products: [],
   isProductsLoading: false,
   productsError: null,
+  fetchProductsHandler: () => {},
   product: productState,
   isProductLoading: false,
   productError: null,
-  fetchProductsHandler: () => {},
-  fetchSpecificProductHandler: () => {}
+  fetchSpecificProductHandler: (productId: string) => {},
+  isModifiedProductLoading: false,
+  addProductHandler: (product: ProductItem) => {}
 });
 
 interface Props {
-  children: ReactNode;
+  children: ReactElement;
 }
 
 export const AdminProvider: FC<Props> = ({ children }) => {
@@ -37,6 +41,9 @@ export const AdminProvider: FC<Props> = ({ children }) => {
   const [product, setProduct] = useState<Product>(productState);
   const [isProductLoading, setIsProductLoading] = useState(false);
   const [productError, setProductError] = useState<string | null>(null);
+
+  const [isModifiedProductLoading, setIsModifiedProductLoading] =
+    useState(false);
 
   const fetchProductsHandler = async () => {
     try {
@@ -77,6 +84,29 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     }
   };
 
+  const addProductHandler = async (product: ProductItem) => {
+    try {
+      setIsModifiedProductLoading(true);
+
+      const response = await axios(
+        `${process.env.REACT_APP_API_BASEURL}/shoes`,
+        {
+          method: "POST",
+          data: product
+        }
+      );
+
+      console.log(response);
+
+      setIsProductLoading(false);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error);
+        setIsModifiedProductLoading(false);
+      }
+    }
+  };
+
   const contextValue: ContextProps = {
     products,
     isProductsLoading,
@@ -85,7 +115,9 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     product,
     isProductLoading,
     productError,
-    fetchSpecificProductHandler
+    fetchSpecificProductHandler,
+    isModifiedProductLoading,
+    addProductHandler
   };
 
   return (

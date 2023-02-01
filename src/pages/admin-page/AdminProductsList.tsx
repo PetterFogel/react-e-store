@@ -5,8 +5,7 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-  Tooltip
+  TableRow
 } from "@mui/material";
 import { FC } from "react";
 import { Product } from "../../models/product";

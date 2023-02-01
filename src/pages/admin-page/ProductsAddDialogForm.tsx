@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import {
   Box,
   Button,
@@ -20,6 +20,7 @@ import { shoeSizes } from "../../common/constants/shoeSizes";
 import { useFormik } from "formik";
 import { ProductItem } from "../../models/product";
 import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
+import { AdminContext } from "../../contexts/AdminContext";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -40,6 +41,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
   const classes = adminPageStyles();
   const theme = useTheme();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const { addProductHandler } = useContext(AdminContext);
 
   const validate = (values: ProductItem) => {
     const errors: Record<string, string> = {};
@@ -84,6 +86,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
     validateOnMount: true,
     onSubmit: (values, { resetForm }) => {
       console.log(values);
+      addProductHandler(values);
     }
   });
 
