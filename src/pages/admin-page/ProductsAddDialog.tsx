@@ -1,26 +1,21 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { AdminContext } from "../../contexts/AdminContext";
 import { Dialog, Typography } from "@mui/material";
 import { ProductsAddDialogForm } from "./ProductsAddDialogForm";
 
-interface Props {
-  isDialogOpen: boolean;
-  onDialogCloseClick: () => void;
-}
+export const ProductsAddDialog: FC = () => {
+  const { setIsDialogOpen, isDialogOpen } = useContext(AdminContext);
 
-export const ProductsAddDialog: FC<Props> = ({
-  isDialogOpen,
-  onDialogCloseClick
-}) => {
   return (
     <Dialog
       maxWidth="sm"
       open={isDialogOpen}
-      onClose={onDialogCloseClick}
+      onClose={() => setIsDialogOpen(false)}
       fullWidth>
       <Typography variant="h3" p={2}>
         Add a Product
       </Typography>
-      <ProductsAddDialogForm onDialogCloseClick={onDialogCloseClick} />
+      <ProductsAddDialogForm />
     </Dialog>
   );
 };

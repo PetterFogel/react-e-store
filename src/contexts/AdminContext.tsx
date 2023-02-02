@@ -1,4 +1,11 @@
-import { createContext, FC, ReactElement, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  FC,
+  ReactElement,
+  SetStateAction,
+  useState
+} from "react";
 import { Product, ProductItem } from "../models/product";
 import { productState } from "../common/constants/productState";
 import axios, { AxiosError } from "axios";
@@ -16,6 +23,9 @@ interface ContextProps {
   fetchSpecificProductHandler: (productId: string) => void;
   isModifiedProductLoading: boolean;
   addProductHandler: (product: ProductItem) => void;
+  isDialogOpen: boolean;
+  setIsDialogOpen: Dispatch<SetStateAction<boolean>>;
+  setProduct: Dispatch<SetStateAction<Product>>;
 }
 
 export const AdminContext = createContext<ContextProps>({
@@ -26,9 +36,12 @@ export const AdminContext = createContext<ContextProps>({
   product: productState,
   isProductLoading: false,
   productError: null,
-  fetchSpecificProductHandler: (productId: string) => {},
+  fetchSpecificProductHandler: () => {},
   isModifiedProductLoading: false,
-  addProductHandler: (product: ProductItem) => {}
+  addProductHandler: () => {},
+  isDialogOpen: false,
+  setIsDialogOpen: () => {},
+  setProduct: () => {}
 });
 
 interface Props {
@@ -44,6 +57,7 @@ export const AdminProvider: FC<Props> = ({ children }) => {
   const [isProductLoading, setIsProductLoading] = useState(false);
   const [productError, setProductError] = useState<string | null>(null);
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isModifiedProductLoading, setIsModifiedProductLoading] =
     useState(false);
 
@@ -78,9 +92,11 @@ export const AdminProvider: FC<Props> = ({ children }) => {
 
       setProduct(response.data);
       setIsProductLoading(false);
+      setIsDialogOpen(true);
     } catch (error) {
       if (error instanceof AxiosError) {
         setIsProductLoading(false);
+        setIsDialogOpen(false);
         setProductError(error.message);
       }
     }
@@ -116,7 +132,10 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     productError,
     fetchSpecificProductHandler,
     isModifiedProductLoading,
-    addProductHandler
+    addProductHandler,
+    isDialogOpen,
+    setIsDialogOpen,
+    setProduct
   };
 
   return (

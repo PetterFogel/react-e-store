@@ -10,22 +10,12 @@ import { ProductsAddDialog } from "./ProductsAddDialog";
 
 export const AdminPage: FC = () => {
   const classes = adminPageStyles();
-  const {
-    products,
-    isProductsLoading,
-    productsError,
-    fetchProductsHandler,
-    isDialogOpen,
-    setIsDialogOpen
-  } = useContext(AdminContext);
+  const { products, isProductsLoading, productsError, fetchProductsHandler } =
+    useContext(AdminContext);
 
   useEffect(() => {
     fetchProductsHandler();
   }, []);
-
-  const openDialogHandler = () => {
-    setIsDialogOpen(true);
-  };
 
   if (productsError) return <ErrorPanel errorMsg={productsError} />;
 
@@ -34,16 +24,13 @@ export const AdminPage: FC = () => {
       <Typography variant={"h2"} mb={2}>
         Admin
       </Typography>
-      <AdminFilterPanel onDialogOpenClick={openDialogHandler} />
+      <AdminFilterPanel />
       {isProductsLoading ? (
         <Loader />
       ) : (
         <AdminProductsList products={products} />
       )}
-      <ProductsAddDialog
-        isDialogOpen={isDialogOpen}
-        onDialogCloseClick={() => setIsDialogOpen(false)}
-      />
+      <ProductsAddDialog />
     </div>
   );
 };

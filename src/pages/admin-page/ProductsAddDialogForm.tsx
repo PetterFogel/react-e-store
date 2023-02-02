@@ -35,11 +35,7 @@ const MenuProps = {
   }
 };
 
-interface Props {
-  onDialogCloseClick: () => void;
-}
-
-export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
+export const ProductsAddDialogForm: FC = () => {
   const classes = adminPageStyles();
   const theme = useTheme();
   const { id } = useParams();
@@ -48,12 +44,18 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
   const {
     isModifiedProductLoading,
     addProductHandler,
-    fetchSpecificProductHandler
+    fetchSpecificProductHandler,
+    product,
+    setIsDialogOpen
   } = useContext(AdminContext);
 
   useEffect(() => {
     if (id) return fetchSpecificProductHandler(id);
   }, []);
+
+  const closeDialogHandler = () => {
+    setIsDialogOpen(false);
+  };
 
   const validate = (values: ProductItem) => {
     const errors: Record<string, string> = {};
@@ -84,14 +86,14 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      imageUrl: "",
-      category: "",
-      info: "",
-      sizes: [],
-      size: 0,
-      price: 0,
-      rating: 0
+      title: product ? product.title : "",
+      imageUrl: product ? product.imageUrl : "",
+      category: product ? product.category : "",
+      info: product ? product.info : "",
+      sizes: product ? product.sizes : [],
+      size: product ? product.size : 0,
+      price: product ? product.price : 0,
+      rating: product ? product.rating : 0
     },
     validate,
     enableReinitialize: false,
@@ -223,7 +225,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
           size="small"
           color="secondary"
           disabled={isModifiedProductLoading}
-          onClick={onDialogCloseClick}
+          onClick={closeDialogHandler}
           sx={{
             marginBottom: isBreakpointSm ? 1 : 0,
             width: isBreakpointSm ? "100%" : "10rem"
@@ -233,6 +235,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
         <LoadingButton
           loading={isModifiedProductLoading}
           variant={"contained"}
+          color="success"
           size="small"
           type="submit"
           sx={{
