@@ -1,3 +1,5 @@
+# THE MANY SAINTS - UNDER REFACTORING
+
 # Shoeway
 
 I detta projekt har vi skapat en e-handels sida med funktionalitet för att köpa skor. Användaren får gå genom ett antal steg, lägga till produkter i varukorgen, fylla i personuppgifter, fraktsätt och betalsätt i validerings formulär för att sedan få en orderbekräftelse med formuläruppgifterna och levererings datum. Användaren har även möjlighet att ta bort produkter från varukorgen eller öka antalet.  
