@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { AdminContext } from "../../contexts/AdminContext";
 import { Dialog, Typography } from "@mui/material";
-import { ProductsAddDialogForm } from "./ProductsAddDialogForm";
+import { ProductsAddDialogForm } from "./AdminProductDialogForm";
 
 export const ProductsAddDialog: FC = () => {
   const { setIsDialogOpen, isDialogOpen } = useContext(AdminContext);

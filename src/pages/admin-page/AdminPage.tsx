@@ -6,7 +6,7 @@ import { AdminContext } from "../../contexts/AdminContext";
 import { adminPageStyles } from "./style/adminPageStyles";
 import { AdminFilterPanel } from "./AdminsFilterPanel";
 import { AdminProductsList } from "./AdminProductsList";
-import { ProductsAddDialog } from "./ProductsAddDialog";
+import { ProductsAddDialog } from "./AdminProductDialog";
 
 export const AdminPage: FC = () => {
   const classes = adminPageStyles();
