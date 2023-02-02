@@ -97,8 +97,8 @@ export const AdminProvider: FC<Props> = ({ children }) => {
       );
 
       console.log(response);
-
-      setIsProductLoading(false);
+      setIsModifiedProductLoading(false);
+      fetchProductsHandler();
     } catch (error) {
       if (error instanceof AxiosError) {
         console.log(error);

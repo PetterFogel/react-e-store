@@ -21,6 +21,7 @@ import { useFormik } from "formik";
 import { ProductItem } from "../../models/product";
 import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
 import { AdminContext } from "../../contexts/AdminContext";
+import { LoadingButton } from "@mui/lab";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -41,7 +42,8 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
   const classes = adminPageStyles();
   const theme = useTheme();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const { addProductHandler } = useContext(AdminContext);
+  const { addProductHandler, isModifiedProductLoading } =
+    useContext(AdminContext);
 
   const validate = (values: ProductItem) => {
     const errors: Record<string, string> = {};
@@ -87,6 +89,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       addProductHandler(values);
+      resetForm();
     }
   });
 
@@ -99,6 +102,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
               id={"title"}
               type={"text"}
               label={"Title"}
+              disabled={isModifiedProductLoading}
               helperText={formik.touched.title && formik.errors.title}
               error={formik.touched.title && Boolean(formik.errors.title)}
               formik={formik}
@@ -109,6 +113,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
               id={"imageUrl"}
               type={"url"}
               label={"Image url"}
+              disabled={isModifiedProductLoading}
               helperText={formik.touched.imageUrl && formik.errors.imageUrl}
               error={formik.touched.imageUrl && Boolean(formik.errors.imageUrl)}
               formik={formik}
@@ -126,6 +131,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
               <Select
                 id={"category"}
                 label="Category"
+                disabled={isModifiedProductLoading}
                 {...formik.getFieldProps("category")}>
                 {categories.map((category, index) => (
                   <MenuItem key={index} value={category}>
@@ -151,6 +157,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
                 input={<OutlinedInput label="Tag" />}
                 renderValue={(selected) => selected.join(", ")}
                 MenuProps={MenuProps}
+                disabled={isModifiedProductLoading}
                 {...formik.getFieldProps("sizes")}>
                 {shoeSizes.map((size, index) => (
                   <MenuItem key={index} value={size}>
@@ -169,6 +176,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
               type="number"
               label="Price"
               adornmentSymbol="SEK"
+              disabled={isModifiedProductLoading}
               helperText={formik.touched.price && formik.errors.price}
               error={formik.touched.price && Boolean(formik.errors.price)}
               formik={formik}
@@ -179,6 +187,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
               id="rating"
               type="number"
               label="Rating"
+              disabled={isModifiedProductLoading}
               helperText={formik.touched.rating && formik.errors.rating}
               error={formik.touched.rating && Boolean(formik.errors.rating)}
               formik={formik}
@@ -188,8 +197,9 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
             <FormikTextField
               id="info"
               type="number"
-              label="Product info"
+              label="Product description"
               multiline
+              disabled={isModifiedProductLoading}
               helperText={formik.touched.info && formik.errors.info}
               error={formik.touched.info && Boolean(formik.errors.info)}
               formik={formik}
@@ -202,6 +212,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
           variant={"outlined"}
           size="small"
           color="secondary"
+          disabled={isModifiedProductLoading}
           onClick={onDialogCloseClick}
           sx={{
             marginBottom: isBreakpointSm ? 1 : 0,
@@ -209,7 +220,8 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
           }}>
           CANCEL
         </Button>
-        <Button
+        <LoadingButton
+          loading={isModifiedProductLoading}
           variant={"contained"}
           size="small"
           type="submit"
@@ -218,7 +230,7 @@ export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
             width: isBreakpointSm ? "100%" : "10rem"
           }}>
           SAVE
-        </Button>
+        </LoadingButton>
       </Box>
     </form>
   );

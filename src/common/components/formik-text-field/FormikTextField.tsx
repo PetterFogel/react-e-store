@@ -11,6 +11,7 @@ interface Props {
   formik: FormikValues;
   adornmentSymbol?: string;
   multiline?: boolean;
+  disabled?: boolean;
 }
 
 export const FormikTextField: FC<Props> = ({
@@ -21,12 +22,14 @@ export const FormikTextField: FC<Props> = ({
   error,
   formik,
   adornmentSymbol,
-  multiline
+  multiline,
+  disabled
 }) => {
   return (
     <TextField
       fullWidth
       multiline={multiline}
+      disabled={disabled}
       rows={3}
       id={id}
       type={type}
