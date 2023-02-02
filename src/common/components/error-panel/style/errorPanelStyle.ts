@@ -13,7 +13,7 @@ export const errorPanelStyle = makeStyles((theme: Theme) => ({
       padding: theme.spacing(1)
     }
   },
-  panel: {
+  errorPanel: {
     "&.css-1nmfsuj-MuiPaper-root-MuiAlert-root .MuiAlert-icon": {
       padding: theme.spacing(1.5, 0)
     },
@@ -24,7 +24,12 @@ export const errorPanelStyle = makeStyles((theme: Theme) => ({
       width: "100%"
     }
   },
+  infoPanel: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start"
+  },
   link: {
-    color: "#333"
+    borderBottom: "1px solid #333"
   }
 }));

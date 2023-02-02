@@ -1,10 +1,10 @@
 import { FC, useContext, useEffect } from "react";
+import { Loader } from "../../common/components/loader/Loader";
+import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { Typography } from "@mui/material";
 import { ProductList } from "./ProductList";
-import { productPageStyles } from "./style/productPageStyles";
 import { ProductsContext } from "../../contexts/ProductContext";
-import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
-import { Loader } from "../../common/components/loader/Loader";
+import { productPageStyles } from "./style/productPageStyles";
 
 export const ProductPage: FC = () => {
   const classes = productPageStyles();

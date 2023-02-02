@@ -2,7 +2,7 @@ import { FC, useContext, useEffect, useState } from "react";
 import { Loader } from "../../common/components/loader/Loader";
 import { useParams } from "react-router";
 import { shoeSizes } from "../../common/constants/shoeSizes";
-import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
+import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { CartContext } from "../../contexts/CartContext";
 import { ProductsContext } from "../../contexts/ProductContext";
 import { productPageStyles } from "./style/productPageStyles";

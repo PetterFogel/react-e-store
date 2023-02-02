@@ -1,6 +1,6 @@
 import { FC, useContext, useEffect, useState } from "react";
 import { Loader } from "../../common/components/loader/Loader";
-import { ErrorPanel } from "../../common/components/error-panel.tsx/ErrorPanel";
+import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { Typography } from "@mui/material";
 import { adminPageStyles } from "./style/adminPageStyles";
 import { AdminFilterPanel } from "./AdminsFilterPanel";
