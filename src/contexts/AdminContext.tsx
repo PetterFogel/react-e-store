@@ -1,3 +1,4 @@
+import axios, { AxiosError } from "axios";
 import {
   createContext,
   Dispatch,
@@ -6,11 +7,10 @@ import {
   SetStateAction,
   useState
 } from "react";
-import { Product, ProductItem } from "../models/product";
-import { productState } from "../common/constants/productState";
-import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
+import { productState } from "../common/constants/productState";
 import { toastOptions } from "../common/constants/toastOptions";
+import { Product, ProductItem } from "../models/product";
 
 interface ContextProps {
   products: Product[];
@@ -26,6 +26,7 @@ interface ContextProps {
   isDialogOpen: boolean;
   setIsDialogOpen: Dispatch<SetStateAction<boolean>>;
   setProduct: Dispatch<SetStateAction<Product>>;
+  updateProductHandler: (id: string, product: ProductItem) => void;
 }
 
 export const AdminContext = createContext<ContextProps>({
@@ -41,7 +42,8 @@ export const AdminContext = createContext<ContextProps>({
   addProductHandler: () => {},
   isDialogOpen: false,
   setIsDialogOpen: () => {},
-  setProduct: () => {}
+  setProduct: () => {},
+  updateProductHandler: () => {}
 });
 
 interface Props {
@@ -122,6 +124,29 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     }
   };
 
+  const updateProductHandler = async (
+    productId: string,
+    product: ProductItem
+  ) => {
+    try {
+      setIsModifiedProductLoading(true);
+
+      await axios(`${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`, {
+        method: "PUT",
+        data: product
+      });
+
+      toast.success("The product has been updated!", toastOptions);
+      setIsModifiedProductLoading(false);
+      fetchProductsHandler();
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setIsModifiedProductLoading(false);
+        toast.error(error.message);
+      }
+    }
+  };
+
   const contextValue: ContextProps = {
     products,
     isProductsLoading,
@@ -135,7 +160,8 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     addProductHandler,
     isDialogOpen,
     setIsDialogOpen,
-    setProduct
+    setProduct,
+    updateProductHandler
   };
 
   return (

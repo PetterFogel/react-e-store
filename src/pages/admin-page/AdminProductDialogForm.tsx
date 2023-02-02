@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 import {
   Box,
   Button,
@@ -17,7 +17,6 @@ import {
 import { categories } from "../../common/constants/categories";
 import { shoeSizes } from "../../common/constants/shoeSizes";
 import { useFormik } from "formik";
-import { useParams } from "react-router";
 import { ProductItem } from "../../models/product";
 import { selectProps } from "../../common/constants/selectProps";
 import { AdminContext } from "../../contexts/AdminContext";
@@ -30,20 +29,14 @@ import { setInitialValuesHandler } from "./helpers/setInitialValuesHandler";
 export const ProductsAddDialogForm: FC = () => {
   const classes = adminPageStyles();
   const theme = useTheme();
-  const { id } = useParams();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
-
   const {
     isModifiedProductLoading,
     addProductHandler,
-    fetchSpecificProductHandler,
     product,
-    setIsDialogOpen
+    setIsDialogOpen,
+    updateProductHandler
   } = useContext(AdminContext);
-
-  useEffect(() => {
-    if (id) return fetchSpecificProductHandler(id);
-  }, []);
 
   const closeDialogHandler = () => {
     setIsDialogOpen(false);
@@ -57,7 +50,7 @@ export const ProductsAddDialogForm: FC = () => {
     enableReinitialize: false,
     validateOnMount: true,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      if (product.id) return updateProductHandler(product.id, values);
       addProductHandler(values);
       resetForm();
     }
