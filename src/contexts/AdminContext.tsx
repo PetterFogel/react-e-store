@@ -2,6 +2,8 @@ import { createContext, FC, ReactElement, useState } from "react";
 import { Product, ProductItem } from "../models/product";
 import { productState } from "../common/constants/productState";
 import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
+import { toastOptions } from "../common/constants/toastOptions";
 
 interface ContextProps {
   products: Product[];
@@ -88,21 +90,18 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     try {
       setIsModifiedProductLoading(true);
 
-      const response = await axios(
-        `${process.env.REACT_APP_API_BASEURL}/shoes`,
-        {
-          method: "POST",
-          data: product
-        }
-      );
+      await axios(`${process.env.REACT_APP_API_BASEURL}/shoes`, {
+        method: "POST",
+        data: product
+      });
 
-      console.log(response);
+      toast.success("The product has been created!", toastOptions);
       setIsModifiedProductLoading(false);
       fetchProductsHandler();
     } catch (error) {
       if (error instanceof AxiosError) {
-        console.log(error);
         setIsModifiedProductLoading(false);
+        toast.error(error.message);
       }
     }
   };
