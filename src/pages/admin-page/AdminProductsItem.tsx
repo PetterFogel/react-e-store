@@ -1,8 +1,7 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
+import { FC, useContext } from "react";
 import { Product } from "../../models/product";
-import { routeFactory } from "../../route-factory/routeFactory";
-import { TableCell, TableRow, Tooltip } from "@mui/material";
+import { AdminContext } from "../../contexts/AdminContext";
+import { IconButton, TableCell, TableRow, Tooltip } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
 interface Props {
@@ -10,6 +9,8 @@ interface Props {
 }
 
 export const AdminProductsItem: FC<Props> = ({ product }) => {
+  const { fetchSpecificProductHandler } = useContext(AdminContext);
+
   return (
     <TableRow>
       <TableCell style={{ width: "4rem", height: "4rem", padding: 8 }}>
@@ -28,9 +29,9 @@ export const AdminProductsItem: FC<Props> = ({ product }) => {
       <TableCell>{product.rating}</TableCell>
       <TableCell>
         <Tooltip title={"Edit"}>
-          <Link to={routeFactory.adminScreen.editProduct(product.title)}>
+          <IconButton onClick={() => fetchSpecificProductHandler(product.id)}>
             <EditIcon color="secondary" sx={{ cursor: "pointer" }} />
-          </Link>
+          </IconButton>
         </Tooltip>
       </TableCell>
     </TableRow>

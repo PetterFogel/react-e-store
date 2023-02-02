@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import {
   Box,
   Button,
@@ -22,6 +22,7 @@ import { ProductItem } from "../../models/product";
 import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
 import { AdminContext } from "../../contexts/AdminContext";
 import { LoadingButton } from "@mui/lab";
+import { useParams } from "react-router";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -41,9 +42,18 @@ interface Props {
 export const ProductsAddDialogForm: FC<Props> = ({ onDialogCloseClick }) => {
   const classes = adminPageStyles();
   const theme = useTheme();
+  const { id } = useParams();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const { addProductHandler, isModifiedProductLoading } =
-    useContext(AdminContext);
+
+  const {
+    isModifiedProductLoading,
+    addProductHandler,
+    fetchSpecificProductHandler
+  } = useContext(AdminContext);
+
+  useEffect(() => {
+    if (id) return fetchSpecificProductHandler(id);
+  }, []);
 
   const validate = (values: ProductItem) => {
     const errors: Record<string, string> = {};

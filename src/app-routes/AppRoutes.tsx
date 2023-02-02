@@ -3,9 +3,8 @@ import { HomePage } from "../pages/home-page/HomePage";
 import { AboutPage } from "../pages/about-page/AboutPage";
 import { AdminPage } from "../pages/admin-page/AdminPage";
 import { ProductPage } from "../pages/product-page/ProductPage";
-import { routeFactory } from "../route-factory/routeFactory";
+import { routeFactory } from "../common/constants/routeFactory";
 import { Route, Routes } from "react-router";
-import { AddNewProduct } from "../pages/admin-page/AddNewProduct";
 import { ProductDetails } from "../pages/product-page/ProductDetails";
 import Checkout from "../components/Checkout/Checkout";
 import OrderView from "../components/Orderview/OrderView";
@@ -35,18 +34,7 @@ export const AppRoutes: FC = () => {
           element={<OrderView />}
         />
         <Route path={routeFactory.aboutScreen()} element={<AboutPage />} />
-        <Route
-          path={routeFactory.adminScreen.admin()}
-          element={<AdminPage />}
-        />
-        <Route
-          path={routeFactory.adminScreen.addNewProduct()}
-          element={<AddNewProduct />}
-        />
-        <Route
-          path={routeFactory.adminScreen.editProduct(":id")}
-          element={<AddNewProduct />}
-        />
+        <Route path={routeFactory.adminScreen()} element={<AdminPage />} />
       </Routes>
     </main>
   );

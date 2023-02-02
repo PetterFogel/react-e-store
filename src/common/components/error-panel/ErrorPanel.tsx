@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { routeFactory } from "../../../route-factory/routeFactory";
+import { routeFactory } from "../../constants/routeFactory";
 import { errorPanelStyle } from "./style/errorPanelStyle";
 import { Alert, Typography } from "@mui/material";
 

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { BurgerMenu } from "../burger-menu/BurgerMenu";
 import { CartContext } from "../../../contexts/CartContext";
+import { routeFactory } from "../../constants/routeFactory";
 import { homePageStyles } from "./style/headerStyles";
-import { routeFactory } from "../../../route-factory/routeFactory";
 
 export const Header: FC = () => {
   const classes = homePageStyles();
@@ -36,7 +36,7 @@ export const Header: FC = () => {
           </Link>
           <Link
             className={classes.link}
-            to={routeFactory.adminScreen.admin()}
+            to={routeFactory.adminScreen()}
             onClick={() => setIsMenuOpen(false)}>
             <li>ADMIN</li>
           </Link>

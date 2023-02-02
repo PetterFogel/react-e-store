@@ -2,8 +2,8 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../../models/product";
 import { Typography } from "@mui/material";
-import { routeFactory } from "../../route-factory/routeFactory";
 import { productPageStyles } from "./style/productPageStyles";
+import { routeFactory } from "../../common/constants/routeFactory";
 
 interface Props {
   product: Product;

@@ -1,18 +1,23 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useEffect } from "react";
 import { Loader } from "../../common/components/loader/Loader";
 import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { Typography } from "@mui/material";
+import { AdminContext } from "../../contexts/AdminContext";
 import { adminPageStyles } from "./style/adminPageStyles";
 import { AdminFilterPanel } from "./AdminsFilterPanel";
 import { AdminProductsList } from "./AdminProductsList";
 import { ProductsAddDialog } from "./ProductsAddDialog";
-import { AdminContext } from "../../contexts/AdminContext";
 
 export const AdminPage: FC = () => {
   const classes = adminPageStyles();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { products, isProductsLoading, productsError, fetchProductsHandler } =
-    useContext(AdminContext);
+  const {
+    products,
+    isProductsLoading,
+    productsError,
+    fetchProductsHandler,
+    isDialogOpen,
+    setIsDialogOpen
+  } = useContext(AdminContext);
 
   useEffect(() => {
     fetchProductsHandler();

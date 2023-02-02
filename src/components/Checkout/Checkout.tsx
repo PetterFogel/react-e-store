@@ -14,7 +14,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import "../../style/Form.css";
 import "../../style/Checkout.css";
-import { routeFactory } from "../../route-factory/routeFactory";
+import { routeFactory } from "../../common/constants/routeFactory";
 
 const Checkout = () => {
   const cartContext = useContext(CartContext);
