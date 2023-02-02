@@ -30,7 +30,7 @@ export const FormikTextField: FC<Props> = ({
       fullWidth
       multiline={multiline}
       disabled={disabled}
-      rows={3}
+      rows={4}
       id={id}
       type={type}
       label={label}

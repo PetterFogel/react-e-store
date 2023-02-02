@@ -14,26 +14,18 @@ import {
   useMediaQuery,
   useTheme
 } from "@mui/material";
-import { adminPageStyles } from "./style/adminPageStyles";
 import { categories } from "../../common/constants/categories";
 import { shoeSizes } from "../../common/constants/shoeSizes";
 import { useFormik } from "formik";
+import { useParams } from "react-router";
 import { ProductItem } from "../../models/product";
-import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
+import { selectProps } from "../../common/constants/selectProps";
 import { AdminContext } from "../../contexts/AdminContext";
 import { LoadingButton } from "@mui/lab";
-import { useParams } from "react-router";
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
+import { adminPageStyles } from "./style/adminPageStyles";
+import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
+import { productValidateHandler } from "./helpers/productValidateHandler";
+import { setInitialValuesHandler } from "./helpers/setInitialValuesHandler";
 
 export const ProductsAddDialogForm: FC = () => {
   const classes = adminPageStyles();
@@ -57,44 +49,10 @@ export const ProductsAddDialogForm: FC = () => {
     setIsDialogOpen(false);
   };
 
-  const validate = (values: ProductItem) => {
-    const errors: Record<string, string> = {};
-    if (!values.title) {
-      errors.title = "Please enter title";
-    }
-    if (!values.imageUrl) {
-      errors.imageUrl = "Please enter image url";
-    }
-    if (!values.category) {
-      errors.category = "Please select category";
-    }
-    if (values.sizes.length === 0) {
-      errors.sizes = "Please select sizes";
-    }
-    if (values.price <= 0) {
-      errors.price = "Please enter price";
-    }
-    if (values.rating <= 0) {
-      errors.rating = "Please enter rating";
-    }
-    if (!values.info) {
-      errors.info = "Please enter product info";
-    }
-
-    return errors;
-  };
+  const validate = (values: ProductItem) => productValidateHandler(values);
 
   const formik = useFormik({
-    initialValues: {
-      title: product ? product.title : "",
-      imageUrl: product ? product.imageUrl : "",
-      category: product ? product.category : "",
-      info: product ? product.info : "",
-      sizes: product ? product.sizes : [],
-      size: product ? product.size : 0,
-      price: product ? product.price : 0,
-      rating: product ? product.rating : 0
-    },
+    initialValues: setInitialValuesHandler(product),
     validate,
     enableReinitialize: false,
     validateOnMount: true,
@@ -168,7 +126,7 @@ export const ProductsAddDialogForm: FC = () => {
                 id={"sizes"}
                 input={<OutlinedInput label="Tag" />}
                 renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
+                MenuProps={selectProps}
                 disabled={isModifiedProductLoading}
                 {...formik.getFieldProps("sizes")}>
                 {shoeSizes.map((size, index) => (
