@@ -45,6 +45,7 @@ export const productPageStyles = makeStyles((theme: Theme) => ({
   },
   detailsInfo: {
     flex: "1",
+    width: "100%",
     display: "flex",
     flexDirection: "column",
     padding: theme.spacing(3, 1.5),
