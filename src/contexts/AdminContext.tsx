@@ -27,6 +27,7 @@ interface ContextProps {
   setIsDialogOpen: Dispatch<SetStateAction<boolean>>;
   setProduct: Dispatch<SetStateAction<Product>>;
   updateProductHandler: (id: string, product: ProductItem) => void;
+  deleteProductHandler: (id: string) => void;
 }
 
 export const AdminContext = createContext<ContextProps>({
@@ -43,7 +44,8 @@ export const AdminContext = createContext<ContextProps>({
   isDialogOpen: false,
   setIsDialogOpen: () => {},
   setProduct: () => {},
-  updateProductHandler: () => {}
+  updateProductHandler: () => {},
+  deleteProductHandler: () => {}
 });
 
 interface Props {
@@ -147,6 +149,26 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     }
   };
 
+  const deleteProductHandler = async (productId: string) => {
+    try {
+      setIsModifiedProductLoading(true);
+
+      await axios(`${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`, {
+        method: "DELETE"
+      });
+
+      toast.success("The product has been deleted!", toastOptions);
+      setIsModifiedProductLoading(false);
+      setIsDialogOpen(false);
+      fetchProductsHandler();
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setIsModifiedProductLoading(false);
+        toast.error(error.message);
+      }
+    }
+  };
+
   const contextValue: ContextProps = {
     products,
     isProductsLoading,
@@ -161,7 +183,8 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     isDialogOpen,
     setIsDialogOpen,
     setProduct,
-    updateProductHandler
+    updateProductHandler,
+    deleteProductHandler
   };
 
   return (

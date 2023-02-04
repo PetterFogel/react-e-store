@@ -35,7 +35,8 @@ export const ProductsAddDialogForm: FC = () => {
     addProductHandler,
     product,
     setIsDialogOpen,
-    updateProductHandler
+    updateProductHandler,
+    deleteProductHandler
   } = useContext(AdminContext);
 
   const closeDialogHandler = () => {
@@ -183,7 +184,7 @@ export const ProductsAddDialogForm: FC = () => {
             variant={"text"}
             size={isBreakpointSm ? "small" : "medium"}
             color="error"
-            onClick={closeDialogHandler}>
+            onClick={() => deleteProductHandler(product.id)}>
             DELETE
           </Button>
         )}
