@@ -4,7 +4,7 @@ import { Dialog, Typography } from "@mui/material";
 import { ProductsAddDialogForm } from "./AdminProductDialogForm";
 
 export const ProductsAddDialog: FC = () => {
-  const { setIsDialogOpen, isDialogOpen } = useContext(AdminContext);
+  const { setIsDialogOpen, isDialogOpen, product } = useContext(AdminContext);
 
   return (
     <Dialog
@@ -13,7 +13,7 @@ export const ProductsAddDialog: FC = () => {
       onClose={() => setIsDialogOpen(false)}
       fullWidth>
       <Typography variant="h3" p={2}>
-        Add a Product
+        {product.id ? "Edit product" : "Add a product"}
       </Typography>
       <ProductsAddDialogForm />
     </Dialog>

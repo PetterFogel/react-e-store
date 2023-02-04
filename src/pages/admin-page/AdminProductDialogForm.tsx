@@ -58,7 +58,7 @@ export const ProductsAddDialogForm: FC = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <DialogContent>
+      <DialogContent sx={{ p: isBreakpointSm ? 1 : 2 }}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <FormikTextField
@@ -170,29 +170,40 @@ export const ProductsAddDialogForm: FC = () => {
           </Grid>
         </Grid>
       </DialogContent>
-      <Box className={classes.addDialogButtonHolder}>
+      <Box
+        className={
+          product.id
+            ? classes.editDialogButtonHolder
+            : classes.addDialogButtonHolder
+        }>
+        {product.id && (
+          <Button
+            disabled={isModifiedProductLoading}
+            className={classes.actionButton}
+            variant={"text"}
+            size={isBreakpointSm ? "small" : "medium"}
+            color="error"
+            onClick={closeDialogHandler}>
+            DELETE
+          </Button>
+        )}
         <Button
-          variant={"outlined"}
-          size="small"
-          color="secondary"
           disabled={isModifiedProductLoading}
-          onClick={closeDialogHandler}
-          sx={{
-            marginBottom: isBreakpointSm ? 1 : 0,
-            width: isBreakpointSm ? "100%" : "10rem"
-          }}>
+          className={classes.actionButton}
+          variant={"outlined"}
+          size={isBreakpointSm ? "small" : "medium"}
+          color="secondary"
+          sx={{ marginLeft: "auto" }}
+          onClick={closeDialogHandler}>
           CANCEL
         </Button>
         <LoadingButton
           loading={isModifiedProductLoading}
+          className={classes.actionButton}
           variant={"contained"}
           color="success"
-          size="small"
-          type="submit"
-          sx={{
-            marginLeft: isBreakpointSm ? 0 : 1,
-            width: isBreakpointSm ? "100%" : "10rem"
-          }}>
+          size={isBreakpointSm ? "small" : "medium"}
+          type="submit">
           SAVE
         </LoadingButton>
       </Box>

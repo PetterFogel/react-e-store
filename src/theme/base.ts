@@ -109,8 +109,7 @@ export const theme = createTheme({
             letterSpacing: "1px",
             borderRadius: "0px",
             background: "#222",
-            color: "#fff",
-            padding: "10px"
+            color: "#fff"
           }
         },
         {
@@ -121,8 +120,7 @@ export const theme = createTheme({
             borderRadius: "0px",
             background: "#fff",
             color: "#333",
-            border: "1px solid #333",
-            padding: "10px"
+            border: "1px solid #333"
           }
         }
       ]
