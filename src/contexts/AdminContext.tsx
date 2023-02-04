@@ -101,7 +101,7 @@ export const AdminProvider: FC<Props> = ({ children }) => {
       if (error instanceof AxiosError) {
         setIsProductLoading(false);
         setIsDialogOpen(false);
-        setProductError(error.message);
+        toast.error(error.message, toastOptions);
       }
     }
   };
@@ -121,7 +121,7 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     } catch (error) {
       if (error instanceof AxiosError) {
         setIsModifiedProductLoading(false);
-        toast.error(error.message);
+        toast.error(error.message, toastOptions);
       }
     }
   };
@@ -144,7 +144,7 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     } catch (error) {
       if (error instanceof AxiosError) {
         setIsModifiedProductLoading(false);
-        toast.error(error.message);
+        toast.error(error.message, toastOptions);
       }
     }
   };
@@ -164,7 +164,7 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     } catch (error) {
       if (error instanceof AxiosError) {
         setIsModifiedProductLoading(false);
-        toast.error(error.message);
+        toast.error(error.message, toastOptions);
       }
     }
   };
