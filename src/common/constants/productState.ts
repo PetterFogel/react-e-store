@@ -1,4 +1,6 @@
-export const productState = {
+import { Product } from "../../models/product";
+
+export const productState: Product = {
   id: "",
   title: "",
   category: "",
