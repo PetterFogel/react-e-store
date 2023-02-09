@@ -4,13 +4,10 @@ import { makeStyles } from "@mui/styles";
 export const aboutPageStyles = makeStyles((theme: Theme) => ({
   root: {
     maxWidth: "1000px",
-    margin: "5rem auto",
-    padding: theme.spacing(0, 2),
+    margin: "auto",
+    padding: theme.spacing(2),
     display: "flex",
-    flexDirection: "column",
-    [theme.breakpoints.down("md")]: {
-      margin: "4.5rem auto",
-    },
+    flexDirection: "column"
   },
   contentRow: {
     display: "flex",
@@ -18,32 +15,32 @@ export const aboutPageStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "flex-start",
     [theme.breakpoints.down("md")]: {
-      display: "block",
-    },
+      display: "block"
+    }
   },
   contentImage: {
     flex: 1,
     height: "60vh",
     marginBottom: theme.spacing(3),
     [theme.breakpoints.down("md")]: {
-      height: "70vh",
-    },
+      height: "70vh"
+    }
   },
   imageStyle: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
     objectPosition: "bottom",
-    [theme.breakpoints.down("md")]: {},
+    [theme.breakpoints.down("md")]: {}
   },
   contentInfo: {
     flex: 1,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(4)
   },
   contentHolder: {
     padding: theme.spacing(0, 4),
     [theme.breakpoints.down("md")]: {
-      padding: theme.spacing(0),
-    },
-  },
+      padding: theme.spacing(0)
+    }
+  }
 }));

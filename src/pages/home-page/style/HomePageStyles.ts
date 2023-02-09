@@ -7,19 +7,19 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "95vh",
+    height: "94vh",
     width: "100%",
     backgroundImage: `url(${Background})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
+    backgroundSize: "cover"
   },
   introContainer: {
     background: "#fff",
     padding: "2rem",
     marginBottom: "7rem",
     [theme.breakpoints.down("md")]: {
-      padding: "1rem",
-    },
-  },
+      padding: "1rem"
+    }
+  }
 }));

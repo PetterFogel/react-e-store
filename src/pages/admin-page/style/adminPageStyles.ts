@@ -4,13 +4,10 @@ import { makeStyles } from "@mui/styles";
 export const adminPageStyles = makeStyles((theme: Theme) => ({
   root: {
     maxWidth: "1200px",
-    margin: "5rem auto",
-    padding: theme.spacing(0, 2),
+    margin: "auto",
+    padding: theme.spacing(2),
     display: "flex",
-    flexDirection: "column",
-    [theme.breakpoints.down("md")]: {
-      margin: "4.5rem auto"
-    }
+    flexDirection: "column"
   },
   filterPanel: {
     alignSelf: "flex-end",

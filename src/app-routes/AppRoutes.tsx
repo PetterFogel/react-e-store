@@ -10,10 +10,7 @@ import { ProductDetails } from "../pages/product-page/ProductDetails";
 
 export const AppRoutes: FC = () => {
   return (
-    <main
-      style={{
-        marginTop: "6vh"
-      }}>
+    <main style={{ paddingTop: "6vh" }}>
       <Routes>
         <Route path={routeFactory.homeScreen()} element={<HomePage />} />
         <Route
