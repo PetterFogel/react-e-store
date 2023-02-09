@@ -3,10 +3,10 @@ import { HomePage } from "../pages/home-page/HomePage";
 import { AboutPage } from "../pages/about-page/AboutPage";
 import { AdminPage } from "../pages/admin-page/AdminPage";
 import { ProductPage } from "../pages/product-page/ProductPage";
+import { CheckoutPage } from "../pages/checkout-page/CheckoutPage";
 import { routeFactory } from "../common/constants/routeFactory";
 import { Route, Routes } from "react-router";
 import { ProductDetails } from "../pages/product-page/ProductDetails";
-import Checkout from "../components/Checkout/Checkout";
 import OrderView from "../components/Orderview/OrderView";
 
 export const AppRoutes: FC = () => {
@@ -27,7 +27,7 @@ export const AppRoutes: FC = () => {
         />
         <Route
           path={routeFactory.checkoutScreen.checkout()}
-          element={<Checkout />}
+          element={<CheckoutPage />}
         />
         <Route
           path={routeFactory.checkoutScreen.orderView()}
