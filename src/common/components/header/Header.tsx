@@ -43,7 +43,7 @@ export const Header: FC = () => {
         </ul>
         <Link
           className={classes.cartLink}
-          to={routeFactory.checkoutScreen.checkout()}
+          to={routeFactory.checkoutScreen()}
           onClick={() => setIsMenuOpen(false)}>
           CART({cart.length})
         </Link>
