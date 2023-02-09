@@ -26,7 +26,13 @@ import { FormikTextField } from "../../common/components/formik-text-field/Formi
 import { productValidateHandler } from "./helpers/productValidateHandler";
 import { setInitialValuesHandler } from "./helpers/setInitialValuesHandler";
 
-export const ProductsAddDialogForm: FC = () => {
+interface Props {
+  onDeleteDialogOpenClick: () => void;
+}
+
+export const ProductsAddDialogForm: FC<Props> = ({
+  onDeleteDialogOpenClick
+}) => {
   const classes = adminPageStyles();
   const theme = useTheme();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -35,8 +41,7 @@ export const ProductsAddDialogForm: FC = () => {
     addProductHandler,
     product,
     setIsDialogOpen,
-    updateProductHandler,
-    deleteProductHandler
+    updateProductHandler
   } = useContext(AdminContext);
 
   const closeDialogHandler = () => {
@@ -184,7 +189,7 @@ export const ProductsAddDialogForm: FC = () => {
             variant={"text"}
             size={isBreakpointSm ? "small" : "medium"}
             color="error"
-            onClick={() => deleteProductHandler(product.id)}>
+            onClick={onDeleteDialogOpenClick}>
             DELETE
           </Button>
         )}

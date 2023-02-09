@@ -1,10 +1,12 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { AdminContext } from "../../contexts/AdminContext";
 import { Dialog, Typography } from "@mui/material";
 import { ProductsAddDialogForm } from "./AdminProductDialogForm";
+import { DeleteProductDialog } from "./DeleteProductDialog";
 
 export const ProductsAddDialog: FC = () => {
   const { setIsDialogOpen, isDialogOpen, product } = useContext(AdminContext);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   return (
     <Dialog
@@ -15,7 +17,13 @@ export const ProductsAddDialog: FC = () => {
       <Typography variant="h3" p={2}>
         {product.id ? "Edit product" : "Add a product"}
       </Typography>
-      <ProductsAddDialogForm />
+      <ProductsAddDialogForm
+        onDeleteDialogOpenClick={() => setIsDeleteDialogOpen(true)}
+      />
+      <DeleteProductDialog
+        isDialogOpen={isDeleteDialogOpen}
+        onDialogCloseClick={() => setIsDeleteDialogOpen(false)}
+      />
     </Dialog>
   );
 };
