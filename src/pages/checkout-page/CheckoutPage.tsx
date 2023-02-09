@@ -1,10 +1,13 @@
 import { Typography } from "@mui/material";
 import { FC } from "react";
+import { checkoutPageStyles } from "./style/checkoutPageStyles";
 
 export const CheckoutPage: FC = () => {
+  const classes = checkoutPageStyles();
+
   return (
-    <>
-      <Typography variant={"h3"}>Checkout</Typography>
-    </>
+    <div className={classes.root}>
+      <Typography variant={"h2"}>Checkout</Typography>
+    </div>
   );
 };
