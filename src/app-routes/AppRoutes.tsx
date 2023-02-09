@@ -7,7 +7,6 @@ import { CheckoutPage } from "../pages/checkout-page/CheckoutPage";
 import { routeFactory } from "../common/constants/routeFactory";
 import { Route, Routes } from "react-router";
 import { ProductDetails } from "../pages/product-page/ProductDetails";
-import OrderView from "../components/Orderview/OrderView";
 
 export const AppRoutes: FC = () => {
   return (
@@ -26,12 +25,8 @@ export const AppRoutes: FC = () => {
           element={<ProductDetails />}
         />
         <Route
-          path={routeFactory.checkoutScreen.checkout()}
+          path={routeFactory.checkoutScreen()}
           element={<CheckoutPage />}
-        />
-        <Route
-          path={routeFactory.checkoutScreen.orderView()}
-          element={<OrderView />}
         />
         <Route path={routeFactory.aboutScreen()} element={<AboutPage />} />
         <Route path={routeFactory.adminScreen()} element={<AdminPage />} />

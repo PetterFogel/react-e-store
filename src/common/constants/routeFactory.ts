@@ -4,10 +4,7 @@ export const routeFactory = {
     products: () => "/products",
     productDetails: (productId: string) => `/product-details/${productId}`
   },
-  checkoutScreen: {
-    checkout: () => "/checkout",
-    orderView: () => "/order-view"
-  },
+  checkoutScreen: () => "/checkout",
   aboutScreen: () => "/about",
   adminScreen: () => "/admin"
 };
