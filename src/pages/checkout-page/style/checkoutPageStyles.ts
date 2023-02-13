@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 
 export const checkoutPageStyles = makeStyles((theme: Theme) => ({
   root: {
-    maxWidth: "1000px",
+    maxWidth: "800px",
     margin: "auto",
     padding: theme.spacing(2)
   }
