@@ -5,7 +5,7 @@ interface CartItem {
   title: string;
   info: string;
   price: number;
-  image: string;
+  imageUrl: string;
   size: number;
   quantity: number;
 }
@@ -32,7 +32,7 @@ export const CartContext = createContext<ContextProps>({
   addToCart: () => {},
   removeFromCart: () => {},
   deleteItemQty: () => {},
-  emptyCart: () => {},
+  emptyCart: () => {}
 });
 
 class CartProvider extends Component<any, State> {
@@ -41,7 +41,7 @@ class CartProvider extends Component<any, State> {
     totalAmount: Number(JSON.parse(localStorage.getItem("TotalAmount") || "0")),
     tax: 0,
     orderCart: [],
-    orderAmount: 0,
+    orderAmount: 0
   };
 
   addProductToCart = (product: CartItem) => {
@@ -112,7 +112,7 @@ class CartProvider extends Component<any, State> {
       orderCart: [...this.state.cart],
       orderAmount: this.state.totalAmount,
       cart: [],
-      totalAmount: 0,
+      totalAmount: 0
     });
   };
 
@@ -129,9 +129,8 @@ class CartProvider extends Component<any, State> {
           addToCart: this.addProductToCart,
           removeFromCart: this.removeProductFromCart,
           deleteItemQty: this.deleteItemFromQty,
-          emptyCart: this.emptyCartItems,
-        }}
-      >
+          emptyCart: this.emptyCartItems
+        }}>
         {this.props.children}
       </CartContext.Provider>
     );
