@@ -1,10 +1,17 @@
-import { Typography } from "@mui/material";
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export const CartList: FC = () => {
+  const { cart } = useContext(CartContext);
+
+  console.log(cart);
   return (
-    <>
-      <Typography variant="h3">Cart List</Typography>
-    </>
+    <div>
+      {cart.map((item) => (
+        <div key={item.id}>
+          <p>{item.title}</p>
+        </div>
+      ))}
+    </div>
   );
 };
