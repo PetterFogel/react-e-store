@@ -145,6 +145,12 @@ export const theme = createTheme({
           }
         }
       ]
+    },
+    MuiSvgIcon: {
+      styleOverrides: { root: { cursor: "pointer" } }
+    },
+    MuiDivider: {
+      styleOverrides: { root: { margin: "15px 0px" } }
     }
   }
 });

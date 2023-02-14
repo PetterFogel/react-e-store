@@ -42,7 +42,7 @@ export const CartItem: FC<Props> = ({ cartProduct }) => {
         </Typography>
         <CloseIcon fontSize="small" />
       </div>
-      <Divider sx={{ mt: 1.5, mb: 1.5 }} />
+      <Divider />
     </>
   );
 };

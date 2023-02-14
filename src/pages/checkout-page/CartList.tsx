@@ -8,9 +8,9 @@ export const CartList: FC = () => {
 
   return (
     <div>
-      <Divider sx={{ mb: 1.5 }} />
-      {cart.map((item) => (
-        <CartItem key={item.id} cartProduct={item} />
+      <Divider />
+      {cart.map((item, index) => (
+        <CartItem key={index} cartProduct={item} />
       ))}
     </div>
   );
