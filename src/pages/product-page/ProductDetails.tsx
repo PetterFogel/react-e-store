@@ -53,7 +53,7 @@ export const ProductDetails: FC = () => {
                 sx={{ color: "#333" }}
               />
             </Stack>
-            <Divider />
+            <Divider sx={{ margin: 0 }} />
             <div>
               <Typography variant={"subtitle1"} mb={0.5}>
                 Size
@@ -71,7 +71,7 @@ export const ProductDetails: FC = () => {
                 ))}
               </div>
             </div>
-            <Divider />
+            <Divider sx={{ margin: 0 }} />
             <Button
               disabled={product.sizes.length === 0}
               variant="contained"
@@ -82,7 +82,7 @@ export const ProductDetails: FC = () => {
               }>
               Add to cart
             </Button>
-            <Divider />
+            <Divider sx={{ margin: 0 }} />
             <div>
               <Typography variant={"subtitle1"} mb={0.5}>
                 Product info
