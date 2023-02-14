@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
 import { FC, useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
 import { CartList } from "./CartList";
+import { Typography } from "@mui/material";
+import { CartContext } from "../../contexts/CartContext";
 import { EmptyCartPanel } from "./EmptyCartPanel";
 import { checkoutPageStyles } from "./style/checkoutPageStyles";
 
