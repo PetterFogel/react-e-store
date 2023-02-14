@@ -1,19 +1,11 @@
 import { Component, createContext } from "react";
+import { CartProduct } from "../models/cartProduct";
 
-interface CartItem {
-  id: string;
-  title: string;
-  info: string;
-  price: number;
-  imageUrl: string;
-  size: number;
-  quantity: number;
-}
 interface State {
-  cart: CartItem[];
+  cart: CartProduct[];
   totalAmount: number;
   tax: number;
-  orderCart: CartItem[];
+  orderCart: CartProduct[];
   orderAmount: number;
 }
 interface ContextProps extends State {
@@ -44,7 +36,7 @@ class CartProvider extends Component<any, State> {
     orderAmount: 0
   };
 
-  addProductToCart = (product: CartItem) => {
+  addProductToCart = (product: CartProduct) => {
     console.log(product);
     let currentProduct = this.state.cart.find(
       (specificProduct) => specificProduct.title === product.title
@@ -66,7 +58,7 @@ class CartProvider extends Component<any, State> {
     }
   };
 
-  removeProductFromCart = (product: CartItem) => {
+  removeProductFromCart = (product: CartProduct) => {
     const updatedCart = [...this.state.cart];
     const cartIndex = updatedCart.indexOf(product);
     updatedCart.splice(cartIndex, 1);
@@ -77,7 +69,7 @@ class CartProvider extends Component<any, State> {
   changeTotalAmount = (cart: any) => {
     if (cart.length !== 0) {
       const itemsPrice = cart.reduce(
-        (a: number, c: CartItem) => a + c.price * c.quantity,
+        (a: number, c: CartProduct) => a + c.price * c.quantity,
         0
       );
       this.changeTax(itemsPrice);
