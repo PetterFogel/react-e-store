@@ -150,7 +150,7 @@ export const theme = createTheme({
       styleOverrides: { root: { cursor: "pointer" } }
     },
     MuiDivider: {
-      styleOverrides: { root: { margin: "15px 0px" } }
+      styleOverrides: { root: { margin: "15px 0px", background: "#ddd" } }
     }
   }
 });
