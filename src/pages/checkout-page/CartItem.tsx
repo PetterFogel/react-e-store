@@ -11,7 +11,8 @@ interface Props {
 }
 
 export const CartItem: FC<Props> = ({ cartProduct }) => {
-  const { addToCart, deleteItemQty, removeFromCart } = useContext(CartContext);
+  const { addToCartHandler, quantityChangeHandler, removeFromCartHandler } =
+    useContext(CartContext);
   return (
     <>
       <div
@@ -37,17 +38,20 @@ export const CartItem: FC<Props> = ({ cartProduct }) => {
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
           <RemoveIcon
             fontSize="small"
-            onClick={() => deleteItemQty(cartProduct.id)}
+            onClick={() => quantityChangeHandler(cartProduct.id)}
           />
           <Typography variant={"subtitle1"}>{cartProduct.quantity}</Typography>
-          <AddIcon fontSize="small" onClick={() => addToCart(cartProduct)} />
+          <AddIcon
+            fontSize="small"
+            onClick={() => addToCartHandler(cartProduct)}
+          />
         </div>
         <Typography variant={"subtitle1"}>
           SEK {cartProduct.quantity * cartProduct.price}
         </Typography>
         <CloseIcon
           fontSize="small"
-          onClick={() => removeFromCart(cartProduct)}
+          onClick={() => removeFromCartHandler(cartProduct)}
         />
       </div>
       <Divider />

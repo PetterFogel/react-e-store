@@ -9,10 +9,10 @@ interface State {
   orderAmount: number;
 }
 interface ContextProps extends State {
-  addToCart: (product: any) => void;
-  removeFromCart: (product: any) => void;
-  deleteItemQty: (productId: string) => void;
-  emptyCart: () => void;
+  addToCartHandler: (product: any) => void;
+  removeFromCartHandler: (product: any) => void;
+  quantityChangeHandler: (productId: string) => void;
+  emptyCartHandler: () => void;
 }
 
 export const CartContext = createContext<ContextProps>({
@@ -21,10 +21,10 @@ export const CartContext = createContext<ContextProps>({
   totalAmount: 0,
   tax: 0,
   orderCart: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-  deleteItemQty: () => {},
-  emptyCart: () => {}
+  addToCartHandler: () => {},
+  removeFromCartHandler: () => {},
+  quantityChangeHandler: () => {},
+  emptyCartHandler: () => {}
 });
 
 class CartProvider extends Component<any, State> {
@@ -36,7 +36,7 @@ class CartProvider extends Component<any, State> {
     orderAmount: 0
   };
 
-  addProductToCart = (product: CartProduct) => {
+  addToCartHandler = (product: CartProduct) => {
     console.log(product);
     let currentProduct = this.state.cart.find(
       (specificProduct) => specificProduct.title === product.title
@@ -58,7 +58,7 @@ class CartProvider extends Component<any, State> {
     }
   };
 
-  removeProductFromCart = (product: CartProduct) => {
+  removeFromCartHandler = (product: CartProduct) => {
     const updatedCart = [...this.state.cart];
     const cartIndex = updatedCart.indexOf(product);
     updatedCart.splice(cartIndex, 1);
@@ -85,12 +85,12 @@ class CartProvider extends Component<any, State> {
     this.setState({ tax: roundedTax });
   };
 
-  deleteItemFromQty = (productId: string) => {
+  quantityChangeHandler = (productId: string) => {
     let currentProduct = this.state.cart.find(
       (specificProduct) => specificProduct.id === productId
     );
     if (currentProduct!.quantity === 1) {
-      this.removeProductFromCart(currentProduct!);
+      this.removeFromCartHandler(currentProduct!);
     } else {
       currentProduct!.quantity = currentProduct!.quantity - 1;
       this.setState({});
@@ -99,7 +99,7 @@ class CartProvider extends Component<any, State> {
     }
   };
 
-  emptyCartItems = () => {
+  emptyCartHandler = () => {
     this.setState({
       orderCart: [...this.state.cart],
       orderAmount: this.state.totalAmount,
@@ -118,10 +118,10 @@ class CartProvider extends Component<any, State> {
       <CartContext.Provider
         value={{
           ...this.state,
-          addToCart: this.addProductToCart,
-          removeFromCart: this.removeProductFromCart,
-          deleteItemQty: this.deleteItemFromQty,
-          emptyCart: this.emptyCartItems
+          addToCartHandler: this.addToCartHandler,
+          removeFromCartHandler: this.removeFromCartHandler,
+          quantityChangeHandler: this.quantityChangeHandler,
+          emptyCartHandler: this.emptyCartHandler
         }}>
         {this.props.children}
       </CartContext.Provider>

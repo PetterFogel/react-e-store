@@ -17,7 +17,7 @@ export const ProductDetails: FC = () => {
     productError,
     fetchSpecificProductHandler
   } = useContext(ProductsContext);
-  const { addToCart } = useContext(CartContext);
+  const { addToCartHandler } = useContext(CartContext);
   const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export const ProductDetails: FC = () => {
               color="success"
               size="large"
               onClick={() =>
-                addToCart({ ...product, size: parseInt(sizeValue) })
+                addToCartHandler({ ...product, size: parseInt(sizeValue) })
               }>
               Add to cart
             </Button>
