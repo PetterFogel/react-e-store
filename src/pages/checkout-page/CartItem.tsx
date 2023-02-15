@@ -1,15 +1,17 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { CartProduct } from "../../models/cartProduct";
 import { Divider, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import CloseIcon from "@mui/icons-material/Close";
+import { CartContext } from "../../contexts/CartContext";
 
 interface Props {
   cartProduct: CartProduct;
 }
 
 export const CartItem: FC<Props> = ({ cartProduct }) => {
+  const { addToCart, deleteItemQty, removeFromCart } = useContext(CartContext);
   return (
     <>
       <div
@@ -33,14 +35,20 @@ export const CartItem: FC<Props> = ({ cartProduct }) => {
           SEK {cartProduct.price}/pcs
         </Typography>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <RemoveIcon fontSize="small" />
+          <RemoveIcon
+            fontSize="small"
+            onClick={() => deleteItemQty(cartProduct.id)}
+          />
           <Typography variant={"subtitle1"}>{cartProduct.quantity}</Typography>
-          <AddIcon fontSize="small" />
+          <AddIcon fontSize="small" onClick={() => addToCart(cartProduct)} />
         </div>
         <Typography variant={"subtitle1"}>
           SEK {cartProduct.quantity * cartProduct.price}
         </Typography>
-        <CloseIcon fontSize="small" />
+        <CloseIcon
+          fontSize="small"
+          onClick={() => removeFromCart(cartProduct)}
+        />
       </div>
       <Divider />
     </>
