@@ -30,7 +30,9 @@ interface Props {
 }
 
 export const CartProvider: FC<Props> = ({ children }) => {
-  const [cart, setCart] = useState<CartProduct[]>([]);
+  const [cart, setCart] = useState<CartProduct[]>(
+    JSON.parse(localStorage.getItem("Products") || "[]")
+  );
   const [totalAmount, setTotalAmount] = useState(
     Number(JSON.parse(localStorage.getItem("TotalAmount") || "0"))
   );
@@ -110,7 +112,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("Products", JSON.stringify(cart));
     localStorage.setItem("TotalAmount", JSON.stringify(totalAmount));
-  }, []);
+  }, [cart]);
 
   const contextValue: ContextProps = {
     cart,
