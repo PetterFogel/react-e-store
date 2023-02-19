@@ -4,12 +4,12 @@ import { Divider } from "@mui/material";
 import { CartItem } from "./CartItem";
 
 export const CartList: FC = () => {
-  const { cart } = useContext(CartContext);
+  const { cartProducts } = useContext(CartContext);
 
   return (
     <div>
       <Divider />
-      {cart.map((item, index) => (
+      {cartProducts.map((item, index) => (
         <CartItem key={index} cartProduct={item} />
       ))}
     </div>

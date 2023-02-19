@@ -2,7 +2,7 @@ import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import { CartProduct } from "../models/cartProduct";
 
 interface ContextProps {
-  cart: CartProduct[];
+  cartProducts: CartProduct[];
   totalAmount: number;
   tax: number;
   cartOrder: CartProduct[];
@@ -14,7 +14,7 @@ interface ContextProps {
 }
 
 export const CartContext = createContext<ContextProps>({
-  cart: [],
+  cartProducts: [],
   orderAmount: 0,
   totalAmount: 0,
   tax: 0,
@@ -30,7 +30,7 @@ interface Props {
 }
 
 export const CartProvider: FC<Props> = ({ children }) => {
-  const [cart, setCart] = useState<CartProduct[]>(
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>(
     JSON.parse(localStorage.getItem("Products") || "[]")
   );
   const [totalAmount, setTotalAmount] = useState(
@@ -61,28 +61,28 @@ export const CartProvider: FC<Props> = ({ children }) => {
   };
 
   const removeFromCartHandler = (product: CartProduct) => {
-    const updatedCart = [...cart];
+    const updatedCart = [...cartProducts];
     const cartIndex = updatedCart.indexOf(product);
     updatedCart.splice(cartIndex, 1);
-    setCart(updatedCart);
+    setCartProducts(updatedCart);
     changeTotalAmount(updatedCart);
   };
 
   const quantityChangeHandler = (productId: string) => {
-    let currentProduct = cart.find(
+    let currentProduct = cartProducts.find(
       (specificProduct) => specificProduct.id === productId
     );
     if (currentProduct!.quantity === 1) {
       removeFromCartHandler(currentProduct!);
     } else {
       currentProduct!.quantity = currentProduct!.quantity - 1;
-      const updatedCart = [...cart];
+      const updatedCart = [...cartProducts];
       changeTotalAmount(updatedCart);
     }
   };
 
   const addToCartHandler = (product: CartProduct) => {
-    let currentProduct = cart.find(
+    let currentProduct = cartProducts.find(
       (specificProduct) => specificProduct.title === product.title
     );
     if (
@@ -90,32 +90,32 @@ export const CartProvider: FC<Props> = ({ children }) => {
       currentProduct.size === product.size
     ) {
       currentProduct.quantity += 1;
-      const updatedCart = [...cart];
+      const updatedCart = [...cartProducts];
       changeTotalAmount(updatedCart);
     } else {
       const quantity = 1;
       const cartItem = { ...product, quantity };
-      let updatedCart = [...cart, cartItem];
-      setCart(updatedCart);
+      let updatedCart = [...cartProducts, cartItem];
+      setCartProducts(updatedCart);
       changeTotalAmount(updatedCart);
     }
   };
 
   const emptyCartHandler = () => {
     setCartOrder([]);
-    setCart([]);
+    setCartProducts([]);
     setTotalAmount(0);
     setOrderAmount(0);
     setTax(0);
   };
 
   useEffect(() => {
-    localStorage.setItem("Products", JSON.stringify(cart));
+    localStorage.setItem("Products", JSON.stringify(cartProducts));
     localStorage.setItem("TotalAmount", JSON.stringify(totalAmount));
-  }, [cart]);
+  }, [cartProducts]);
 
   const contextValue: ContextProps = {
-    cart,
+    cartProducts,
     totalAmount,
     tax,
     cartOrder,

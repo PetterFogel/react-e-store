@@ -8,7 +8,7 @@ import { homePageStyles } from "./style/headerStyles";
 
 export const Header: FC = () => {
   const classes = homePageStyles();
-  const { cart } = useContext(CartContext);
+  const { cartProducts } = useContext(CartContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ export const Header: FC = () => {
           className={classes.cartLink}
           to={routeFactory.checkoutScreen()}
           onClick={() => setIsMenuOpen(false)}>
-          CART({cart.length})
+          CART({cartProducts.length})
         </Link>
         <BurgerMenu
           value={isMenuOpen}
