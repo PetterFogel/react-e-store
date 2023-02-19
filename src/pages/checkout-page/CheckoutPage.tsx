@@ -15,13 +15,7 @@ export const CheckoutPage: FC = () => {
         Checkout
       </Typography>
       {cartProducts.length === 0 ? <EmptyCartPanel /> : <CartList />}
-      <div
-        style={{
-          float: "right",
-          display: "flex",
-          justifyContent: "space-between",
-          width: "20rem"
-        }}>
+      <div className={classes.priceInfoContainer}>
         <Typography variant={"h3"} fontWeight={700}>
           Total
         </Typography>
