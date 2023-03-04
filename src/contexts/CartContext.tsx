@@ -82,23 +82,19 @@ export const CartProvider: FC<Props> = ({ children }) => {
   };
 
   const addToCartHandler = (product: CartProduct) => {
-    let currentProduct = cartProducts.find(
-      (specificProduct) => specificProduct.title === product.title
+    const existingCartItem = cartProducts.find(
+      (item) => item.id === product.id
     );
-    if (
-      currentProduct?.quantity !== undefined &&
-      currentProduct.size === product.size
-    ) {
-      currentProduct.quantity += 1;
-      const updatedCart = [...cartProducts];
-      changeTotalAmount(updatedCart);
-    } else {
-      const quantity = 1;
-      const cartItem = { ...product, quantity };
-      let updatedCart = [...cartProducts, cartItem];
-      setCartProducts(updatedCart);
-      changeTotalAmount(updatedCart);
+    if (existingCartItem && product.size === existingCartItem.size) {
+      changeTotalAmount([
+        ...cartProducts,
+        { ...existingCartItem, quantity: 1 }
+      ]);
+      return existingCartItem.quantity++;
     }
+    const updatedCart = [...cartProducts, { ...product, quantity: 1 }];
+    changeTotalAmount(updatedCart);
+    return setCartProducts(updatedCart);
   };
 
   const emptyCartHandler = () => {
