@@ -85,6 +85,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
     const existingCartItem = cartProducts.find(
       (item) => item.id === product.id
     );
+
     if (existingCartItem && product.size === existingCartItem.size) {
       changeTotalAmount([
         ...cartProducts,
@@ -92,9 +93,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       ]);
       return existingCartItem.quantity++;
     }
+
     const updatedCart = [...cartProducts, { ...product, quantity: 1 }];
     changeTotalAmount(updatedCart);
-    return setCartProducts(updatedCart);
+    setCartProducts(updatedCart);
   };
 
   const emptyCartHandler = () => {
