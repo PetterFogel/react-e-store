@@ -52,12 +52,12 @@ export const CartProvider: FC<Props> = ({ children }) => {
         (a: number, c: CartProduct) => a + c.price * c.quantity,
         0
       );
-      changeTax(itemsPrice);
       setTotalAmount(itemsPrice);
-    } else {
-      setTotalAmount(0);
-      setTax(0);
+      return changeTax(itemsPrice);
     }
+
+    setTotalAmount(0);
+    setTax(0);
   };
 
   const removeFromCartHandler = (product: CartProduct) => {
