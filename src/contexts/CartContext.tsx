@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import { CartProduct } from "../models/cartProduct";
 
@@ -7,10 +8,14 @@ interface ContextProps {
   tax: number;
   cartOrder: CartProduct[];
   orderAmount: number;
+  cart: CartProduct[];
+  isCartLoading: boolean;
+  cartError: string | null;
   addToCartHandler: (product: any) => void;
   removeFromCartHandler: (product: any) => void;
   quantityChangeHandler: (productId: string) => void;
   emptyCartHandler: () => void;
+  fetchCartDataHandler: () => void;
 }
 
 export const CartContext = createContext<ContextProps>({
@@ -19,10 +24,14 @@ export const CartContext = createContext<ContextProps>({
   totalAmount: 0,
   tax: 0,
   cartOrder: [],
+  cart: [],
+  isCartLoading: false,
+  cartError: null,
   addToCartHandler: () => {},
   removeFromCartHandler: () => {},
   quantityChangeHandler: () => {},
-  emptyCartHandler: () => {}
+  emptyCartHandler: () => {},
+  fetchCartDataHandler: () => {}
 });
 
 interface Props {
@@ -30,6 +39,10 @@ interface Props {
 }
 
 export const CartProvider: FC<Props> = ({ children }) => {
+  const [cart, setCart] = useState<CartProduct[]>([]);
+  const [isCartLoading, setIsCartLoading] = useState(false);
+  const [cartError, setCartError] = useState<string | null>(null);
+
   const [cartProducts, setCartProducts] = useState<CartProduct[]>(
     JSON.parse(localStorage.getItem("Products") || "[]")
   );
@@ -107,7 +120,27 @@ export const CartProvider: FC<Props> = ({ children }) => {
     setTax(0);
   };
 
+  const fetchCartDataHandler = async () => {
+    try {
+      setIsCartLoading(true);
+      setCartError(null);
+
+      const response = await axios(`${process.env.REACT_APP_API_BASEURL}/cart`);
+
+      setIsCartLoading(false);
+      setCart(response.data);
+    } catch (error) {
+      if (error instanceof Error) {
+        const errorMsg = error.message;
+        setIsCartLoading(false);
+        setCartError(errorMsg);
+      }
+    }
+  };
+
   useEffect(() => {
+    fetchCartDataHandler();
+
     localStorage.setItem("Products", JSON.stringify(cartProducts));
     localStorage.setItem("TotalAmount", JSON.stringify(totalAmount));
   }, [cartProducts]);
@@ -118,10 +151,14 @@ export const CartProvider: FC<Props> = ({ children }) => {
     tax,
     cartOrder,
     orderAmount,
+    cart,
+    isCartLoading,
+    cartError,
     addToCartHandler,
     removeFromCartHandler,
     quantityChangeHandler,
-    emptyCartHandler
+    emptyCartHandler,
+    fetchCartDataHandler
   };
 
   return (
