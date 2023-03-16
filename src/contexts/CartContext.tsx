@@ -95,6 +95,8 @@ export const CartProvider: FC<Props> = ({ children }) => {
   };
 
   const addToCartHandler = (product: CartProduct) => {
+    const randomId = Math.floor(Math.random() * 1000000);
+
     const existingCartItem = cartProducts.find(
       (item) => item.id === product.id
     );
@@ -107,7 +109,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       return existingCartItem.quantity++;
     }
 
-    const updatedCart = [...cartProducts, { ...product, quantity: 1 }];
+    const updatedCart = [
+      ...cartProducts,
+      { ...product, id: randomId.toString(), quantity: 1 }
+    ];
     changeTotalAmount(updatedCart);
     setCartProducts(updatedCart);
   };
