@@ -11,6 +11,8 @@ import CartProvider from "./contexts/CartContext";
 import UserProvider from "./contexts/UserContext";
 import PaymentProvider from "./contexts/PaymentContext";
 import "./index.css";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,21 +20,23 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <ProductsProvider>
-        <CartProvider>
-          <UserProvider>
-            <PaymentProvider>
-              <AdminProvider>
-                <BrowserRouter>
-                  <App />
-                </BrowserRouter>
-              </AdminProvider>
-            </PaymentProvider>
-          </UserProvider>
-        </CartProvider>
-      </ProductsProvider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <ProductsProvider>
+          <CartProvider>
+            <UserProvider>
+              <PaymentProvider>
+                <AdminProvider>
+                  <BrowserRouter>
+                    <App />
+                  </BrowserRouter>
+                </AdminProvider>
+              </PaymentProvider>
+            </UserProvider>
+          </CartProvider>
+        </ProductsProvider>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
