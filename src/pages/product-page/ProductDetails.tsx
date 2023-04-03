@@ -4,24 +4,23 @@ import { useParams } from "react-router";
 import { shoeSizes } from "../../common/constants/shoeSizes";
 import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { CartContext } from "../../contexts/CartContext";
-import { ProductsContext } from "../../contexts/ProductContext";
 import { productPageStyles } from "./style/productPageStyles";
 import { Button, Divider, Rating, Stack, Typography } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchProductHandler } from "./redux/actions";
+import { productsSelector } from "./redux/productsSlice";
 
 export const ProductDetails: FC = () => {
   const classes = productPageStyles();
+  const dispatch = useAppDispatch();
   const { id } = useParams();
-  const {
-    product,
-    isProductLoading,
-    productError,
-    fetchSpecificProductHandler
-  } = useContext(ProductsContext);
   const { addToCartHandler } = useContext(CartContext);
+  const { product, isProductLoading, productError } =
+    useAppSelector(productsSelector);
   const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
 
   useEffect(() => {
-    fetchSpecificProductHandler(id ?? "");
+    dispatch(fetchProductHandler(id));
   }, []);
 
   const sizeSelectHandler = (size: number) => setSizeValue(size.toString());
