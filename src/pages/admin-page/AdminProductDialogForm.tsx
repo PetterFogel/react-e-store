@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import {
   Box,
   Button,
@@ -19,12 +19,14 @@ import { shoeSizes } from "../../common/constants/shoeSizes";
 import { useFormik } from "formik";
 import { ProductItem } from "../../models/product";
 import { selectProps } from "../../common/constants/selectProps";
-import { AdminContext } from "../../contexts/AdminContext";
 import { LoadingButton } from "@mui/lab";
 import { adminPageStyles } from "./style/adminPageStyles";
 import { FormikTextField } from "../../common/components/formik-text-field/FormikTextField";
 import { productValidateHandler } from "./helpers/productValidateHandler";
 import { setInitialValuesHandler } from "./helpers/setInitialValuesHandler";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { addProductHandler, updateProductHandler } from "./redux/actions";
+import { adminSelector, adminSlice } from "./redux/adminSlice";
 
 interface Props {
   onDeleteDialogOpenClick: () => void;
@@ -33,20 +35,14 @@ interface Props {
 export const ProductsAddDialogForm: FC<Props> = ({
   onDeleteDialogOpenClick
 }) => {
+  const dispatch = useAppDispatch();
   const classes = adminPageStyles();
   const theme = useTheme();
   const isBreakpointSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const {
-    isModifiedProductLoading,
-    addProductHandler,
-    product,
-    setIsDialogOpen,
-    updateProductHandler
-  } = useContext(AdminContext);
+  const { setIsDialogOpen } = adminSlice.actions;
+  const { isModifiedProductLoading, product } = useAppSelector(adminSelector);
 
-  const closeDialogHandler = () => {
-    setIsDialogOpen(false);
-  };
+  const closeDialogHandler = () => dispatch(setIsDialogOpen(false));
 
   const validate = (values: ProductItem) => productValidateHandler(values);
 
@@ -56,8 +52,8 @@ export const ProductsAddDialogForm: FC<Props> = ({
     enableReinitialize: false,
     validateOnMount: true,
     onSubmit: (values, { resetForm }) => {
-      if (product.id) return updateProductHandler(product.id, values);
-      addProductHandler(values);
+      if (product.id) return dispatch(updateProductHandler(product.id, values));
+      dispatch(addProductHandler(values));
       resetForm();
     }
   });

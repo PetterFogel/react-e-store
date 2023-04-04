@@ -1,6 +1,7 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { Product } from "../../models/product";
-import { AdminContext } from "../../contexts/AdminContext";
+import { useAppDispatch } from "../../redux/hooks";
+import { fetchProductHandler } from "./redux/actions";
 import { IconButton, TableCell, TableRow, Tooltip } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export const AdminProductsItem: FC<Props> = ({ product }) => {
-  const { fetchSpecificProductHandler } = useContext(AdminContext);
+  const dispatch = useAppDispatch();
 
   return (
     <TableRow>
@@ -29,7 +30,7 @@ export const AdminProductsItem: FC<Props> = ({ product }) => {
       <TableCell>{product.rating}</TableCell>
       <TableCell>
         <Tooltip title={"Edit"}>
-          <IconButton onClick={() => fetchSpecificProductHandler(product.id)}>
+          <IconButton onClick={() => dispatch(fetchProductHandler(product.id))}>
             <EditIcon color="secondary" sx={{ cursor: "pointer" }} />
           </IconButton>
         </Tooltip>

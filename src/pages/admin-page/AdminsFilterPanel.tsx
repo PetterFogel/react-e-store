@@ -1,16 +1,18 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { Button } from "@mui/material";
 import { adminPageStyles } from "./style/adminPageStyles";
-import { AdminContext } from "../../contexts/AdminContext";
+import { adminSlice } from "./redux/adminSlice";
+import { useAppDispatch } from "../../redux/hooks";
 import { productState } from "../../common/constants/productState";
 
 export const AdminFilterPanel: FC = () => {
   const classes = adminPageStyles();
-  const { setIsDialogOpen, setProduct } = useContext(AdminContext);
+  const dispatch = useAppDispatch();
+  const { setIsDialogOpen, setProduct } = adminSlice.actions;
 
   const openDialogHandler = () => {
-    setIsDialogOpen(true);
-    setProduct(productState);
+    dispatch(setIsDialogOpen(true));
+    dispatch(setProduct(productState));
   };
 
   return (

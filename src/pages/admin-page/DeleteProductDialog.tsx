@@ -1,5 +1,4 @@
-import { FC, useContext } from "react";
-import { AdminContext } from "../../contexts/AdminContext";
+import { FC } from "react";
 import {
   Box,
   Button,
@@ -9,6 +8,9 @@ import {
   Grid,
   Typography
 } from "@mui/material";
+import { adminSelector } from "./redux/adminSlice";
+import { deleteProductHandler } from "./redux/actions";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 interface Props {
   isDialogOpen: boolean;
@@ -19,11 +21,12 @@ export const DeleteProductDialog: FC<Props> = ({
   isDialogOpen,
   onDialogCloseClick
 }) => {
-  const { product, deleteProductHandler } = useContext(AdminContext);
+  const dispatch = useAppDispatch();
+  const { product } = useAppSelector(adminSelector);
 
   const deleteProduct = () => {
     onDialogCloseClick();
-    deleteProductHandler(product.id);
+    dispatch(deleteProductHandler(product.id));
   };
 
   return (

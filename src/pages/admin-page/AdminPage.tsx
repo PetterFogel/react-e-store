@@ -1,20 +1,23 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { Loader } from "../../common/components/loader/Loader";
 import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { Typography } from "@mui/material";
-import { AdminContext } from "../../contexts/AdminContext";
+import { adminSelector } from "./redux/adminSlice";
 import { adminPageStyles } from "./style/adminPageStyles";
 import { AdminFilterPanel } from "./AdminsFilterPanel";
 import { AdminProductsList } from "./AdminProductsList";
 import { ProductsAddDialog } from "./AdminProductDialog";
+import { fetchProductsHandler } from "./redux/actions";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 export const AdminPage: FC = () => {
   const classes = adminPageStyles();
-  const { products, isProductsLoading, productsError, fetchProductsHandler } =
-    useContext(AdminContext);
+  const dispatch = useAppDispatch();
+  const { products, isProductsLoading, productsError } =
+    useAppSelector(adminSelector);
 
   useEffect(() => {
-    fetchProductsHandler();
+    dispatch(fetchProductsHandler());
   }, []);
 
   if (productsError) return <ErrorPanel errorMsg={productsError} />;
