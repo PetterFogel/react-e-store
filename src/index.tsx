@@ -1,18 +1,16 @@
 import { App } from "./App";
 import { theme } from "./theme/base";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { AdminProvider } from "./contexts/AdminContext";
-import { ProductsProvider } from "./contexts/ProductContext";
-import React from "react";
-import ReactDOM from "react-dom/client";
+import PaymentProvider from "./contexts/PaymentContext";
 import reportWebVitals from "./reportWebVitals";
 import CartProvider from "./contexts/CartContext";
 import UserProvider from "./contexts/UserContext";
-import PaymentProvider from "./contexts/PaymentContext";
+import ReactDOM from "react-dom/client";
+import React from "react";
 import "./index.css";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,19 +20,15 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <ProductsProvider>
-          <CartProvider>
-            <UserProvider>
-              <PaymentProvider>
-                <AdminProvider>
-                  <BrowserRouter>
-                    <App />
-                  </BrowserRouter>
-                </AdminProvider>
-              </PaymentProvider>
-            </UserProvider>
-          </CartProvider>
-        </ProductsProvider>
+        <CartProvider>
+          <UserProvider>
+            <PaymentProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </PaymentProvider>
+          </UserProvider>
+        </CartProvider>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>
