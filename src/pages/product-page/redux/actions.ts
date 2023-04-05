@@ -41,8 +41,6 @@ export const fetchProductHandler = (id: string | undefined): AppThunk => {
         `${process.env.REACT_APP_API_BASEURL}/shoes/${id}`
       );
 
-      console.log(response);
-
       dispatch(setProduct(response.data));
       dispatch(setIsProductLoading(false));
     } catch (error) {
