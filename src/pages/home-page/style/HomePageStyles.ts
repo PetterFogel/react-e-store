@@ -2,23 +2,37 @@ import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 export const homePageStyles = makeStyles((theme: Theme) => ({
-  root: {
+  introContainer: {
+    backgroundColor: "orange",
     display: "flex",
     justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
-    height: "94vh",
     width: "100%",
-    backgroundColor: "orange",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
+    height: "94vh"
   },
-  introContainer: {
-    background: "#fff",
-    padding: "2rem",
-    marginBottom: "7rem",
+  introHolder: {
+    backgroundColor: "#fff",
+    padding: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
-      padding: "1rem"
+      padding: theme.spacing(1)
     }
+  },
+  section: {
+    padding: theme.spacing(6)
+  },
+  latestContainer: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: theme.spacing(5),
+    [theme.breakpoints.down("md")]: {
+      gridTemplateColumns: "repeat(2, 1fr)",
+      gap: theme.spacing(2)
+    }
+  },
+  dummyImage: {
+    width: "100%",
+    backgroundColor: "#ddd",
+    marginBottom: theme.spacing(1)
   }
 }));
