@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useNavigate } from "react-router";
-import { homePageStyles } from "./style/HomePageStyles";
+import { homePageStyles } from "./style/homePageStyles";
 import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 export const HomePage: FC = () => {
@@ -16,14 +16,13 @@ export const HomePage: FC = () => {
           WELCOME TO <br /> THE MANY SAINTS
         </Typography>
         <Typography variant="h2" mt={2} mb={2}>
-          Quality shoes to match your style
+          Quality clothes to match your style
         </Typography>
         <Button
           onClick={() => navigate("/products")}
           color="info"
           variant="contained"
-          size={isBreakpointMd ? "medium" : "large"}
-        >
+          size={isBreakpointMd ? "medium" : "large"}>
           Go Shopping
         </Button>
       </div>
