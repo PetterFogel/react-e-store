@@ -45,7 +45,7 @@ export const theme = createTheme({
       }
     },
     h5: {
-      fontSize: "0.7rem",
+      fontSize: "0.8rem",
       fontWeight: 600,
       color: "#333",
       letterSpacing: "1px",
