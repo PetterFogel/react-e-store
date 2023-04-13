@@ -38,15 +38,6 @@ export const productSlice = createSlice({
   }
 });
 
-export const {
-  setProducts,
-  setIsProductsLoading,
-  setProductsError,
-  setIsProductLoading,
-  setProduct,
-  setProductError
-} = productSlice.actions;
-
 export const productsSelector = (state: RootState): ProductState =>
   state.productState;
 

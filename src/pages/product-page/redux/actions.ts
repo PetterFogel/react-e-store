@@ -1,13 +1,15 @@
 import axios from "axios";
 import { AppThunk } from "../../../redux/store";
-import {
-  setIsProductsLoading,
+import { productSlice } from "./productsSlice";
+
+export const {
   setProducts,
+  setIsProductsLoading,
   setProductsError,
-  setProduct,
   setIsProductLoading,
+  setProduct,
   setProductError
-} from "./productsSlice";
+} = productSlice.actions;
 
 export const fetchProductsHandler = (): AppThunk => {
   return async (dispatch) => {

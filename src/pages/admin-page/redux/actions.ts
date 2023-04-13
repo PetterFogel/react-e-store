@@ -3,16 +3,18 @@ import { toast } from "react-toastify";
 import { toastOptions } from "../../../common/constants/toastOptions";
 import { ProductItem } from "../../../models/product";
 import { AppThunk } from "../../../redux/store";
-import {
-  setIsProductsLoading,
+import { adminSlice } from "./adminSlice";
+
+export const {
   setProducts,
+  setIsProductsLoading,
   setProductsError,
-  setProduct,
   setIsProductLoading,
+  setProduct,
   setProductError,
   setIsModifiedProductLoading,
   setIsDialogOpen
-} from "./adminSlice";
+} = adminSlice.actions;
 
 export const fetchProductsHandler = (): AppThunk => {
   return async (dispatch) => {

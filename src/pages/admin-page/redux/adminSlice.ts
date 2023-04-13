@@ -49,17 +49,6 @@ export const adminSlice = createSlice({
   }
 });
 
-export const {
-  setProducts,
-  setIsProductsLoading,
-  setProductsError,
-  setIsProductLoading,
-  setProduct,
-  setProductError,
-  setIsModifiedProductLoading,
-  setIsDialogOpen
-} = adminSlice.actions;
-
 export const adminSelector = (state: RootState): AdminState => state.adminState;
 
 export default adminSlice.reducer;
