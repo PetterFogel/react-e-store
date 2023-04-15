@@ -11,7 +11,8 @@ const initialState: CheckoutState = {
   cartOrder: [],
   totalAmount: 0,
   orderAmount: 0,
-  tax: 0
+  tax: 0,
+  isModifiedCartLoading: false
 };
 
 export const checkoutSlice = createSlice({
@@ -41,11 +42,12 @@ export const checkoutSlice = createSlice({
     },
     setTax: (state, { payload }: PayloadAction<number>) => {
       state.tax = payload;
+    },
+    setIsModifiedCartLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.isModifiedCartLoading = payload;
     }
   }
 });
-
-export const {} = checkoutSlice.actions;
 
 export const checkoutSelector = (state: RootState): CheckoutState =>
   state.checkoutState;

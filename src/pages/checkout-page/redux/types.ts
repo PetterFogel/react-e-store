@@ -9,4 +9,6 @@ export interface CheckoutState {
   cart: CartProduct[];
   isCartLoading: boolean;
   cartError: string | null;
+
+  isModifiedCartLoading: boolean;
 }
