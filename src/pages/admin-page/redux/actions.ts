@@ -30,9 +30,8 @@ export const fetchProductsHandler = (): AppThunk => {
       dispatch(setIsProductsLoading(false));
     } catch (error) {
       if (error instanceof AxiosError) {
-        const errorMsg = error.message;
         dispatch(setIsProductsLoading(false));
-        dispatch(setProductsError(errorMsg));
+        dispatch(setProductsError(error.message));
       }
     }
   };
