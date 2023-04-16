@@ -21,10 +21,10 @@ export const ProductItem: FC<Props> = ({ product }) => {
         src={product.imageUrl}
         alt={product.imageUrl}
       />
-      <Typography variant="h5" mb={0.2} sx={{ cursor: "pointer" }}>
+      <Typography variant="h4" mb={0.2} sx={{ cursor: "pointer" }}>
         {product.title}
       </Typography>
-      <Typography variant="h6">{product.price + " SEK"}</Typography>
+      <Typography variant="h5">{product.price + " SEK"}</Typography>
     </div>
   );
 };

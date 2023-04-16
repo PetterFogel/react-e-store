@@ -38,8 +38,8 @@ export const HomePage: FC = () => {
                 src={item.imageUrl}
                 className={classes.dummyImage}
               />
-              <Typography variant="h5">{item.title}</Typography>
-              <Typography variant="h6">{item.subtitle}</Typography>
+              <Typography variant="h4">{item.title}</Typography>
+              <Typography variant="h5">{item.subtitle}</Typography>
             </div>
           ))}
         </div>
