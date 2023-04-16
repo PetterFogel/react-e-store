@@ -4,73 +4,45 @@ export const theme = createTheme({
   typography: {
     fontFamily: "'Source Sans Pro', 'sans-serif'",
     h1: {
-      fontSize: "4rem",
+      fontSize: "clamp(2rem, 8vw, 4rem)",
       fontWeight: 600,
       color: "#333",
-      letterSpacing: "4px",
-      "@media (max-width:900px)": {
-        fontSize: "3rem"
-      },
-      "@media (max-width:600px)": {
-        fontSize: "2rem",
-        fontWeight: 600
-      }
+      letterSpacing: "4px"
     },
     h2: {
-      fontSize: "2rem",
+      fontSize: "clamp(1.5rem, 6vw, 2rem)",
       fontWeight: 400,
       color: "#333",
-      letterSpacing: "1px",
-      "@media (max-width:600px)": {
-        fontSize: "1.5rem"
-      }
+      letterSpacing: "1px"
     },
     h3: {
-      fontSize: "1.5rem",
       fontWeight: 400,
       color: "#333",
       textAlign: "left",
       letterSpacing: "1px",
-      "@media (max-width:600px)": {
-        fontSize: "1.2rem"
-      }
+      fontSize: "clamp(1.2rem, 4vw, 1.5rem)"
     },
     h4: {
-      fontSize: "0.9em",
-      fontWeight: "normal",
-      color: "#0A5A7A",
-      cursor: "pointer",
-      "@media (max-width:600px)": {
-        fontSize: "0.8em"
-      }
-    },
-    h5: {
-      fontSize: "0.8rem",
       fontWeight: 600,
       color: "#333",
       letterSpacing: "1px",
-      "@media (max-width:600px)": {
-        fontSize: "0.5rem"
-      }
+      fontSize: "clamp(0.5rem, 2vw, 0.8rem)"
     },
-    h6: {
-      fontSize: "0.9rem",
+    h5: {
       fontWeight: 400,
       color: "#333",
-      "@media (max-width:600px)": {
-        fontSize: "0.6rem"
-      }
+      fontSize: "clamp(0.6rem, 2vw, 0.9rem)"
     },
     subtitle1: {
       color: "#333",
-      fontSize: "0.8rem",
       letterSpacing: "0.5px",
+      fontSize: "clamp(0.6rem, 2vw, 0.8rem)",
       fontWeight: 600
     },
     subtitle2: {
       color: "#333",
-      fontSize: "0.8rem",
       letterSpacing: "0.5px",
+      fontSize: "clamp(0.6rem, 2vw, 0.8rem)",
       fontWeight: 400
     }
   },
