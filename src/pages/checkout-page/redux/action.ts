@@ -36,26 +36,6 @@ export const fetchCartDataHandler = (): AppThunk => {
   };
 };
 
-const changeTax = (productPrice: number) => {
-  const itemsTax = productPrice * 0.2;
-  const roundedTax = Math.round(itemsTax);
-  setTax(roundedTax);
-};
-
-const changeTotalAmount = (cart: any) => {
-  if (cart.length !== 0) {
-    const itemsPrice = cart.reduce(
-      (a: number, c: CartProduct) => a + c.price * c.quantity,
-      0
-    );
-    setTotalAmount(itemsPrice);
-    return changeTax(itemsPrice);
-  }
-
-  setTotalAmount(0);
-  setTax(0);
-};
-
 export const addToCartHandler = (product: CartProduct): AppThunk => {
   return async (dispatch) => {
     try {
