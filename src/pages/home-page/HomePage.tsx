@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { homePageStyles } from "./style/homePageStyles";
 import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { latestList } from "./helpers/latestList";
+import { SectionList } from "../../common/components/section-list/SectionList";
 
 export const HomePage: FC = () => {
   const classes = homePageStyles();
@@ -29,21 +30,7 @@ export const HomePage: FC = () => {
           </Button>
         </div>
       </section>
-      <section className={classes.section}>
-        <div className={classes.latestContainer}>
-          {latestList.map((item) => (
-            <div key={item.id}>
-              <img
-                alt={item.title}
-                src={item.imageUrl}
-                className={classes.dummyImage}
-              />
-              <Typography variant="h4">{item.title}</Typography>
-              <Typography variant="h5">{item.subtitle}</Typography>
-            </div>
-          ))}
-        </div>
-      </section>
+      <SectionList sectionList={latestList} />
     </div>
   );
 };
