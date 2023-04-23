@@ -14,13 +14,19 @@ export const CheckoutPage: FC = () => {
       <Typography variant={"h2"} mb={3}>
         Checkout
       </Typography>
-      {cartProducts.length === 0 ? <EmptyCartPanel /> : <CartList />}
-      <div className={classes.priceInfoContainer}>
-        <Typography variant={"h3"} fontWeight={700}>
-          Total
-        </Typography>
-        <Typography variant={"h3"}>SEK: {totalAmount}</Typography>
-      </div>
+      {cartProducts.length === 0 ? (
+        <EmptyCartPanel />
+      ) : (
+        <>
+          <CartList />
+          <div className={classes.priceInfoContainer}>
+            <Typography variant={"h3"} fontWeight={700}>
+              Total
+            </Typography>
+            <Typography variant={"h3"}>SEK: {totalAmount}</Typography>
+          </div>
+        </>
+      )}
     </div>
   );
 };
