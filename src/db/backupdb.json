@@ -1,13 +1,12 @@
 {
-  "shoes": [
+  "products": [
     {
       "id": "12312",
       "category": "SHOE",
       "title": "Eytys Odessa Canvas Black",
       "info": "The brand new Eytys Odessa silhouette is a brutalist interpretation of 50´s athletic shoes. A vegan-friendly, easy going lace-up style.",
       "price": 1599,
-      "imageUrl":
-        "https://shelta.se/pub_images/original/EYT-OACB_1x.jpg?timestamp=1613295294",
+      "imageUrl": "https://shelta.se/pub_images/original/EYT-OACB_1x.jpg?timestamp=1613295294",
       "size": 0,
       "rating": 3.5,
       "sizes": ["37", "38", "39", "41"]
@@ -18,8 +17,7 @@
       "title": "The North Face EQBC Slide Vintage",
       "info": "Inspired by the tried-and-true materials that The North Face use in their equipment collection, the street-style EQBC Slide is ideal for everything from chilling out to exploring new environments.",
       "price": 599,
-      "imageUrl":
-        "https://shelta.se/pub_images/original/NF0A46B3L0E1_1.jpg?timestamp=1612434569",
+      "imageUrl": "https://shelta.se/pub_images/original/NF0A46B3L0E1_1.jpg?timestamp=1612434569",
       "size": 0,
       "rating": 2,
       "sizes": ["37", "38", "39", "41", "42"]
