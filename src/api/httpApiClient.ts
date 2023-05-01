@@ -31,3 +31,28 @@ export const fetchHttp = async <TResponse, TPayload>(
     throw new Error("Unknown server error");
   }
 };
+
+export const fetchHttpById = async <TResponse, TPayload>(
+  url: string,
+  id: string | undefined,
+  method: Method,
+  reqBody?: TPayload
+): Promise<TResponse> => {
+  try {
+    const response = await axios(`${baseUrl}/${url}/${id}`, {
+      method: method,
+      headers: createHeaders(),
+      data: {
+        ...(reqBody && reqBody)
+      }
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.data?.error) {
+        throw new Error(error.response.data.error);
+      }
+    }
+    throw new Error("Unknown server error");
+  }
+};
