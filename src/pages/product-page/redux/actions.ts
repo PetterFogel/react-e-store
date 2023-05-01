@@ -1,5 +1,7 @@
-import axios from "axios";
-import { fetchProductsRequest } from "../../../api/specific-pages-calls/productsApiCalls";
+import {
+  fetchProductRequest,
+  fetchProductsRequest
+} from "../../../api/specific-pages-calls/productsApiCalls";
 import { AppThunk } from "../../../redux/store";
 import { productSlice } from "./productsSlice";
 
@@ -38,11 +40,9 @@ export const fetchProductHandler = (id: string | undefined): AppThunk => {
       dispatch(setIsProductLoading(true));
       dispatch(setProductError(null));
 
-      const response = await axios(
-        `${process.env.REACT_APP_API_BASEURL}/shoes/${id}`
-      );
+      const product = await fetchProductRequest(id);
 
-      dispatch(setProduct(response.data));
+      dispatch(setProduct(product));
       dispatch(setIsProductLoading(false));
     } catch (error) {
       if (error instanceof Error) {
