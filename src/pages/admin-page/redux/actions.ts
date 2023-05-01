@@ -1,5 +1,9 @@
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
+import {
+  fetchProductRequest,
+  fetchProductsRequest
+} from "../../../api/specific-pages-calls/productsApiCalls";
 import { toastOptions } from "../../../common/constants/toastOptions";
 import { ProductItem } from "../../../models/product";
 import { AppThunk } from "../../../redux/store";
@@ -22,11 +26,9 @@ export const fetchProductsHandler = (): AppThunk => {
       dispatch(setIsProductsLoading(true));
       dispatch(setProductsError(null));
 
-      const response = await axios(
-        `${process.env.REACT_APP_API_BASEURL}/shoes`
-      );
+      const products = await fetchProductsRequest();
 
-      dispatch(setProducts(response.data));
+      dispatch(setProducts(products));
       dispatch(setIsProductsLoading(false));
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -43,11 +45,9 @@ export const fetchProductHandler = (id: string | undefined): AppThunk => {
       dispatch(setIsProductLoading(true));
       dispatch(setProductError(null));
 
-      const response = await axios(
-        `${process.env.REACT_APP_API_BASEURL}/shoes/${id}`
-      );
+      const product = await fetchProductRequest(id);
 
-      dispatch(setProduct(response.data));
+      dispatch(setProduct(product));
       dispatch(setIsProductLoading(false));
       dispatch(setIsDialogOpen(true));
     } catch (error) {
