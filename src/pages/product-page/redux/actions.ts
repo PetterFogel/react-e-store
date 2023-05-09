@@ -1,9 +1,13 @@
+import { toast } from "react-toastify";
+import { AppThunk } from "../../../redux/store";
+import { toastOptions } from "../../../common/constants/toastOptions";
+import { productSlice } from "./productsSlice";
 import {
   fetchProductRequest,
   fetchProductsRequest
 } from "../../../api/specific-pages-calls/productsApiCalls";
-import { AppThunk } from "../../../redux/store";
-import { productSlice } from "./productsSlice";
+import { routeFactory } from "../../../common/constants/routeFactory";
+import { NavigateFunction } from "react-router-dom";
 
 export const {
   setProducts,
@@ -26,15 +30,17 @@ export const fetchProductsHandler = (): AppThunk => {
       dispatch(setIsProductsLoading(false));
     } catch (error) {
       if (error instanceof Error) {
-        const errorMsg = error.message;
         dispatch(setIsProductsLoading(false));
-        dispatch(setProductsError(errorMsg));
+        dispatch(setProductsError(error.message));
       }
     }
   };
 };
 
-export const fetchProductHandler = (id: string | undefined): AppThunk => {
+export const fetchProductHandler = (
+  id: string,
+  navigate: NavigateFunction
+): AppThunk => {
   return async (dispatch) => {
     try {
       dispatch(setIsProductLoading(true));
@@ -43,12 +49,13 @@ export const fetchProductHandler = (id: string | undefined): AppThunk => {
       const product = await fetchProductRequest(id);
 
       dispatch(setProduct(product));
+      navigate(routeFactory.productScreen.productDetails(id));
       dispatch(setIsProductLoading(false));
     } catch (error) {
       if (error instanceof Error) {
-        const errorMsg = error.message;
         dispatch(setIsProductLoading(false));
-        dispatch(setProductError(errorMsg));
+        navigate(routeFactory.productScreen.products());
+        toast.error(error.message, toastOptions);
       }
     }
   };

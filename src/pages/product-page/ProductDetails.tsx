@@ -1,6 +1,6 @@
 import { FC, useContext, useEffect, useState } from "react";
 import { Loader } from "../../common/components/loader/Loader";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { shoeSizes } from "../../common/constants/shoeSizes";
 import { ErrorPanel } from "../../common/components/error-panel/ErrorPanel";
 import { CartContext } from "../../contexts/CartContext";
@@ -13,6 +13,7 @@ import { productsSelector } from "./redux/productsSlice";
 export const ProductDetails: FC = () => {
   const classes = productPageStyles();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   const { addToCartHandler } = useContext(CartContext);
   const { product, isProductLoading, productError } =
@@ -20,7 +21,9 @@ export const ProductDetails: FC = () => {
   const [sizeValue, setSizeValue] = useState(shoeSizes[0]);
 
   useEffect(() => {
-    dispatch(fetchProductHandler(id));
+    if (id) {
+      dispatch(fetchProductHandler(id, navigate));
+    }
   }, []);
 
   const sizeSelectHandler = (size: number) => setSizeValue(size.toString());
