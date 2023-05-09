@@ -1,13 +1,15 @@
-import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
-import {
-  fetchProductRequest,
-  fetchProductsRequest
-} from "../../../api/specific-pages-calls/productsApiCalls";
-import { toastOptions } from "../../../common/constants/toastOptions";
-import { ProductItem } from "../../../models/product";
 import { AppThunk } from "../../../redux/store";
 import { adminSlice } from "./adminSlice";
+import { ProductItem } from "../../../models/product";
+import { toastOptions } from "../../../common/constants/toastOptions";
+import {
+  addProductRequest,
+  deleteProductRequest,
+  fetchProductRequest,
+  fetchProductsRequest,
+  updateProductRequest
+} from "../../../api/specific-pages-calls/productsApiCalls";
 
 export const {
   setProducts,
@@ -31,7 +33,7 @@ export const fetchProductsHandler = (): AppThunk => {
       dispatch(setProducts(products));
       dispatch(setIsProductsLoading(false));
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof Error) {
         dispatch(setIsProductsLoading(false));
         dispatch(setProductsError(error.message));
       }
@@ -44,6 +46,7 @@ export const fetchProductHandler = (id: string | undefined): AppThunk => {
     try {
       dispatch(setIsProductLoading(true));
       dispatch(setProductError(null));
+      dispatch(setIsDialogOpen(false));
 
       const product = await fetchProductRequest(id);
 
@@ -51,9 +54,8 @@ export const fetchProductHandler = (id: string | undefined): AppThunk => {
       dispatch(setIsProductLoading(false));
       dispatch(setIsDialogOpen(true));
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof Error) {
         dispatch(setIsProductLoading(false));
-        dispatch(setIsDialogOpen(false));
         toast.error(error.message, toastOptions);
       }
     }
@@ -65,17 +67,14 @@ export const addProductHandler = (product: ProductItem): AppThunk => {
     try {
       dispatch(setIsModifiedProductLoading(true));
 
-      await axios(`${process.env.REACT_APP_API_BASEURL}/shoes`, {
-        method: "POST",
-        data: product
-      });
+      await addProductRequest(product);
 
       dispatch(setIsModifiedProductLoading(false));
       dispatch(setIsDialogOpen(false));
       dispatch(fetchProductsHandler());
       toast.success("The product has been created!", toastOptions);
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof Error) {
         dispatch(setIsModifiedProductLoading(false));
         toast.error(error.message, toastOptions);
       }
@@ -91,17 +90,14 @@ export const updateProductHandler = (
     try {
       dispatch(setIsModifiedProductLoading(true));
 
-      await axios(`${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`, {
-        method: "PUT",
-        data: product
-      });
+      await updateProductRequest(productId, product);
 
       dispatch(setIsModifiedProductLoading(false));
       dispatch(setIsDialogOpen(false));
       dispatch(fetchProductsHandler());
       toast.success("The product has been updated!", toastOptions);
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof Error) {
         dispatch(setIsModifiedProductLoading(false));
         toast.error(error.message, toastOptions);
       }
@@ -114,16 +110,14 @@ export const deleteProductHandler = (productId: string): AppThunk => {
     try {
       dispatch(setIsModifiedProductLoading(true));
 
-      await axios(`${process.env.REACT_APP_API_BASEURL}/shoes/${productId}`, {
-        method: "DELETE"
-      });
+      await deleteProductRequest(productId);
 
       dispatch(setIsModifiedProductLoading(false));
       dispatch(setIsDialogOpen(false));
       dispatch(fetchProductsHandler());
       toast.success("The product has been deleted!", toastOptions);
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof Error) {
         dispatch(setIsModifiedProductLoading(false));
         toast.error(error.message, toastOptions);
       }
