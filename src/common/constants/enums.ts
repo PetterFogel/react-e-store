@@ -5,3 +5,9 @@ export enum HttpMethod {
   DELETE = "DELETE",
   PUT = "PUT"
 }
+
+export enum Categories {
+  ALL = "ALL",
+  SHOES = "SHOE",
+  OVERSHIRTS = "OVERSHIRT"
+}
