@@ -1,12 +1,16 @@
 import { FC } from "react";
 import { HomePage } from "../pages/home-page/HomePage";
 import { AboutPage } from "../pages/about-page/AboutPage";
-import { AdminPage } from "../pages/admin-page/AdminPage";
 import { ProductPage } from "../pages/product-page/ProductPage";
 import { CheckoutPage } from "../pages/checkout-page/CheckoutPage";
 import { routeFactory } from "../common/constants/routeFactory";
 import { Route, Routes } from "react-router";
 import { ProductDetails } from "../pages/product-page/ProductDetails";
+import loadable from "@loadable/component";
+
+const AdminPage = loadable(() => import("../pages/admin-page/AdminPage"), {
+  resolveComponent: (component) => component.AdminPage
+});
 
 export const AppRoutes: FC = () => {
   return (
@@ -26,6 +30,7 @@ export const AppRoutes: FC = () => {
           element={<CheckoutPage />}
         />
         <Route path={routeFactory.aboutScreen()} element={<AboutPage />} />
+
         <Route path={routeFactory.adminScreen()} element={<AdminPage />} />
       </Routes>
     </main>
