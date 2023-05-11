@@ -1,12 +1,16 @@
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem, Stack } from "@mui/material";
 import { FC, useState, MouseEvent } from "react";
 import { Categories } from "../../common/constants/enums";
 
 interface Props {
   onCategoryFilterChange: (value: string) => void;
+  onPriceSortChange: (value: string | null) => void;
 }
 
-export const ProductFilterPanel: FC<Props> = ({ onCategoryFilterChange }) => {
+export const ProductFilterPanel: FC<Props> = ({
+  onCategoryFilterChange,
+  onPriceSortChange
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -20,8 +24,10 @@ export const ProductFilterPanel: FC<Props> = ({ onCategoryFilterChange }) => {
     onCategoryFilterChange(value);
   };
 
+  const sortPriceHandler = (value: string | null) => onPriceSortChange(value);
+
   return (
-    <>
+    <Stack direction={"row"} spacing={1}>
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -48,6 +54,30 @@ export const ProductFilterPanel: FC<Props> = ({ onCategoryFilterChange }) => {
           Overshirts
         </MenuItem>
       </Menu>
-    </>
+      <Button
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={clickHandler}>
+        Filter
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={closeHandler}
+        MenuListProps={{
+          "aria-labelledby": "basic-button"
+        }}>
+        <MenuItem onClick={() => sortPriceHandler(null)}>Popular</MenuItem>
+        <MenuItem onClick={() => sortPriceHandler("ASC")}>
+          Lowest price
+        </MenuItem>
+        <MenuItem onClick={() => sortPriceHandler("DESC")}>
+          Highest price
+        </MenuItem>
+      </Menu>
+    </Stack>
   );
 };
