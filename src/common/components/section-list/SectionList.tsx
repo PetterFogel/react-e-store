@@ -10,7 +10,7 @@ interface Props {
 export const SectionList: FC<Props> = ({ sectionList }) => {
   const classes = sectionStyles();
   return (
-    <section className={classes.section}>
+    <section>
       <div className={classes.latestContainer}>
         {sectionList.map((item) => (
           <div key={item.id}>

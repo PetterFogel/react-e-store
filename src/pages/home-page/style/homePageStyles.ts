@@ -2,22 +2,6 @@ import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 export const homePageStyles = makeStyles((theme: Theme) => ({
-  introContainer: {
-    backgroundColor: "orange",
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    height: "94vh"
-  },
-  introHolder: {
-    backgroundColor: "#fff",
-    padding: theme.spacing(2),
-    [theme.breakpoints.down("md")]: {
-      padding: theme.spacing(1)
-    }
-  },
   heroSection: {
     position: "relative",
     height: "94vh",
@@ -27,6 +11,18 @@ export const homePageStyles = makeStyles((theme: Theme) => ({
       "linear-gradient(90deg, #f12711, #f5af19, #3dc5b3, #41b3e6, #7b53e6, #f12711)",
     backgroundSize: "1200% 1200%",
     animation: "$changeGradient 30s ease-in-out infinite"
+  },
+  introContainer: {
+    margin: theme.spacing(4, 0),
+    padding: theme.spacing(0, 4),
+    [theme.breakpoints.down("md")]: {
+      margin: theme.spacing(3, 0),
+      padding: theme.spacing(0, 3)
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: theme.spacing(3, 0),
+      padding: theme.spacing(0, 2)
+    }
   },
   "@keyframes changeGradient": {
     "0%": {

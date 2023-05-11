@@ -10,10 +10,12 @@ export const HomePage: FC = () => {
   return (
     <section>
       <div className={classes.heroSection}></div>
-      <Typography variant="h1">
-        Welcome to the The Many Saints, quality clothes to match your style
-      </Typography>
-      <SectionList sectionList={latestList} />
+      <div className={classes.introContainer}>
+        <Typography variant="h1" mb={3}>
+          Welcome to the The Many Saints, quality clothes to match your style
+        </Typography>
+        <SectionList sectionList={latestList} />
+      </div>
       <div className={classes.heroSection2}>
         <div className={classes.diamond} />
       </div>
