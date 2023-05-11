@@ -1,6 +1,6 @@
-import { Button, Menu, MenuItem, Stack } from "@mui/material";
 import { FC, useState, MouseEvent } from "react";
 import { Categories } from "../../common/constants/enums";
+import { Button, Menu, MenuItem, Stack } from "@mui/material";
 
 interface Props {
   onCategoryFilterChange: (value: string) => void;
@@ -30,8 +30,9 @@ export const ProductFilterPanel: FC<Props> = ({
     <Stack direction={"row"} spacing={1}>
       <Button
         id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
+        size="small"
         aria-haspopup="true"
+        aria-controls={open ? "basic-menu" : undefined}
         aria-expanded={open ? "true" : undefined}
         onClick={clickHandler}>
         Filter
@@ -56,8 +57,9 @@ export const ProductFilterPanel: FC<Props> = ({
       </Menu>
       <Button
         id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
+        size="small"
         aria-haspopup="true"
+        aria-controls={open ? "basic-menu" : undefined}
         aria-expanded={open ? "true" : undefined}
         onClick={clickHandler}>
         Filter
