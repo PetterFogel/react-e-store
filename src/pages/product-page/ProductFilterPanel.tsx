@@ -12,65 +12,74 @@ export const ProductFilterPanel: FC<Props> = ({
   onPriceSortChange
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
+  const isFilterOpen = Boolean(anchorEl);
+  const isSortOpen = Boolean(anchorEl2);
 
-  const clickHandler = (event: MouseEvent<HTMLButtonElement>) => {
+  const openFilterHandler = (event: MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
-  };
-  const closeHandler = () => setAnchorEl(null);
 
-  const categorySelectHandler = (value: string) => {
+  const openSortHandler = (event: MouseEvent<HTMLButtonElement>) =>
+    setAnchorEl2(event.currentTarget);
+
+  const closeFilterHandler = () => setAnchorEl(null);
+  const closeSortHandler = () => setAnchorEl2(null);
+
+  const filterSelectHandler = (value: string) => {
     setAnchorEl(null);
     onCategoryFilterChange(value);
   };
 
-  const sortPriceHandler = (value: string | null) => onPriceSortChange(value);
+  const sortPriceHandler = (value: string | null) => {
+    setAnchorEl2(null);
+    onPriceSortChange(value);
+  };
 
   return (
     <Stack direction={"row"} spacing={1}>
       <Button
-        id="basic-button"
+        id="filter-button"
         size="small"
         aria-haspopup="true"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
-        onClick={clickHandler}>
+        aria-controls={isFilterOpen ? "filter-menu" : undefined}
+        aria-expanded={isFilterOpen ? "true" : undefined}
+        onClick={openFilterHandler}>
         Filter
       </Button>
       <Menu
-        id="basic-menu"
+        id="filter-menu"
         anchorEl={anchorEl}
-        open={open}
-        onClose={closeHandler}
+        open={isFilterOpen}
+        onClose={closeFilterHandler}
         MenuListProps={{
-          "aria-labelledby": "basic-button"
+          "aria-labelledby": "filter-button"
         }}>
-        <MenuItem onClick={() => categorySelectHandler(Categories.ALL)}>
+        <MenuItem onClick={() => filterSelectHandler(Categories.ALL)}>
           All
         </MenuItem>
-        <MenuItem onClick={() => categorySelectHandler(Categories.SHOES)}>
+        <MenuItem onClick={() => filterSelectHandler(Categories.SHOES)}>
           Shoes
         </MenuItem>
-        <MenuItem onClick={() => categorySelectHandler(Categories.OVERSHIRTS)}>
+        <MenuItem onClick={() => filterSelectHandler(Categories.OVERSHIRTS)}>
           Overshirts
         </MenuItem>
       </Menu>
       <Button
-        id="basic-button"
+        id="sort-button"
         size="small"
         aria-haspopup="true"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
-        onClick={clickHandler}>
-        Filter
+        aria-controls={isSortOpen ? "sort-menu" : undefined}
+        aria-expanded={isSortOpen ? "true" : undefined}
+        onClick={openSortHandler}>
+        Sort
       </Button>
       <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={closeHandler}
+        id="sort-menu"
+        anchorEl={anchorEl2}
+        open={isSortOpen}
+        onClose={closeSortHandler}
         MenuListProps={{
-          "aria-labelledby": "basic-button"
+          "aria-labelledby": "sort-button"
         }}>
         <MenuItem onClick={() => sortPriceHandler(null)}>Popular</MenuItem>
         <MenuItem onClick={() => sortPriceHandler("ASC")}>
